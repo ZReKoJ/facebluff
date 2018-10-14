@@ -1,0 +1,9 @@
+login: entrar
+logout: desconectar
+register: nuevo usuario
+solicitud amigos: amigos
+perfil
+preguntas
+
+una forma de coger palabras por idioma
+button poder usar location.href?
