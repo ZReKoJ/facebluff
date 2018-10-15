@@ -47,10 +47,10 @@ body {
 
 .phrase {
     font-family: 'Charmonman', cursive;
-    font-size: 1.8vmax;
     width: 50%;
     height: 50%;
     user-select: none;
+    font-size: 1.8vmax;
 }
 
 a.register-button {
