@@ -96,11 +96,9 @@ a.login-button {
     height: 40px;
     padding: 0 10px 0 10px;
     margin-bottom: 5px;
-    text-transform: capitalize;
 }
 
 .register-form > input[type="submit"] {
     width: 60%;
     height: 40px;
-    text-transform: capitalize;
 }
