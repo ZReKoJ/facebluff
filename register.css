@@ -96,6 +96,14 @@ a.login-button {
     height: 40px;
     padding: 0 10px 0 10px;
     margin-bottom: 5px;
+    background-color: lightskyblue;
+    border: none;
+    border-bottom: 2px solid white;
+}
+
+.register-form > input:not([type="submit"])::placeholder{
+    color: white;
+    font-weight: bold;
 }
 
 .register-form > input[type="submit"] {
@@ -105,4 +113,8 @@ a.login-button {
 
 .register-form > input[type="date"]:before {
     content: attr(placeholder) ":";
+}
+.register-form > input[type="date"] {
+    color:white;
+    font-weight: bold;
 }

@@ -97,6 +97,14 @@ a.register-button {
     padding: 0 10px 0 10px;
     margin-bottom: 5px;
     text-transform: capitalize;
+    background-color: lightskyblue;
+    border: none;
+    border-bottom: 2px solid white;
+}
+
+.login-form > input:not([type="submit"])::placeholder{
+    color: white;
+    font-weight: bold;
 }
 
 .login-form > input[type="submit"] {
