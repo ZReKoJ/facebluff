@@ -100,11 +100,17 @@ a.register-button {
     background-color: lightskyblue;
     border: none;
     border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
 }
 
 .login-form > input:not([type="submit"])::placeholder{
     color: white;
     font-weight: bold;
+}
+
+.login-form > input:not([type="submit"])::hover{
+    border: none;
 }
 
 .login-form > input[type="submit"] {

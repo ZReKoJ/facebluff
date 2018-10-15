@@ -99,6 +99,8 @@ a.login-button {
     background-color: lightskyblue;
     border: none;
     border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
 }
 
 .register-form > input:not([type="submit"])::placeholder{
