@@ -102,3 +102,7 @@ a.login-button {
     width: 60%;
     height: 40px;
 }
+
+.register-form > input[type="date"]:before {
+    content: attr(placeholder) ":";
+}
