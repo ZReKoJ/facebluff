@@ -46,7 +46,7 @@ body {
     user-select: none;
 }
 
-.register > h2 {
+.login > h2 {
     font-family: 'Charmonman', cursive;
     font-size: 2vmax;
     text-transform: capitalize;

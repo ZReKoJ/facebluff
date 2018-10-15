@@ -101,12 +101,16 @@ a.register-button {
 
 .login-form > input[type="submit"] {
     width: 60%;
-    height: 40px;
+    height: 80px;
     text-transform: capitalize;
     font-weight: bold;
 }
 
 .login-form > label {
     margin-top: 5px;
-    text-transform: capitalize;
+    text-transform: initial;
+}
+
+label > a {
+    padding-left: 10px;
 }
