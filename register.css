@@ -11,12 +11,6 @@ body {
     background-size: cover;
 }
 
-h2 {
-    font-family: 'Charmonman', cursive;
-    font-size: 2vmax;
-    text-transform: capitalize;
-}
-
 .container {
     position: absolute;
     width: 60%;
@@ -49,6 +43,13 @@ h2 {
     font-size: 1.8vmax;
     width: 50%;
     height: 50%;
+    user-select: none;
+}
+
+.register > h2 {
+    font-family: 'Charmonman', cursive;
+    font-size: 2vmax;
+    text-transform: capitalize;
     user-select: none;
 }
 
