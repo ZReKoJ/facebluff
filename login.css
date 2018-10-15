@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    border: 2px solid black; /**/
+    /*border: 2px solid black; /**/
 }
 
 body {
@@ -107,14 +107,40 @@ a.register-button {
 }
 
 .login-form > label {
+    width: 100%;
     margin-top: 5px;
     text-transform: initial;
+    display: flex;
+}
+.login-form > label > .remember-me {
+    width: 50%; 
+    height: 20px;
+    padding: 10px 5px 10px 5px;
+    background: #4E9CAF;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 13px;
 }
 
-label > a {
-    padding-left: 10px;
+.login-form > label > .remember-me:hover{
+    transform: scale(1.08);
+}
+.login-form > label > a {
+    width: 50%;
+    height: 20px;
+    margin-left: 15px;
+    padding: 10px 5px 10px 5px;
+    background: #4E9CAF;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+}
+.login-form > label > a:hover{
+    transform: scale(1.08);
 }
 
-.login-form > label > input {
-    border: solid 2px whitesmoke;
-}
