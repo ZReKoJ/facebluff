@@ -115,8 +115,8 @@ a.register-button {
     font-weight: bold;
 }
 
-.login-form > input:not([type="submit"])::hover{
-    border: none;
+.login-form > input:not([type="submit"]):focus{
+    outline: none;
 }
 
 .login-form > input[type="submit"] {

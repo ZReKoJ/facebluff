@@ -109,6 +109,10 @@ a.login-button {
     font-weight: bold;
 }
 
+.register-form > input:not([type="submit"]){
+    outline: none;
+}
+
 .register-form > input:not([type="submit"])::placeholder{
     color: white;
     font-weight: bold;
