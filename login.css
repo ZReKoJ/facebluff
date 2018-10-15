@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* border: 2px solid black; /**/
+    border: 2px solid black; /**/
 }
 
 body {
@@ -101,7 +101,7 @@ a.register-button {
 
 .login-form > input[type="submit"] {
     width: 60%;
-    height: 80px;
+    height: 40px;
     text-transform: capitalize;
     font-weight: bold;
 }
@@ -113,4 +113,8 @@ a.register-button {
 
 label > a {
     padding-left: 10px;
+}
+
+.login-form > label > input {
+    border: solid 2px whitesmoke;
 }
