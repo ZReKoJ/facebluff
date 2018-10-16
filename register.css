@@ -171,6 +171,7 @@ a.login-button {
 	font-size: 3vmax;
     font-weight: bold;
     text-align: center;
+    color: white;
 }
 
 .register:hover .title > span {
