@@ -93,7 +93,7 @@ a.login-button {
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 100%;
+    height: calc(100% - 50px);
     margin: auto;
 }
 
@@ -148,4 +148,72 @@ a.login-button {
     padding-top: 10px;
     height: 6%;
     font-size: 12px;
+}
+
+.title {
+    display: flex;
+}
+
+.title > span {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 3vmax;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title:hover > span {
+    display: none;
+}
+
+.title .inner {
+	width: 50%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 3vmax;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+.title:hover .inner span:before {
+    content: "facebluff";
+}
+
+.title:hover .inner:first-child {
+	background-color: indianred;
+	color: darkred;
+    transform-origin: right;
+	transform: perspective(200px) rotateY(-15deg);
+    transition-duration: 1s;
+    text-transform: capitalize;
+}
+
+.title:hover .inner:last-child {
+	background-color: lightcoral;
+	color: antiquewhite;
+    transform-origin: left;
+	transform: perspective(200px) rotateY(15deg);
+    transition-duration: 1s;
+    text-transform: capitalize;
+}
+
+.title:hover .inner span {
+	position: absolute;
+	animation: movement 5s linear infinite;
+}
+
+.title:hover .inner:first-child span {
+	animation-delay: 2.5s;
+	left: -100%;
+}
+
+@keyframes movement {
+	from {
+		left: 100%;
+	}
+
+	to {
+		left: -100%;
+	}
 }

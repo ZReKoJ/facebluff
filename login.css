@@ -93,7 +93,7 @@ a.register-button {
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 100%;
+    height: calc(100% - 50px);
     margin: auto;
 }
 
@@ -166,20 +166,33 @@ a.register-button {
 }
 
 .title {
-	display: flex;
+    display: flex;
 }
 
-.title > .inner {
-	width: 400px;
+.title > span {
+	width: 100%;
 	height: 50px;
 	line-height: 50px;
-	font-size: 3em;
+	font-size: 3vmax;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title:hover > span {
+    display: none;
+}
+
+.title .inner {
+	width: 50%;
+	height: 50px;
+	line-height: 50px;
+	font-size: 3vmax;
 	font-weight: bold;
 	overflow: hidden;
 }
 
-.title .inner:first-child span {
-    left: 45%;
+.title:hover .inner span:before {
+    content: "facebluff";
 }
 
 .title:hover .inner:first-child {
@@ -188,6 +201,7 @@ a.register-button {
     transform-origin: right;
 	transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
+    text-transform: capitalize;
 }
 
 .title:hover .inner:last-child {
@@ -196,19 +210,20 @@ a.register-button {
     transform-origin: left;
 	transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
+    text-transform: capitalize;
 }
 
 .title:hover .inner span {
 	position: absolute;
-	animation: marquee 5s linear infinite;
+	animation: movement 5s linear infinite;
 }
 
-.title .inner:first-child span {
+.title:hover .inner:first-child span {
 	animation-delay: 2.5s;
 	left: -100%;
 }
 
-@keyframes marquee {
+@keyframes movement {
 	from {
 		left: 100%;
 	}
@@ -217,38 +232,3 @@ a.register-button {
 		left: -100%;
 	}
 }
-
-/*
-.title .inner:first-child {
-	background-color: indianred;
-	color: darkred;
-	transform-origin: right;
-	transform: perspective(100px) rotateY(-15deg);
-}
-
-.title .inner:last-child {
-	background-color: lightcoral;
-	color: antiquewhite;
-	transform-origin: left;
-	transform: perspective(100px) rotateY(15deg);
-}
-
-.title .inner span {
-	position: absolute;
-	animation: marquee 5s linear infinite;
-}
-
-.title .inner:first-child span {
-	animation-delay: 2.5s;
-	left: -100%;
-}
-
-@keyframes marquee {
-	from {
-		left: 100%;
-	}
-
-	to {
-		left: -100%;
-	}
-}*/
