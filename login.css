@@ -113,12 +113,12 @@ a.register-button {
     font-weight: bold;
 }
 
-.login-form > input:not([type="submit"])::placeholder{
+.login-form > input:not([type="submit"])::placeholder {
     color: white;
     font-weight: bold;
 }
 
-.login-form > input:not([type="submit"]):focus{
+.login-form > input:not([type="submit"]):focus {
     outline: none;
 }
 
@@ -135,6 +135,7 @@ a.register-button {
     text-transform: initial;
     display: flex;
 }
+
 .login-form > label > .remember-me {
     width: 50%; 
     height: 20px;
@@ -145,11 +146,13 @@ a.register-button {
     color: white;
     text-align: center;
     font-size: 13px;
+    user-select: none;
 }
 
-.login-form > label > .remember-me:hover{
+.login-form > label > .remember-me:hover {
     transform: scale(1.08);
 }
+
 .login-form > label > a {
     width: 50%;
     height: 20px;
@@ -164,7 +167,7 @@ a.register-button {
     font-size: 13px;
 }
 
-.login-form > label > a:hover{
+.login-form > label > a:hover {
     transform: scale(1.08);
 }
 
@@ -203,7 +206,7 @@ a.register-button {
 }
 
 .login:hover .title .inner span:before {
-    content: "facebluff";
+    content: "faceßluff";
 }
 
 .login:hover .title .inner:first-child {

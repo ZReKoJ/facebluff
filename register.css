@@ -112,11 +112,11 @@ a.login-button {
     font-weight: bold;
 }
 
-.register-form > input:not([type="submit"]){
+.register-form > input:not([type="submit"]) {
     outline: none;
 }
 
-.register-form > input:not([type="submit"])::placeholder{
+.register-form > input:not([type="submit"])::placeholder {
     color: white;
     font-weight: bold;
 }
@@ -133,6 +133,7 @@ a.login-button {
     color: white;
     font-weight: bold;
     font-size: 14px;
+    user-select: none;
 }
 
 .register-form > input[type="date"]:before {
@@ -188,7 +189,7 @@ a.login-button {
 }
 
 .register:hover .title .inner span:before {
-    content: "facebluff";
+    content: "faceßluff";
 }
 
 .register:hover .title .inner:first-child {
