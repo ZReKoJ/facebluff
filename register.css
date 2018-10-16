@@ -158,7 +158,7 @@ a.login-button {
     display: flex;
 }
 
-.title:hover {
+.register:hover .title {
     position: absolute;
     width: 200%;
     left: -50%;
@@ -173,7 +173,7 @@ a.login-button {
     text-align: center;
 }
 
-.title:hover > span {
+.register:hover .title > span {
     display: none;
 }
 
@@ -186,11 +186,11 @@ a.login-button {
 	overflow: hidden;
 }
 
-.title:hover .inner span:before {
+.register:hover .title .inner span:before {
     content: "facebluff";
 }
 
-.title:hover .inner:first-child {
+.register:hover .title .inner:first-child {
 	background-color: indianred;
 	color: darkred;
     transform-origin: right;
@@ -199,7 +199,7 @@ a.login-button {
     text-transform: capitalize;
 }
 
-.title:hover .inner:last-child {
+.register:hover .title .inner:last-child {
 	background-color: lightcoral;
 	color: antiquewhite;
     transform-origin: left;
@@ -208,12 +208,12 @@ a.login-button {
     text-transform: capitalize;
 }
 
-.title:hover .inner span {
+.register:hover .title .inner span {
 	position: absolute;
 	animation: movement 5s linear infinite;
 }
 
-.title:hover .inner:first-child span {
+.register:hover .title .inner:first-child span {
 	animation-delay: 2.5s;
 	left: -100%;
 }

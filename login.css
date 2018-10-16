@@ -173,7 +173,7 @@ a.register-button {
     display: flex;
 }
 
-.title:hover {
+.login:hover .title {
     position: absolute;
     width: 200%;
     left: -50%;
@@ -188,7 +188,7 @@ a.register-button {
     text-align: center;
 }
 
-.title:hover > span {
+.login:hover .title > span {
     display: none;
 }
 
@@ -201,11 +201,11 @@ a.register-button {
 	overflow: hidden;
 }
 
-.title:hover .inner span:before {
+.login:hover .title .inner span:before {
     content: "facebluff";
 }
 
-.title:hover .inner:first-child {
+.login:hover .title .inner:first-child {
 	background-color: indianred;
 	color: darkred;
     transform-origin: right;
@@ -214,7 +214,7 @@ a.register-button {
     text-transform: capitalize;
 }
 
-.title:hover .inner:last-child {
+.login:hover .title .inner:last-child {
 	background-color: lightcoral;
 	color: antiquewhite;
     transform-origin: left;
@@ -223,12 +223,12 @@ a.register-button {
     text-transform: capitalize;
 }
 
-.title:hover .inner span {
+.login:hover .title .inner span {
 	position: absolute;
 	animation: movement 5s linear infinite;
 }
 
-.title:hover .inner:first-child span {
+.login:hover .title .inner:first-child span {
 	animation-delay: 2.5s;
 	left: -100%;
 }
