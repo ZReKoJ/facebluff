@@ -33,17 +33,11 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="password" name="repeat-password" placeholder="Repeat your password" required>
                 <input type="date" name="birth-date" value="2000-01-01" placeholder="Birth date" required>
-                <label>
-                    Male
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    Female
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    Other
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
+                <div class="gender">
+                    <input type="radio" name="gender" value="male" checked> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>
+                    <input type="radio" name="gender" value="other"> Other
+                </div>
                 <input type="file" />
                 <input type="submit" value="Register">
             </form>

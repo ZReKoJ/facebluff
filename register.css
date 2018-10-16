@@ -127,15 +127,23 @@ a.login-button {
     margin-top: 5px;
 }
 
-.register-form > label {
-    float: left;
+.register-form > .gender {
+    display: flex;
     border-bottom: 2px solid white;
     color: white;
     font-weight: bold;
     font-size: 14px;
     user-select: none;
+    padding-bottom: 7px;
+    margin-top: 5px;
+    
 }
 
+.register-form > .gender > input[type="radio"]{
+    margin-left: 15px;
+    margin-right: 5px;
+    
+}
 .register-form > input[type="date"]:before {
     content: attr(placeholder) ":";
 }
@@ -193,8 +201,8 @@ a.login-button {
 }
 
 .register:hover .title .inner:first-child {
-	background-color: indianred;
-	color: darkred;
+	background-color: lightseagreen;
+	color: rgb(213, 203, 203);
     transform-origin: right;
 	transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
@@ -202,8 +210,8 @@ a.login-button {
 }
 
 .register:hover .title .inner:last-child {
-	background-color: lightcoral;
-	color: antiquewhite;
+	background-color: lightblue;
+	color: white;
     transform-origin: left;
 	transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
