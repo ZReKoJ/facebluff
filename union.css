@@ -19,6 +19,7 @@
 body {
     background: url("back.jpg") no-repeat center center fixed;
     background-size: cover;
+    /* background-color: #4E9CAF; */
 }
 
 .container {
@@ -38,18 +39,36 @@ body {
     box-shadow: 0 0 100px lightcyan;
 }
 
+.container > input::before {
+    content: attr(value);
+}
+
+.container > input {
+    line-height: 33px;
+    color: white;
+    background: #4E9CAF;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    -webkit-appearance: button;
+    z-index: 50;
+}
+
 #login-button {
     position: absolute;
-    z-index: 50;
-    top: 90%;
-    right: 22.5%;
+    width: 15%;
+    height: 10%;
+    top: 80%;
+    right: 15%;
 }
 
 #register-button {
     position: absolute;
-    z-index: 50;
-    top: 90%;
-    left: 22.5%;
+    width: 15%;
+    height: 10%;
+    top: 80%;
+    left: 15%;
 }
 
 .have-account {
