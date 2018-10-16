@@ -229,19 +229,18 @@ form {
     margin-top: 5px;
 }
 
-.register-form > .gender {
+#register-form > .gender {
     display: flex;
     border-bottom: 2px solid white;
     color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     user-select: none;
     padding-bottom: 7px;
     margin-top: 5px;
-    
 }
 
-.register-form > .gender > input[type="radio"] {
+#register-form > .gender > input[type="radio"] {
     margin-left: 15px;
     margin-right: 5px;
 }
@@ -335,8 +334,8 @@ form {
 }
 
 .panel:hover .title .inner:first-child {
-	background-color: indianred;
-	color: darkred;
+	background-color: lightseagreen;
+	color: rgb(213, 203, 203);
     transform-origin: right;
 	transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
@@ -344,8 +343,8 @@ form {
 }
 
 .panel:hover .title .inner:last-child {
-	background-color: lightcoral;
-	color: antiquewhite;
+	background-color: lightblue;
+	color: white;
     transform-origin: left;
 	transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
