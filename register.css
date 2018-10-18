@@ -49,7 +49,7 @@ body {
     user-select: none;
 }
 
-.login > h2 {
+.login>h2 {
     font-family: 'Charmonman', cursive;
     font-size: 2vmax;
     text-transform: capitalize;
@@ -100,7 +100,7 @@ a.login-button {
     margin: auto;
 }
 
-.register-form > input:not([type="submit"]) {
+.register-form>input:not([type="submit"]) {
     width: 100%;
     height: 40px;
     padding: 0 10px 0 10px;
@@ -112,22 +112,22 @@ a.login-button {
     font-weight: bold;
 }
 
-.register-form > input:not([type="submit"]) {
+.register-form>input:not([type="submit"]) {
     outline: none;
 }
 
-.register-form > input:not([type="submit"])::placeholder {
+.register-form>input:not([type="submit"])::placeholder {
     color: white;
     font-weight: bold;
 }
 
-.register-form > input[type="submit"] {
+.register-form>input[type="submit"] {
     width: 60%;
     height: 40px;
     margin-top: 5px;
 }
 
-.register-form > .gender {
+.register-form>.gender {
     display: flex;
     border-bottom: 2px solid white;
     color: white;
@@ -136,26 +136,27 @@ a.login-button {
     user-select: none;
     padding-bottom: 7px;
     margin-top: 5px;
-    
+
 }
 
-.register-form > .gender > input[type="radio"]{
+.register-form>.gender>input[type="radio"] {
     margin-left: 15px;
     margin-right: 5px;
-    
+
 }
-.register-form > input[type="date"]:before {
+
+.register-form>input[type="date"]:before {
     content: attr(placeholder) ":";
 }
 
-.register-form > input[type="date"] {
-    color:white;
+.register-form>input[type="date"] {
+    color: white;
     font-weight: bolder;
     font-size: 12px;
 }
 
-.register-form > input[type="file"] {
-    color:white;
+.register-form>input[type="file"] {
+    color: white;
     font-weight: bold;
     padding-top: 10px;
     height: 6%;
@@ -173,27 +174,27 @@ a.login-button {
     left: -50%;
 }
 
-.title > span {
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	font-size: 3vmax;
+.title>span {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 3vmax;
     font-weight: bold;
     text-align: center;
     color: white;
 }
 
-.register:hover .title > span {
+.register:hover .title>span {
     display: none;
 }
 
 .title .inner {
-	width: 50%;
-	height: 50px;
-	line-height: 50px;
-	font-size: 3vmax;
-	font-weight: bold;
-	overflow: hidden;
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 3vmax;
+    font-weight: bold;
+    overflow: hidden;
 }
 
 .register:hover .title .inner span:before {
@@ -201,39 +202,39 @@ a.login-button {
 }
 
 .register:hover .title .inner:first-child {
-	background-color: lightseagreen;
-	color: rgb(213, 203, 203);
+    background-color: lightseagreen;
+    color: rgb(213, 203, 203);
     transform-origin: right;
-	transform: perspective(200px) rotateY(-15deg);
+    transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
     text-transform: capitalize;
 }
 
 .register:hover .title .inner:last-child {
-	background-color: lightblue;
-	color: white;
+    background-color: lightblue;
+    color: white;
     transform-origin: left;
-	transform: perspective(200px) rotateY(15deg);
+    transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
     text-transform: capitalize;
 }
 
 .register:hover .title .inner span {
-	position: absolute;
-	animation: movement 5s linear infinite;
+    position: absolute;
+    animation: movement 5s linear infinite;
 }
 
 .register:hover .title .inner:first-child span {
-	animation-delay: 2.5s;
-	left: -100%;
+    animation-delay: 2.5s;
+    left: -100%;
 }
 
 @keyframes movement {
-	from {
-		left: 100%;
-	}
+    from {
+        left: 100%;
+    }
 
-	to {
-		left: -100%;
-	}
+    to {
+        left: -100%;
+    }
 }

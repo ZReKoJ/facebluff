@@ -1,72 +1,72 @@
 @import url('https://fonts.googleapis.com/css?family=Charmonman');
 
 * {
-    margin: 0;
-    padding: 0;
-    /* border: 2px solid yellow; /**/
+	margin: 0;
+	padding: 0;
+	/* border: 2px solid yellow; /**/
 }
 
 body {
-    background: url("back.jpg") no-repeat center center fixed;
-    background-size: cover;
-    /* background-color: #4E9CAF; */
+	background: url("back.jpg") no-repeat center center fixed;
+	background-size: cover;
+	/* background-color: #4E9CAF; */
 }
 
 .header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
 }
 
 .user {
-    position: absolute;
-    top: 0;
-    right: 5%;
-    width: 100px;
-    height: 100%;
-    background-color: aquamarine;
+	position: absolute;
+	top: 0;
+	right: 5%;
+	width: 100px;
+	height: 100%;
+	background-color: aquamarine;
 }
 
-.user > label {
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: space-around;
-    align-items: center;
+.user>label {
+	display: flex;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	justify-content: space-around;
+	align-items: center;
 }
 
-.user > label > img {
-    width: 30%;
-    height: auto;
+.user>label>img {
+	width: 30%;
+	height: auto;
 }
 
-.user > label > span:after {
-    content: " pts"
+.user>label>span:after {
+	content: " pts"
 }
 
-.user > label > span {
-    font-weight: bold;
+.user>label>span {
+	font-weight: bold;
 }
 
-.user:hover > .mini-profile {
+.user:hover>.mini-profile {
 	display: block;
 }
 
 .mini-profile {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 250px;
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: 250px;
 	height: 300px;
 	background-color: white;
 }
@@ -84,7 +84,7 @@ body {
 	align-items: center;
 }
 
-.profile-header > img {
+.profile-header>img {
 	width: auto;
 	height: 80%;
 }
@@ -96,7 +96,7 @@ body {
 	background-color: red;
 }
 
-.profile-footer > a.button {
+.profile-footer>a.button {
 	background-color: aliceblue;
 }
 
