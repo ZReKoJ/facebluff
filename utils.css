@@ -12,15 +12,16 @@
     border-radius: 50%;
 }
 
-a.link-button {
-    display: block;
-    width: 30%;
-    height: calc(100% - 4px);
-    color: white;
-    background: #4E9CAF;
+.button {
+    -webkit-appearance: button;
+    display: flex;
+    padding: 6px 12px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    text-transform: capitalize;
+    cursor: pointer;
+    border: 1px solid transparent;
     text-decoration: none;
-    border: 2px solid black;
     font-weight: bold;
+    user-select: none;
 }

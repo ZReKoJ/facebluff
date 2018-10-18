@@ -92,14 +92,10 @@ body {
 }
 
 .container > input {
-    line-height: 33px;
     color: white;
     background: #4E9CAF;
     text-transform: capitalize;
-    text-align: center;
-    font-weight: bold;
     border-radius: 5px;
-    -webkit-appearance: button;
     z-index: 50;
 }
 
@@ -234,16 +230,15 @@ form {
 }
 
 #login-form > label > .remember-me {
+    display: flex;
+    justify-content: space-evenly;
     width: 50%; 
     height: 20px;
     padding: 10px 5px 10px 5px;
     background: #4E9CAF;
     border-radius: 5px;
-    font-weight: bold;
     color: white;
-    text-align: center;
     font-size: 13px;
-    user-select: none;
 }
 
 #login-form > label > .remember-me:hover {
@@ -257,10 +252,7 @@ form {
     padding: 10px 5px 10px 5px;
     background: #4E9CAF;
     border-radius: 5px;
-    font-weight: bold;
     color: white;
-    text-decoration: none;
-    text-align: center;
     font-size: 13px;
 }
 
