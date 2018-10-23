@@ -3,7 +3,6 @@
 * {
 	margin: 0;
 	padding: 0;
-	/* border: 2px solid yellow; /**/
 }
 
 body {
@@ -22,7 +21,7 @@ body {
 	height: 50px;
 	justify-content: space-between;
 	align-items: center;
-	background-color: black;
+	background-color: var(--background-color);
 }
 
 .user {
@@ -31,7 +30,7 @@ body {
 	right: 5%;
 	width: 120px;
 	height: 100%;
-	background-color: black;
+	background-color: var(--background-color);
 }
 
 .user>label {
@@ -41,7 +40,7 @@ body {
 	right: 0;
 	width: 100%;
 	height: 100%;
-	color: white;
+	color: var(--on-background-color);
 	justify-content: space-around;
 	align-items: center;
 }
@@ -66,7 +65,7 @@ body {
 	right: 0;
 	width: 250px;
 	height: 300px;
-	background-color: white;
+	background-color: var(--surface-color);
 }
 
 .mini-profile:hover {
@@ -80,8 +79,8 @@ body {
 	justify-content: space-evenly;
 	flex-direction: column;
 	align-items: center;
-	color: white;
-	background-image: linear-gradient(white, black);
+	color: var(--on-surface-color);
+	background-color: var(--surface-color);
 }
 
 .profile-header>img {
@@ -97,18 +96,18 @@ body {
 	display: flex;
 	justify-content: space-evenly;
 	height: 10%;
-	background-color: black;
+	background-color: var(--surface-color);
 }
 
 .profile-footer>a.button {
 	width: 50%;
 	height: 100%;
-	color: white;
-	background-color: black;
+	color: var(--on-primary-color);
+	background-color: var(--primary-color);
 }
 
 .profile-footer>a.button:hover {
-	background-color: #19c589;
+	background-color: var(--primary-light-color);
 }
 
 .nav-bar {
@@ -136,11 +135,11 @@ body {
 }
 
 .menu>li>a {
-	background-color: black;
+	background-color: var(--background-color);
 }
 
 .hidden-menu>li>a {
-	background-color: lightgray;
+	background-color: var(--surface-color);
 }
 
 .nav-bar a {
@@ -149,13 +148,13 @@ body {
 	height: 100%;
 	text-align: center;
 	line-height: calc(50px - 1px);
-	color: white;
+	color: var(--on-background-color);
 	text-decoration: none;
 	margin-top: 1px;
 }
 
 .nav-bar a:hover {
-	background-color: #19c589;
+	background-color: var(--primary-light-color);
 }
 
 .menu>li>a:hover~.hidden-menu {

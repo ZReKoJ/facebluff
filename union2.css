@@ -12,13 +12,13 @@
 
 @keyframes to-left {
     from {
-        left: 50%;
+        left: 45%;
         opacity: 1;
         z-index: 100;
     }
 
     to {
-        left: 0%;
+        left: 5%;
         opacity: 0;
         z-index: -1;
     }
@@ -26,13 +26,13 @@
 
 @keyframes to-right {
     from {
-        right: 50%;
+        right: 45%;
         opacity: 1;
         z-index: 100;
     }
 
     to {
-        right: 0%;
+        right: 5%;
         opacity: 0;
         z-index: -1;
     }
@@ -71,18 +71,17 @@
 body {
     background: url("back.jpg") no-repeat center center fixed;
     background-size: cover;
-    /* background-color: #4E9CAF; */
 }
 
 .container {
     position: absolute;
-    width: 60%;
+    width: 70%;
     min-width: 500px;
     height: 60%;
     min-height: 300px;
     top: 20%;
-    left: 20%;
-    background-color: rgb(0, 0, 0, 0.8);
+    left: 15%;
+    background-color: var(--background-color);
 }
 
 .container>input::before {
@@ -90,10 +89,9 @@ body {
 }
 
 .container>input {
-    color: white;
-    background: #4E9CAF;
+    color: var(--on-primary-color);
+    background: var(--primary-color);
     text-transform: capitalize;
-    border-radius: 5px;
     z-index: 50;
 }
 
@@ -122,7 +120,7 @@ body {
     font-size: 2vmax;
     text-transform: capitalize;
     user-select: none;
-    color: white;
+    color: var(--on-background-color);
 }
 
 .phrase {
@@ -131,7 +129,7 @@ body {
     height: 50%;
     user-select: none;
     font-size: 1.8vmax;
-    color: white;
+    color: var(--on-background-color);
 }
 
 #login-zone {
@@ -140,7 +138,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 45%;
     height: 80%;
     top: 0;
     right: 0;
@@ -153,7 +151,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 45%;
     height: 80%;
     top: 0;
     left: 0;
@@ -164,15 +162,11 @@ body {
     display: block;
     position: absolute;
     width: 50%;
-    height: 100%;
+    height: 120%;
     min-width: 100px;
-    top: 0%;
-    background-color: white;
+    top: -10%;
+    background-color: var(--surface-color);
     z-index: 100;
-}
-
-#login-panel {
-    left: 50%;
 }
 
 form {
@@ -188,33 +182,36 @@ form {
     margin: auto;
 }
 
-#login-form>input:not([type="submit"]) {
+form>input:not([type="submit"]) {
     width: 100%;
     height: 40px;
     padding: 0 10px 0 10px;
     margin-bottom: 5px;
     text-transform: capitalize;
-    background-color: lightskyblue;
+    background-color: var(--surface-color);
     border: none;
-    border-bottom: 2px solid white;
-    color: white;
+    border-bottom: 2px solid var(--secondary-dark-color);
     font-weight: bold;
 }
 
-#login-form>input:not([type="submit"])::placeholder {
-    color: white;
+form>input:not([type="submit"])::placeholder {
+    color: var(--secondary-color);
     font-weight: bold;
 }
 
-#login-form>input:not([type="submit"]):focus {
+form>input:not([type="submit"]):focus {
     outline: none;
 }
 
-#login-form>input[type="submit"] {
+form>input[type="submit"] {
     width: 60%;
     height: 40px;
     text-transform: capitalize;
     font-weight: bold;
+}
+
+#login-panel {
+    left: 45%;
 }
 
 #login-form>label {
@@ -230,9 +227,8 @@ form {
     width: 50%;
     height: 20px;
     padding: 10px 5px 10px 5px;
-    background: #4E9CAF;
-    border-radius: 5px;
-    color: white;
+    color: var(--on-primary-color);
+    background: var(--primary-color);
     font-size: 13px;
 }
 
@@ -245,9 +241,8 @@ form {
     height: 20px;
     margin-left: 15px;
     padding: 10px 5px 10px 5px;
-    background: #4E9CAF;
-    border-radius: 5px;
-    color: white;
+    color: var(--on-primary-color);
+    background: var(--primary-color);
     font-size: 13px;
 }
 
@@ -256,44 +251,17 @@ form {
 }
 
 #register-panel {
-    right: 50%;
+    right: 45%;
     animation-name: to-back;
     animation-duration: 0s;
     animation-direction: normal;
     animation-fill-mode: forwards;
 }
 
-#register-form>input:not([type="submit"]) {
-    width: 100%;
-    height: 40px;
-    padding: 0 10px 0 10px;
-    margin-bottom: 5px;
-    background-color: lightskyblue;
-    border: none;
-    border-bottom: 2px solid white;
-    color: white;
-    font-weight: bold;
-}
-
-#register-form>input:not([type="submit"]) {
-    outline: none;
-}
-
-#register-form>input:not([type="submit"])::placeholder {
-    color: white;
-    font-weight: bold;
-}
-
-#register-form>input[type="submit"] {
-    width: 60%;
-    height: 40px;
-    margin-top: 5px;
-}
-
 #register-form>.gender {
     display: flex;
-    border-bottom: 2px solid white;
-    color: white;
+    border-bottom: 2px solid var(--secondary-dark-color);
+    color: var(--secondary-color);
     font-weight: bold;
     font-size: 13px;
     user-select: none;
@@ -311,13 +279,13 @@ form {
 }
 
 #register-form>input[type="date"] {
-    color: white;
+    color: var(--secondary-color);
     font-weight: bolder;
     font-size: 12px;
 }
 
 #register-form>input[type="file"] {
-    color: white;
+    color: var(--secondary-color);
     font-weight: bold;
     padding-top: 10px;
     height: 6%;
@@ -400,7 +368,7 @@ form {
     font-size: 3vmax;
     font-weight: bold;
     text-align: center;
-    color: white;
+    color: var(--on-primary-color);
 }
 
 .panel:hover .title>span {
@@ -421,8 +389,8 @@ form {
 }
 
 .panel:hover .title .inner:first-child {
-    background-color: lightseagreen;
-    color: rgb(213, 203, 203);
+    background-color: var(--primary-dark-color);
+    color: var(--primary-color);
     transform-origin: right;
     transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
@@ -430,8 +398,8 @@ form {
 }
 
 .panel:hover .title .inner:last-child {
-    background-color: lightblue;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--primary-light-color);
     transform-origin: left;
     transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
