@@ -4,6 +4,7 @@ register: nuevo usuario
 solicitud amigos: amigos
 perfil
 preguntas
+contesta preguntas
 
 una forma de coger palabras por idioma
 button poder usar location.href?

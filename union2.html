@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Facebluff</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="logo.png" />
+    <link rel="stylesheet" href="utils.css" />
+    <link rel="stylesheet" href="union2.css" />
+</head>
+
+<body>
+    <div class="container">
+        <input type='radio' value="login" name="login-register" id='login-button' class="button">
+        <input type='radio' value="register" name="login-register" id='register-button' class="button">
+        <div id="register-zone">
+            <h2 class="have-account">Don´t have an account?</h2>
+            <p class="phrase">To live a creative life, we must lose our fear of being wrong</p>
+        </div>
+        <div id="login-zone">
+            <h2 class="have-account">Have an account?</h2>
+            <p class="phrase">The best way to predict the future is to invent it</p>
+        </div>
+        <div id="login-panel" class="panel">
+            <div class="title">
+                <div class="inner">
+                    <span></span>
+                </div>
+                <span>Face&#223;luff</span>
+                <div class="inner">
+                    <span></span>
+                </div>
+            </div>
+            <form id="login-form" action="/link-to-form" method="post">
+                <input type="text" name="username" placeholder="username" required>
+                <input type="password" name="password" placeholder="password" required>
+                <input type="submit" value="login">
+                <label>
+                    <div class="remember-me button">
+                        Remember me
+                        <input type="checkbox" name="remember">
+                    </div>
+                    <a class="button" href="#">Forgot my password</a>
+                </label>
+            </form>
+        </div>
+        <div id="register-panel" class="panel">
+            <div class="title">
+                <div class="inner">
+                    <span></span>
+                </div>
+                <span>Face&#223;luff</span>
+                <div class="inner">
+                    <span></span>
+                </div>
+            </div>
+            <form id="register-form" action="/link-to-form" method="post">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="repeat-password" placeholder="Repeat your password" required>
+                <input type="date" name="birth-date" value="2000-01-01" placeholder="Birth date" required>
+                <div class="gender">
+                    <input type="radio" name="gender" value="male" checked> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>
+                    <input type="radio" name="gender" value="other"> Other
+                </div>
+                <input type="file" />
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

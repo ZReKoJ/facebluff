@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman');
+
+@keyframes movement {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes to-left {
+    from {
+        left: 50%;
+        opacity: 1;
+        z-index: 100;
+    }
+
+    to {
+        left: 0%;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes to-right {
+    from {
+        right: 50%;
+        opacity: 1;
+        z-index: 100;
+    }
+
+    to {
+        right: 0%;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes to-front {
+    from {
+        opacity: 0;
+        z-index: -1;
+    }
+
+    to {
+        opacity: 1;
+        z-index: 100;
+    }
+}
+
+@keyframes to-back {
+    from {
+        opacity: 1;
+        z-index: 100;
+    }
+
+    to {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 2px solid black; /**/
+}
+
+body {
+    background: url("back.jpg") no-repeat center center fixed;
+    background-size: cover;
+    /* background-color: #4E9CAF; */
+}
+
+.container {
+    position: absolute;
+    width: 60%;
+    min-width: 500px;
+    height: 60%;
+    min-height: 300px;
+    top: 20%;
+    left: 20%;
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+.container>input::before {
+    content: attr(value);
+}
+
+.container>input {
+    color: white;
+    background: #4E9CAF;
+    text-transform: capitalize;
+    border-radius: 5px;
+    z-index: 50;
+}
+
+.container>input:hover {
+    transform: scale(1.08);
+}
+
+#login-button {
+    position: absolute;
+    width: 15%;
+    height: 10%;
+    top: 80%;
+    right: 15%;
+}
+
+#register-button {
+    position: absolute;
+    width: 15%;
+    height: 10%;
+    top: 80%;
+    left: 15%;
+}
+
+.have-account {
+    font-family: 'Charmonman', cursive;
+    font-size: 2vmax;
+    text-transform: capitalize;
+    user-select: none;
+    color: white;
+}
+
+.phrase {
+    font-family: 'Charmonman', cursive;
+    width: 50%;
+    height: 50%;
+    user-select: none;
+    font-size: 1.8vmax;
+    color: white;
+}
+
+#login-zone {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+
+#register-zone {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.panel {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    min-width: 100px;
+    top: 0%;
+    background-color: white;
+    z-index: 100;
+}
+
+#login-panel {
+    left: 50%;
+}
+
+form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 60px;
+    left: 10%;
+    width: 80%;
+    height: calc(100% - 60px);
+    margin: auto;
+}
+
+#login-form>input:not([type="submit"]) {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    background-color: lightskyblue;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
+}
+
+#login-form>input:not([type="submit"])::placeholder {
+    color: white;
+    font-weight: bold;
+}
+
+#login-form>input:not([type="submit"]):focus {
+    outline: none;
+}
+
+#login-form>input[type="submit"] {
+    width: 60%;
+    height: 40px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+#login-form>label {
+    width: 100%;
+    margin-top: 5px;
+    text-transform: initial;
+    display: flex;
+}
+
+#login-form>label>.remember-me {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 20px;
+    padding: 10px 5px 10px 5px;
+    background: #4E9CAF;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+}
+
+#login-form>label>.remember-me:hover {
+    transform: scale(1.08);
+}
+
+#login-form>label>a {
+    width: 50%;
+    height: 20px;
+    margin-left: 15px;
+    padding: 10px 5px 10px 5px;
+    background: #4E9CAF;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+}
+
+#login-form>label>a:hover {
+    transform: scale(1.08);
+}
+
+#register-panel {
+    right: 50%;
+    animation-name: to-back;
+    animation-duration: 0s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#register-form>input:not([type="submit"]) {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    margin-bottom: 5px;
+    background-color: lightskyblue;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
+}
+
+#register-form>input:not([type="submit"]) {
+    outline: none;
+}
+
+#register-form>input:not([type="submit"])::placeholder {
+    color: white;
+    font-weight: bold;
+}
+
+#register-form>input[type="submit"] {
+    width: 60%;
+    height: 40px;
+    margin-top: 5px;
+}
+
+#register-form>.gender {
+    display: flex;
+    border-bottom: 2px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    user-select: none;
+    padding-bottom: 7px;
+    margin-top: 5px;
+}
+
+#register-form>.gender>input[type="radio"] {
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+#register-form>input[type="date"]:before {
+    content: attr(placeholder) ":";
+}
+
+#register-form>input[type="date"] {
+    color: white;
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+#register-form>input[type="file"] {
+    color: white;
+    font-weight: bold;
+    padding-top: 10px;
+    height: 6%;
+    font-size: 12px;
+}
+
+#register-button:checked {
+    animation-name: to-back;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#login-button:checked {
+    animation-name: to-back;
+    animation-duration: 0.5s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#register-button:checked~#register-panel {
+    animation-name: to-front;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#register-button:checked~#login-panel {
+    animation-name: to-left;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#login-button:checked~#register-panel {
+    animation-name: to-right;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#login-button:checked~#login-panel {
+    animation-name: to-front;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#register-button:checked~#login-zone {
+    display: flex;
+}
+
+#register-button:checked~#register-zone {
+    display: none;
+}
+
+#login-button:checked~#login-zone {
+    display: none;
+}
+
+#login-button:checked~#register-zone {
+    display: flex;
+}
+
+.title {
+    margin-top: 10px;
+    display: flex;
+}
+
+.panel:hover .title {
+    position: absolute;
+    width: 200%;
+    left: -50%;
+}
+
+.title>span {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 3vmax;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+.panel:hover .title>span {
+    display: none;
+}
+
+.title .inner {
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 3vmax;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.panel:hover .title .inner span:before {
+    content: "faceßluff";
+}
+
+.panel:hover .title .inner:first-child {
+    background-color: lightseagreen;
+    color: rgb(213, 203, 203);
+    transform-origin: right;
+    transform: perspective(200px) rotateY(-15deg);
+    transition-duration: 1s;
+    text-transform: capitalize;
+}
+
+.panel:hover .title .inner:last-child {
+    background-color: lightblue;
+    color: white;
+    transform-origin: left;
+    transform: perspective(200px) rotateY(15deg);
+    transition-duration: 1s;
+    text-transform: capitalize;
+}
+
+.panel:hover .title .inner span {
+    position: absolute;
+    animation: movement 5s linear infinite;
+}
+
+.panel:hover .title .inner:first-child span {
+    animation-delay: 2.5s;
+    left: -100%;
+}
