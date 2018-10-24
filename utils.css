@@ -7,11 +7,11 @@
     --secondary-color: #03DAC6;
     --secondary-light-color: #66FFF9;
     --secondary-dark-color: #00A896;
-    --background-color: #FFFFFF;
+    --background-color: rgb(7, 195, 252);
     --surface-color: #FFFFFF;
     --error-color: #C51162;
     --on-primary-color: #FFFFFF;
-    --on-secondary-color: #000000;
+    --on-secondary-color: #ffffff;
     --on-background-color: #000000;
     --on-surface-color: #000000;
     --on-error-color: #FFFFFF;
