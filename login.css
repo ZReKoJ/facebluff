@@ -41,7 +41,7 @@ body {
     left: 0;
 }
 
-.register > h2 {
+.register>h2 {
     font-family: 'Charmonman', cursive;
     font-size: 2vmax;
     text-transform: capitalize;
@@ -100,7 +100,7 @@ a.register-button {
     margin: auto;
 }
 
-.login-form > input:not([type="submit"]) {
+.login-form>input:not([type="submit"]) {
     width: 100%;
     height: 40px;
     padding: 0 10px 0 10px;
@@ -113,31 +113,31 @@ a.register-button {
     font-weight: bold;
 }
 
-.login-form > input:not([type="submit"])::placeholder {
+.login-form>input:not([type="submit"])::placeholder {
     color: white;
     font-weight: bold;
 }
 
-.login-form > input:not([type="submit"]):focus {
+.login-form>input:not([type="submit"]):focus {
     outline: none;
 }
 
-.login-form > input[type="submit"] {
+.login-form>input[type="submit"] {
     width: 60%;
     height: 40px;
     text-transform: capitalize;
     font-weight: bold;
 }
 
-.login-form > label {
+.login-form>label {
     width: 100%;
     margin-top: 5px;
     text-transform: initial;
     display: flex;
 }
 
-.login-form > label > .remember-me {
-    width: 50%; 
+.login-form>label>.remember-me {
+    width: 50%;
     height: 20px;
     padding: 10px 5px 10px 5px;
     background: #4E9CAF;
@@ -149,11 +149,11 @@ a.register-button {
     user-select: none;
 }
 
-.login-form > label > .remember-me:hover {
+.login-form>label>.remember-me:hover {
     transform: scale(1.08);
 }
 
-.login-form > label > a {
+.login-form>label>a {
     width: 50%;
     height: 20px;
     margin-left: 15px;
@@ -167,7 +167,7 @@ a.register-button {
     font-size: 13px;
 }
 
-.login-form > label > a:hover {
+.login-form>label>a:hover {
     transform: scale(1.08);
 }
 
@@ -182,27 +182,27 @@ a.register-button {
     left: -50%;
 }
 
-.title > span {
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	font-size: 3vmax;
+.title>span {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 3vmax;
     font-weight: bold;
     text-align: center;
     color: white;
 }
 
-.login:hover .title > span {
+.login:hover .title>span {
     display: none;
 }
 
 .title .inner {
-	width: 50%;
-	height: 50px;
-	line-height: 50px;
-	font-size: 3vmax;
-	font-weight: bold;
-	overflow: hidden;
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 3vmax;
+    font-weight: bold;
+    overflow: hidden;
 }
 
 .login:hover .title .inner span:before {
@@ -210,39 +210,39 @@ a.register-button {
 }
 
 .login:hover .title .inner:first-child {
-	background-color: indianred;
-	color: darkred;
+    background-color: indianred;
+    color: darkred;
     transform-origin: right;
-	transform: perspective(200px) rotateY(-15deg);
+    transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
     text-transform: capitalize;
 }
 
 .login:hover .title .inner:last-child {
-	background-color: lightcoral;
-	color: antiquewhite;
+    background-color: lightcoral;
+    color: antiquewhite;
     transform-origin: left;
-	transform: perspective(200px) rotateY(15deg);
+    transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
     text-transform: capitalize;
 }
 
 .login:hover .title .inner span {
-	position: absolute;
-	animation: movement 5s linear infinite;
+    position: absolute;
+    animation: movement 5s linear infinite;
 }
 
 .login:hover .title .inner:first-child span {
-	animation-delay: 2.5s;
-	left: -100%;
+    animation-delay: 2.5s;
+    left: -100%;
 }
 
 @keyframes movement {
-	from {
-		left: 100%;
-	}
+    from {
+        left: 100%;
+    }
 
-	to {
-		left: -100%;
-	}
+    to {
+        left: -100%;
+    }
 }
