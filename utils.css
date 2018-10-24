@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman');
+
+:root {
+    --primary-color: #344955;
+    --primary-light-color: #4A6572;
+    --primary-dark-color: #232F34;
+    --secondary-color: #F9AA33;
+    --secondary-light-color: #FFDC65;
+    --secondary-dark-color: #C17B00;
+    --background-color: lightgrey;
+    --surface-color: #FFFFFF;
+    --error-color: #C51162;
+    --on-primary-color: #FFFFFF;
+    --on-secondary-color: #000000;
+    --on-background-color: #000000;
+    --on-surface-color: #000000;
+    --on-error-color: #FFFFFF;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
 .img-width-fill {
     width: 100%;
     height: auto;
@@ -10,4 +39,18 @@
 
 .round {
     border-radius: 50%;
+}
+
+.button {
+    -webkit-appearance: button;
+    display: flex;
+    padding: 6px 12px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    font-weight: bold;
+    user-select: none;
 }
