@@ -60,17 +60,6 @@
     }
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    /* border: 2px solid black; /**/
-}
-
-body {
-    background: url("back.jpg") no-repeat center center fixed;
-    background-size: cover;
-}
-
 .container {
     position: absolute;
     width: 60%;
@@ -79,8 +68,7 @@ body {
     min-height: 300px;
     top: 20%;
     left: 20%;
-    background-color: var(--background-color);
-    box-shadow: 0 0 5px var(--on-background-color);
+    background-color: var(--primary-dark-color);
 }
 
 .container>input::before {
@@ -88,8 +76,8 @@ body {
 }
 
 .container>input {
-    color: var(--on-primary-color);
-    background: var(--primary-color);
+    color: var(--on-secondary-color);
+    background: var(--secondary-color);
     text-transform: capitalize;
     z-index: 50;
 }
@@ -119,7 +107,7 @@ body {
     font-size: 2vmax;
     text-transform: capitalize;
     user-select: none;
-    color: var(--on-background-color);
+    color: var(--on-primary-color);
 }
 
 .phrase {
@@ -128,7 +116,7 @@ body {
     height: 50%;
     user-select: none;
     font-size: 1.8vmax;
-    color: var(--on-background-color);
+    color: var(--on-primary-color);
 }
 
 #login-zone {
@@ -165,8 +153,8 @@ body {
     min-width: 100px;
     top: -10%;
     background-color: var(--surface-color);
+    box-shadow: 0 0 1px var(--on-primary-color);
     z-index: 100;
-    box-shadow: 0 0 5px var(--on-surface-color);
 }
 
 form {
@@ -188,14 +176,15 @@ form>input:not([type="submit"]) {
     padding: 0 10px 0 10px;
     margin-bottom: 5px;
     text-transform: capitalize;
+    color: var(--on-surface-color);
     background-color: var(--surface-color);
     border: none;
-    border-bottom: 2px solid var(--secondary-dark-color);
+    border-bottom: 2px solid var(--on-surface-color);
     font-weight: bold;
 }
 
 form>input:not([type="submit"])::placeholder {
-    color: var(--secondary-color);
+    color: var(--on-surface-color);
     font-weight: bold;
 }
 
@@ -208,8 +197,8 @@ form>input[type="submit"] {
     height: 40px;
     text-transform: capitalize;
     font-weight: bold;
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
+    background-color: var(--secondary-color);
+    color: var(--on-secondary-color);
 }
 
 #login-panel {
@@ -262,8 +251,8 @@ form>input[type="submit"] {
 
 #register-form>.gender {
     display: flex;
-    border-bottom: 2px solid var(--secondary-dark-color);
-    color: var(--secondary-color);
+    border-bottom: 2px solid var(--surface-color);
+    color: var(--on-surface-color);
     font-weight: bold;
     font-size: 13px;
     user-select: none;
@@ -281,13 +270,13 @@ form>input[type="submit"] {
 }
 
 #register-form>input[type="date"] {
-    color: var(--secondary-color);
+    color: var(--on-surface-color);
     font-weight: bolder;
     font-size: 12px;
 }
 
 #register-form>input[type="file"] {
-    color: var(--secondary-color);
+    color: var(--on-surface-color);
     font-weight: bold;
     padding-top: 10px;
     height: 6%;
@@ -353,8 +342,8 @@ form>input[type="submit"] {
 }
 
 .title {
-    margin-top: 10px;
     display: flex;
+    background-color: var(--primary-color);
 }
 
 .panel:hover .title {
@@ -370,7 +359,7 @@ form>input[type="submit"] {
     font-size: 3vmax;
     font-weight: bold;
     text-align: center;
-    color: var(--on-surface-color);
+    color: var(--on-primary-color);
 }
 
 .panel:hover .title>span {
@@ -392,7 +381,7 @@ form>input[type="submit"] {
 
 .panel:hover .title .inner:first-child {
     background-color: var(--primary-dark-color);
-    color: var(--primary-color);
+    color: var(--secondary-color);
     transform-origin: right;
     transform: perspective(200px) rotateY(-15deg);
     transition-duration: 1s;
@@ -401,11 +390,15 @@ form>input[type="submit"] {
 
 .panel:hover .title .inner:last-child {
     background-color: var(--primary-color);
-    color: var(--primary-light-color);
+    color: var(--secondary-light-color);
     transform-origin: left;
     transform: perspective(200px) rotateY(15deg);
     transition-duration: 1s;
     text-transform: capitalize;
+}
+
+.panel:hover .title {
+    background-color: transparent;
 }
 
 .panel:hover .title .inner span {

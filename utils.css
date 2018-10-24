@@ -1,20 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=Charmonman');
 
 :root {
-    --primary-color: #6200EE;
-    --primary-light-color: #9E47FF;
-    --primary-dark-color: #0400ba;
-    --secondary-color: #03DAC6;
-    --secondary-light-color: #66FFF9;
-    --secondary-dark-color: #00A896;
-    --background-color: rgb(7, 195, 252);
+    --primary-color: #344955;
+    --primary-light-color: #4A6572;
+    --primary-dark-color: #232F34;
+    --secondary-color: #F9AA33;
+    --secondary-light-color: #FFDC65;
+    --secondary-dark-color: #C17B00;
+    --background-color: lightgrey;
     --surface-color: #FFFFFF;
     --error-color: #C51162;
     --on-primary-color: #FFFFFF;
-    --on-secondary-color: #ffffff;
+    --on-secondary-color: #000000;
     --on-background-color: #000000;
     --on-surface-color: #000000;
     --on-error-color: #FFFFFF;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
 }
 
 .img-width-fill {

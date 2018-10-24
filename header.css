@@ -1,14 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background: url("back.jpg") no-repeat center center fixed;
-	background-size: cover;
-}
-
 .header {
 	display: flex;
 	position: fixed;
@@ -18,7 +7,7 @@ body {
 	height: 50px;
 	justify-content: space-between;
 	align-items: center;
-	background-color: var(--background-color);
+	background-color: var(--primary-dark-color);
 	z-index: 100;
 }
 
@@ -28,7 +17,6 @@ body {
 	right: 5%;
 	width: 120px;
 	height: 100%;
-	background-color: var(--background-color);
 }
 
 .user>label {
@@ -38,7 +26,7 @@ body {
 	right: 0;
 	width: 100%;
 	height: 100%;
-	color: var(--on-background-color);
+	color: var(--on-primary-color);
 	justify-content: space-around;
 	align-items: center;
 }
@@ -63,7 +51,6 @@ body {
 	right: 0;
 	width: 250px;
 	height: 300px;
-	background-color: var(--surface-color);
 	z-index: 100;
 }
 
@@ -78,8 +65,8 @@ body {
 	justify-content: space-evenly;
 	flex-direction: column;
 	align-items: center;
-	color: var(--on-surface-color);
-	background-color: var(--surface-color);
+	color: var(--on-primary-color);
+	background-color: var(--primary-color);
 }
 
 .profile-header>img {
@@ -95,18 +82,13 @@ body {
 	display: flex;
 	justify-content: space-evenly;
 	height: 10%;
-	background-color: var(--surface-color);
 }
 
 .profile-footer>a.button {
 	width: 50%;
 	height: 100%;
-	color: var(--on-primary-color);
-	background-color: var(--primary-color);
-}
-
-.profile-footer>a.button:hover {
-	background-color: var(--primary-light-color);
+	color: var(--on-secondary-color);
+	background-color: var(--secondary-color);
 }
 
 .nav-bar {
@@ -134,11 +116,11 @@ body {
 }
 
 .menu>li>a {
-	background-color: var(--background-color);
+	background-color: var(--primary-dark-color);
 }
 
 .hidden-menu>li>a {
-	background-color: var(--surface-color);
+	background-color: var(--primary-color);
 }
 
 .nav-bar a {
@@ -147,7 +129,7 @@ body {
 	height: 100%;
 	text-align: center;
 	line-height: calc(50px - 1px);
-	color: var(--on-background-color);
+	color: var(--on-primary-color);
 	text-decoration: none;
 	margin-top: 1px;
 }
