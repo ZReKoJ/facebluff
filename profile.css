@@ -1,0 +1,68 @@
+.main {
+	display: flex;
+	position: fixed;
+	top: 50px;
+	width: 100%;
+	height: calc(100% - 50px);
+	flex-direction: column;
+	align-items: center;
+	min-width: 800px;
+	overflow: scroll;
+}
+
+.profile-picture {
+	height: 50%;
+	width: 40%;
+	margin-top: 30px;
+	border-radius: 5px;
+}
+
+.profile-picture > img {
+	height: 100%;
+	width: 100%;
+}
+.profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 40%;
+	height: 50%;
+	background-color: var(--surface-color);
+	color: var(--on-surface-color);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-bottom: 10px;
+}
+.profile-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 50%;
+	width: 80%;
+	border-bottom: solid 2px var(--primary-light-color);
+	justify-content: space-around;
+	border-radius: 5px;
+}
+.profile-info > h1 {
+	text-transform: uppercase;
+}
+
+.profile-info > h2 {
+	text-transform: capitalize;
+	font-size: 16px;
+}
+.button{
+	height: 50%;
+	width: 80%;
+	background-color: var(--secondary-color); 
+    border: none;
+    color: var(--on-secondary-color);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	font-size: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
