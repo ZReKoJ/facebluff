@@ -348,8 +348,7 @@ form>input[type="submit"] {
     background-color: var(--primary-color);
     align-items: center;
     height: 15%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
 .panel:hover .title {
@@ -370,7 +369,7 @@ form>input[type="submit"] {
     font-family: 'Charmonman', cursive;
     font-weight: bold;
     font-size: 4vmax;
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     background-color: var(--on-primary-color);
 }
 
