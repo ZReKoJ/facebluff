@@ -1,10 +1,20 @@
-login: entrar
-logout: desconectar
-register: nuevo usuario
-solicitud amigos: amigos
-perfil
-preguntas
-contesta preguntas
+DONE
+
+entrar: union3
+nuevo usuario: union3
+tu perfil: profile
+modificar perfil: profile modify
+solicitud de amistad ... : friend
+resultados de busqueda : friend search
+
+TODO 
+
+preguntas seleccionadas aleatoriamente
+tras cliquear una pregunta
+responder mi pregunta  
+responder pregunta de otros
+
+QUESTIONS
 
 una forma de coger palabras por idioma
 button poder usar location.href?
