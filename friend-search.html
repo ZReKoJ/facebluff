@@ -7,7 +7,7 @@
     <link rel="icon" href="logo.png" />
     <link rel="stylesheet" href="utils.css" />
     <link rel="stylesheet" href="header.css" />
-    <link rel="stylesheet" href="friend.css" />
+    <link rel="stylesheet" href="friend-search.css" />
 </head>
 
 <body>
@@ -54,241 +54,147 @@
             </div>
         </div>
         <div class="main">
-            <input type='checkbox' value="⇄" id='hide-request' class="button">
-            <div class="request-panel">
-                <ul value="There is no requests.">
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="avatar.png">
-                            <h2>Bruja Piruja</h2>
-                            <button class="button">Accept</button>
-                            <button class="button">Decline</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="friend-panel">
-                <form id="search-friend-form" action="friend-search.html" method="post">
-                    <input type="text" name="search-friend" placeholder="friend" required>
-                    <input type="submit" value="search">
-                </form>
-                <ul value="You have no friends.">
+            <div class="friend-search-panel">
+                <h2>Resultados de búsqueda: 'hello world'</h2>
+                <ul value="There is no results.">
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src="avatar.png">
                             <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="other-users">
+                            <img class="img-height-fill" src="avatar.png">
+                            <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="other-users">
+                            <img class="img-height-fill" src="avatar.png">
+                            <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="other-users">
+                            <img class="img-height-fill" src="avatar.png">
+                            <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="other-users">
+                            <img class="img-height-fill" src="avatar.png">
+                            <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="other-users">
+                            <img class="img-height-fill" src="avatar.png">
+                            <h2>Struart Minion</h2>
+                            <button class="button">Send request</button>
                         </div>
                     </li>
                 </ul>

@@ -66,8 +66,31 @@
     }
 }
 
+@keyframes friend-panel-widen {
+    from {
+        left: 60%;
+        width: 40%;
+    }
+
+    to {
+        left: 0;
+        width: 100%;
+    }
+}
+
+@keyframes friend-panel-narrow {
+    from {
+        left: 0;
+        width: 100%;
+    }
+
+    to {
+        left: 60%;
+        width: 40%;
+    }
+}
+
 .main {
-    display: flex;
     position: fixed;
     top: 50px;
     left: 0;
@@ -76,7 +99,9 @@
 }
 
 .request-panel {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 60%;
     height: 100%;
     overflow: auto;
@@ -91,11 +116,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 60%;
+    width: 40%;
     height: 100%;
-    flex-grow: 100;
-    background-color: var(--surface-color);
     overflow: auto;
+    animation-name: friend-panel-narrow;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    background-color: var(--surface-color);
 }
 
 #hide-request:before {
@@ -126,6 +157,13 @@
 
 #hide-request:checked ~ .request-panel {
     animation-name: request-panel-hide;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+#hide-request:checked ~ .friend-panel {
+    animation-name: friend-panel-widen;
     animation-duration: 1s;
     animation-direction: normal;
     animation-fill-mode: forwards;
@@ -166,7 +204,7 @@
     min-width: 300px;
     grid-column-gap: 5px;
     height: 50px;
-    padding: 5px 20px 5px 10px;
+    margin: 5px 20px 5px 10px;
 }
 
 .other-users>img {
@@ -186,6 +224,14 @@
     width: 20%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
+}
+
+.request-panel>ul .other-users>button:first-child {
+    margin-right: 5px;
+}
+
+.request-panel>ul .other-users>button:last-child {
+    margin-left: 5px;
 }
 
 .friend-panel>form {
