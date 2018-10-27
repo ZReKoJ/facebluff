@@ -29,6 +29,7 @@
 	position: relative;
 	top: 70%;
 	left: 40%;
+	min-width: 100px;
 }
 .profile {
 	display: flex;
