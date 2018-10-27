@@ -51,7 +51,6 @@
 	border-bottom: solid 2px var(--primary-light-color);
 	justify-content: space-around;
 	padding-top: 15px;
-	font-family: 'Open Sans', sans-serif;
 }
 .profile-info > h1 {
 	text-transform: uppercase;
@@ -62,12 +61,11 @@
 	font-size: 16px;
 }
 .profile > .button{
-	height: 50%;
-	width: 80%;
+	height: 21%;
+	width: 47%;
 	background-color: var(--secondary-color); 
 	color: var(--on-secondary-color);
-	font-size: 30px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	font-size: 20px;
+	margin-top: 35px;
 	text-transform: uppercase;
 }
