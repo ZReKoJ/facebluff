@@ -59,7 +59,7 @@
     position: relative;
     width: 60%;
     height: 100%;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-dark-color);
     overflow: auto;
     animation-name: request-panel-show;
     animation-duration: 1s;
@@ -71,7 +71,7 @@
     position: relative;
     height: 100%;
     flex-grow: 100;
-    background-color: var(--primary-color);
+    background-color: var(--surface-color);
 }
 
 #hide-request:before {
@@ -121,11 +121,19 @@
 .other-users>img {
     grid-row: 1/1;
     grid-column: 1/1;
+    user-select: none;
 }
 
 .other-users>h2 {
     grid-row: 1/1;
     grid-column: 2/2;
+    user-select: none;
+    color: var(--on-primary-color);
+}
+
+.other-users>button {
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
 }
 
 .other-users>button:first-child {
