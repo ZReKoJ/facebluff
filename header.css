@@ -58,7 +58,7 @@
 	display: block;
 }
 
-.profile-header {
+.mini-profile>.profile-header {
 	display: flex;
 	height: 90%;
 	padding: 10px;
@@ -69,22 +69,22 @@
 	background-color: var(--primary-color);
 }
 
-.profile-header>img {
+.mini-profile>.profile-header>img {
 	width: auto;
 	height: 80%;
 }
 
-.profile-header>p {
+.mini-profile>.profile-header>p {
 	text-align: center;
 }
 
-.profile-footer {
+.mini-profile>.profile-footer {
 	display: flex;
 	justify-content: space-evenly;
 	height: 10%;
 }
 
-.profile-footer>a.button {
+.mini-profile>.profile-footer>a.button {
 	width: 50%;
 	height: 100%;
 	color: var(--on-secondary-color);
