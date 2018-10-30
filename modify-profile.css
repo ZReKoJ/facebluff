@@ -33,6 +33,7 @@
 	font-size: 30px;
 	overflow: hidden;
 	text-align: center;
+	color: var(--on-primary-color);
 }
 
 .profile-form {
