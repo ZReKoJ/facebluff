@@ -1,6 +1,6 @@
 @keyframes request-panel-hide {
     from {
-        width: 60%;
+        width: 30%;
         opacity: 1;
         z-index: 100;
     }
@@ -20,7 +20,7 @@
     }
 
     to {
-        width: 60%;
+        width: 30%;
         opacity: 1;
         z-index: 100;
     }
@@ -28,7 +28,7 @@
 
 @keyframes hide-request-to-left {
     from {
-        left: 60%;
+        left: 30%;
     }
 
     to {
@@ -42,13 +42,13 @@
     }
 
     to {
-        left: 60%;
+        left: 30%;
     }
 }
 
 @keyframes search-form-widen {
     from {
-        width: 32%;
+        width: 56%;
     }
 
     to {
@@ -62,14 +62,14 @@
     }
 
     to {
-        width: 32%;
+        width: 56%;
     }
 }
 
 @keyframes friend-panel-widen {
     from {
-        left: 60%;
-        width: 40%;
+        left: 30%;
+        width: 70%;
     }
 
     to {
@@ -85,8 +85,8 @@
     }
 
     to {
-        left: 60%;
-        width: 40%;
+        left: 30%;
+        width: 70%;
     }
 }
 
@@ -102,7 +102,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 60%;
+    width: 30%;
     height: 100%;
     overflow: auto;
     animation-name: request-panel-show;
@@ -155,21 +155,21 @@
     animation-fill-mode: forwards;
 }
 
-#hide-request:checked ~ .request-panel {
+#hide-request:checked~.request-panel {
     animation-name: request-panel-hide;
     animation-duration: 1s;
     animation-direction: normal;
     animation-fill-mode: forwards;
 }
 
-#hide-request:checked ~ .friend-panel {
+#hide-request:checked~.friend-panel {
     animation-name: friend-panel-widen;
     animation-duration: 1s;
     animation-direction: normal;
     animation-fill-mode: forwards;
 }
 
-#hide-request:checked ~ .friend-panel>form {
+#hide-request:checked~.friend-panel>form {
     animation-name: search-form-widen;
     animation-duration: 1s;
     animation-direction: normal;
@@ -180,7 +180,7 @@
     list-style-type: none;
 }
 
-.request-panel>ul:empty:before{
+.request-panel>ul:empty:before {
     content: attr(value);
 }
 
@@ -239,7 +239,8 @@
     justify-content: space-around;
     align-items: center;
     position: fixed;
-    width: 32%;
+    margin-top: 50px;
+    width: 56%;
     height: 50px;
     background-color: var(--secondary-color);
     z-index: 50;
@@ -271,24 +272,26 @@
     outline: none;
 }
 
-.friend-panel>form>input[type="submit"] {
+.friend-panel>form>button[type="submit"] {
     width: 50px;
     height: 80%;
     text-transform: capitalize;
     font-weight: bold;
     color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
+    border: 0
 }
 
 .friend-panel>ul {
     position: relative;
-    top: 50px;
+    top: 100px;
     width: 80%;
     height: calc(100% - 50px);
     align-items: center;
     list-style-type: none;
 }
 
-.friend-panel>ul:empty:before{
+.friend-panel>ul:empty:before {
     content: attr(value);
 }
 

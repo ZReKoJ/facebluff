@@ -194,13 +194,14 @@ form>input:not([type="submit"]):focus {
     outline: none;
 }
 
-form>input[type="submit"] {
+form>button[type="submit"] {
     width: 60%;
     height: 40px;
     text-transform: capitalize;
     font-weight: bold;
     background-color: var(--secondary-color);
     color: var(--on-secondary-color);
+    border: 0;
 }
 
 #login-panel {
