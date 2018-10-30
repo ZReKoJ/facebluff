@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Facebluff</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="logo.png" />
+    <link rel="stylesheet" href="utils.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="modify-profile.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-bar">
+                <a>Menu</a>
+                <ul class="menu">
+                    <li><a href="union3.html">Home</a></li>
+                    <li>
+                        <a href="friend.html">Friends &#65516;</a>
+                        <ul class="hidden-menu">
+                            <li><a href="#">---</a></li>
+                            <li><a href="#">---</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>Preguntas &#65516;</a>
+                        <ul class="hidden-menu">
+                            <li><a href="#">---</a></li>
+                            <li><a href="#">---</a></li>
+                            <li><a href="#">---</a></li>
+                        </ul>
+                    </li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div>
+            <div class="user">
+                <label>
+                    <img class="round" src="avatar.png"></img>
+                    <span>50000</span>
+                </label>
+                <div class="mini-profile">
+                    <div class="profile-header">
+                        <img class="round" src="avatar.png"></img>
+                        <h2>Diego Acuna</h2>
+                        <p>Descripcion diego aprendiendo css</p>
+                    </div>
+                    <div class="profile-footer">
+                        <a href="profile.html" class="button">Profile</a>
+                        <a href="logout.html" class="button">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="profile">
+                <div class="profile-header">
+                    <h1>modify your profile</h1>
+                </div>
+                <div class="profile-form">
+                    <form id="register-form" action="/link-to-form" method="post">
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="repeat-password" placeholder="Repeat your password" required>
+                        <input type="date" name="birth-date" value="2000-01-01" placeholder="Birth date" required>
+                        <div class="gender">
+                            <input type="radio" name="gender" value="male" checked> Male<br>
+                            <input type="radio" class="radio-modified" name="gender" value="female"> Female<br>
+                            <input type="radio"  class="radio-modified" name="gender" value="other"> Other
+                        </div>
+                        <input type="file"/>
+                    </form>
+                    <button class="button">
+                        modify
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
