@@ -20,14 +20,14 @@
 	border-radius: 5px;
 }
 
-.profile-header {
+.profile-top {
 	height: 50px;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	background-color: var(--primary-color);
 }
 
-.profile-header>h1 {
+.profile-top>h1 {
 	text-transform: uppercase;
 	font-weight: 100;
 	font-size: 30px;
