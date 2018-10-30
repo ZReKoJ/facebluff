@@ -11,11 +11,22 @@
 	font-family: 'Open Sans', sans-serif;
 }
 
-.profile-picture {
-	display:flex;
-	height: 50%;
-	width: 30%;
+.profile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 400px;
+	height: 600px;
+	background-color: var(--surface-color);
+	color: var(--on-surface-color);
+	border-radius: 5px;
 	margin-top: 30px;
+}
+
+.profile-picture {
+	display: flex;
+	height: 300px;
+	width: 400px;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	background-image: url("myprofile.jpeg");
@@ -23,26 +34,14 @@
 	background-position: center center;
 }
 
-.profile-picture>img {
-	height: 35%;
-	width: 20%;
-	position: relative;
-	top: 70%;
-	left: 40%;
-	min-width: 100px;
-}
 
-.profile {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 30%;
-	height: 300px;
-	background-color: var(--surface-color);
-	color: var(--on-surface-color);
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-bottom: 10px;
+
+.profile-picture>img {
+	height: 90px;
+	width: 50px;
+	min-width: 100px;
+	z-index: 100;
+	margin-top: 250px;
 }
 
 .profile-info {
@@ -50,7 +49,7 @@
 	flex-direction: column;
 	align-items: center;
 	height: 200px;
-	width: 80%;
+	width: 100%;
 	justify-content: space-around;
 	padding-top: 15px;
 }
@@ -67,13 +66,11 @@
 .profile-picture>.button {
 	height: 40px;
 	width: 30px;
-	position: relative;
 	background-color: var(--secondary-color);
 	color: var(--on-secondary-color);
 	font-size: 30px;
 	font-weight: 400;
-	top: 80%;
-	left: 60%;
+	z-index: 100;
 }
 
 .profile-picture>.button:hover {
