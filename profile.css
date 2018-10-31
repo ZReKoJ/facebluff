@@ -50,16 +50,19 @@
 }
 
 .profile>.profile-header>.modify {
-	height: 30px;
+	height: 40px;
 	width: 30px;
 	position: absolute;
-	bottom: -15px;
+	bottom: -20px;
 	right: 20px;
 	background-color: var(--secondary-color);
 	-webkit-appearance: none;
 	z-index: 100;
 }
 
+.profile>.profile-header>.modify>img{
+	padding-left: 5px;
+}
 .profile>.profile-footer {
 	height: 30%;
 	position: relative;
@@ -75,8 +78,25 @@
 	bottom: 0;
 }
 
-.profile>.profile-footer>.add-ons>.item {
-	background-color: var(--secondary-color);
+.profile>.profile-footer>.add-ons> .item {
+	position: relative;
 	width: 35%;
-	border: solid 1px var(--primary-dark-color);
+	margin-bottom: 5px;
+	color: var(--on-surface-color);
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content: center;
+	overflow: hidden;
+
+}
+.profile>.profile-footer>.add-ons> .item1{
+	border-right: 1px solid var(--primary-light-color);
+} 
+.profile>.profile-footer>.add-ons> .item3{
+	border-left: 1px solid var(--primary-light-color);
+} 
+
+.profile>.profile-footer>.add-ons> .item > h3 {
+	font-weight: lighter;
 }
