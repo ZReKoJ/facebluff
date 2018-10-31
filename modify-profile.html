@@ -54,12 +54,12 @@
             </div>
         </div>
         <div class="main">
-            <div class="profile">
-                <div class="profile-top">
-                    <h1>modify your profile</h1>
+            <div class="modify-profile">
+                <div class="modify-profile-header">
+                    <h1>modify profile</h1>
                 </div>
-                <div class="profile-form">
-                    <form id="register-form" action="/link-to-form" method="post">
+                <div class="modify-profile-body">
+                    <form id="modify-form" action="/link-to-form" method="post">
                         <input type="text" name="username" placeholder="Username" required>
                         <input type="email" name="email" placeholder="Email" required>
                         <input type="password" name="password" placeholder="Password" required>
@@ -68,13 +68,14 @@
                         <div class="gender">
                             <input type="radio" name="gender" value="male" checked> Male<br>
                             <input type="radio" class="radio-modified" name="gender" value="female"> Female<br>
-                            <input type="radio"  class="radio-modified" name="gender" value="other"> Other
+                            <input type="radio" class="radio-modified" name="gender" value="other"> Other
                         </div>
-                        <input type="file"/>
+                        <input type="file" />
                     </form>
-                    <a class="button">
-                        modify
-                    </a>
+
+                </div>
+                <div class="modify-profile-footer">
+                   
                 </div>
 
             </div>
