@@ -22,11 +22,41 @@
     background-color: var(--secondary-color);
 }
 
+.question-panel-header>h2{
+    width: calc(90% - 50px);
+}
+
+.question-panel-header>button {
+    width: 50px;
+    height: 80%;
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
+    border: 0
+}
+
 .question-panel-footer {
     display: grid;
-    height: 90%;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto auto auto;
+    height: calc(90% - 5px);
+    margin-top: 5px;
+    grid-template-rows: calc((100% - 5px) / 2) calc((100% - 5px) / 2);
+    grid-template-columns: calc((100% - 10px) / 3) calc((100% - 10px) / 3) calc((100% - 10px) / 3);
     grid-row-gap: 5px;
     grid-column-gap: 5px;
+}
+
+.question {
+    color: var(--on-primary-color);
+    background-color: var(--primary-color);
+}
+
+.new-question {
+    background-color: var(--primary-light-color);
+}
+
+.new-question>button {
+    width: 100%;
+    height: 100%;
+    color: var(--on-primary-color);
+    background-color: var(--primary-light-color);
+    border: 0;
 }
