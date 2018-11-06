@@ -6,7 +6,7 @@
     height: calc(100% - 50px);
 }
 
-.friend-search-panel {
+.friend-question-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,42 +18,66 @@
     background-color: var(--surface-color);
 }
 
-.other-users {
+.friend-question {
     display: flex;
     align-items: center;
     min-width: 300px;
     height: 50px;
-    margin: 5px 20px 5px 10px;
+    margin: 5px 0 5px 0;
+    padding: 0 20px 0 10px;
+    color: var(--on-primary-color);
 }
 
-.other-users>img {
+.friend-question>img {
     width: 50px;
     user-select: none;
 }
 
-.other-users>h2 {
-    width: calc(60% - 50px);
+.friend-question>h2 {
+    width: calc(40% - 50px);
     flex-grow: 100;
     margin-left: 10px;
     user-select: none;
-    color: var(--on-primary-color);
 }
 
-.other-users>button {
+.friend-question>h3 {
+    width: 30%;
+    margin-left: 10px;
+    user-select: none;
+}
+
+.friend-question>button {
     width: 20%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
 }
 
-.friend-search-panel>h2 {
+.friend-question>.state-success {
+    width: 20%;
+    height: 60%;
+    text-align: center;
+    color: var(--success-color);
+    user-select: none;
+}
+
+.friend-question>.state-error {
+    width: 20%;
+    height: 60%;
+    text-align: center;
+    color: var(--error-color);
+    user-select: none;
+}
+
+.friend-question-panel>h2 {
     position: relative;
     width: 100%;
     height: 50px;
     text-align: center;
+    color: var(--on-secondary-color);
     background-color: var(--secondary-color);
 }
 
-.friend-search-panel>ul {
+.friend-question-panel>ul {
     position: relative;
     width: 100%;
     height: calc(100% - 50px);
@@ -62,11 +86,11 @@
     overflow: auto;
 }
 
-.friend-search-panel>ul:empty:before{
+.friend-question-panel>ul:empty:before {
     content: attr(value);
 }
 
-.friend-search-panel>ul:empty {
+.friend-question-panel>ul:empty {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,10 +100,10 @@
     background-color: var(--error-color);
 }
 
-.friend-search-panel>ul>li {
+.friend-question-panel>ul>li {
     background-color: var(--primary-color);
 }
 
-.friend-search-panel>ul>li:hover {
+.friend-question-panel>ul>li:hover {
     background-color: var(--primary-light-color);
 }

@@ -10,19 +10,21 @@
     --secondary-dark-color: #C17B00;
     --background-color: lightgrey;
     --surface-color: #FFFFFF;
-    --error-color: #C51162;
+    --success-color: #DFF2BF;
+    --error-color: #FFD2D2;
     --on-primary-color: #FFFFFF;
     --on-secondary-color: #000000;
     --on-background-color: #000000;
     --on-surface-color: #000000;
-    --on-error-color: #FFFFFF;
+    --on-success-color: #4F8A10;
+    --on-error-color: #D8000C;
 }
 
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
     font-family: 'Open Sans', sans-serif;
-    
+
 }
 
 body {
@@ -55,4 +57,37 @@ body {
     text-decoration: none;
     font-weight: bold;
     user-select: none;
+}
+
+.separator {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
+
+.separator>span {
+    position: relative;
+    display: inline-block;
+    font-size: small;
+    user-select: none;
+}
+
+.separator>span:before,
+.separator>span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    height: 1px;
+}
+
+.separator>span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.separator>span:after {
+    left: 100%;
+    margin-left: 15px;
 }
