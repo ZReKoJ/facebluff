@@ -23,7 +23,7 @@
 	flex-direction: column;
 	height: 85%;
 	position: relative;
-	background-image: url("myprofile.jpeg");
+	background-image: url("resources/img/myprofile.jpeg");
 	background-position: center;
 	background-size: cover;
 	align-items: center;
