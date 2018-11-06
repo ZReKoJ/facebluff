@@ -1,0 +1,15 @@
+.main {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.random-question-panel {
+
+}
+
+.create-question-panel {
+    
+}
