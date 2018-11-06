@@ -6,10 +6,27 @@
     height: calc(100% - 50px);
 }
 
-.random-question-panel {
-
+.question-panel {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: var(--surface-color);
 }
 
-.create-question-panel {
-    
+.question-panel-header {
+    display: flex;
+    justify-content: space-around;
+    height: 10%;
+    background-color: var(--secondary-color);
+}
+
+.question-panel-footer {
+    display: grid;
+    height: 90%;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
 }
