@@ -21,7 +21,7 @@
 .profile>.profile-header {
 	display: flex;
 	flex-direction: column;
-	height: 70%;
+	height: 85%;
 	position: relative;
 	background-image: url("myprofile.jpeg");
 	background-position: center;
@@ -53,7 +53,7 @@
 	height: 40px;
 	width: 30px;
 	position: absolute;
-	bottom: -20px;
+	bottom: -10px;
 	right: 20px;
 	background-color: var(--secondary-color);
 	-webkit-appearance: none;
@@ -65,7 +65,7 @@
 }
 
 .profile>.profile-footer {
-	height: 30%;
+	height: 15%;
 	position: relative;
 	background-color: var(--surface-color);
 	color: var(--on-surface-color);
@@ -80,31 +80,30 @@
 	align-items: center;
 }
 
-input[type="checkbox"]:not(:checked), 
+input[type="checkbox"]:not(:checked),
 input[type="checkbox"]:checked {
-  position: absolute;
-  left: -9999%;
+	position: absolute;
+	left: -9999%;
 }
 
 
-input[type="checkbox"] + label {
-  display: flex;
-  width: 25%;
-  height: 100%;
-  position: relative;
-  padding: 10px;
-  cursor: pointer;
-  color: black;
-  background-color: white;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+input[type="checkbox"]+label {
+	display: flex;
+	width: 25%;
+	height: 100%;
+	position: relative;
+	padding: 10px;
+	cursor: pointer;
+	color: black;
+	background-color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 }
 
-input[type="checkbox"]:checked + label {
- 
-  color: white;
-  background-color: black;
+input[type="checkbox"]:checked+label {
+	color: white;
+	background-color: var(--primary-dark-color);
 }
