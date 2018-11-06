@@ -59,6 +59,12 @@ body {
     user-select: none;
 }
 
+.text-cut {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .separator {
     display: block;
     text-align: center;
@@ -69,6 +75,7 @@ body {
     position: relative;
     display: inline-block;
     font-size: small;
+    white-space: nowrap; 
     user-select: none;
 }
 

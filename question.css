@@ -45,11 +45,13 @@
 }
 
 .question {
+    overflow: hidden;
     color: var(--on-primary-color);
     background-color: var(--primary-color);
 }
 
 .new-question {
+    overflow: hidden;
     background-color: var(--primary-light-color);
 }
 
