@@ -60,31 +60,67 @@
     top: calc(70px + 55px);
 }
 
-.create-question-panel>input#add-remove:nth-child(16):checked ~ form>div>input:nth-child(5) {
+.create-question-panel>input#add-remove:nth-child(16):checked ~ form>div>input:nth-child(16) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(15):checked ~ form>div>input:nth-child(6) {
+.create-question-panel>input#add-remove:nth-child(15):checked ~ form>div>input:nth-child(15) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(14):checked ~ form>div>input:nth-child(7) {
+.create-question-panel>input#add-remove:nth-child(14):checked ~ form>div>input:nth-child(14) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(13):checked ~ form>div>input:nth-child(8) {
+.create-question-panel>input#add-remove:nth-child(13):checked ~ form>div>input:nth-child(13) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(12):checked ~ form>div>input:nth-child(9) {
+.create-question-panel>input#add-remove:nth-child(12):checked ~ form>div>input:nth-child(12) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(11):checked ~ form>div>input:nth-child(10) {
+.create-question-panel>input#add-remove:nth-child(11):checked ~ form>div>input:nth-child(11) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(10):checked ~ form>div>input:nth-child(11) {
+.create-question-panel>input#add-remove:nth-child(10):checked ~ form>div>input:nth-child(10) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(9):checked ~ form>div>input:nth-child(9) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(8):checked ~ form>div>input:nth-child(8) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(7):checked ~ form>div>input:nth-child(7) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(6):checked ~ form>div>input:nth-child(6) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(5):checked ~ form>div>input:nth-child(5) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(4):checked ~ form>div>input:nth-child(4) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(3):checked ~ form>div>input:nth-child(3) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(2):checked ~ form>div>input:nth-child(2) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(1):checked ~ form>div>input:nth-child(1) {
     display: inline-block;
 }
 
@@ -100,7 +136,6 @@
 
 .create-question-panel>form input[type="text"] {
     border: none;
-    border-bottom: 2px solid var(--on-surface-color);
     font-weight: bold;
     padding: 0 5px 0 5px;
 }
@@ -108,10 +143,33 @@
 .create-question-panel>form>input[name="question"] {
     color: var(--on-primary-color);
     background-color: var(--primary-color);
+    border-bottom: 2px solid var(--on-primary-color);
 }
 
 .create-question-panel>form>input[name="question"]::placeholder {
     color: var(--on-primary-color);
+    font-weight: bold;
+}
+
+.create-question-panel>form>div>input[name="correct-answer"] {
+    color: var(--on-success-color);
+    background-color: var(--success-color);
+    border-bottom: 2px solid var(--on-success-color);
+}
+
+.create-question-panel>form>div>input[name="correct-answer"]::placeholder {
+    color: var(--on-success-color);
+    font-weight: bold;
+}
+
+.create-question-panel>form>div>input[name="wrong-answer"] {
+    color: var(--on-error-color);
+    background-color: var(--error-color);
+    border-bottom: 2px solid var(--on-error-color);
+}
+
+.create-question-panel>form>div>input[name="wrong-answer"]::placeholder {
+    color: var(--on-error-color);
     font-weight: bold;
 }
 
@@ -124,10 +182,6 @@
 .create-question-panel>form>div>input:not(:required) {
     display: none;
 }
-
-.create-question-panel>form>input[name="correct-answer"] {}
-
-.create-question-panel>form>input[name="wrong-answer"] {}
 
 .create-question-panel>form>button {
     position: absolute;
