@@ -46,7 +46,7 @@
     user-select: none;
 }
 
-.friend-question>button {
+.friend-question>a {
     width: 20%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
