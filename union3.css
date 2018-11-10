@@ -187,7 +187,7 @@ form>input:not([type="submit"]) {
 
 form>input:not([type="submit"])::placeholder {
     color: var(--on-surface-color);
-    font-weight: bold;
+    font-style: oblique;
 }
 
 form>input:not([type="submit"]):focus {
@@ -274,6 +274,7 @@ form>button[type="submit"] {
 
 #register-form>input[type="date"] {
     color: var(--on-surface-color);
+    font-style: oblique;
     font-weight: bolder;
     font-size: 12px;
 }

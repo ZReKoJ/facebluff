@@ -140,6 +140,10 @@
     padding: 0 5px 0 5px;
 }
 
+.create-question-panel>form input[type="text"]:focus {
+    outline: none;
+}
+
 .create-question-panel>form>input[name="question"] {
     color: var(--on-primary-color);
     background-color: var(--primary-color);
@@ -148,6 +152,7 @@
 
 .create-question-panel>form>input[name="question"]::placeholder {
     color: var(--on-primary-color);
+    font-style: oblique;
     font-weight: bold;
 }
 
@@ -159,6 +164,7 @@
 
 .create-question-panel>form>div>input[name="correct-answer"]::placeholder {
     color: var(--on-success-color);
+    font-style: oblique;
     font-weight: bold;
 }
 
@@ -170,6 +176,7 @@
 
 .create-question-panel>form>div>input[name="wrong-answer"]::placeholder {
     color: var(--on-error-color);
+    font-style: oblique;
     font-weight: bold;
 }
 

@@ -231,6 +231,7 @@
 
 .friend-panel>form>input[type="text"]::placeholder {
     color: var(--on-secondary-color);
+    font-style: oblique;
     font-weight: bold;
 }
 
