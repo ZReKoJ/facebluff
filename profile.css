@@ -100,9 +100,6 @@ input[type="checkbox"]:checked {
 	left: -9999%;
 }
 
-input[type="checkbox"]:checked {
-	display
-}
 input[type="checkbox"]+label {
 	display: flex;
 	width: 25%;
