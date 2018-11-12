@@ -9,8 +9,23 @@ module.exports = {
       tables: {
             user: {
                   name: "user",
-                  primaryKey: "id",
-                  tableColumns: ["name", "surname", "email", "password", "gender", "img", "description", "score"]
+                  primaryKey: ["id"],
+                  tableColumns: ["id", "name", "surname", "email", "password", "gender", "img", "description", "score"]
+            },
+            friend: {
+                  name: "friend",
+                  primaryKey: ["friendid", "otherfriendid"],
+                  tableColumns: ["friendid", "otherfriendid"]
+            },
+            question: {
+                  name: "question",
+                  primaryKey: ["id"],
+                  tableColumns: ["id", "userid", "question"]
+            },
+            answer: {
+                  name: "answer",
+                  primaryKey: ["id"],
+                  tableColumns: ["id", "userid", "questionid", "answer", "correct"]
             }
       }
 }
