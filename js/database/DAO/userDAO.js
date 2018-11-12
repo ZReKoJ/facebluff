@@ -1,6 +1,6 @@
 "use strict"
 
-const config = require("./config");
+const config = require("../../config");
 const DAO = require("./DAO");
 
 class UserDAO extends DAO {

@@ -4,10 +4,10 @@
 <head>
     <title>Facebluff</title>
     <meta charset="utf-8" />
-    <link rel="icon" href="resources/icon/logo.png" />
-    <link rel="stylesheet" href="utils.css" />
-    <link rel="stylesheet" href="header.css" />
-    <link rel="stylesheet" href="personal-answer-question.css" />
+    <link rel="icon" href="../resources/icon/logo.png" />
+    <link rel="stylesheet" href="../css/utils.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/answer-question.css" />
 </head>
 
 <body>
@@ -16,7 +16,7 @@
             <div class="nav-bar">
                 <a>Menu</a>
                 <ul class="menu">
-                    <li><a href="union3.html">Home</a></li>
+                    <li><a href="login-register.html">Home</a></li>
                     <li>
                         <a href="friend.html">Friends &#65516;</a>
                         <ul class="hidden-menu">
@@ -37,12 +37,12 @@
             </div>
             <div class="user">
                 <label>
-                    <img class="round" src="resources/img/avatar.png"></img>
+                    <img class="round" src="../resources/img/avatar.png"></img>
                     <span>50000</span>
                 </label>
                 <div class="mini-profile">
                     <div class="profile-header">
-                        <img class="round" src="resources/img/avatar.png"></img>
+                        <img class="round" src="../resources/img/avatar.png"></img>
                         <h2>Diego Acuna</h2>
                         <p>Descripcion diego aprendiendo css</p>
                     </div>
@@ -57,6 +57,7 @@
             <div class="answer-question-panel">
                 <form id="answer-question-form" action="choose-question.html" method="post">
                     <h2 class="text-cut">¿Nintendo Switch, PS4, o Xbox One?</h2>
+                    <p class="text-cut">¿Qué crees que opina <strong>Casper María rodríguez?</strong></p>
                     <div>
                         <label>
                             <input type='radio' name='answer' class="button">
@@ -113,21 +114,6 @@
                                 <div class="dot"></div>
                             </div>
                             <p>PS4</p>
-                        </label>
-                        <label>
-                            <input type='radio' name='answer' class="button">
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>Create new answer</p>
-                            <input type="text" name="new-answer" placeholder="New answer">
                         </label>
                     </div>
                     <button type="submit">Create</button>
