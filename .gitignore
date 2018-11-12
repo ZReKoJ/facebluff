@@ -1,3 +1,6 @@
+# node files
+node_modules/
+package-lock.json
 # visual docs
 .vscode/
 # instructions
