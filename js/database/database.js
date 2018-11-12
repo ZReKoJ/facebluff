@@ -12,43 +12,40 @@ const pool = mysql.createPool({
 });
 
 let userDAO = new DAO.user(pool);
+let friendDAO = new DAO.friend(pool);
+let questionDAO = new DAO.question(pool);
+let answerDAO = new DAO.answer(pool);
 
 userDAO.get(1, (err, entity) => {
     if (err) {
-        console.log(err.message);
+        console.log(err);
     }
     else {
         console.log(entity);
     }
 });
-
-let friendDAO = new DAO.friend(pool);
 
 friendDAO.get([1, 2], (err, entity) => {
     if (err) {
-        console.log(err.message);
+        console.log(err);
     }
     else {
         console.log(entity);
     }
 });
-
-let questionDAO = new DAO.question(pool);
 
 questionDAO.get(1, (err, entity) => {
     if (err) {
-        console.log(err.message);
+        console.log(err);
     }
     else {
         console.log(entity);
     }
 });
 
-let answerDAO = new DAO.answer(pool);
-
 answerDAO.get(1, (err, entity) => {
     if (err) {
-        console.log(err.message);
+        console.log(err);
     }
     else {
         console.log(entity);
