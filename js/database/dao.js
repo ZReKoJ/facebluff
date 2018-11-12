@@ -17,7 +17,7 @@ class DAO {
     /**
      * get by id
      * @param {*} keys: could be only one value, or an array of values
-     * @param {*} callback 
+     * @param {*} callback: if nothing is found then pass a null value
      */
     get(keys, callback) {
         if (!Array.isArray(keys)) {
@@ -44,7 +44,7 @@ class DAO {
                     const sql = "select * from " + this.tableName + " where " +
                         this.primaryKey.map(element => element + " = ?").join(" and ") +
                         " limit 1";
-                    connection.query(sql, keys, (err, entity, fields) => {
+                    connection.query(sql, keys, (err, result) => {
                         connection.release();
                         if (err) {
                             callback(
@@ -56,17 +56,47 @@ class DAO {
                                         }
                                     )));
                         } else {
-                            let dict = {};
-                            Object.keys(entity[0]).forEach((attr) => {
-                                dict[attr] = entity[0][attr];
-                            });
-                            callback(null, new Entity[this.tableName](dict));
+                            if (result.length > 0) {
+                                callback(null, new Entity[this.tableName](result[0]));
+                            }
+                            else callback(null, null);
                         }
                         this.pool.end();
                     });
                 }
             });
         }
+    }
+
+    selectAll(callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.language].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                const sql = "select * from " + this.tableName;
+                connection.query(sql, (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.language].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, result.map(element => new Entity[this.tableName](element)));
+                    }
+                });
+            }
+        });
     }
 }
 

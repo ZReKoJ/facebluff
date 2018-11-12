@@ -16,38 +16,77 @@ let friendDAO = new DAO.friend(pool);
 let questionDAO = new DAO.question(pool);
 let answerDAO = new DAO.answer(pool);
 
-userDAO.get(1, (err, entity) => {
+/*
+userDAO.get(1, (err, result) => {
     if (err) {
         console.log(err);
     }
     else {
-        console.log(entity);
+        console.log(result);
     }
 });
 
-friendDAO.get([1, 2], (err, entity) => {
+friendDAO.get([1, 2], (err, result) => {
     if (err) {
         console.log(err);
     }
     else {
-        console.log(entity);
+        console.log(result);
     }
 });
 
-questionDAO.get(1, (err, entity) => {
+questionDAO.get(1, (err, result) => {
     if (err) {
         console.log(err);
     }
     else {
-        console.log(entity);
+        console.log(result);
     }
 });
 
-answerDAO.get(1, (err, entity) => {
+answerDAO.get(1, (err, result) => {
     if (err) {
         console.log(err);
     }
     else {
-        console.log(entity);
+        console.log(result);
     }
 });
+*/
+/*
+userDAO.selectAll((err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+
+friendDAO.selectAll((err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+
+questionDAO.selectAll((err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+
+answerDAO.selectAll((err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+*/
