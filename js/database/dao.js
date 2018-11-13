@@ -8,10 +8,11 @@ const {
 const Entity = require("./entity");
 
 class DAO {
-    constructor(_pool, _tableName, _primaryKey) {
+    constructor(_pool, _tableName, _primaryKey, _tableColumns) {
         this.pool = _pool;
         this.tableName = _tableName;
         this.primaryKey = _primaryKey;
+        this.tableColumns = _tableColumns;
     }
 
     /**
@@ -29,8 +30,7 @@ class DAO {
                     Strings.transform(
                         messages[config.language].parametersError
                     )));
-        }
-        else {
+        } else {
             this.pool.getConnection((err, connection) => {
                 if (err) {
                     callback(
@@ -41,8 +41,8 @@ class DAO {
                                 }
                             )));
                 } else {
-                    const sql = "select * from " + this.tableName + " where " +
-                        this.primaryKey.map(element => element + " = ?").join(" and ") +
+                    const sql = "select * from " + this.tableName +
+                        " where " + this.primaryKey.map(element => element + " = ?").join(" and ") +
                         " limit 1";
                     connection.query(sql, keys, (err, result) => {
                         connection.release();
@@ -58,8 +58,7 @@ class DAO {
                         } else {
                             if (result.length > 0) {
                                 callback(null, new Entity[this.tableName](result[0]));
-                            }
-                            else callback(null, null);
+                            } else callback(null, null);
                         }
                         this.pool.end();
                     });
@@ -94,6 +93,119 @@ class DAO {
                     } else {
                         callback(null, result.map(element => new Entity[this.tableName](element)));
                     }
+                    this.pool.end();
+                });
+            }
+        });
+    }
+
+    insert(entity, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.language].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let attr = Object.keys(entity).filter(element => this.tableColumns.indexOf(element) != -1);
+                let sql = "insert into " + this.tableName +
+                    " (" + attr.join(", ") + ")" +
+                    " values" +
+                    " (" + attr.map(element => "?").join(", ") + ")";
+                connection.query(sql, attr.map(element => entity[element]), (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.language].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        let resultEntity = entity;
+                        if (this.primaryKey.length == 1) {
+                            this.primaryKey.forEach(element => {
+                                resultEntity[element] = result.insertId;
+                            });
+                        }
+                        callback(null, resultEntity);
+                    }
+                    this.pool.end();
+                });
+            }
+        });
+    }
+
+    update(check, change, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.language].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let sql = "update " + this.tableName +
+                    " set " + Object.keys(change).map(element => element + " = ?").join(", ") +
+                    " where " + Object.keys(check).map(element => element + " = ?").join(" and ");
+                connection.query(sql,
+                    Object.keys(change).map(element => change[element])
+                    .concat(Object.keys(check).map(element => check[element])),
+                    (err, result) => {
+                        connection.release();
+                        if (err) {
+                            callback(
+                                new Error(
+                                    Strings.transform(
+                                        messages[config.language].sqlQueryError, {
+                                            "sql": sql,
+                                            "errorMessage": err.message
+                                        }
+                                    )));
+                        } else {
+                            callback(null, null);
+                        }
+                        this.pool.end();
+                    });
+            }
+        });
+    }
+
+    delete(entity, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.language].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let sql = "delete from " + this.tableName + " where " +
+                    Object.keys(entity).map(element => element + " = ?").join(" and ");
+                connection.query(sql, Object.keys(entity).map(element => entity[element]), (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.language].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, null);
+                    }
+                    this.pool.end();
                 });
             }
         });
@@ -102,29 +214,37 @@ class DAO {
 
 class User extends DAO {
     constructor(_pool) {
-        super(_pool, config.tables.user.name, config.tables.user.primaryKey);
-        this.tableColumns = config.tables.user.tableColumns;
+        super(_pool,
+            config.tables.user.name,
+            config.tables.user.primaryKey,
+            config.tables.user.tableColumns);
     }
 }
 
 class Friend extends DAO {
     constructor(_pool) {
-        super(_pool, config.tables.friend.name, config.tables.friend.primaryKey);
-        this.tableColumns = config.tables.friend.tableColumns;
+        super(_pool,
+            config.tables.user.name,
+            config.tables.user.primaryKey,
+            config.tables.user.tableColumns);
     }
 }
 
 class Question extends DAO {
     constructor(_pool) {
-        super(_pool, config.tables.question.name, config.tables.question.primaryKey);
-        this.tableColumns = config.tables.question.tableColumns;
+        super(_pool,
+            config.tables.user.name,
+            config.tables.user.primaryKey,
+            config.tables.user.tableColumns);
     }
 }
 
 class Answer extends DAO {
     constructor(_pool) {
-        super(_pool, config.tables.answer.name, config.tables.answer.primaryKey);
-        this.tableColumns = config.tables.answer.tableColumns;
+        super(_pool,
+            config.tables.user.name,
+            config.tables.user.primaryKey,
+            config.tables.user.tableColumns);
     }
 }
 

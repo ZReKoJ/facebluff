@@ -3,6 +3,7 @@
 const mysql = require("mysql");
 const config = require("./../config");
 const DAO = require("./dao");
+const Entity = require("./entity");
 
 const pool = mysql.createPool({
     host: config.host,
@@ -17,6 +18,35 @@ let questionDAO = new DAO.question(pool);
 let answerDAO = new DAO.answer(pool);
 
 /*
+userDAO.insert(new Entity.user({
+    name: "Luffy",
+    surname: "D. Monkey",
+    email: "op@gmail.com",
+    password: "op",
+    gender: "M",
+    img: "luffy.png",
+    description: "Future pirate king",
+    score: 1
+}), (err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+/**/
+/*
+userDAO.update({name: "Luffy"}, {score: 8}, (err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+/**/
+/*
 userDAO.get(1, (err, result) => {
     if (err) {
         console.log(err);
@@ -25,34 +55,7 @@ userDAO.get(1, (err, result) => {
         console.log(result);
     }
 });
-
-friendDAO.get([1, 2], (err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        console.log(result);
-    }
-});
-
-questionDAO.get(1, (err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        console.log(result);
-    }
-});
-
-answerDAO.get(1, (err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        console.log(result);
-    }
-});
-*/
+/**/
 /*
 userDAO.selectAll((err, result) => {
     if (err) {
@@ -62,8 +65,9 @@ userDAO.selectAll((err, result) => {
         console.log(result);
     }
 });
+/**/
 
-friendDAO.selectAll((err, result) => {
+userDAO.delete({id:1}, (err, result) => {
     if (err) {
         console.log(err);
     }
@@ -71,22 +75,4 @@ friendDAO.selectAll((err, result) => {
         console.log(result);
     }
 });
-
-questionDAO.selectAll((err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        console.log(result);
-    }
-});
-
-answerDAO.selectAll((err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    else {
-        console.log(result);
-    }
-});
-*/
+/**/

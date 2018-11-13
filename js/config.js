@@ -14,7 +14,7 @@ module.exports = {
             },
             friend: {
                   name: "friend",
-                  primaryKey: ["friendid", "otherfriendid"],
+                  primaryKey: [],
                   tableColumns: ["friendid", "otherfriendid"]
             },
             question: {
