@@ -6,6 +6,7 @@ module.exports = {
       password: "", // Contraseña con la que se accede a la BD
       database: "test", // Nombre de la base de datos
       language: "esES",
+      port: 8080,
       tables: {
             user: {
                   name: "user",

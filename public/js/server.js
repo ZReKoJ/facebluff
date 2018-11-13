@@ -1,17 +1,47 @@
 "use strict"
 
-const http = require("http");
+const express = require("express");
+const config = require("./config");
+const messages = require("./messages");
+const {
+    Strings
+} = require("./utils");
+const fs = require("fs");
 
-const servidor = http.createServer((request, response) => {
-    console.log(`Método ${request.method}`);
-    console.log(`URL ${request.url}`);
-    console.log(request.headers);
-});
+const app = express();
 
-servidor.listen(3000, function (err) {
+app.get("/", (request, response) => {
+    fs.readFile("../html/login-register.html", (err, content) => {
+        if (err) {
+            response.status = 404;
+            response.setHeader("Content-Type", "text/html");
+            response.end();
+        }
+        else {
+            response.status = 200;
+            response.setHeader("Content-Type", "text/html");
+            response.write(content);
+            response.end();
+        }
+    });
+})
+
+app.listen(config.port, (err) => {
     if (err) {
-        console.log("Error al iniciar el servidor");
+        console.log(
+            Strings.transform(
+                messages[config.language].serverInitiateError, {
+                    errorMessage: err.message
+                }
+            )
+        );
     } else {
-        console.log("Servidor escuchando en el puerto 3000")
+        console.log(
+            Strings.transform(
+                messages[config.language].serverListening, {
+                    port: config.port
+                }
+            )
+        );
     }
 });
