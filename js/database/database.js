@@ -66,7 +66,7 @@ userDAO.selectAll((err, result) => {
     }
 });
 /**/
-
+/*
 userDAO.delete({id:1}, (err, result) => {
     if (err) {
         console.log(err);

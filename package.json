@@ -1,0 +1,24 @@
+{
+  "name": "facebluff",
+  "version": "1.0.0",
+  "description": "Practica AW",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZReKoJ/facebluff.git"
+  },
+  "author": "Zihao Hong, Diego Acuna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZReKoJ/facebluff/issues"
+  },
+  "homepage": "https://github.com/ZReKoJ/facebluff#readme"
+}
