@@ -5,6 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.16.4",
+    "express-logging": "^1.1.1",
+    "logops": "^2.1.0",
     "mysql": "^2.16.0"
   },
   "devDependencies": {},
