@@ -1,6 +1,6 @@
 "use strict"
 
-const config = require("../config");
+const config = require("../../../config.json");
 
 class Entity {
     constructor(_params, _dict) {
@@ -15,25 +15,25 @@ class Entity {
 
 class User extends Entity {
     constructor(_dict) {
-        super(config.tables.user.tableColumns, _dict);
+        super(config.dbTables.user.tableColumns, _dict);
     }
 }
 
 class Friend extends Entity {
     constructor(_dict) {
-        super(config.tables.friend.tableColumns, _dict);
+        super(config.dbTables.friend.tableColumns, _dict);
     }
 }
 
 class Question extends Entity {
     constructor(_dict) {
-        super(config.tables.question.tableColumns, _dict);
+        super(config.dbTables.question.tableColumns, _dict);
     }
 }
 
 class Answer extends Entity {
     constructor(_dict) {
-        super(config.tables.answer.tableColumns, _dict);
+        super(config.dbTables.answer.tableColumns, _dict);
     }
 }
 

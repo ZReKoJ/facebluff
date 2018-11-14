@@ -1,16 +1,11 @@
 'use strict'
 
 const mysql = require("mysql");
-const config = require("./../config");
+const config = require("../../../config.json");
 const DAO = require("./dao");
 const Entity = require("./entity");
 
-const pool = mysql.createPool({
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: config.database
-});
+const pool = mysql.createPool(config.dbConfig);
 
 let userDAO = new DAO.user(pool);
 let friendDAO = new DAO.friend(pool);

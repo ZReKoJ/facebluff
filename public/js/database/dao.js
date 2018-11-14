@@ -1,6 +1,6 @@
 "use strict"
 
-const config = require("../config");
+const config = require("../../../config.json");
 const messages = require("../messages");
 const {
     Strings
@@ -28,7 +28,7 @@ class DAO {
             callback(
                 new Error(
                     Strings.transform(
-                        messages[config.language].parametersError
+                        messages[config.locale].parametersError
                     )));
         } else {
             this.pool.getConnection((err, connection) => {
@@ -36,7 +36,7 @@ class DAO {
                     callback(
                         new Error(
                             Strings.transform(
-                                messages[config.language].databaseConnectionError, {
+                                messages[config.locale].databaseConnectionError, {
                                     "errorMessage": err.message
                                 }
                             )));
@@ -50,7 +50,7 @@ class DAO {
                             callback(
                                 new Error(
                                     Strings.transform(
-                                        messages[config.language].sqlQueryError, {
+                                        messages[config.locale].sqlQueryError, {
                                             "sql": sql,
                                             "errorMessage": err.message
                                         }
@@ -73,7 +73,7 @@ class DAO {
                 callback(
                     new Error(
                         Strings.transform(
-                            messages[config.language].databaseConnectionError, {
+                            messages[config.locale].databaseConnectionError, {
                                 "errorMessage": err.message
                             }
                         )));
@@ -85,7 +85,7 @@ class DAO {
                         callback(
                             new Error(
                                 Strings.transform(
-                                    messages[config.language].sqlQueryError, {
+                                    messages[config.locale].sqlQueryError, {
                                         "sql": sql,
                                         "errorMessage": err.message
                                     }
@@ -105,7 +105,7 @@ class DAO {
                 callback(
                     new Error(
                         Strings.transform(
-                            messages[config.language].databaseConnectionError, {
+                            messages[config.locale].databaseConnectionError, {
                                 "errorMessage": err.message
                             }
                         )));
@@ -121,7 +121,7 @@ class DAO {
                         callback(
                             new Error(
                                 Strings.transform(
-                                    messages[config.language].sqlQueryError, {
+                                    messages[config.locale].sqlQueryError, {
                                         "sql": sql,
                                         "errorMessage": err.message
                                     }
@@ -147,7 +147,7 @@ class DAO {
                 callback(
                     new Error(
                         Strings.transform(
-                            messages[config.language].databaseConnectionError, {
+                            messages[config.locale].databaseConnectionError, {
                                 "errorMessage": err.message
                             }
                         )));
@@ -164,7 +164,7 @@ class DAO {
                             callback(
                                 new Error(
                                     Strings.transform(
-                                        messages[config.language].sqlQueryError, {
+                                        messages[config.locale].sqlQueryError, {
                                             "sql": sql,
                                             "errorMessage": err.message
                                         }
@@ -184,7 +184,7 @@ class DAO {
                 callback(
                     new Error(
                         Strings.transform(
-                            messages[config.language].databaseConnectionError, {
+                            messages[config.locale].databaseConnectionError, {
                                 "errorMessage": err.message
                             }
                         )));
@@ -197,7 +197,7 @@ class DAO {
                         callback(
                             new Error(
                                 Strings.transform(
-                                    messages[config.language].sqlQueryError, {
+                                    messages[config.locale].sqlQueryError, {
                                         "sql": sql,
                                         "errorMessage": err.message
                                     }
@@ -215,36 +215,36 @@ class DAO {
 class User extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.tables.user.name,
-            config.tables.user.primaryKey,
-            config.tables.user.tableColumns);
+            config.dbTables.user.name,
+            config.dbTables.user.primaryKey,
+            config.dbTables.user.tableColumns);
     }
 }
 
 class Friend extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.tables.user.name,
-            config.tables.user.primaryKey,
-            config.tables.user.tableColumns);
+            config.dbTables.user.name,
+            config.dbTables.user.primaryKey,
+            config.dbTables.user.tableColumns);
     }
 }
 
 class Question extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.tables.user.name,
-            config.tables.user.primaryKey,
-            config.tables.user.tableColumns);
+            config.dbTables.user.name,
+            config.dbTables.user.primaryKey,
+            config.dbTables.user.tableColumns);
     }
 }
 
 class Answer extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.tables.user.name,
-            config.tables.user.primaryKey,
-            config.tables.user.tableColumns);
+            config.dbTables.user.name,
+            config.dbTables.user.primaryKey,
+            config.dbTables.user.tableColumns);
     }
 }
 

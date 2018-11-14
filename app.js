@@ -3,7 +3,7 @@
 const fs = require("fs");
 const express = require("express");
 const logger = require("morgan");
-const config = require("./public/js/config");
+const config = require("./config.json");
 const messages = require("./public/js/messages");
 const path = require("path");
 const {
@@ -27,23 +27,40 @@ function notFound(request, response, next) {
     });
 }
 
+// logger
 app.use(logger('dev'));
+
+// for ejs files
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, config.baseFile)));
-app.set("views", path.join(__dirname, config.baseFile, config.routes.ejs));
-app.use(checkUserLogged);
+// ejs files location
+app.set("views", path.join.apply(this, [__dirname].concat(config.files.ejs)));
+
+// express static
+app.use(express.static(path.join.apply(this, [__dirname].concat(config.files.baseFile))));
+
+// check if user is logged
+// app.use(checkUserLogged);
 
 app.get("/login", (request, response) => {
-    response.sendFile(path.join(__dirname, config.baseFile, config.routes.html, "login-register.html"));
+    let dir = [__dirname].concat(config.files.html);
+    dir.push("login-register.html");
+    response.sendFile(path.join.apply(this, dir));
 });
 
+app.get("/profile", (request, response) => {
+    let dir = [__dirname].concat(config.files.html);
+    dir.push("profile.html");
+    response.sendFile(path.join.apply(this, dir));
+});
+
+// page is not found
 app.use(notFound);
 
 app.listen(config.port, (err) => {
     if (err) {
         console.log(
             Strings.transform(
-                messages[config.language].serverInitiateError, {
+                messages[config.locale].serverInitiateError, {
                     errorMessage: err.message
                 }
             )
@@ -51,7 +68,7 @@ app.listen(config.port, (err) => {
     } else {
         console.log(
             Strings.transform(
-                messages[config.language].serverListening, {
+                messages[config.locale].serverListening, {
                     port: config.port
                 }
             )
