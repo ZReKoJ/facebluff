@@ -2,70 +2,46 @@
 
 const fs = require("fs");
 const express = require("express");
-const expressLogging = require("express-logging");
-const logger = require("logops");
+const logger = require("morgan");
 const config = require("./public/js/config");
 const messages = require("./public/js/messages");
+const path = require("path");
 const {
     Strings
 } = require("./public/js/utils");
 
 const app = express();
 
-logger.format = logger.formatters.dev;
-app.use(expressLogging(logger));
+function checkUserLogged(request, response, next) {
+    if (request.url != "/login") {
+        response.redirect("/login");
+    } else {
+        next();
+    }
+}
 
-app.get("/css/utils.css", (request, response) => {
-    fs.readFile("./public/css/utils.css", (err, content) => {
-        if (err) {
-            response.status = 404;
-            response.setHeader("Content-Type", "text/css");
-            response.end();
-        }
-        else {
-            response.status = 200;
-            response.setHeader("Content-Type", "text/css");
-            response.write(content);
-            response.end();
-        }
+function notFound(request, response, next) {
+    response.status(404);
+    response.render("error", {
+        url: request.url
     });
+}
+
+app.use(logger('dev'));
+app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, config.baseFile)));
+app.set("views", path.join(__dirname, config.baseFile, config.routes.ejs));
+app.use(checkUserLogged);
+
+app.get("/login", (request, response) => {
+    response.sendFile(path.join(__dirname, config.baseFile, config.routes.html, "login-register.html"));
 });
 
-app.get("/", (request, response) => {
-    fs.readFile("./public/html/login-register.html", (err, content) => {
-        if (err) {
-            response.status = 404;
-            response.setHeader("Content-Type", "text/html");
-            response.end();
-        }
-        else {
-            response.status = 200;
-            response.setHeader("Content-Type", "text/html");
-            response.write(content);
-            response.end();
-        }
-    });
-});
-
-app.get("/css/login-register.css", (request, response) => {
-    fs.readFile("./public/css/login-register.css", (err, content) => {
-        if (err) {
-            response.status = 404;
-            response.setHeader("Content-Type", "text/css");
-            response.end();
-        }
-        else {
-            response.status = 200;
-            response.setHeader("Content-Type", "text/css");
-            response.write(content);
-            response.end();
-        }
-    });
-});
+app.use(notFound);
 
 app.listen(config.port, (err) => {
     if (err) {
-        logger.error(
+        console.log(
             Strings.transform(
                 messages[config.language].serverInitiateError, {
                     errorMessage: err.message
@@ -73,7 +49,7 @@ app.listen(config.port, (err) => {
             )
         );
     } else {
-        logger.info(
+        console.log(
             Strings.transform(
                 messages[config.language].serverListening, {
                     port: config.port

@@ -7,6 +7,13 @@ module.exports = {
       database: "test", // Nombre de la base de datos
       language: "esES",
       port: 8080,
+      baseFile: "public",
+      routes: {
+            css: "css",
+            ejs: "ejs",
+            html: "html",
+            js: "js"
+      },
       tables: {
             user: {
                   name: "user",
