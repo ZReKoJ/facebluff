@@ -39,7 +39,7 @@ app.set("views", path.join.apply(this, [__dirname].concat(config.files.ejs)));
 app.use(express.static(path.join.apply(this, [__dirname].concat(config.files.baseFile))));
 
 // check if user is logged
-// app.use(checkUserLogged);
+app.use(checkUserLogged);
 
 app.get("/login", (request, response) => {
     let dir = [__dirname].concat(config.files.html);

@@ -9,7 +9,7 @@
             "js": ["public", "js"],
             "images": ["public", "resources", "img"]
       },
-      "dbConfig" : {
+      "mysqlConfig" : {
             "host": "localhost",
             "user": "root",
             "password": "",

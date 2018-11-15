@@ -5,7 +5,7 @@ const config = require("../../../config.json");
 const DAO = require("./dao");
 const Entity = require("./entity");
 
-const pool = mysql.createPool(config.dbConfig);
+const pool = mysql.createPool(config.mysqlConfig);
 
 let userDAO = new DAO.user(pool);
 let friendDAO = new DAO.friend(pool);
