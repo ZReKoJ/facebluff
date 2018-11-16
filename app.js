@@ -25,9 +25,13 @@ function notFound(request, response, next) {
     fs.readdir(path.join.apply(this, [__dirname].concat(config.files.ejs)), (err, files) => {
         let errorFiles = files.filter(element => /error.+\.ejs/.test(element));
         let random = Math.floor(Math.random() * errorFiles.length);
-        response.render(errorFiles[random], {
-        //response.render("error-hanoi", {
-            url: request.url
+        //response.render(errorFiles[random], {
+        response.render("error-target", {
+            url: request.url,
+            redirection: {
+                name: "Home",
+                url: "/home"
+            }
         });
     });
 }
@@ -45,6 +49,16 @@ app.use(express.static(path.join.apply(this, [__dirname].concat(config.files.bas
 
 // check if user is logged
 //app.use(checkUserLogged);
+
+app.get("/", (request, response) => {
+    let dir = [__dirname].concat(config.files.html);
+    dir.push("home.html");
+    response.sendFile(path.join.apply(this, dir));
+});
+
+app.get("/home", (request, response) => {
+    response.redirect("/");
+});
 
 app.get("/login", (request, response) => {
     let dir = [__dirname].concat(config.files.html);
