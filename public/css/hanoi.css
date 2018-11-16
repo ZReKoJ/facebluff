@@ -271,25 +271,9 @@ input:nth-child(6n + 4):checked~input:nth-child(6n + 4):checked~input:nth-child(
     pointer-events: initial;
 }
 
-/* Everything Else */
-body {
-    margin: 0;
-    background-color: #f8f8f8;
-}
-
-h1 {
-    margin: 0;
-    padding: 5vmin;
-    color: rgba(0, 0, 0, 0.5);
-    font-family: Arial, sans-serif;
-    font-size: 7.5vmin;
-    font-weight: lighter;
-    text-align: center;
-    background: linear-gradient(to right, rgba(150, 111, 51, 0.4), rgba(150, 111, 51, 0.2)),
-        repeating-linear-gradient(to right, #eec487, #eec487 3vmin, #f3cf9a 3vmin, #f3cf9a 6vmin, #f8d8a2 6vmin, #f8d8a2 9vmin, #f1ca88 9vmin, #f1ca88 12vmin, #f4d09e 12vmin, #f4d09e 15vmin, #faddb0 15vmin, #faddb0 18vmin, #eec88a 18vmin, #eec88a 21vmin);
-}
-
-form {
+.game>form {
+    width: 100%;
+    height: 100%;
     text-align: center;
 }
 
@@ -319,7 +303,7 @@ form {
     display: block;
     margin: 0 auto;
     border-radius: 1vmin;
-    width: 95vmin;
+    width: 100%;
     height: 7.5vmin;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent),
         linear-gradient(#b27315, #966f33 13%, #faddb0 14.5%, #faddb0 27.5%, #966f33 29%, #966f33 42%, #faddb0 43.5%, #d7b889 56.5%, #966f33 58%, #966f33 71%, #d7b889 72.5%, #d7b889 85.5%, #966f33 87%, #b27315);

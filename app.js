@@ -22,8 +22,13 @@ function checkUserLogged(request, response, next) {
 
 function notFound(request, response, next) {
     response.status(404);
-    response.render("error", {
-        url: request.url
+    fs.readdir(path.join.apply(this, [__dirname].concat(config.files.ejs)), (err, files) => {
+        let errorFiles = files.filter(element => /error.+\.ejs/.test(element));
+        let random = Math.floor(Math.random() * errorFiles.length);
+        response.render(errorFiles[random], {
+        //response.render("error-hanoi", {
+            url: request.url
+        });
     });
 }
 
@@ -39,7 +44,7 @@ app.set("views", path.join.apply(this, [__dirname].concat(config.files.ejs)));
 app.use(express.static(path.join.apply(this, [__dirname].concat(config.files.baseFile))));
 
 // check if user is logged
-app.use(checkUserLogged);
+//app.use(checkUserLogged);
 
 app.get("/login", (request, response) => {
     let dir = [__dirname].concat(config.files.html);

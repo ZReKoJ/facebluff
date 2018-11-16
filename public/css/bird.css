@@ -1,14 +1,3 @@
-body {
-    counter-reset: birds;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    overflow: hidden;
-}
-
 /*hide checkbox*/
 input {
     position: fixed;
@@ -16,22 +5,15 @@ input {
     top: -10px;
 }
 
-h1 {
+.game h1 {
     margin: 0;
     text-align: center;
 }
 
-h2 {
-    position: fixed;
-    right: 20px;
-    bottom: 0;
-    font-size: 18px;
-    color: red;
-}
-
 /*play area*/
 .wrapper {
-    height: 500px;
+    width: 100%;
+    height: 100%;
     background: -webkit-linear-gradient(top, hsla(210, 70%, 80%, 1) 0%, hsla(210, 50%, 100%, 1) 100%);
     position: relative;
     cursor: crosshair;
@@ -43,11 +25,10 @@ h2 {
 }
 
 .sum {
-    position: fixed;
-    left: 45%;
-    top: 60px;
-    font-size: 24px;
-    fonot-weight: bold;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
 }
 
 /*print to screen dead birds*/
@@ -165,7 +146,7 @@ h2 {
 
     80% {
         top: 10%;
-        left: 20%:
+        left: 20%;
     }
 
     100% {
@@ -176,17 +157,18 @@ h2 {
 
 
 .timer {
+    position: absolute;
     background-color: #333;
-    width: 300px;
     height: 50px;
-    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 
 .timer span {
     display: block;
     background: repeating-linear-gradient(-45deg, #000, rgba(0, 0, 0, 0) 25px, #FFF 25px, #FFF 50px);
-    width: 300px;
+    width: 100%;
     height: 50px;
     animation: timer 20s linear;
 }
@@ -208,25 +190,26 @@ h2 {
 
 @keyframes timer {
     0% {
-        width: 10px;
+        width: 0;
     }
 
     100% {
-        width: 300px;
+        width: 100%;
         display: block;
     }
 }
 
 
 .gameover {
-    position: fixed;
-    z-index: 100000;
+    position: absolute;
+    z-index: -1;
     left: 0;
     top: 0;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    height: 0;
     background-color: rgba(0, 0, 0, 0.8);
-    animation: gameover 20s linear forwards;
+    animation: gameover 1s linear forwards;
+    animation-delay: 20s;
     font-size: 80px;
     color: white;
     font-weight: bold;
@@ -237,17 +220,13 @@ h2 {
 
 @keyframes gameover {
     0% {
-        left: -5000px;
-        bottom: 100%;
-    }
-
-    97% {
-        left: -5000px;
-        bottom: 100%;
+        z-index: -1;
+        height: 0;
     }
 
     100% {
-        left: 0px;
+        z-index: 10000;
+        height: 100%;
     }
 }
 

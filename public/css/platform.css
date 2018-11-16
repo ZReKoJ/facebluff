@@ -44,7 +44,7 @@ input:checked+.level {
     transform: translateY(20rem) translateX(-20rem) !important;
 }
 
-.button,
+.goal-button,
 .goal {
     position: absolute;
     top: 5%;
@@ -62,25 +62,25 @@ input:checked+.level {
     cursor: pointer;
 }
 
-.button:hover,
+.goal-button:hover,
 .goal:hover {
     -webkit-transform: translateX(0.5rem) translateY(-0.5rem);
     transform: translateX(0.5rem) translateY(-0.5rem);
     box-shadow: -2rem 2rem 3rem #7a8ab8;
 }
 
-.button:active,
+.goal-button:active,
 .goal:active {
     -webkit-transform: translateX(-0.5rem) translateY(0.5rem);
     transform: translateX(-0.5rem) translateY(0.5rem);
     box-shadow: 0rem 0rem 0rem #7a8ab8;
 }
 
-.button {
+.goal-button {
     background: #c4bddb;
 }
 
-input:checked+.button {
+input:checked+.goal-button {
     pointer-events: none;
     -webkit-transform: translateX(-0.5rem) translateY(0.5rem);
     transform: translateX(-0.5rem) translateY(0.5rem);
@@ -326,13 +326,13 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-h1 {
+.game h1 {
     font-size: 10rem;
     margin: 0;
     font-family: 'Teko', sans-serif;
 }
 
-p {
+.game p {
     margin-top: 0;
 }
 

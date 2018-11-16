@@ -1,18 +1,10 @@
-@charset "UTF-8";
-@import "https://fonts.googleapis.com/css?family=Roboto+Mono:700";
-
-body {
-    min-height: 100vh;
-    padding: 1px;
-    box-sizing: border-box;
-    background: teal url(https://www.hdwallpapers.in/walls/windows_xp_bliss-wide.jpg) center/cover no-repeat;
-    counter-reset: mines 10;
-}
-
 form {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    counter-reset: mines 10;
+    width: 100%;
+    height: 100%;
 }
 
 input {

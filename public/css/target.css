@@ -1,122 +1,131 @@
-* {
-    box-sizing: border-box;
-}
-
-h1 {
-    font-size: 1.4em;
-}
-
-body {
-    counter-reset: game;
-    text-align: center;
-    background: #e9b58b;
-    font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
-    color: #333;
-}
-
-input:checked {
-    counter-increment: game;
-}
-
-.total-count::after {
-    content: counter(game);
-}
-
-h2 {
-    font-size: 1em;
-    margin: -.5em auto 3em;
-    font-weight: 400;
-}
-
-.total-count {
-    font-size: 1.75em;
-    position: absolute;
-    top: 1.75em;
+.wrapper {
+    display: flex;
     width: 100%;
-    left: 0;
-    text-align: center;
-    z-index: 300;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .game-area {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 600px;
-    min-height: 550px;
-    max-height: 700px;
-    margin: 0 auto;
-    padding-left: 0;
+    display: grid;
+    height: 90%;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    padding: 5px;
+    background-color: var(--surface-color);
 }
 
-li {
-    width: calc(33% - .5em);
+.timer {
+    position: relative;
+    height: 10%;
+    background-color: #333;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+}
+
+.timer span {
+    display: block;
+    background: repeating-linear-gradient(-45deg, #000, rgba(0, 0, 0, 0) 25px, #FFF 25px, #FFF 50px);
+    width: 100%;
+    height: 50px;
+    animation: timer 8s linear;
+}
+
+.timer span:before {
+    content: "TIME LEFT";
+    display: block;
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 25px;
+    color: red;
+}
+
+@keyframes timer {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+        display: block;
+    }
+}
+
+.wrapper>.game-area>div {
+    width: 100%;
     margin-bottom: 1em;
-    height: 10em;
+    height: 100%;
     list-style: none;
     position: relative;
-    outline: 4px solid white;
     background: #64ddf3;
 }
 
-li:nth-child(1) input {
+.wrapper>.game-area>div:nth-child(1) input {
     -webkit-filter: hue-rotate(135.6206062665deg) brightness(1.172235352);
     filter: hue-rotate(135.6206062665deg) brightness(1.172235352);
     -webkit-animation-duration: 3.5320703444s;
     animation-duration: 3.5320703444s;
 }
 
-li:nth-child(2) input {
+.wrapper>.game-area>div:nth-child(2) input {
     -webkit-filter: hue-rotate(144.0082872421deg) brightness(1.4180030358);
     filter: hue-rotate(144.0082872421deg) brightness(1.4180030358);
     -webkit-animation-duration: 4.1755570137s;
     animation-duration: 4.1755570137s;
 }
 
-li:nth-child(3) input {
+.wrapper>.game-area>div:nth-child(3) input {
     -webkit-filter: hue-rotate(132.7865483434deg) brightness(1.547481014);
     filter: hue-rotate(132.7865483434deg) brightness(1.547481014);
     -webkit-animation-duration: 0.7291722683s;
     animation-duration: 0.7291722683s;
 }
 
-li:nth-child(4) input {
+.wrapper>.game-area>div:nth-child(4) input {
     -webkit-filter: hue-rotate(28.677435656deg) brightness(1.9397561077);
     filter: hue-rotate(28.677435656deg) brightness(1.9397561077);
     -webkit-animation-duration: 2.4268381124s;
     animation-duration: 2.4268381124s;
 }
 
-li:nth-child(5) input {
+.wrapper>.game-area>div:nth-child(5) input {
     -webkit-filter: hue-rotate(11.0167140249deg) brightness(1.1279364068);
     filter: hue-rotate(11.0167140249deg) brightness(1.1279364068);
     -webkit-animation-duration: 1.3113525141s;
     animation-duration: 1.3113525141s;
 }
 
-li:nth-child(6) input {
+.wrapper>.game-area>div:nth-child(6) input {
     -webkit-filter: hue-rotate(59.4420203516deg) brightness(1.7870008677);
     filter: hue-rotate(59.4420203516deg) brightness(1.7870008677);
     -webkit-animation-duration: 3.3935421944s;
     animation-duration: 3.3935421944s;
 }
 
-li:nth-child(7) input {
+.wrapper>.game-area>div:nth-child(7) input {
     -webkit-filter: hue-rotate(127.9085328614deg) brightness(1.4124744493);
     filter: hue-rotate(127.9085328614deg) brightness(1.4124744493);
     -webkit-animation-duration: 4.6464990971s;
     animation-duration: 4.6464990971s;
 }
 
-li:nth-child(8) input {
+.wrapper>.game-area>div:nth-child(8) input {
     -webkit-filter: hue-rotate(350.3428549809deg) brightness(1.6161338196);
     filter: hue-rotate(350.3428549809deg) brightness(1.6161338196);
     -webkit-animation-duration: 4.4660092068s;
     animation-duration: 4.4660092068s;
 }
 
-li:nth-child(9) input {
+.wrapper>.game-area>div:nth-child(9) input {
     -webkit-filter: hue-rotate(82.3354265537deg) brightness(1.1311702906);
     filter: hue-rotate(82.3354265537deg) brightness(1.1311702906);
     -webkit-animation-duration: 1.988378319s;
@@ -222,62 +231,33 @@ input[type="checkbox"]:checked:after {
     }
 }
 
-.game-over {
-    height: 100%;
-    width: 100%;
-    display: block;
-    background: white;
-    pointer-events: all;
+.gameover {
     position: absolute;
-    top: -100%;
+    z-index: -1;
     left: 0;
-    z-index: 200;
-    -webkit-animation: appear .25s forwards;
-    animation: appear .25s forwards;
-    -webkit-animation-delay: 8s;
+    top: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: gameover 1s linear forwards;
     animation-delay: 8s;
-    background: repeating-linear-gradient(-45deg, #c9ff00 0, #c9ff00 5em, #20c0ff 5em, #20c0ff 10em);
+    font-size: 80px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-indent: 0;
+    line-height: 500px;
+    user-select: none;
 }
 
-.game-over h1 {
-    padding: 1em 0 3.5em;
-    background: white;
-}
-
-@-webkit-keyframes appear {
-    from {
-        top: -100vh;
-        opacity: 0;
+@keyframes gameover {
+    0% {
+        z-index: -1;
+        height: 0;
     }
 
-    to {
-        top: 0;
-        opacity: 1;
+    100% {
+        z-index: 10000;
+        height: 100%;
     }
-}
-
-@keyframes appear {
-    from {
-        top: -100vh;
-        opacity: 0;
-    }
-
-    to {
-        top: 0;
-        opacity: 1;
-    }
-}
-
-.play-again {
-    background: white;
-    color: #20c0ff;
-    padding: .5em 1em;
-    font-size: 2.5em;
-    font-weight: 700;
-}
-
-small a {
-    margin-bottom: 2em;
-    display: block;
-    color: #222;
 }
