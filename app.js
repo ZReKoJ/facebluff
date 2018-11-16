@@ -25,8 +25,8 @@ function notFound(request, response, next) {
     fs.readdir(path.join.apply(this, [__dirname].concat(config.files.ejs)), (err, files) => {
         let errorFiles = files.filter(element => /error.+\.ejs/.test(element));
         let random = Math.floor(Math.random() * errorFiles.length);
-        //response.render(errorFiles[random], {
-        response.render("error-target", {
+        response.render(errorFiles[random], {
+        //response.render("error-target", {
             url: request.url,
             redirection: {
                 name: "Home",
