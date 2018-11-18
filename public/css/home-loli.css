@@ -1,0 +1,876 @@
+:root {
+    --face-color: rgba(254, 248, 232, 1);
+    --mouth-color: rgba(249, 197, 199, 1);
+    --eye-color: linear-gradient(rgba(176, 105, 63, 1), rgba(240, 211, 133, 1));
+    --eye-blank-color: white;
+    --cheek-color: rgba(254, 224, 213, 1);
+    --eyelash-color: rgba(142, 83, 41, 1);
+    --eyebrow-color: rgba(142, 83, 41, 1);
+    --dark-hair-color: rgba(216, 162, 116, 1);
+    --hair-color: rgba(242, 217, 150, 1);
+    --light-hair-color: rgba(253, 242, 196, 1);
+    --neck-color: rgba(249, 247, 234, 1);
+    --body-color: rgba(249, 247, 234, 1);
+    --shirt-color: rgba(254, 210, 183, 1);
+    --skirt-color: rgba(249, 166, 162, 1);
+    --shoe-color: rgba(215, 167, 127, 1);
+    --sleeve-color: rgba(254, 210, 183, 1);
+
+    --img-width: 600;
+    --img-height: 600;
+
+    --wrapper-width: 500;
+    --wrapper-height: 500;
+
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0) translateZ(0);
+    }
+
+    60% {
+        transform: scale(1.15) translateZ(0);
+    }
+
+    80% {
+        transform: scale(0.95) translateZ(0);
+    }
+
+    100% {
+        transform: scale(1) translateZ(0);
+    }
+}
+
+@keyframes eye-blink {
+    0% {
+        transform: scaleY(1) translateY(0px) translateZ(0);
+    }
+
+    45% {
+        transform: scaleY(1) translateY(0px) translateZ(0);
+    }
+
+    50% {
+        transform: scaleY(0.1) translateZ(0);
+    }
+
+    55% {
+        transform: scaleY(1) translateY(0px);
+    }
+
+    100% {
+        transform: scaleY(1) translateY(0px) translateZ(0);
+    }
+}
+
+@keyframes blush-up {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes blush-down {
+    0% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+}
+
+@keyframes head-move {
+    0% {
+        transform: rotate(0deg) translateZ(0);
+    }
+
+    33% {
+        transform: rotate(-5deg) translateZ(0);
+    }
+
+    66% {
+        transform: rotate(5deg) translateZ(0);
+    }
+
+    100% {
+        transform: rotate(0deg) translateZ(0);
+    }
+}
+
+
+@keyframes note-anim {
+    0% {
+        opacity: 0;
+        transform: translate(0px, 50px) translateZ(0);
+    }
+
+    30% {
+        transform: rotate(12deg) translate(-30px, 0px) translateZ(0);
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    60% {
+        transform: rotate(-12deg) translate(30px, -100px) translateZ(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(0deg) translate(0px, -200px) translateZ(0);
+    }
+}
+
+/*
+600px * 600px image
+
+top right bottom left --- width * height --- z z-index
+
+hair: 76px 131px 115px 131px --- 338px * 409px
+
+    front: 0 0 0 0 --- 338px * 409px --- z 70
+
+        front-full: 18px 55px 86px 55px --- 168px * 250px --- z 70
+        front-outside: 0 55px 221px 55px --- 228px * 120px --- z 70
+
+    back: 0 0 0 0 --- 338px * 409px --- 1
+
+        back-center-down: 205px 40px 0 40px --- 0 * 0 --- z 1
+        back-left-down: 200px 22px 8px 115px --- 0 * 0 --- z 1
+        back-right-down: 200px 115px 8px 22px --- 0 * 0 --- z 1
+
+        back-full: 0 42px -60px 42px --- 158px * 343px --- z 5
+        back-full-down: 54px 64px -28px 64px --- 146px * 289px --- z 8
+        back-inside: 0 55px 0 55px --- 168px * 354px --- z 10
+
+face: 130px 205px 271px 205px --- 190px * 199px --- z 50
+
+    left-eyebrow: 72px 134px 61px 18px --- 38px * 64px --- z 100
+    right-eyebrow: 72px 18px 61px 134px --- 38px * 64px --- z 100
+
+    left-eyelash: 92px 126px 72px 19px --- 42px * 35px --- z 100
+    right-eyelash: 92px 19px 72px 126px --- 42px * 35px --- z 100
+
+    right-mini-eyelash: 106px 2px 88px 168px --- 20px * 1px --- z 100
+    right-mini-eyelash: 106px 168px 88px 2px --- 20px * 1px --- z 100
+
+    left-eye: 94px 122px 41px 24px --- 44px * 64px
+    right-eye: 94px 24px 41px 122px --- 44px * 64px
+
+        eye-big-blank: 10px 18px 33px 5px --- 21px * 21px
+        eye-small-blank: 28px 16px 30px 21px --- 7px * 6px
+
+    mouth: 175px 90px 14px 90px --- 0 * 0
+
+    left-cheek: 158px 117px 13px 24px --- 50px * 28px
+    right-cheek: 158px 24px 13px 117px --- 50px * 28px
+
+body: 326px 253px 438px 253px --- 94px * 112px --- z 30
+    
+neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
+    
+    inside-shirt: 0 0 0 0 --- 94px * 112px --- z 35
+    outside-shirt: 0 -3px 9px -3px --- 100px * 103px --- z 35
+    
+    skirt: 80px -13px -45px -13px --- 120px * 77px --- z 30
+    
+    sleeve: 5px -18px 54px -18px --- 130px * 53px --- z 32
+
+    hand: 5px -25px -33px -25px --- 104px * 140px --- z 25
+    
+    left-leg: 66px 51px -154px 0 --- 43px * 200px --- z 20
+    right-leg: 66px 0 -154px 51px --- 43px * 200px --- z 20
+        left-shoe-up: 157px 0 31px 14px --- 29px * 12px --- z 25
+        right-shoe-up: 157px 14px 31px 0 --- 29px * 12px --- z 25
+        left-shoe-down: 169px 0 0 0 --- 43px * 31px --- z 25
+        right-shoe-down: 169px 0 0 0 --- 43px * 31px --- z 25
+
+*/
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+/* must be square */
+.loli {
+    position: relative;
+    width: 500px;
+    min-width: 500px;
+    height: 500px;
+    min-height: 500px;
+}
+
+.loli:hover .cheek {
+    animation-name: blush-up;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.hair {
+    position: absolute;
+    top: calc(76px * var(--wrapper-height) / var(--img-height));
+    right: calc(131px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(115px * var(--wrapper-height) / var(--img-height));
+    left: calc(131px * var(--wrapper-width) / var(--img-width));
+    width: calc(338px * var(--wrapper-width) / var(--img-width));
+    height: calc(409px * var(--wrapper-height) / var(--img-height));
+}
+
+.hair>.front {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(0 * var(--wrapper-width) / var(--img-width));
+    bottom: calc(0 * var(--wrapper-height) / var(--img-height));
+    left: calc(0 * var(--wrapper-width) / var(--img-width));
+    width: calc(338px * var(--wrapper-width) / var(--img-width));
+    height: calc(409px * var(--wrapper-height) / var(--img-height));
+    z-index: 70;
+    animation-name: grow, head-move;
+    animation-delay: 0.25s, 2s;
+    animation-duration: 0.5s, 8s;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards, normal;
+}
+
+.hair>.front>.front-full {
+    position: absolute;
+    top: calc(18px * var(--wrapper-height) / var(--img-height));
+    right: calc(55px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(86px * var(--wrapper-height) / var(--img-height));
+    left: calc(55px * var(--wrapper-width) / var(--img-width));
+    width: calc(168px * var(--wrapper-width) / var(--img-width));
+    height: calc(250px * var(--wrapper-height) / var(--img-height));
+    border-left: calc(30px * var(--wrapper-width) / var(--img-width)) solid var(--light-hair-color);
+    border-right: calc(30px * var(--wrapper-width) / var(--img-width)) solid var(--light-hair-color);
+    border-bottom: calc(55px * var(--wrapper-width) / var(--img-width)) solid transparent;
+    border-top-left-radius: 35%;
+    border-top-right-radius: 35%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 70;
+}
+
+.hair>.front>.front-outside {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(55px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(221px * var(--wrapper-height) / var(--img-height));
+    left: calc(55px * var(--wrapper-width) / var(--img-width));
+    width: calc(228px * var(--wrapper-width) / var(--img-width));
+    height: calc(120px * var(--wrapper-height) / var(--img-height));
+    border-top: calc(68px * var(--wrapper-width) / var(--img-width)) solid var(--hair-color);
+    border-top-left-radius: 40% 100%;
+    border-top-right-radius: 40% 100%;
+    z-index: 70;
+}
+
+.hair>.back {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(0 * var(--wrapper-width) / var(--img-width));
+    bottom: calc(0 * var(--wrapper-height) / var(--img-height));
+    left: calc(0 * var(--wrapper-width) / var(--img-width));
+    width: calc(338px * var(--wrapper-width) / var(--img-width));
+    height: calc(409px * var(--wrapper-height) / var(--img-height));
+    z-index: 1;
+    animation-name: grow, head-move;
+    animation-delay: 0s, 2s;
+    animation-duration: 0.5s, 8s;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards, normal;
+}
+
+.hair>.back>.back-full {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(42px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(-60px * var(--wrapper-height) / var(--img-height));
+    left: calc(42px * var(--wrapper-width) / var(--img-width));
+    width: calc(158px * var(--wrapper-width) / var(--img-width));
+    height: calc(343px * var(--wrapper-height) / var(--img-height));
+    border-left: calc(48px * var(--wrapper-width) / var(--img-width)) solid var(--light-hair-color);
+    border-right: calc(48px * var(--wrapper-width) / var(--img-width)) solid var(--light-hair-color);
+    border-bottom: calc(126px * var(--wrapper-width) / var(--img-width)) solid transparent;
+    border-top-left-radius: 35%;
+    border-top-right-radius: 35%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 5;
+}
+
+.hair>.back>.back-full>.fill-content {
+    width: 100%;
+    height: 100%;
+    background-color: var(--hair-color);
+    border-radius: 25%;
+}
+
+.hair>.back>.back-full-down {
+    position: absolute;
+    top: calc(54px * var(--wrapper-height) / var(--img-height));
+    right: calc(64px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(-28px * var(--wrapper-height) / var(--img-height));
+    left: calc(64px * var(--wrapper-width) / var(--img-width));
+    width: calc(146px * var(--wrapper-width) / var(--img-width));
+    height: calc(289px * var(--wrapper-height) / var(--img-height));
+    border-left: calc(32px * var(--wrapper-width) / var(--img-width)) solid var(--dark-hair-color);
+    border-right: calc(32px * var(--wrapper-width) / var(--img-width)) solid var(--dark-hair-color);
+    border-bottom: calc(94px * var(--wrapper-width) / var(--img-width)) solid transparent;
+    border-radius: 100%;
+    z-index: 8;
+}
+
+.hair>.back>.back-full-down>.fill-content {
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-hair-color);
+}
+
+.hair>.back>.back-inside {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(55px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(0 * var(--wrapper-height) / var(--img-height));
+    left: calc(55px * var(--wrapper-width) / var(--img-width));
+    width: calc(168px * var(--wrapper-width) / var(--img-width));
+    height: calc(354px * var(--wrapper-height) / var(--img-height));
+    border-left: calc(30px * var(--wrapper-width) / var(--img-width)) solid var(--hair-color);
+    border-right: calc(30px * var(--wrapper-width) / var(--img-width)) solid var(--hair-color);
+    border-bottom: calc(55px * var(--wrapper-width) / var(--img-width)) solid transparent;
+    border-top-left-radius: 35%;
+    border-top-right-radius: 35%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 10;
+}
+
+.hair>.back>.back-center-down {
+    position: absolute;
+    top: calc(205px * var(--wrapper-height) / var(--img-height));
+    right: calc(40px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(2px * var(--wrapper-height) / var(--img-height));
+    left: calc(40px * var(--wrapper-width) / var(--img-width));
+    width: calc(0px * var(--wrapper-width) / var(--img-width));
+    height: calc(0px * var(--wrapper-height) / var(--img-height));
+    border-top: calc(202px * var(--wrapper-height) / var(--img-height)) solid var(--dark-hair-color);
+    border-left: calc(258px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-right: calc(258px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hair>.back>.back-left-down {
+    position: absolute;
+    top: calc(200px * var(--wrapper-height) / var(--img-height));
+    right: calc(22px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(8px * var(--wrapper-height) / var(--img-height));
+    left: calc(115px * var(--wrapper-width) / var(--img-width));
+    width: calc(0px * var(--wrapper-width) / var(--img-width));
+    height: calc(0px * var(--wrapper-height) / var(--img-height));
+    border-top: calc(201px * var(--wrapper-height) / var(--img-height)) solid var(--dark-hair-color);
+    border-left: calc(201px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-right: calc(201px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    z-index: 1;
+}
+
+.hair>.back>.back-right-down {
+    position: absolute;
+    top: calc(200px * var(--wrapper-height) / var(--img-height));
+    right: calc(115px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(8px * var(--wrapper-height) / var(--img-height));
+    left: calc(22px * var(--wrapper-width) / var(--img-width));
+    width: calc(0px * var(--wrapper-width) / var(--img-width));
+    height: calc(0px * var(--wrapper-height) / var(--img-height));
+    border-top: calc(201px * var(--wrapper-height) / var(--img-height)) solid var(--dark-hair-color);
+    border-left: calc(201px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-right: calc(201px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    z-index: 1;
+}
+
+.face {
+    position: absolute;
+    top: calc(130px * var(--wrapper-height) / var(--img-height));
+    right: calc(205px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(271px * var(--wrapper-height) / var(--img-height));
+    left: calc(205px * var(--wrapper-width) / var(--img-width));
+    width: calc(190px * var(--wrapper-width) / var(--img-width));
+    height: calc(199px * var(--wrapper-height) / var(--img-height));
+    border-radius: 100%/50%;
+    background-color: var(--face-color);
+    z-index: 50;
+    animation-name: grow, head-move;
+    animation-delay: 0.5s, 2s;
+    animation-duration: 0.5s, 8s;
+    animation-iteration-count: 1, infinite;
+}
+
+.eyebrow {
+    position: absolute;
+    top: calc(72px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(61px * var(--wrapper-height) / var(--img-height));
+    width: calc(38px * var(--wrapper-width) / var(--img-width));
+    height: calc(64px * var(--wrapper-height) / var(--img-height));
+    border-top: calc(2px * var(--wrapper-width) / var(--img-width)) solid var(--eyebrow-color);
+    z-index: 100;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.eyebrow#left {
+    right: calc(134px * var(--wrapper-width) / var(--img-width));
+    left: calc(18px * var(--wrapper-width) / var(--img-width));
+    border-top-left-radius: 50% 20%;
+    border-top-right-radius: 50% 5%;
+}
+
+.eyebrow#right {
+    right: calc(18px * var(--wrapper-width) / var(--img-width));
+    left: calc(134px * var(--wrapper-width) / var(--img-width));
+    border-top-left-radius: 50% 5%;
+    border-top-right-radius: 50% 20%;
+}
+
+.eyelash {
+    position: absolute;
+    top: calc(92px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(72px * var(--wrapper-height) / var(--img-height));
+    width: calc(42px * var(--wrapper-width) / var(--img-width));
+    height: calc(35px * var(--wrapper-height) / var(--img-height));
+    border-top: calc(5px * var(--wrapper-width) / var(--img-width)) solid var(--eyelash-color);
+    z-index: 100;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.5s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.eyelash#left {
+    right: calc(126px * var(--wrapper-width) / var(--img-width));
+    left: calc(19px * var(--wrapper-width) / var(--img-width));
+    border-left: calc(3px * var(--wrapper-width) / var(--img-width)) solid var(--eyelash-color);
+    border-top-left-radius: 90% 100%;
+    border-top-right-radius: 50% 30%;
+    border-bottom-left-radius: 10% 50%;
+}
+
+.eyelash#right {
+    right: calc(19px * var(--wrapper-width) / var(--img-width));
+    left: calc(126px * var(--wrapper-width) / var(--img-width));
+    border-right: calc(3px * var(--wrapper-width) / var(--img-width)) solid var(--eyelash-color);
+    border-top-right-radius: 90% 100%;
+    border-top-left-radius: 50% 30%;
+    border-bottom-right-radius: 10% 50%;
+}
+
+.mini-eyelash {
+    position: absolute;
+    top: calc(106px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(88px * var(--wrapper-height) / var(--img-height));
+    width: calc(20px * var(--wrapper-width) / var(--img-width));
+    height: calc(1px * var(--wrapper-width) / var(--img-width));
+    border-bottom: calc(4px * var(--wrapper-height) / var(--img-height)) solid var(--eyelash-color);
+    z-index: 100;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.75s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.mini-eyelash#left {
+    right: calc(168px * var(--wrapper-width) / var(--img-width));
+    left: calc(2px * var(--wrapper-width) / var(--img-width));
+    border-bottom-left-radius: 100%;
+}
+
+.mini-eyelash#right {
+    right: calc(2px * var(--wrapper-width) / var(--img-width));
+    left: calc(168px * var(--wrapper-width) / var(--img-width));
+    border-bottom-right-radius: 100%;
+}
+
+.eye {
+    position: absolute;
+    top: calc(94px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(41px * var(--wrapper-height) / var(--img-height));
+    width: calc(44px * var(--wrapper-width) / var(--img-width));
+    height: calc(64px * var(--wrapper-height) / var(--img-height));
+    border-radius: 50%/40%;
+    background: var(--eye-color);
+    transform: scale(0);
+    animation-name: grow, eye-blink;
+    animation-delay: 1s, 2s;
+    animation-duration: 1s, 3s;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards, none;
+}
+
+.eye#left {
+    right: calc(122px * var(--wrapper-width) / var(--img-width));
+    left: calc(24px * var(--wrapper-width) / var(--img-width));
+}
+
+.eye#right {
+    right: calc(24px * var(--wrapper-width) / var(--img-width));
+    left: calc(122px * var(--wrapper-width) / var(--img-width));
+}
+
+.eye-blank {
+    position: absolute;
+    background-color: var(--eye-blank-color);
+}
+
+.eye-blank#big {
+    top: calc(10px * var(--wrapper-height) / var(--img-height));
+    right: calc(18px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(33px * var(--wrapper-height) / var(--img-height));
+    left: calc(5px * var(--wrapper-width) / var(--img-width));
+    width: calc(21px * var(--wrapper-width) / var(--img-width));
+    height: calc(21px * var(--wrapper-height) / var(--img-height));
+    border-radius: 60% 40% 60% 40%;
+}
+
+.eye-blank#small {
+    top: calc(28px * var(--wrapper-height) / var(--img-height));
+    right: calc(16px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(30px * var(--wrapper-height) / var(--img-height));
+    left: calc(21px * var(--wrapper-width) / var(--img-width));
+    width: calc(7px * var(--wrapper-width) / var(--img-width));
+    height: calc(6px * var(--wrapper-height) / var(--img-height));
+    border-radius: 50%;
+}
+
+.cheek {
+    position: absolute;
+    top: calc(158px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(13px * var(--wrapper-height) / var(--img-height));
+    width: calc(50px * var(--wrapper-width) / var(--img-width));
+    height: calc(28px * var(--wrapper-height) / var(--img-height));
+    border-radius: 50%;
+    filter: blur(calc(50px * var(--wrapper-width) / var(--img-width) / 4));
+    box-shadow: 0 0 100px var(--cheek-color);
+    background-color: var(--cheek-color);
+    animation-name: blush-down;
+    animation-delay: 1s;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+.cheek#left {
+    right: calc(117px * var(--wrapper-width) / var(--img-width));
+    left: calc(23px * var(--wrapper-width) / var(--img-width));
+}
+
+.cheek#right {
+    right: calc(23px * var(--wrapper-width) / var(--img-width));
+    left: calc(117px * var(--wrapper-width) / var(--img-width));
+}
+
+.mouth {
+    position: absolute;
+    top: calc(175px * var(--wrapper-height) / var(--img-height));
+    right: calc(90px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(14px * var(--wrapper-height) / var(--img-height));
+    left: calc(90px * var(--wrapper-width) / var(--img-width));
+    width: 0;
+    height: 0;
+    border-left: calc(10px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-right: calc(10px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
+    border-bottom: calc(10px * var(--wrapper-height) / var(--img-height)) solid var(--mouth-color);
+    border-radius: 5px;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.body {
+    position: absolute;
+    top: calc(326px * var(--wrapper-height) / var(--img-height));
+    right: calc(253px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(438px * var(--wrapper-height) / var(--img-height));
+    left: calc(253px * var(--wrapper-width) / var(--img-width));
+    width: calc(94px * var(--wrapper-width) / var(--img-width));
+    height: calc(112px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--body-color);
+    border-top-left-radius: 50% 90%;
+    border-top-right-radius: 50% 90%;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+    z-index: 30;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.neck {
+    position: absolute;
+    top: calc(-3px * var(--wrapper-height) / var(--img-height));
+    right: calc(35px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(105px * var(--wrapper-height) / var(--img-height));
+    left: calc(35px * var(--wrapper-width) / var(--img-width));
+    width: calc(24px * var(--wrapper-width) / var(--img-width));
+    height: calc(10px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--neck-color);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 40;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 0s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.shirt#inside {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(0 * var(--wrapper-width) / var(--img-width));
+    bottom: calc(0 * var(--wrapper-height) / var(--img-height));
+    left: calc(0 * var(--wrapper-width) / var(--img-width));
+    width: calc(94px * var(--wrapper-width) / var(--img-width));
+    height: calc(112px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--shirt-color);
+    border-top-left-radius: 50% 90%;
+    border-top-right-radius: 50% 90%;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+    z-index: 35;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.shirt#outside {
+    position: absolute;
+    top: calc(0 * var(--wrapper-height) / var(--img-height));
+    right: calc(-3px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(9px * var(--wrapper-height) / var(--img-height));
+    left: calc(-3px * var(--wrapper-width) / var(--img-width));
+    width: calc(100px * var(--wrapper-width) / var(--img-width));
+    height: calc(103px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--shirt-color);
+    border-top-left-radius: 50% 90%;
+    border-top-right-radius: 50% 90%;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+    z-index: 35;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.sleeve {
+    position: absolute;
+    top: calc(5px * var(--wrapper-height) / var(--img-height));
+    right: calc(-18px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(54px * var(--wrapper-height) / var(--img-height));
+    left: calc(-18px * var(--wrapper-width) / var(--img-width));
+    width: calc(130px * var(--wrapper-width) / var(--img-width));
+    height: calc(53px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--sleeve-color);
+    border-top-left-radius: 50% 80%;
+    border-top-right-radius: 50% 80%;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    z-index: 32;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.skirt {
+    position: absolute;
+    top: calc(80px * var(--wrapper-height) / var(--img-height));
+    right: calc(-13px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(-45px * var(--wrapper-height) / var(--img-height));
+    left: calc(-13px * var(--wrapper-width) / var(--img-width));
+    width: calc(120px * var(--wrapper-width) / var(--img-width));
+    height: calc(77px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--skirt-color);
+    border-top-left-radius: 50% 80%;
+    border-top-right-radius: 50% 80%;
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    z-index: 30;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.25s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.hand {
+    position: absolute;
+    top: calc(5px * var(--wrapper-height) / var(--img-height));
+    right: calc(-25px * var(--wrapper-width) / var(--img-width));
+    bottom: calc(-33px * var(--wrapper-height) / var(--img-height));
+    left: calc(-25px * var(--wrapper-width) / var(--img-width));
+    width: calc(104px * var(--wrapper-width) / var(--img-width));
+    height: calc(140px * var(--wrapper-height) / var(--img-height));
+    border-left: calc(20px * var(--wrapper-width) / var(--img-width)) solid var(--body-color);
+    border-right: calc(20px * var(--wrapper-width) / var(--img-width)) solid var(--body-color);
+    border-top-left-radius: 50% 90%;
+    border-top-right-radius: 50% 90%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    z-index: 25;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.5s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.leg {
+    position: absolute;
+    top: calc(66px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(-154px * var(--wrapper-height) / var(--img-height));
+    width: calc(43px * var(--wrapper-width) / var(--img-width));
+    height: calc(200px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--body-color);
+    overflow: hidden;
+    z-index: 20;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.5s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.leg#left {
+    right: calc(51px * var(--wrapper-width) / var(--img-width));
+    left: calc(0 * var(--wrapper-width) / var(--img-width));
+    border-top-left-radius: 60% 90%;
+    border-top-right-radius: 40% 90%;
+    border-bottom-left-radius: 60% 10%;
+    border-bottom-right-radius: 40% 10%;
+}
+
+.leg#right {
+    right: calc(0 * var(--wrapper-width) / var(--img-width));
+    left: calc(51px * var(--wrapper-width) / var(--img-width));
+    border-top-left-radius: 40% 90%;
+    border-top-right-radius: 60% 90%;
+    border-bottom-left-radius: 40% 10%;
+    border-bottom-right-radius: 60% 10%;
+}
+
+.leg>.shoe#up {
+    position: absolute;
+    top: calc(157px * var(--wrapper-height) / var(--img-height));
+    bottom: calc(31px * var(--wrapper-height) / var(--img-height));
+    width: calc(29px * var(--wrapper-width) / var(--img-width));
+    height: calc(12px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--shoe-color);
+    z-index: 25;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.75s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.leg#left>.shoe#up {
+    right: calc(0 * var(--wrapper-width) / var(--img-width));
+    left: calc(14px * var(--wrapper-width) / var(--img-width));
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
+}
+
+.leg#right>.shoe#up {
+    right: calc(14px * var(--wrapper-width) / var(--img-width));
+    left: calc(0 * var(--wrapper-width) / var(--img-width));
+    border-top-left-radius: 40%;
+    border-top-right-radius: 40%;
+}
+
+.leg>.shoe#down {
+    position: absolute;
+    top: calc(169px * var(--wrapper-height) / var(--img-height));
+    right: calc(0 * var(--wrapper-width) / var(--img-width));
+    bottom: calc(0 * var(--wrapper-height) / var(--img-height));
+    left: calc(0 * var(--wrapper-width) / var(--img-width));
+    width: calc(43px * var(--wrapper-width) / var(--img-width));
+    height: calc(31px * var(--wrapper-height) / var(--img-height));
+    background-color: var(--shoe-color);
+    z-index: 25;
+    transform: scale(0);
+    animation-name: grow;
+    animation-delay: 1.75s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.leg#left>.shoe#down {
+    border-top-left-radius: 40% 10%;
+}
+
+.leg#right>.shoe#down {
+    border-top-right-radius: 40% 10%;
+}
+
+.music-note {
+    position: absolute;
+    font-size: 150px;
+    color: #FCB040;
+    width: 1px;
+    left: 50%;
+    opacity: 0;
+}
+
+.music-note#one {
+    margin-left: -250px;
+    top: 50%;
+    animation-name: note-anim;
+    animation-delay: 1.5s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.music-note#two {
+    margin-left: 150px;
+    top: 30%;
+    animation-name: note-anim;
+    animation-delay: 2.3s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
