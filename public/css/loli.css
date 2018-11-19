@@ -20,8 +20,8 @@
     --img-height: 600;
 
     /* must be square */
-    --wrapper-width: 500;
-    --wrapper-height: 500;
+    --wrapper-width: 400;
+    --wrapper-height: 400;
 
 }
 
@@ -199,6 +199,7 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
 
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -206,6 +207,8 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     left: 0;
     width: 100%;
     height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* must be position relative */
@@ -878,6 +881,10 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
+}
+
+.main>div>iframe {
+    display: none;
 }
 
 @media screen and (max-width : 550px) {

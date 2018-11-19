@@ -1,5 +1,6 @@
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -7,6 +8,8 @@
     left: 0;
     width: 100%;
     height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body,
@@ -480,6 +483,10 @@ html {
 .shirt-text:nth-of-type(11) {
     animation: text-anim 0.7s 4s 1 ease;
     -webkit-animation: text-anim 0.7s 4s 1 ease;
+}
+
+.main>div>iframe {
+    display: none;
 }
 
 @keyframes grow {
