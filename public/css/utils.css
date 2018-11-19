@@ -59,6 +59,10 @@ body {
     user-select: none;
 }
 
+.button:focus {
+    outline: none;
+}
+
 .text-cut {
     white-space: nowrap; 
     overflow: hidden;

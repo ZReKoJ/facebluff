@@ -225,10 +225,6 @@
     border-radius: 50%;
 }
 
-.answer-question-panel>form>div>label>input[type="radio"]:focus {
-    outline: none;
-}
-
 .answer-question-panel>form>div>label>input[type="text"] {
     display: none;
     font-weight: bold;
