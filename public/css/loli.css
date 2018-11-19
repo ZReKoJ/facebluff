@@ -19,6 +19,7 @@
     --img-width: 600;
     --img-height: 600;
 
+    /* must be square */
     --wrapper-width: 500;
     --wrapper-height: 500;
 
@@ -208,13 +209,18 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     height: calc(100% - 50px);
 }
 
-/* must be square */
+/* must be position relative */
 .loli {
     position: relative;
-    width: 500px;
-    min-width: 500px;
-    height: 500px;
-    min-height: 500px;
+    width: calc(1px * var(--wrapper-width));
+    min-width: calc(1px * var(--wrapper-width));
+    height: calc(1px * var(--wrapper-height));
+    min-height: calc(1px * var(--wrapper-height));
+    animation-name: grow;
+    animation-delay: 0s;
+    animation-duration: 0.1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .loli:hover .cheek {
@@ -526,7 +532,7 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     background: var(--eye-color);
     transform: scale(0);
     animation-name: grow, eye-blink;
-    animation-delay: 1s, 2s;
+    animation-delay: 0.75s, 2s;
     animation-duration: 1s, 3s;
     animation-iteration-count: 1, infinite;
     animation-fill-mode: forwards, none;
@@ -604,7 +610,7 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     border-left: calc(10px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
     border-right: calc(10px * var(--wrapper-width) / var(--img-width) / 2) solid transparent;
     border-bottom: calc(10px * var(--wrapper-height) / var(--img-height)) solid var(--mouth-color);
-    border-radius: 5px;
+    border-radius: 50%;
     transform: scale(0);
     animation-name: grow;
     animation-delay: 1s;
@@ -873,4 +879,91 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
+}
+
+@media screen and (max-width : 550px) {
+    .music-note {
+        display: none;
+    }
+    
+    .eye {
+        position: absolute;
+        top: calc(121px * var(--wrapper-height) / var(--img-height));
+        bottom: calc(68px * var(--wrapper-height) / var(--img-height));
+        width: calc(44px * var(--wrapper-width) / var(--img-width));
+        height: calc(10px * var(--wrapper-height) / var(--img-height));
+        border-radius: 0;
+        background: var(--eye-color);
+        transform: scale(0);
+        animation-name: grow;
+        animation-delay: 0.75s;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    .eye>.eye-blank {
+        display: none;
+    }
+
+    .eyelash {
+        opacity: 0;
+    }
+
+    .mini-eyelash {
+        opacity: 0;
+    }
+
+    .eyebrow {
+        position: absolute;
+        top: calc(32px * var(--wrapper-height) / var(--img-height));
+        bottom: calc(91px * var(--wrapper-height) / var(--img-height));
+        width: calc(38px * var(--wrapper-width) / var(--img-width));
+        height: calc(64px * var(--wrapper-height) / var(--img-height));
+        border-top: 0;
+        border-bottom: calc(2px * var(--wrapper-width) / var(--img-width)) solid var(--eyebrow-color);
+        z-index: 100;
+        transform: scale(0);
+        animation-name: grow;
+        animation-delay: 1s;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    .eyebrow#left {
+        right: calc(124px * var(--wrapper-width) / var(--img-width));
+        left: calc(28px * var(--wrapper-width) / var(--img-width));
+        border-bottom-left-radius: 50% 5%;
+        border-bottom-right-radius: 50% 20%;
+    }
+    
+    .eyebrow#right {
+        right: calc(28px * var(--wrapper-width) / var(--img-width));
+        left: calc(124px * var(--wrapper-width) / var(--img-width));
+        border-bottom-left-radius: 50% 20%;
+        border-bottom-right-radius: 50% 5%;
+    }
+    
+    .cheek {
+        display: none;
+    }
+
+    .mouth {
+        position: absolute;
+        top: calc(175px * var(--wrapper-height) / var(--img-height));
+        right: calc(85px * var(--wrapper-width) / var(--img-width));
+        bottom: calc(14px * var(--wrapper-height) / var(--img-height));
+        left: calc(85px * var(--wrapper-width) / var(--img-width));
+        width: 0;
+        height: 0;
+        border-left: calc(10px * var(--wrapper-width) / var(--img-width)) solid transparent;
+        border-right: calc(10px * var(--wrapper-width) / var(--img-width)) solid transparent;
+        border-bottom: calc(10px * var(--wrapper-height) / var(--img-height)) solid var(--mouth-color);
+        border-radius: 0;
+        transform: scale(0);
+        animation-name: grow;
+        animation-delay: 1s;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
 }
