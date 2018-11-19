@@ -57,7 +57,6 @@ app.get("/", (request, response) => {
     fs.readdir(path.join.apply(this, [__dirname].concat(config.files.html)), (err, files) => {
         let homeFiles = files.filter(element => /home.+\.html/.test(element));
         let random = Math.floor(Math.random() * homeFiles.length);
-        console.log(homeFiles);
         let dir = [__dirname].concat(config.files.html);
         dir.push(homeFiles[random]);
         response.sendFile(path.join.apply(this, dir));
