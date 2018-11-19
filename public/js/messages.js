@@ -6,6 +6,12 @@ module.exports = {
         sqlQueryError: "No se pudo ejecutar '{sql}': \n{errorMessage}",
         parametersError: "Error al introducir los parámetros",
         serverInitiateError: "No se pudo inicializar el servidor: \n{errorMessage}",
-        serverListening: "Servidor arrancado en el puerto {port}"
+        serverListening: "Servidor arrancado en el puerto {port}",
+        pageNotFound: "Esta no es la página que estás buscando",
+        stayAndPlay: "quédate y juega un poco"
+    },
+    enUS : {
+        pageNotFound: "This is not the page you are looking for",
+        stayAndPlay: "stay here and play for a while"
     }
 }

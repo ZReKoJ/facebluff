@@ -423,6 +423,7 @@ html {
     transform: translate(0px, 100px);
     animation-fill-mode: forwards !important;
     -webkit-animation-fill-mode: forwards !important;
+    user-select: none;
 }
 
 .shirt-text:nth-of-type(1) {

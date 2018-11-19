@@ -27,8 +27,12 @@ function notFound(request, response, next) {
         let random = Math.floor(Math.random() * errorFiles.length);
         response.render(errorFiles[random], {
             url: request.url,
+            text: {
+                pageNotFound: Strings.transform(messages[config.locale].pageNotFound),
+                stayAndPlay: Strings.transform(messages[config.locale].stayAndPlay)
+            },
             redirection: {
-                name: "Home",
+                name: "Inicio",
                 url: "/home"
             }
         });
@@ -73,6 +77,24 @@ app.get("/login", (request, response) => {
 app.get("/profile", (request, response) => {
     let dir = [__dirname].concat(config.files.html);
     dir.push("profile.html");
+    response.sendFile(path.join.apply(this, dir));
+});
+
+app.get("/friend", (request, response) => {
+    let dir = [__dirname].concat(config.files.html);
+    dir.push("friend.html");
+    response.sendFile(path.join.apply(this, dir));
+});
+
+app.get("/question", (request, response) => {
+    let dir = [__dirname].concat(config.files.html);
+    dir.push("question.html");
+    response.sendFile(path.join.apply(this, dir));
+});
+
+app.get("/create-question", (request, response) => {
+    let dir = [__dirname].concat(config.files.html);
+    dir.push("create-question.html");
     response.sendFile(path.join.apply(this, dir));
 });
 
