@@ -24,9 +24,9 @@ function checkUserLogged(request, response, next) {
 
 function error(error, request, response, next) {
     fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
-        let errorFiles = files.filter(element => /error.+\.ejs/.test(element));
+        let errorFiles = files.filter(element => /game.+\.ejs/.test(element));
         let random = Math.floor(Math.random() * errorFiles.length);
-        response.render(errorFiles[random], {
+        response.render("error", {
             url: request.url,
             status: response.statusCode,
             text: {
@@ -36,7 +36,8 @@ function error(error, request, response, next) {
             redirection: {
                 name: "Inicio",
                 url: "/home"
-            }
+            },
+            game: errorFiles[random]
         });
     });
 }

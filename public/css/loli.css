@@ -22,7 +22,6 @@
     /* must be square */
     --wrapper-width: 500;
     --wrapper-height: 500;
-
 }
 
 @keyframes grow {
