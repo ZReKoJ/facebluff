@@ -6,51 +6,12 @@
     <meta charset="utf-8" />
     <link rel="icon" href="../resources/icon/logo.png" />
     <link rel="stylesheet" href="../css/utils.css" />
-    <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/profile.css" />
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <div class="nav-bar">
-                <input type="checkbox" class="button" value="Menu">
-                <ul class="menu">
-                    <li><a href="/home">Inicio</a></li>
-                    <li>
-                        <a href="/friend">Amigos &#65516;</a>
-                        <ul class="hidden-menu">
-                            <li><a href="#">---</a></li>
-                            <li><a href="#">---</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/question">Preguntas &#65516;</a>
-                        <ul class="hidden-menu">
-                            <li><a href="/question/create">Crear</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Contacto</a></li>
-                </ul>
-            </div>
-            <div class="user">
-                <label>
-                    <img class="round" src="../resources/img/avatar.png"></img>
-                    <span>50000</span>
-                </label>
-                <div class="mini-profile">
-                    <div class="profile-header">
-                        <img class="round" src="../resources/img/avatar.png">
-                        <h2>Diego Acuna</h2>
-                        <p>Descripcion diego aprendiendo css</p>
-                    </div>
-                    <div class="profile-footer">
-                        <a href="/profile" class="button">Profile</a>
-                        <a href="logout.html" class="button">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%- include("header") %>
         <div class="main">
             <div class="profile">
                 <div class="profile-header">

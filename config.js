@@ -10,7 +10,8 @@ module.exports = {
             ejs: ["public", "ejs"],
             html: ["public", "html"],
             js: ["public", "js"],
-            images: ["public", "resources", "img"]
+            images: ["public", "resources", "img"],
+            music: ["public", "resources", "music"]
       },
       mysqlConfig : {
             host: "localhost",

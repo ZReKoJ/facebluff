@@ -6,6 +6,8 @@ const logger = require("morgan");
 const config = require("./config");
 const messages = require("./public/js/messages");
 const path = require("path");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const {
     Strings
 } = require("./public/js/utils");
@@ -39,29 +41,26 @@ function error(error, request, response, next) {
     });
 }
 
-// for ejs files
-app.set("view engine", "ejs");
-// ejs files location
-app.set("views", path.join.apply(this, [config.root].concat(config.files.ejs)));
+app.set("view engine", "ejs"); // for ejs files
+app.set("views", path.join.apply(this, [config.root].concat(config.files.ejs))); // ejs files location
 
-// logger
-app.use(logger('dev'));
+app.use(logger('dev')); // logger
+app.use(bodyParser.urlencoded({ extended: false })); // body parser
+app.use(cookieParser()); // cookie parser
 
-// express static
-app.use(express.static(path.join.apply(this, [config.root].concat(config.files.baseFile))));
+app.use(express.static(path.join.apply(this, [config.root].concat(config.files.baseFile)))); // express static
 
-// check if user is logged
-//app.use(checkUserLogged);
+//app.use(checkUserLogged); // check if user is logged
 
+// routers
 app.use("/question", require("./public/js/router/question-router").questionRouter);
 
 app.get("/", (request, response) => {
-    fs.readdir(path.join.apply(this, [config.root].concat(config.files.html)), (err, files) => {
-        let homeFiles = files.filter(element => /home.+\.html/.test(element));
+    response.status(200);
+    fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
+        let homeFiles = files.filter(element => /home.+\.ejs/.test(element));
         let random = Math.floor(Math.random() * homeFiles.length);
-        let dir = [config.root].concat(config.files.html);
-        dir.push(homeFiles[random]);
-        response.sendFile(path.join.apply(this, dir));
+        response.render(homeFiles[random]);
     });
 });
 
@@ -70,27 +69,25 @@ app.get("/home", (request, response) => {
 });
 
 app.get("/login", (request, response) => {
+    response.status(200);
     let dir = [config.root].concat(config.files.html);
     dir.push("login-register.html");
     response.sendFile(path.join.apply(this, dir));
 });
 
 app.get("/profile", (request, response) => {
-    let dir = [config.root].concat(config.files.html);
-    dir.push("profile.html");
-    response.sendFile(path.join.apply(this, dir));
+    response.status(200);
+    response.render("profile");
 });
 
 app.get("/friend", (request, response) => {
-    let dir = [config.root].concat(config.files.html);
-    dir.push("friend.html");
-    response.sendFile(path.join.apply(this, dir));
+    response.status(200);
+    response.render("friend");
 });
 
 app.get("/question", (request, response) => {
-    let dir = [config.root].concat(config.files.html);
-    dir.push("question.html");
-    response.sendFile(path.join.apply(this, dir));
+    response.status(200);
+    response.render("question");
 });
 
 // page is not found
