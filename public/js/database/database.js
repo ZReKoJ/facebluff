@@ -1,7 +1,7 @@
 'use strict'
 
 const mysql = require("mysql");
-const config = require("../../../config.json");
+const config = require("../../../config");
 const DAO = require("./dao");
 const Entity = require("./entity");
 
