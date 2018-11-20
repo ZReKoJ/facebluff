@@ -61,7 +61,9 @@ app.get("/", (request, response) => {
     fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
         let homeFiles = files.filter(element => /home.+\.ejs/.test(element));
         let random = Math.floor(Math.random() * homeFiles.length);
-        response.render(homeFiles[random]);
+        response.render("home", {
+            person: homeFiles[random]
+        });
     });
 });
 
