@@ -10,5 +10,13 @@ let Strings = {
 }
 
 module.exports = {
-    Strings: Strings 
+    Strings: Strings,
+    Messages: {
+        types: Object.freeze({
+            INFO: "info",
+            SUCCESS: "success",
+            WARNING: "warning",
+            ERROR: "error"
+        })
+    }
 }

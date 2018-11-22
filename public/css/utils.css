@@ -10,14 +10,21 @@
     --secondary-dark-color: #C17B00;
     --background-color: lightgrey;
     --surface-color: #FFFFFF;
-    --success-color: #DFF2BF;
-    --error-color: #FFD2D2;
+
     --on-primary-color: #FFFFFF;
     --on-secondary-color: #000000;
     --on-background-color: #000000;
     --on-surface-color: #000000;
-    --on-success-color: #4F8A10;
-    --on-error-color: #D8000C;
+
+    --info-color: #5BC0DE;
+    --success-color: #449D44;
+    --warning-color: #F0AD4E;
+    --error-color: #D9534F;
+
+    --on-info-color: #FFFFFF;
+    --on-success-color: #FFFFFF;
+    --on-warning-color: #FFFFFF;
+    --on-error-color: #FFFFFF;
 }
 
 * {
@@ -101,4 +108,24 @@ body {
 .separator>span:after {
     left: 100%;
     margin-left: 15px;
+}
+
+.info {
+    color: var(--on-info-color);
+    background-color: var(--info-color);
+}
+
+.success {
+    color: var(--on-success-color);
+    background-color: var(--success-color);
+}
+
+.warning {
+    color: var(--on-warning-color);
+    background-color: var(--warning-color);
+}
+
+.error {
+    color: var(--on-error-color);
+    background-color: var(--error-color);
 }

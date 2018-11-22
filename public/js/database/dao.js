@@ -60,9 +60,9 @@ class DAO {
                                 callback(null, new Entity[this.tableName](result[0]));
                             } else callback(null, null);
                         }
-                        this.pool.end();
                     });
                 }
+                this.pool.end();
             });
         }
     }
@@ -93,9 +93,9 @@ class DAO {
                     } else {
                         callback(null, result.map(element => new Entity[this.tableName](element)));
                     }
-                    this.pool.end();
                 });
             }
+            this.pool.end();
         });
     }
 
@@ -135,9 +135,9 @@ class DAO {
                         }
                         callback(null, resultEntity);
                     }
-                    this.pool.end();
                 });
             }
+            this.pool.end();
         });
     }
 
@@ -172,9 +172,9 @@ class DAO {
                         } else {
                             callback(null, null);
                         }
-                        this.pool.end();
                     });
             }
+            this.pool.end();
         });
     }
 
@@ -205,7 +205,40 @@ class DAO {
                     } else {
                         callback(null, null);
                     }
-                    this.pool.end();
+                });
+            }
+            this.pool.end();
+        });
+    }
+
+    findBy(dict, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.locale].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let sql = "select * from " + this.tableName + " where " +
+                    Object.keys(dict).map(element => element + " = ?").join(" and ") +
+                    "limit 1";
+                connection.query(sql, Object.keys(dict).map(element => dict[element]), (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.locale].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, result.length > 0 ? new Entity[this.tableName](result[0]) : null);
+                    }
                 });
             }
         });
@@ -218,6 +251,12 @@ class User extends DAO {
             config.dbTables.user.name,
             config.dbTables.user.primaryKey,
             config.dbTables.user.tableColumns);
+    }
+
+    findByEmail(email, callback) {
+        this.findBy({
+            email: email
+        }, callback);
     }
 }
 

@@ -1,0 +1,19 @@
+<footer>
+    <link rel="stylesheet" href="../css/footer.css" />
+    <div class="footer">
+        <ul class="messages">
+            <% if (typeof messages != 'undefined') { %>
+            <% messages.forEach((element) => { %>
+            <li>
+                <input type="checkbox" class="button">
+                <div class=<%=element.type %>>
+                    <p>
+                        <%= element.text %>
+                    </p>
+                </div>
+            </li>
+            <% }); %>
+            <% } %>
+        </ul>
+    </div>
+</footer>
