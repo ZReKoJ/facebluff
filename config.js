@@ -40,5 +40,6 @@ module.exports = {
                   primaryKey: ["id"],
                   tableColumns: ["id", "userid", "questionid", "answer", "correct"]
             }
-      }
+      },
+      exceptRoutes: ["/login", "/register"]
 }

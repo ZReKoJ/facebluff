@@ -105,7 +105,7 @@ app.listen(config.port, (err) => {
  * @param {*} next 
  */
 function checkUserLogged(request, response, next) {
-    if (request.url != "/login" && request.session.currentUser == undefined) {
+    if (config.exceptRoutes.indexOf(request.url) == -1 && request.session.currentUser == undefined) {
         response.redirect("/login");
     } else {
         next();

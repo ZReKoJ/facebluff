@@ -89,6 +89,11 @@ router.post("/login", multerFactory.none(), (request, response) => {
     });
 });
 
+router.post("/register", multerFactory.single(), (request, response) => {
+    console.log(request.body);
+    response.render("login-register");
+});
+
 router.get("/logout", (request, response) => {
     response.cookie("messages", [{
         type: Messages.types.SUCCESS,
