@@ -7,6 +7,9 @@ const {
 } = require("../utils");
 const Entity = require("./entity");
 
+/**
+ * Generic DAO class where any other extends from
+ */
 class DAO {
     constructor(_pool, _tableName, _primaryKey, _tableColumns) {
         this.pool = _pool;
@@ -67,6 +70,10 @@ class DAO {
         }
     }
 
+    /**
+     * select all
+     * @param {*} callback: if nothing is found then pass an array with 0 elements
+     */
     selectAll(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -99,6 +106,11 @@ class DAO {
         });
     }
 
+    /**
+     * insert one entity to table in database
+     * @param {*} entity: a dict containing the entity
+     * @param {*} callback: if success returns the entity with its id
+     */
     insert(entity, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -141,6 +153,12 @@ class DAO {
         });
     }
 
+    /**
+     * update one entity
+     * @param {*} check: a dictionary containing the where parameters
+     * @param {*} change: a dictionary containing the set parameters
+     * @param {*} callback: returns true if success else false
+     */
     update(check, change, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -170,7 +188,7 @@ class DAO {
                                         }
                                     )));
                         } else {
-                            callback(null, null);
+                            callback(null, result.affectedRows > 0 ? true : false);
                         }
                     });
             }
@@ -178,6 +196,11 @@ class DAO {
         });
     }
 
+    /**
+     * delete one entity
+     * @param {*} entity: a dictionary containing the data of the entity
+     * @param {*} callback: returns true if success else false
+     */
     delete(entity, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -203,7 +226,7 @@ class DAO {
                                     }
                                 )));
                     } else {
-                        callback(null, null);
+                        callback(null, result.affectedRows > 0 ? true : false);
                     }
                 });
             }
@@ -211,6 +234,11 @@ class DAO {
         });
     }
 
+    /**
+     * find one element by any tag passed by dict
+     * @param {*} dict: a dictionary containing where parameters
+     * @param {*} callback: returns the entity found, if not found null
+     */
     findBy(dict, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -253,6 +281,11 @@ class User extends DAO {
             config.dbTables.user.tableColumns);
     }
 
+    /**
+     * finds one element by email
+     * @param {*} email: email passed
+     * @param {*} callback: returns the entity found, if not found null
+     */
     findByEmail(email, callback) {
         this.findBy({
             email: email

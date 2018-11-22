@@ -23,12 +23,12 @@ module.exports = {
             user: {
                   name: "user",
                   primaryKey: ["id"],
-                  tableColumns: ["id", "name", "surname", "email", "password", "gender", "img", "description", "score"]
+                  tableColumns: ["id", "username", "email", "password", "birthdate", "gender", "img", "description", "score"]
             },
             friend: {
                   name: "friend",
                   primaryKey: [],
-                  tableColumns: ["friendid", "otherfriendid"]
+                  tableColumns: ["friendid", "otherfriendid", "request"]
             },
             question: {
                   name: "question",

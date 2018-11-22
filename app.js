@@ -23,13 +23,10 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const mysqlSession = require("express-mysql-session");
 
-const mysql = require("mysql");
-
 // constants
 const app = express();
 const MySQLStore = mysqlSession(session);
 const sessionStore = new MySQLStore(config.mysqlConfig);
-const pool = mysql.createPool(config.mysqlConfig);
 
 // express configs
 app.set("view engine", "ejs"); // for ejs files
@@ -78,6 +75,7 @@ app.use((request, response, next) => {
 
 app.use(error);
 
+// Initialize server
 app.listen(config.port, (err) => {
     if (err) {
         console.log(
@@ -99,6 +97,13 @@ app.listen(config.port, (err) => {
 });
 
 // middleware functions
+
+/**
+ * Checks if the user is logged, if not redirects to login page
+ * @param {*} request 
+ * @param {*} response 
+ * @param {*} next 
+ */
 function checkUserLogged(request, response, next) {
     if (request.url != "/login" && request.session.currentUser == undefined) {
         response.redirect("/login");
@@ -107,9 +112,19 @@ function checkUserLogged(request, response, next) {
     }
 }
 
+/**
+ * Error pages
+ * @param {*} error 
+ * @param {*} request 
+ * @param {*} response 
+ * @param {*} next 
+ */
 function error(error, request, response, next) {
+    // Searching all ejs
     fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
+        // Filters by all ejs files starting with names game
         let errorFiles = files.filter(element => /game.+\.ejs/.test(element));
+        // Choose one random file
         let random = Math.floor(Math.random() * errorFiles.length);
         response.render("error", {
             url: request.url,

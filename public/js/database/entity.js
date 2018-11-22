@@ -2,6 +2,9 @@
 
 const config = require("../../../config");
 
+/**
+ * Generic Entity class where any other entities extends from
+ */
 class Entity {
     constructor(_params, _dict) {
         this.params = _params;

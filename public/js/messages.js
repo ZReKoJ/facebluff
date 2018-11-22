@@ -16,7 +16,17 @@ module.exports = {
         goodBye: "Hasta la próxima, {name}"
     },
     enUS : {
+        databaseConnectionError: "Failed to connect to the database: \n{errorMessage}",
+        sqlQueryError: "Could not execute '{sql}': \n{errorMessage}",
+        parametersError: "Error at introducing the parameters",
+        serverInitiateError: "Failed at initialize server: \n{errorMessage}",
+        serverListening: "Server listen at port {port}",
         pageNotFound: "This is not the page you are looking for",
-        stayAndPlay: "stay here and play for a while"
+        stayAndPlay: "stay here and play for a while",
+        failedAuthentication: "Authentication failed",
+        conectionError: "We have conection problems",
+        sorry: "Sorry for bothering you",
+        welcome: "Welcome, {name}",
+        goodBye: "See you next time, {name}"
     }
 }

@@ -14,14 +14,14 @@ let answerDAO = new DAO.answer(pool);
 
 /*
 userDAO.insert(new Entity.user({
-    name: "Luffy",
-    surname: "D. Monkey",
-    email: "op@gmail.com",
+    name: "Zihao",
+    surname: "Hong",
+    email: "zhong@ucm.es",
     password: "op",
     gender: "M",
     img: "luffy.png",
-    description: "Future pirate king",
-    score: 1
+    description: "one piece",
+    score: 100
 }), (err, result) => {
     if (err) {
         console.log(err);
@@ -62,7 +62,7 @@ userDAO.selectAll((err, result) => {
 });
 /**/
 /*
-userDAO.delete({id:1}, (err, result) => {
+userDAO.delete({id:2}, (err, result) => {
     if (err) {
         console.log(err);
     }

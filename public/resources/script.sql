@@ -5,11 +5,11 @@ drop table if exists `user`;
 
 create table `user` (
     `id` int not null auto_increment,
-    `name` varchar(255),
-    `surname` varchar(255),
+    `username` varchar(255),
     `email` varchar(255),
     `password` varchar(255),
-    `gender` enum('M', 'F'),
+    `birthdate` date,
+    `gender` enum('M', 'F', 'O'),
     `img` varchar(255),
     `description` text,
     `score` int,
@@ -20,6 +20,7 @@ create table `user` (
 create table `friend` (
     `friendid` int not null,
     `otherfriendid` int not null,
+    `request` tinyint(1) not null,
     foreign key (`friendid`) references user(`id`) on delete cascade on update cascade,
     foreign key (`otherfriendid`) references user(`id`) on delete cascade on update cascade,
     unique key (`friendid`, `otherfriendid`)
