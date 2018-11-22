@@ -9,7 +9,7 @@ create table `user` (
     `email` varchar(255),
     `password` varchar(255),
     `birthdate` date,
-    `gender` enum('M', 'F', 'O'),
+    `gender` enum('male', 'female', 'other'),
     `img` varchar(255),
     `description` text,
     `score` int,

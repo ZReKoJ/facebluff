@@ -73,7 +73,7 @@ router.post("/login", multerFactory.none(), (request, response) => {
                 response.cookie("messages", [{
                     type: Messages.types.SUCCESS,
                     text: Strings.transform(messages[config.locale].welcome, {
-                        name: result.name
+                        name: result.username
                     })
                 }]);
                 response.redirect("/home");
@@ -90,15 +90,79 @@ router.post("/login", multerFactory.none(), (request, response) => {
 });
 
 router.post("/register", multerFactory.single(), (request, response) => {
-    console.log(request.body);
-    response.render("login-register");
+    if (request.body.password[0] == request.body.password[1]) {
+        request.body.password = request.body.password[0];
+        let daoUser = new DAO.user(pool);
+        daoUser.findByEmail(request.body.email, (err, result) => {
+            if (err) {
+                response.render("login-register", {
+                    messages: [{
+                            type: Messages.types.ERROR,
+                            text: Strings.transform(messages[config.locale].conectionError)
+                        },
+                        {
+                            type: Messages.types.INFO,
+                            text: Strings.transform(messages[config.locale].sorry)
+                        }
+                    ]
+                });
+            } else {
+                if (result != null) {
+                    response.render("login-register", {
+                        messages: [{
+                            type: Messages.types.ERROR,
+                            text: Strings.transform(messages[config.locale].emailExists)
+                        }]
+                    });
+                } else {
+                    daoUser.insert(new Entity.user({
+                        username: request.body.username,
+                        email: request.body.email,
+                        password: request.body.password,
+                        birthdate: Date.parse(request.body.birthdate),
+                        gender: request.body.gender
+                    }), (err, result) => {
+                        if (err) {
+                            response.render("login-register", {
+                                messages: [{
+                                        type: Messages.types.ERROR,
+                                        text: Strings.transform(messages[config.locale].conectionError)
+                                    },
+                                    {
+                                        type: Messages.types.INFO,
+                                        text: Strings.transform(messages[config.locale].sorry)
+                                    }
+                                ]
+                            });
+                        } else {
+                            request.session.currentUser = result;
+                            response.cookie("messages", [{
+                                type: Messages.types.SUCCESS,
+                                text: Strings.transform(messages[config.locale].welcome, {
+                                    name: result.username
+                                })
+                            }]);
+                            response.redirect("/home");
+                        }
+                    });
+                }
+            }
+        });
+    } else {
+        response.render("login-register", {
+            messages: [{
+                type: Messages.types.ERROR,
+                text: Strings.transform(messages[config.locale].passwordNotSame)
+            }]
+        });
+    }
 });
 
 router.get("/logout", (request, response) => {
     response.cookie("messages", [{
         type: Messages.types.SUCCESS,
         text: Strings.transform(messages[config.locale].goodBye, {
-            name: request.session.currentUser.name
+            name: request.session.currentUser.username
         })
     }]);
     // set currentuser to undefine, logout

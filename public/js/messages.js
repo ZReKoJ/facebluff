@@ -13,7 +13,9 @@ module.exports = {
         conectionError: "Tenemos problemas de conexión",
         sorry: "Disculpe por las molestias",
         welcome: "Bienvenido, {name}",
-        goodBye: "Hasta la próxima, {name}"
+        goodBye: "Hasta la próxima, {name}",
+        passwordNotSame: "Las contraseñas no son iguales",
+        emailExists: "El email existe ya"
     },
     enUS : {
         databaseConnectionError: "Failed to connect to the database: \n{errorMessage}",
@@ -27,6 +29,8 @@ module.exports = {
         conectionError: "We have conection problems",
         sorry: "Sorry for bothering you",
         welcome: "Welcome, {name}",
-        goodBye: "See you next time, {name}"
+        goodBye: "See you next time, {name}",
+        passwordNotSame: "Passwords not the same",
+        emailExists: "The email does already exist"
     }
 }
