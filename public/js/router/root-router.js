@@ -49,7 +49,6 @@ router.get("/login", (request, response) => {
 router.post("/login", multerFactory.none(), (request, response) => {
     new DAO.user(pool).findByEmail(request.body.email, (err, result) => {
         if (err) {
-            console.log("error");
             response.cookie("messages", [{
                     type: Messages.types.ERROR,
                     text: Strings.transform(messages[config.locale].conectionError)
