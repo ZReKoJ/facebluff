@@ -11,8 +11,14 @@
 
 <body>
     <div class="container">
-        <input type='radio' value="login" name="login-register" id='login-button' class="button">
-        <input type='radio' value="register" name="login-register" id='register-button' class="button">
+        <input type='radio' value="login" name="login-register" id='login-button' class="button" 
+        <% if (typeof login != 'undefined' && login) { %>
+            checked
+        <% } %>>
+        <input type='radio' value="register" name="login-register" id='register-button' class="button" 
+        <% if (typeof register != 'undefined' && register) { %>
+            checked
+        <% } %>>
         <div id="register-zone">
             <h2 class="have-account">Don´t have an account?</h2>
             <p class="phrase">To live a creative life, we must lose our fear of being wrong</p>
@@ -65,7 +71,7 @@
                 <input type="password" name="password" placeholder="Repeat your password" required>
                 <input type="date" name="birthdate" value="2000-01-01" placeholder="Birth date" required>
                 <div class="gender">
-                    <input type="radio" name="gender" value="male" > Male<br>
+                    <input type="radio" name="gender" value="male"> Male<br>
                     <input type="radio" name="gender" value="female"> Female<br>
                     <input type="radio" name="gender" value="other" checked> Other
                 </div>

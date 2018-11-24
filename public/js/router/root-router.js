@@ -49,6 +49,7 @@ router.get("/login", (request, response) => {
     let messages = request.cookies.messages;
     response.clearCookie("messages");
     response.render("login-register", {
+        login: true,
         messages: messages
     });
 });
@@ -71,6 +72,7 @@ router.post("/login", multerFactory.none(), (request, response) => {
                 response.redirect("/home");
             } else {
                 response.render("login-register", {
+                    login: true,
                     messages: [{
                         type: Messages.types.ERROR,
                         text: Strings.transform(messages[config.locale].failedAuthentication)
@@ -91,6 +93,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
             } else {
                 if (result != null) {
                     response.render("login-register", {
+                        register: true,
                         messages: [{
                             type: Messages.types.ERROR,
                             text: Strings.transform(messages[config.locale].emailExists)
@@ -164,6 +167,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
         });
     } else {
         response.render("login-register", {
+            register: true,
             messages: [{
                 type: Messages.types.ERROR,
                 text: Strings.transform(messages[config.locale].passwordNotSame)
