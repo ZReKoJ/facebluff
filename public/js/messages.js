@@ -10,12 +10,11 @@ module.exports = {
         pageNotFound: "Esta no es la página que estás buscando",
         stayAndPlay: "quédate y juega un poco",
         failedAuthentication: "Fallo en la autenticación",
-        conectionError: "Tenemos problemas de conexión",
         sorry: "Disculpe por las molestias",
         welcome: "Bienvenido, {name}",
         goodBye: "Hasta la próxima, {name}",
         passwordNotSame: "Las contraseñas no son iguales",
-        emailExists: "El email existe ya"
+        emailExists: "El email existe ya",
     },
     enUS : {
         databaseConnectionError: "Failed to connect to the database: \n{errorMessage}",
@@ -26,11 +25,10 @@ module.exports = {
         pageNotFound: "This is not the page you are looking for",
         stayAndPlay: "stay here and play for a while",
         failedAuthentication: "Authentication failed",
-        conectionError: "We have conection problems",
         sorry: "Sorry for bothering you",
         welcome: "Welcome, {name}",
         goodBye: "See you next time, {name}",
         passwordNotSame: "Passwords not the same",
-        emailExists: "The email does already exist"
+        emailExists: "The email does already exist",
     }
 }

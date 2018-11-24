@@ -1,5 +1,6 @@
 "use strict"
 
+// private libs
 const config = require("../../../config");
 
 /**
@@ -8,6 +9,10 @@ const config = require("../../../config");
 class Entity {
     constructor(_params, _dict) {
         this.params = _params;
+        this.set(_dict);
+    }
+
+    set(_dict) {
         this.params.forEach((key) => {
             if (_dict.hasOwnProperty(key)) {
                 this[key] = _dict[key];

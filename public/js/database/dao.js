@@ -1,5 +1,6 @@
 "use strict"
 
+// private libs
 const config = require("../../../config");
 const messages = require("../messages");
 const {
@@ -65,7 +66,6 @@ class DAO {
                         }
                     });
                 }
-                this.pool.end();
             });
         }
     }
@@ -102,7 +102,6 @@ class DAO {
                     }
                 });
             }
-            this.pool.end();
         });
     }
 
@@ -149,7 +148,6 @@ class DAO {
                     }
                 });
             }
-            this.pool.end();
         });
     }
 
@@ -192,7 +190,6 @@ class DAO {
                         }
                     });
             }
-            this.pool.end();
         });
     }
 
@@ -230,7 +227,6 @@ class DAO {
                     }
                 });
             }
-            this.pool.end();
         });
     }
 

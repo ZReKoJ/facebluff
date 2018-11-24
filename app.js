@@ -56,6 +56,7 @@ app.use(checkUserLogged);
 // routers
 app.use("/", require("./public/js/router/root-router").rootRouter);
 app.use("/question", require("./public/js/router/question-router").questionRouter);
+app.use("/img", require("./public/js/router/img-router").imgRouter);
 
 app.get("/profile", (request, response) => {
     response.status(200);
@@ -108,6 +109,7 @@ function checkUserLogged(request, response, next) {
     if (config.exceptRoutes.indexOf(request.url) == -1 && request.session.currentUser == undefined) {
         response.redirect("/login");
     } else {
+        response.locals.user = request.session.currentUser;
         next();
     }
 }

@@ -5,14 +5,14 @@ drop table if exists `user`;
 
 create table `user` (
     `id` int not null auto_increment,
-    `username` varchar(255),
-    `email` varchar(255),
-    `password` varchar(255),
-    `birthdate` date,
-    `gender` enum('male', 'female', 'other'),
+    `username` varchar(255) not null,
+    `email` varchar(255) not null,
+    `password` varchar(255) not null,
+    `birthdate` date not null,
+    `gender` enum('male', 'female', 'other') not null,
     `img` varchar(255),
     `description` text,
-    `score` int,
+    `score` int default 0,
     primary key (`id`),
     unique key (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1; 

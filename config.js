@@ -11,7 +11,8 @@ module.exports = {
             html: ["public", "html"],
             js: ["public", "js"],
             images: ["public", "resources", "img"],
-            music: ["public", "resources", "music"]
+            music: ["public", "resources", "music"],
+            user: ["public", "resources", "user"]
       },
       mysqlConfig : {
             host: "localhost",

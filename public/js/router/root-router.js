@@ -1,21 +1,23 @@
 'use strict'
 
-const fs = require("fs");
-const express = require("express");
-const router = express.Router();
-const path = require("path");
+// private libs
 const config = require("../../../config");
-const mysql = require("mysql");
-const multer = require("multer")
+const messages = require("../messages");
+const DAO = require("../database/dao");
+const Entity = require("../database/entity");
 const {
     Strings,
     Messages
 } = require("../utils");
-const messages = require("../messages");
 
-const DAO = require("../database/dao");
-const Entity = require("../database/entity");
+// public libs
+const fs = require("fs");
+const express = require("express");
+const path = require("path");
+const mysql = require("mysql");
+const multer = require("multer")
 
+const router = express.Router();
 const multerFactory = multer();
 const pool = mysql.createPool(config.mysqlConfig);
 
@@ -55,17 +57,7 @@ router.post("/login", multerFactory.none(), (request, response) => {
     // finds by email if exists
     new DAO.user(pool).findByEmail(request.body.email, (err, result) => {
         if (err) {
-            response.render("login-register", {
-                messages: [{
-                        type: Messages.types.ERROR,
-                        text: Strings.transform(messages[config.locale].conectionError)
-                    },
-                    {
-                        type: Messages.types.INFO,
-                        text: Strings.transform(messages[config.locale].sorry)
-                    }
-                ]
-            });
+            throw err;
         } else {
             // if it does exits and the password is correct
             if (result != null && request.body.password == result.password) {
@@ -89,23 +81,13 @@ router.post("/login", multerFactory.none(), (request, response) => {
     });
 });
 
-router.post("/register", multerFactory.single(), (request, response) => {
+router.post("/register", multerFactory.single("avatar"), (request, response) => {
     if (request.body.password[0] == request.body.password[1]) {
         request.body.password = request.body.password[0];
         let daoUser = new DAO.user(pool);
         daoUser.findByEmail(request.body.email, (err, result) => {
             if (err) {
-                response.render("login-register", {
-                    messages: [{
-                            type: Messages.types.ERROR,
-                            text: Strings.transform(messages[config.locale].conectionError)
-                        },
-                        {
-                            type: Messages.types.INFO,
-                            text: Strings.transform(messages[config.locale].sorry)
-                        }
-                    ]
-                });
+                throw err;
             } else {
                 if (result != null) {
                     response.render("login-register", {
@@ -123,26 +105,58 @@ router.post("/register", multerFactory.single(), (request, response) => {
                         gender: request.body.gender
                     }), (err, result) => {
                         if (err) {
-                            response.render("login-register", {
-                                messages: [{
-                                        type: Messages.types.ERROR,
-                                        text: Strings.transform(messages[config.locale].conectionError)
-                                    },
-                                    {
-                                        type: Messages.types.INFO,
-                                        text: Strings.transform(messages[config.locale].sorry)
-                                    }
-                                ]
-                            });
+                            throw err;
                         } else {
-                            request.session.currentUser = result;
-                            response.cookie("messages", [{
-                                type: Messages.types.SUCCESS,
-                                text: Strings.transform(messages[config.locale].welcome, {
-                                    name: result.username
-                                })
-                            }]);
-                            response.redirect("/home");
+                            let dir = [config.root].concat(config.files.user);
+                            dir.push(String(result.id));
+                            fs.mkdir(path.join.apply(this, dir), {
+                                recursive: true
+                            }, (err) => {
+                                if (err) {
+                                    throw err;
+                                } else {
+                                    request.session.currentUser = result;
+                                    if (request.file != undefined) {
+                                        dir.push("avatar");
+                                        console.log(dir)
+                                        dir = path.join.apply(this, dir);
+                                        fs.writeFile(dir, request.file.buffer, "binary", (err) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                daoUser.update({
+                                                    id: result.id
+                                                }, {
+                                                    img: dir
+                                                }, (err, result) => {
+                                                    if (err) {
+                                                        throw err;
+                                                    } else {
+                                                        request.session.currentUser.set({
+                                                            img: dir
+                                                        });
+                                                        response.cookie("messages", [{
+                                                            type: Messages.types.SUCCESS,
+                                                            text: Strings.transform(messages[config.locale].welcome, {
+                                                                name: result.username
+                                                            })
+                                                        }]);
+                                                        response.redirect("/home");
+                                                    }
+                                                })
+                                            }
+                                        });
+                                    } else {
+                                        response.cookie("messages", [{
+                                            type: Messages.types.SUCCESS,
+                                            text: Strings.transform(messages[config.locale].welcome, {
+                                                name: result.username
+                                            })
+                                        }]);
+                                        response.redirect("/home");
+                                    }
+                                }
+                            });
                         }
                     });
                 }

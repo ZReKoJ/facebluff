@@ -23,14 +23,14 @@
         </div>
         <div class="user">
             <label>
-                <img class="round" src="../resources/img/avatar.png"></img>
-                <span>50000</span>
+                <img class="round" src="/img/avatar"></img>
+                <span><%= user.score ? user.score : 0 %></span>
             </label>
             <div class="mini-profile">
                 <div class="profile-header">
-                    <img class="round" src="../resources/img/avatar.png"></img>
-                    <h2>Diego Acuna</h2>
-                    <p>Descripcion diego aprendiendo css</p>
+                    <img class="round" src="/img/avatar"></img>
+                    <h2><%= user.username %></h2>
+                    <p><%= user.description %></p>
                 </div>
                 <div class="profile-footer">
                     <a href="/profile" class="button">Perfil</a>
