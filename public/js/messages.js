@@ -15,6 +15,7 @@ module.exports = {
         goodBye: "Hasta la próxima, {name}",
         passwordNotSame: "Las contraseñas no son iguales",
         emailExists: "El email existe ya",
+        insertQuestionCorrect: "La inserción de la pregunta ha sido correcta con {answers} respuestas",
     },
     enUS : {
         databaseConnectionError: "Failed to connect to the database: \n{errorMessage}",

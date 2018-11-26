@@ -7,6 +7,7 @@ const {
     Strings,
     Messages
 } = require("../utils");
+
 // public libs
 const express = require("express");
 const router = express.Router();
@@ -50,10 +51,16 @@ router.post("/create", (request, response) => {
                 answer: request.body['correct-answer'],
                 correct: true
             }));
-            daoAnswer.insertMany(data, (err) => {
+            daoAnswer.insertMany(data, (err, affectedRows) => {
                 if (err) {
                     throw err;
                 } else {
+                    response.cookie("messages", [{
+                        type: Messages.types.SUCCESS,
+                        text: Strings.transform(messages[config.locale].insertQuestionCorrect, {
+                            answers: affectedRows
+                        })
+                    }]);
                     response.redirect("/question/create");
                 }
             });

@@ -184,8 +184,7 @@ class DAO {
                                     }
                                 )));
                     } else {
-                        console.log(result);
-                        callback(null);
+                        callback(null, result.affectedRows);
                     }
                 });
 
