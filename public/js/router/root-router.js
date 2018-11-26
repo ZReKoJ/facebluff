@@ -29,12 +29,8 @@ router.get("/", (request, response) => {
         let homeFiles = files.filter(element => /home.+\.ejs/.test(element));
         // Choose one randomly
         let random = Math.floor(Math.random() * homeFiles.length);
-        // clearing messages cookie
-        let messages = request.cookies.messages;
-        response.clearCookie("messages");
         response.render("home", {
-            person: homeFiles[random],
-            messages: messages
+            person: homeFiles[random]
         });
     });
 });
@@ -45,12 +41,8 @@ router.get("/home", (request, response) => {
 
 router.get("/login", (request, response) => {
     response.status(200);
-    // Clearing messages cookies
-    let messages = request.cookies.messages;
-    response.clearCookie("messages");
     response.render("login-register", {
-        login: true,
-        messages: messages
+        login: true
     });
 });
 

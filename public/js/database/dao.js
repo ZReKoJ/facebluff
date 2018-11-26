@@ -169,9 +169,10 @@ class DAO {
                 let array_questionmarks = new Array(arrayEntity.length).fill("(" + questionmarks.join(delimiter) + ")");
                 sql = sql + array_questionmarks.join(delimiter);
                 let attr = arrayEntity.map((element) => Object.keys(element).filter((keys) => this.tableColumns.indexOf(keys) != -1).map((keys) => element[keys]));
-                attr = attr.flat();
+                
                 console.log(attr);
                 console.log(sql);
+                attr = attr.flat();
                 connection.query(sql, attr, (err, result) => {
                     connection.release();
                     if (err) {

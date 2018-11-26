@@ -50,6 +50,8 @@ app.use(session({
 }));
 // express static
 app.use(express.static(path.join.apply(this, [config.root].concat(config.files.baseFile))));
+// show messages
+app.use(showMessages)
 // check if user is logged
 app.use(checkUserLogged);
 
@@ -95,6 +97,12 @@ app.listen(config.port, (err) => {
 });
 
 // middleware functions
+
+function showMessages(request, response, next) {
+    response.locals.messages = request.cookies.messages;
+    response.clearCookie("messages");
+    next();
+}
 
 /**
  * Checks if the user is logged, if not redirects to login page

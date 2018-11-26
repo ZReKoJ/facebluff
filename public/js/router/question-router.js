@@ -1,6 +1,7 @@
 'use strict'
 //private libs
 const config = require("../../../config");
+const messages = require("../messages");
 const DAO = require("../database/dao");
 const Entity = require("../database/entity");
 const {
@@ -57,9 +58,7 @@ router.post("/create", (request, response) => {
                 } else {
                     response.cookie("messages", [{
                         type: Messages.types.SUCCESS,
-                        text: Strings.transform(messages[config.locale].insertQuestionCorrect, {
-                            answers: affectedRows
-                        })
+                        text: Strings.transform(messages[config.locale].insertQuestionCorrect)
                     }]);
                     response.redirect("/question/create");
                 }
