@@ -3,5 +3,5 @@ node_modules/
 package-lock.json
 # visual docs
 .vscode/
-# instructions
-views.txt
+# user 
+public/resources/user/
