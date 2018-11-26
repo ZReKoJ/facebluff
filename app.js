@@ -57,11 +57,8 @@ app.use(checkUserLogged);
 app.use("/", require("./public/js/router/root-router").rootRouter);
 app.use("/question", require("./public/js/router/question-router").questionRouter);
 app.use("/img", require("./public/js/router/img-router").imgRouter);
+app.use("/profile", require("./public/js/router/profile-router").profileRouter);
 
-app.get("/profile", (request, response) => {
-    response.status(200);
-    response.render("profile");
-});
 
 app.get("/friend", (request, response) => {
     response.status(200);

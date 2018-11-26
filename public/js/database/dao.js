@@ -151,6 +151,28 @@ class DAO {
         });
     }
 
+    insertMany(arrayEntity, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.locale].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let delimiter = ',';
+                let sql = "insert into " + this.tableName + " (" + this.tableColumns.join(delimiter) +") values ";
+                let questionmarks = new Array(this.tableColumns.length).fill('?');
+                let array_questionmarks = new Array(arrayEntity.length).fill("(" + questionmarks.join(delimiter) + ")");
+                sql = sql + array_questionmarks.join(delimiter);
+                console.log(sql);
+                callback(null);
+            }
+        });
+    }
+
     /**
      * update one entity
      * @param {*} check: a dictionary containing the where parameters
@@ -267,6 +289,8 @@ class DAO {
             }
         });
     }
+
+
 }
 
 class User extends DAO {
@@ -292,27 +316,27 @@ class User extends DAO {
 class Friend extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.dbTables.user.name,
-            config.dbTables.user.primaryKey,
-            config.dbTables.user.tableColumns);
+            config.dbTables.friend.name,
+            config.dbTables.friend.primaryKey,
+            config.dbTables.friend.tableColumns);
     }
 }
 
 class Question extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.dbTables.user.name,
-            config.dbTables.user.primaryKey,
-            config.dbTables.user.tableColumns);
+            config.dbTables.question.name,
+            config.dbTables.question.primaryKey,
+            config.dbTables.question.tableColumns);
     }
 }
 
 class Answer extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.dbTables.user.name,
-            config.dbTables.user.primaryKey,
-            config.dbTables.user.tableColumns);
+            config.dbTable.answer.name,
+            config.dbTables.answer.primaryKey,
+            config.dbTables.answer.tableColumns);
     }
 }
 

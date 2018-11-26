@@ -1,3 +1,44 @@
+@keyframes fade-in {
+	0% {
+		opacity:0;
+	}
+	15% {
+		opacity:0.5;
+	}
+
+	30% {
+		opacity: 0.75;
+	}
+
+	70% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+
+	30% {
+		opacity: 0.75;
+	}
+
+	100% {
+		opacity: 0;
+		transform: scale(0);
+	}
+
+}
+
+
+
+
 .main {
 	position: fixed;
 	top: 50px;
@@ -37,7 +78,7 @@
 	bottom: 30%;
 }
 
-.profile>.profile-header>.info {
+.profile>.profile-header>.info-user {
 	display: flex;
 	text-transform: uppercase;
 	position: absolute;
@@ -75,110 +116,103 @@
 	align-items: center;
 }
 
-.profile>.profile-footer>.followers-panel{
+.profile>.profile-footer>.info-panel {
 	display: flex;
 	flex-direction: column;
-	left: 120%;
-	bottom:0;
-    position: absolute;
-    width: 80%;
+	position: absolute;
+	width: 80%;
 	background-color: var(--primary-light-color);
 	color: var(--on-primary-color);
-    height: 300%;
+	height: 300%;
 	align-items: center;
 	justify-content: center;
 	border-radius: 5px;
+	animation-name: fade-out;
+    animation-delay: 0s;
+    animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 }
-.profile>.profile-footer>.followers-panel > h1 {
+
+.profile>.profile-footer>.info-panel>h1 {
 	text-transform: uppercase;
 	width: 80%;
 	text-align: center;
 	border-bottom: solid 1px var(--on-primary-color);
 }
 
-.profile>.profile-footer>.friends-panel{
-	display: flex;
-	flex-direction: column;
+.profile>.profile-footer>.info-panel#followers-panel {
+	left: 120%;
+	bottom: 0;
+}
+
+.profile>.profile-footer>.info-panel#questions-panel {
+	right: 120%;
+	top: -566.66%;
+}
+
+.profile>.profile-footer>.info-panel#logout-panel {
+	left: 120%;
+	top: -566.66%;
+}
+
+.profile>.profile-footer>.info-panel#friends-panel {
 	right: 120%;
 	bottom: 0;
-    position: absolute;
-    width: 80%;
-	background-color: var(--primary-light-color);
-	color: var(--on-primary-color);
-    height: 300%;
-	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-}
-.profile>.profile-footer>.friends-panel > h1 {
-	text-transform: uppercase;
-	width: 80%;
-	text-align: center;
-	border-bottom: solid 1px var(--on-primary-color);
-}
-.profile>.profile-footer>.questions-panel{
-	display: flex;
-	flex-direction: column;
-	right: 120%;
-	top: -566.66%;
-    position: absolute;
-    width: 80%;
-	background-color: var(--primary-light-color);
-	color: var(--on-primary-color);
-    height: 300%;
-	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-}
-.profile>.profile-footer>.questions-panel > h1 {
-	text-transform: uppercase;
-	width: 80%;
-	text-align: center;
-	border-bottom: solid 1px var(--on-primary-color);
-}
-.profile>.profile-footer>.logout-panel{
-	display: flex;
-	flex-direction: column;
-	left: 120%;
-	top: -566.66%;
-    position: absolute;
-    width: 80%;
-	background-color: var(--primary-light-color);
-	color: var(--on-primary-color);
-    height: 300%;
-	align-items: center;
-	justify-content: center;
-	border-radius: 5px;
-}
-.profile>.profile-footer>.logout-panel > h1 {
-	text-transform: uppercase;
-	width: 80%;
-	text-align: center;
-	border-bottom: solid 1px var(--on-primary-color);
-}
-input[type="checkbox"]:not(:checked),
-input[type="checkbox"]:checked {
-	position: absolute;
-	left: -9999%;
 }
 
-input[type="checkbox"]+label {
+input[type="checkbox"]::before {
+	content: attr(value);
+}
+
+input[type="checkbox"] {
 	display: flex;
 	width: 25%;
 	height: 100%;
 	position: relative;
-	padding: 10px;
 	cursor: pointer;
 	color: black;
 	background-color: white;
-	margin-bottom: 10px;
 	text-transform: uppercase;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
 }
 
-input[type="checkbox"]:checked+label {
+input[type="checkbox"]:checked {
+	background-color: black;
 	color: white;
-	background-color: var(--primary-dark-color);
+	
+}
+
+input#check-friends[type="checkbox"]:checked~.info-panel#friends-panel {
+	display: flex;
+	animation-name: fade-in;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+input#check-followers[type="checkbox"]:checked~.info-panel#followers-panel {
+	display: flex;
+	animation-name: fade-in;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+input#check-questions[type="checkbox"]:checked~.info-panel#questions-panel {
+	display: flex;
+	animation-name: fade-in;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+input#check-logout[type="checkbox"]:checked~.info-panel#logout-panel {
+	display: flex;
+	animation-name: fade-in;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
 }

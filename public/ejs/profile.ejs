@@ -16,7 +16,7 @@
             <div class="profile">
                 <div class="profile-header">
                     <img src="../resources/img/avatar.png" class="round">
-                    <div class="info">
+                    <div class="info-user">
                         <h2><%= user.username %></h2>
                         <p><%= user.gender %></p>
                         <p><%= user.score %> points</p>
@@ -24,27 +24,22 @@
                     <a class="modify button round" href="modify-profile.html"> <img class="img-height-fill" src="../resources/icon/edit-icon.png"></a>
                 </div>
                 <div class="profile-footer">
-                    <input type="checkbox" id="check_1">
-                    <label for="check_1">friends</label>
-                    <input type="checkbox" id="check_2">
-                    <label for="check_2">questions</label>
-                    <input type="checkbox" id="check_3">
-                    <label for="check_3">followers</label>
-                    <input type="checkbox" id="check_4">
-                    <label for="check_4">logout</label>
-                    <div class="friends-panel">
+                    <input type="checkbox" id="check-friends" class="button" value="friends">
+                    <input type="checkbox" id="check-questions" class="button" value="questions">
+                    <input type="checkbox" id="check-followers" class="button" value="followers">
+                    <input type="checkbox" id="check-logout" class="button" value="logout">
+                    <div class="info-panel" id="friends-panel">
                         <h1 class="text-cut">friends</h1>
-                        <h3 class="text-cut">2000</h3>
                     </div>
-                    <div class="questions-panel">
+                    <div class="info-panel" id="questions-panel">
                         <h1 class="text-cut">questions</h1>
                         <h3 class="text-cut">10</h3>
                     </div>
-                    <div class="followers-panel">
+                    <div class="info-panel" id="followers-panel">
                         <h1 class="text-cut">followers</h1>
                         <h3 class="text-cut">500</h3>
                     </div>
-                    <div class="logout-panel">
+                    <div class="info-panel" id="logout-panel">
                         <h1 class="text-cut">logout</h1>
                     </div>
                 </div>
