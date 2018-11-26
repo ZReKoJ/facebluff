@@ -163,12 +163,32 @@ class DAO {
                         )));
             } else {
                 let delimiter = ',';
-                let sql = "insert into " + this.tableName + " (" + this.tableColumns.join(delimiter) +") values ";
-                let questionmarks = new Array(this.tableColumns.length).fill('?');
+                let columns = this.tableColumns.filter(element => element != 'id');
+                let sql = "insert into " + this.tableName + " (" + columns.join(delimiter) + ") values ";
+                let questionmarks = new Array(columns.length).fill('?');
                 let array_questionmarks = new Array(arrayEntity.length).fill("(" + questionmarks.join(delimiter) + ")");
                 sql = sql + array_questionmarks.join(delimiter);
+                let attr = arrayEntity.map((element) => Object.keys(element).filter((keys) => this.tableColumns.indexOf(keys) != -1).map((keys) => element[keys]));
+                attr = attr.flat();
+                console.log(attr);
                 console.log(sql);
-                callback(null);
+                connection.query(sql, attr, (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.locale].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        console.log(result);
+                        callback(null);
+                    }
+                });
+
             }
         });
     }
@@ -334,7 +354,7 @@ class Question extends DAO {
 class Answer extends DAO {
     constructor(_pool) {
         super(_pool,
-            config.dbTable.answer.name,
+            config.dbTables.answer.name,
             config.dbTables.answer.primaryKey,
             config.dbTables.answer.tableColumns);
     }

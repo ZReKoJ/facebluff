@@ -25,7 +25,6 @@ router.get("/create", (request, response) => {
 });
 
 router.post("/create", (request, response) => {
-    console.log(request.body);
     new DAO.question(pool).insert(new Entity.question({
         question: request.body.question,
         userid: request.session.currentUser.id
@@ -33,11 +32,29 @@ router.post("/create", (request, response) => {
         if (err) {
             throw err;
         } else {
-            new DAO.answer(pool).insertMany(request.body['wrong-answer'], (err) => {
+            let daoAnswer = new DAO.answer(pool);
+            request.body['wrong-answer'] = request.body['wrong-answer'].filter(element => element != '');
+            let data = [];
+            request.body['wrong-answer'].map(element => {
+                data.push(new Entity.answer({
+                    userid: request.session.currentUser.id,
+                    questionid: result.id,
+                    answer: element,
+                    correct: false
+                }));
+                return data;
+            });
+            data.push(new Entity.answer({
+                userid: request.session.currentUser.id,
+                questionid: result.id,
+                answer: request.body['correct-answer'],
+                correct: true
+            }));
+            daoAnswer.insertMany(data, (err) => {
                 if (err) {
                     throw err;
                 } else {
-                    console.log("sale bien");
+                    response.redirect("/question/create");
                 }
             });
         }
