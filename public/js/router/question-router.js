@@ -18,7 +18,19 @@ const pool = mysql.createPool(config.mysqlConfig);
 //route managers
 router.get("/", (request, response) => {
     response.status(200);
-    response.render("question");
+    console.log(request.session.currentUser.id);
+    new DAO.question(pool).selectAll({userid: request.session.currentUser.id}, (err, result) => {
+        if(err){
+            throw err;
+        }
+        else {
+            let questions = result.map(element => element.question);
+            response.render("question", {
+                questionTexts : questions
+            });
+        }
+    })
+    
 });
 
 router.get("/create", (request, response) => {

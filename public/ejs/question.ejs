@@ -19,21 +19,11 @@
                     <button><img src="../resources/icon/refresh-icon.png" class="img-height-fill"></button>
                 </div>
                 <div class="question-panel-footer">
+                    <%questionTexts.forEach(element => {%>
                     <a href="choose-question.html" class="question button">
-                        <h2>¿Cuál es la peor película de la historia?</h2>
+                        <h2><%=element%></h2>
                     </a>
-                    <a href="choose-question.html" class="question button">
-                        <h2>¿En qué escuela primaria estudiaste?</h2>
-                    </a>
-                    <a href="choose-question.html" class="question button">
-                        <h2>¿Nintendo Switch, PS4, o Xbox One?</h2>
-                    </a>
-                    <a href="choose-question.html" class="question button">
-                        <h2>¿Cuál es tu plato favorito?</h2>
-                    </a>
-                    <a href="choose-question.html" class="question button">
-                        <h2>¿Cuál es el personaje más irritante de Juego de Tronos?</h2>
-                    </a>
+                    <%});%>
                     <a href="/question/create" class="new-question button">
                         <img src="../resources/icon/plus-icon.png" class="img-height-fill">
                     </a>
