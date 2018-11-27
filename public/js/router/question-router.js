@@ -22,17 +22,26 @@ router.use(MiddleWares.checkUserLogged);
 router.get("/", (request, response) => {
     response.status(200);
     console.log(request.session.currentUser.id);
-    new DAO.question(pool).findBy({userid: request.session.currentUser.id}, (err, result) => {
+    new DAO.question(pool).selectAll( (err, result) => {
         if(err){
             throw err;
         }
         else {
-            let questions = result.map(element => element.question);
+            let questions = [];
+            while(questions.length < 5){
+                let j = Math.floor(Math.random() * result.length);
+                let found = questions.find(function(element) {
+                    return element === result[j].question;
+                });
+                if(!found){
+                    questions.push(result[j].question);
+                }
+            }
             response.render("question", {
                 questionTexts : questions
             });
         }
-    })
+    });
     
 });
 
@@ -82,6 +91,10 @@ router.post("/create", (request, response) => {
             });
         }
     });
+});
+router.get("/choose", (request, response) => {
+    response.status(200);
+    response.render("choose-question");
 });
 module.exports = {
     questionRouter: router
