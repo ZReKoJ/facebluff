@@ -76,7 +76,7 @@ class DAO {
      * select all
      * @param {*} callback: if nothing is found then pass an array with 0 elements
      */
-    selectAll(dict, callback) {
+    selectAll(callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(
@@ -87,9 +87,8 @@ class DAO {
                             }
                         )));
             } else {
-                let sql = "select * from " + this.tableName + " where " +
-                Object.keys(dict).map(element => element + " = ?");
-                connection.query(sql, Object.keys(dict).map(element => dict[element]), (err, result) => {
+                const sql = "select * from " + this.tableName;
+                connection.query(sql, (err, result) => {
                     connection.release();
                     if (err) {
                         callback(
@@ -292,8 +291,8 @@ class DAO {
                         )));
             } else {
                 let sql = "select * from " + this.tableName + " where " +
-                    Object.keys(dict).map(element => element + " = ?").join(" and ") +
-                    "limit 1";
+                    Object.keys(dict).map(element => element + " = ?");
+                    console.log(sql);
                 connection.query(sql, Object.keys(dict).map(element => dict[element]), (err, result) => {
                     connection.release();
                     if (err) {
@@ -306,7 +305,7 @@ class DAO {
                                     }
                                 )));
                     } else {
-                        callback(null, result.length > 0 ? new Entity[this.tableName](result[0]) : null);
+                        callback(null, result);
                     }
                 });
             }

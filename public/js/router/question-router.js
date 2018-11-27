@@ -19,11 +19,12 @@ const pool = mysql.createPool(config.mysqlConfig);
 router.get("/", (request, response) => {
     response.status(200);
     console.log(request.session.currentUser.id);
-    new DAO.question(pool).selectAll({userid: request.session.currentUser.id}, (err, result) => {
+    new DAO.question(pool).findBy({userid: request.session.currentUser.id}, (err, result) => {
         if(err){
             throw err;
         }
         else {
+            console.log(result);
             let questions = result.map(element => element.question);
             response.render("question", {
                 questionTexts : questions
