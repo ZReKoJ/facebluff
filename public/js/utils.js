@@ -1,5 +1,13 @@
 "use strict"
 
+// private libs
+const config = require('../../config');
+const messages = require('./messages');
+
+// public libs
+const fs = require('fs');
+const path = require('path');
+
 Object.defineProperty(Array.prototype, 'flat', {
     value: function (depth = 1) {
         return this.reduce(function (flat, toFlatten) {
