@@ -165,7 +165,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
     }
 });
 
-router.get("/logout", (request, response) => {
+router.get("/logout", MiddleWares.checkUserLogged, (request, response) => {
     response.setFlash([{
         type: Messages.types.SUCCESS,
         text: Strings.transform(messages[config.locale].goodBye, {
