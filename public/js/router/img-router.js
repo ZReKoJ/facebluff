@@ -2,12 +2,17 @@
 
 // private libs
 const config = require("../../../config");
+const {
+    MiddleWares
+} = require("../utils");
 
 // public libs
 const path = require("path");
 const express = require("express");
 
 const router = express.Router();
+
+router.use(MiddleWares.checkUserLogged);
 
 router.get("/avatar", (request, response) => {
     if (response.locals.user.img == null) {

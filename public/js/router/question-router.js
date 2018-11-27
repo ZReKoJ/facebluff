@@ -6,7 +6,8 @@ const DAO = require("../database/dao");
 const Entity = require("../database/entity");
 const {
     Strings,
-    Messages
+    Messages,
+    MiddleWares
 } = require("../utils");
 
 // public libs
@@ -14,6 +15,8 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 const pool = mysql.createPool(config.mysqlConfig);
+
+router.use(MiddleWares.checkUserLogged);
 
 //route managers
 router.get("/", (request, response) => {

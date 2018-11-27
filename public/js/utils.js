@@ -1,10 +1,10 @@
 "use strict"
 
 Object.defineProperty(Array.prototype, 'flat', {
-    value: function(depth = 1) {
-      return this.reduce(function (flat, toFlatten) {
-        return flat.concat((Array.isArray(toFlatten) && (depth-1)) ? toFlatten.flat(depth-1) : toFlatten);
-      }, []);
+    value: function (depth = 1) {
+        return this.reduce(function (flat, toFlatten) {
+            return flat.concat((Array.isArray(toFlatten) && (depth - 1)) ? toFlatten.flat(depth - 1) : toFlatten);
+        }, []);
     }
 });
 
@@ -18,6 +18,58 @@ let Strings = {
     })
 }
 
+let middleWares = {
+    /**
+     * Checks if the user is logged, if not redirects to login page
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     */
+    checkUserLogged: function checkUserLogged(request, response, next) {
+        if (request.session.currentUser == undefined) {
+            response.redirect("/login");
+        } else {
+            response.locals.user = request.session.currentUser;
+            next();
+        }
+    },
+    showMessages: function (request, response, next) {
+        response.locals.user = request.session.currentUser;
+        response.locals.messages = request.cookies.messages;
+        response.clearCookie("messages");
+        next();
+    },
+    /**
+     * Error pages
+     * @param {*} error 
+     * @param {*} request 
+     * @param {*} response 
+     * @param {*} next 
+     */
+    error: function (error, request, response, next) {
+        // Searching all ejs
+        fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
+            // Filters by all ejs files starting with names game
+            let errorFiles = files.filter(element => /game.+\.ejs/.test(element));
+            // Choose one random file
+            let random = Math.floor(Math.random() * errorFiles.length);
+            response.render("error", {
+                url: request.url,
+                status: response.statusCode,
+                text: {
+                    error: error.message,
+                    stayAndPlay: Strings.transform(messages[config.locale].stayAndPlay)
+                },
+                redirection: {
+                    name: "Inicio",
+                    url: "/"
+                },
+                game: errorFiles[random]
+            });
+        });
+    }
+}
+
 module.exports = {
     Strings: Strings,
     Messages: {
@@ -28,5 +80,7 @@ module.exports = {
             WARNING: "warning", // yellow
             ERROR: "error" // red
         })
-    }
+    },
+    MiddleWares: middleWares
+
 }

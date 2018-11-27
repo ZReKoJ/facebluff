@@ -2,7 +2,8 @@
 
 // private libs
 const {
-    Strings
+    Strings,
+    MiddleWares
 } = require("./public/js/utils");
 const config = require("./config");
 const messages = require("./public/js/messages");
@@ -51,21 +52,14 @@ app.use(session({
 // express static
 app.use(express.static(path.join.apply(this, [config.root].concat(config.files.baseFile))));
 // show messages
-app.use(showMessages)
-// check if user is logged
-app.use(checkUserLogged);
+app.use(MiddleWares.showMessages);
 
 // routers
 app.use("/", require("./public/js/router/root-router").rootRouter);
 app.use("/question", require("./public/js/router/question-router").questionRouter);
 app.use("/img", require("./public/js/router/img-router").imgRouter);
 app.use("/profile", require("./public/js/router/profile-router").profileRouter);
-
-
-app.get("/friend", (request, response) => {
-    response.status(200);
-    response.render("friend");
-});
+app.use("/friend", require("./public/js/router/friend-router").friendRouter);
 
 // page is not found
 app.use((request, response, next) => {
@@ -73,7 +67,7 @@ app.use((request, response, next) => {
     next(new Error(Strings.transform(messages[config.locale].pageNotFound)));
 });
 
-app.use(error);
+app.use(MiddleWares.error);
 
 // Initialize server
 app.listen(config.port, (err) => {
@@ -95,56 +89,3 @@ app.listen(config.port, (err) => {
         );
     }
 });
-
-// middleware functions
-
-function showMessages(request, response, next) {
-    response.locals.messages = request.cookies.messages;
-    response.clearCookie("messages");
-    next();
-}
-
-/**
- * Checks if the user is logged, if not redirects to login page
- * @param {*} request 
- * @param {*} response 
- * @param {*} next 
- */
-function checkUserLogged(request, response, next) {
-    if (config.exceptRoutes.indexOf(request.url) == -1 && request.session.currentUser == undefined) {
-        response.redirect("/login");
-    } else {
-        response.locals.user = request.session.currentUser;
-        next();
-    }
-}
-
-/**
- * Error pages
- * @param {*} error 
- * @param {*} request 
- * @param {*} response 
- * @param {*} next 
- */
-function error(error, request, response, next) {
-    // Searching all ejs
-    fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
-        // Filters by all ejs files starting with names game
-        let errorFiles = files.filter(element => /game.+\.ejs/.test(element));
-        // Choose one random file
-        let random = Math.floor(Math.random() * errorFiles.length);
-        response.render("error", {
-            url: request.url,
-            status: response.statusCode,
-            text: {
-                error: error.message,
-                stayAndPlay: Strings.transform(messages[config.locale].stayAndPlay)
-            },
-            redirection: {
-                name: "Inicio",
-                url: "/"
-            },
-            game: errorFiles[random]
-        });
-    });
-}
