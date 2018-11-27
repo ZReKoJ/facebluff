@@ -71,7 +71,7 @@ router.post("/create", (request, response) => {
                 if (err) {
                     throw err;
                 } else {
-                    response.cookie("messages", [{
+                    response.setFlash([{
                         type: Messages.types.SUCCESS,
                         text: Strings.transform(messages[config.locale].insertQuestionCorrect, {
                             insertedAnswers: affectedRows

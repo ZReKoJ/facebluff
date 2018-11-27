@@ -7,7 +7,8 @@ const DAO = require("../database/dao");
 const Entity = require("../database/entity");
 const {
     Strings,
-    Messages
+    Messages,
+    MiddleWares
 } = require("../utils");
 
 // public libs
@@ -21,7 +22,7 @@ const router = express.Router();
 const multerFactory = multer();
 const pool = mysql.createPool(config.mysqlConfig);
 
-router.get("/", (request, response) => {
+router.get("/", MiddleWares.checkUserLogged, (request, response) => {
     response.status(200);
     // Find any ejs files
     fs.readdir(path.join.apply(this, [config.root].concat(config.files.ejs)), (err, files) => {
@@ -51,7 +52,7 @@ router.post("/login", multerFactory.none(), (request, response) => {
             // if it does exits and the password is correct
             if (result != null && request.body.password == result.password) {
                 request.session.currentUser = result;
-                response.cookie("messages", [{
+                response.setFlash([{
                     type: Messages.types.SUCCESS,
                     text: Strings.transform(messages[config.locale].welcome, {
                         name: result.username
@@ -59,12 +60,12 @@ router.post("/login", multerFactory.none(), (request, response) => {
                 }]);
                 response.redirect("/");
             } else {
+                response.setFlash([{
+                    type: Messages.types.ERROR,
+                    text: Strings.transform(messages[config.locale].failedAuthentication)
+                }]);
                 response.render("login-register", {
-                    login: true,
-                    messages: [{
-                        type: Messages.types.ERROR,
-                        text: Strings.transform(messages[config.locale].failedAuthentication)
-                    }]
+                    login: true
                 });
             }
         }
@@ -80,12 +81,12 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                 throw err;
             } else {
                 if (result != null) {
+                    response.setFlash([{
+                        type: Messages.types.ERROR,
+                        text: Strings.transform(messages[config.locale].emailExists)
+                    }]);
                     response.render("login-register", {
-                        register: true,
-                        messages: [{
-                            type: Messages.types.ERROR,
-                            text: Strings.transform(messages[config.locale].emailExists)
-                        }]
+                        register: true
                     });
                 } else {
                     daoUser.insert(new Entity.user({
@@ -126,7 +127,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                                         request.session.currentUser.set({
                                                             img: dir
                                                         });
-                                                        response.cookie("messages", [{
+                                                        response.setFlash([{
                                                             type: Messages.types.SUCCESS,
                                                             text: Strings.transform(messages[config.locale].welcome, {
                                                                 name: result.username
@@ -138,7 +139,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                             }
                                         });
                                     } else {
-                                        response.cookie("messages", [{
+                                        response.setFlash([{
                                             type: Messages.types.SUCCESS,
                                             text: Strings.transform(messages[config.locale].welcome, {
                                                 name: result.username
@@ -154,25 +155,25 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
             }
         });
     } else {
+        response.setFlash([{
+            type: Messages.types.ERROR,
+            text: Strings.transform(messages[config.locale].passwordNotSame)
+        }]);
         response.render("login-register", {
-            register: true,
-            messages: [{
-                type: Messages.types.ERROR,
-                text: Strings.transform(messages[config.locale].passwordNotSame)
-            }]
+            register: true
         });
     }
 });
 
 router.get("/logout", (request, response) => {
-    response.cookie("messages", [{
+    response.setFlash([{
         type: Messages.types.SUCCESS,
         text: Strings.transform(messages[config.locale].goodBye, {
             name: request.session.currentUser.username
         })
     }]);
-    // set currentuser to undefine, logout
-    request.session.currentUser = undefined;
+    // logout
+    delete request.session.currentUser;
     response.redirect("/login");
 });
 

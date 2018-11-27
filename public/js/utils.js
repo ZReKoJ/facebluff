@@ -43,8 +43,8 @@ let middleWares = {
     },
     showMessages: function (request, response, next) {
         response.locals.user = request.session.currentUser;
-        response.locals.messages = request.cookies.messages;
-        response.clearCookie("messages");
+        //response.locals.messages = request.cookies.messages;
+        //response.clearCookie("messages");
         next();
     },
     /**
@@ -75,6 +75,17 @@ let middleWares = {
                 game: errorFiles[random]
             });
         });
+    },
+    flash: function (request, response, next) {
+        response.setFlash = function (msg) {
+            request.session.flashMsg = msg;
+        };
+        response.locals.getAndClearFlash = function () {
+            let msg = request.session.flashMsg;
+            delete request.session.flashMsg;
+            return msg;
+        };
+        next();
     }
 }
 

@@ -52,6 +52,7 @@ app.use(session({
 // express static
 app.use(express.static(path.join.apply(this, [config.root].concat(config.files.baseFile))));
 // show messages
+app.use(MiddleWares.flash);
 app.use(MiddleWares.showMessages);
 
 // routers

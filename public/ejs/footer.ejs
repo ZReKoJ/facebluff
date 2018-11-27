@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="../css/footer.css" />
     <div class="footer">
         <ul class="messages">
+            <% let messages = getAndClearFlash(); %>
             <% if (typeof messages != 'undefined') { %>
             <% messages.forEach((element) => { %>
             <li>
