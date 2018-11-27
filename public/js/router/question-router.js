@@ -24,7 +24,6 @@ router.get("/", (request, response) => {
             throw err;
         }
         else {
-            console.log(result);
             let questions = result.map(element => element.question);
             response.render("question", {
                 questionTexts : questions

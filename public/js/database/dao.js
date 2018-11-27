@@ -292,7 +292,6 @@ class DAO {
             } else {
                 let sql = "select * from " + this.tableName + " where " +
                     Object.keys(dict).map(element => element + " = ?");
-                    console.log(sql);
                 connection.query(sql, Object.keys(dict).map(element => dict[element]), (err, result) => {
                     connection.release();
                     if (err) {
