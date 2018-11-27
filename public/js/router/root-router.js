@@ -35,10 +35,6 @@ router.get("/", (request, response) => {
     });
 });
 
-router.get("/home", (request, response) => {
-    response.redirect("/");
-});
-
 router.get("/login", (request, response) => {
     response.status(200);
     response.render("login-register", {
@@ -61,7 +57,7 @@ router.post("/login", multerFactory.none(), (request, response) => {
                         name: result.username
                     })
                 }]);
-                response.redirect("/home");
+                response.redirect("/");
             } else {
                 response.render("login-register", {
                     login: true,
@@ -136,7 +132,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                                                 name: result.username
                                                             })
                                                         }]);
-                                                        response.redirect("/home");
+                                                        response.redirect("/");
                                                     }
                                                 })
                                             }
@@ -148,7 +144,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                                 name: result.username
                                             })
                                         }]);
-                                        response.redirect("/home");
+                                        response.redirect("/");
                                     }
                                 }
                             });

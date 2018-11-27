@@ -142,7 +142,7 @@ function error(error, request, response, next) {
             },
             redirection: {
                 name: "Inicio",
-                url: "/home"
+                url: "/"
             },
             game: errorFiles[random]
         });
