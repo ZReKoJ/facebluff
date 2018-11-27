@@ -171,7 +171,7 @@ class DAO {
                 let array_questionmarks = new Array(arrayEntity.length).fill("(" + questionmarks.join(delimiter) + ")");
                 sql = sql + array_questionmarks.join(delimiter);
                 let attr = arrayEntity.map((element) => Object.keys(element).filter((keys) => this.tableColumns.indexOf(keys) != -1).map((keys) => element[keys]));
-                
+
                 console.log(attr);
                 console.log(sql);
                 attr = attr.flat();
@@ -279,7 +279,7 @@ class DAO {
      * @param {*} dict: a dictionary containing where parameters
      * @param {*} callback: returns the entity found, if not found null
      */
-    findBy(dict, callback) {
+    findBy(dict, callback, limit = undefined) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(
@@ -291,7 +291,8 @@ class DAO {
                         )));
             } else {
                 let sql = "select * from " + this.tableName + " where " +
-                    Object.keys(dict).map(element => element + " = ?");
+                    Object.keys(dict).map(element => element + " = ?").join(" and ") +
+                    (limit != undefined ? " limit " + limit : "");
                 connection.query(sql, Object.keys(dict).map(element => dict[element]), (err, result) => {
                     connection.release();
                     if (err) {
@@ -330,7 +331,14 @@ class User extends DAO {
     findByEmail(email, callback) {
         this.findBy({
             email: email
-        }, callback);
+        }, (err, result) => {
+            if (err) {
+                callback(err, null);
+            }
+            else {
+                callback(err, result[0]);
+            }
+        }, 1);
     }
 }
 

@@ -71,3 +71,15 @@ userDAO.delete({id:2}, (err, result) => {
     }
 });
 /**/
+/*
+userDAO.findBy({
+    email: "zhong@ucm.es"
+}, (err, result) => {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        console.log(result);
+    }
+});
+/**/
