@@ -58,7 +58,9 @@ router.post("/create", (request, response) => {
                 } else {
                     response.cookie("messages", [{
                         type: Messages.types.SUCCESS,
-                        text: Strings.transform(messages[config.locale].insertQuestionCorrect)
+                        text: Strings.transform(messages[config.locale].insertQuestionCorrect, {
+                            insertedAnswers: affectedRows
+                        })
                     }]);
                     response.redirect("/question/create");
                 }
