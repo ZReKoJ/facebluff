@@ -27,19 +27,20 @@ router.get("/", (request, response) => {
         } else if(result.length === 0) {
             response.render("friend", {friends: []});
         } else{
-            let user_friends = result.map(element => {
-                if (element.friendid === request.session.currentUser.id) {
-                    return element.otherfriendid;
-                } else {
-                    return element.friendid;
-                }
-            });
-            new DAO.user(pool).in({id: user_friends}, (err, result) => {
+            let user_friends = result.filter(element => element.request === 0)
+                .map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
+            let request_friends = result.filter(element => element.request === 1)
+                .map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
+            console.log(user_friends);
+            console.log(request_friends);
+            new DAO.user(pool).in({id: user_friends}, (err, friends) => {
                 if (err) {
                     throw err;
                 }
                 else{
-                    response.render("friend", {friends: result});
+                    new DAO.user(pool).in({id:request_friends}, (err,requests)=>{
+                        response.render("friend", {friends: friends, requests: requests});
+                    });
                 }
             });
         }
