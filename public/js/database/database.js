@@ -83,3 +83,12 @@ userDAO.findBy({
     }
 });
 /**/
+
+userDAO.in({id: [1,3]}, (err, result) => {
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log(result);
+    }
+})

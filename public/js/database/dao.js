@@ -48,8 +48,6 @@ class DAO {
                     const sql = "select * from " + this.tableName +
                         " where " + this.primaryKey.map(element => element + " = ?").join(" and ") +
                         " limit 1";
-                    console.log(sql);
-                    console.log(keys);
                     connection.query(sql, keys, (err, result) => {
                         connection.release();
                         if (err) {
@@ -171,9 +169,6 @@ class DAO {
                 let array_questionmarks = new Array(arrayEntity.length).fill("(" + questionmarks.join(delimiter) + ")");
                 sql = sql + array_questionmarks.join(delimiter);
                 let attr = arrayEntity.map((element) => Object.keys(element).filter((keys) => this.tableColumns.indexOf(keys) != -1).map((keys) => element[keys]));
-
-                console.log(attr);
-                console.log(sql);
                 attr = attr.flat();
                 connection.query(sql, attr, (err, result) => {
                     connection.release();
@@ -311,6 +306,40 @@ class DAO {
             }
         });
     }
+    in(dict,callback){
+        this.pool.getConnection((err, connection) =>{
+            if(err){
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.locale].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            
+            }
+            else{
+                let sql = "select * from " + this.tableName + " where " + 
+                Object.keys(dict).map(element => element + " IN (" + 
+                dict[element].map(element => "?").join(',') + ')').join(" and ");
+                connection.query(sql, Object.keys(dict).map(element => dict[element]).flat(), (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.locale].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, result);
+                    }
+                });
+            }
+        });
+    }
 
 
 }
@@ -349,7 +378,40 @@ class Friend extends DAO {
             config.dbTables.friend.primaryKey,
             config.dbTables.friend.tableColumns);
     }
+    findFriends(id, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.locale].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let sql = "select * from " + this.tableName + " where (friendid=? or otherfriendid=?) and request=0"
+                connection.query(sql, [id,id], (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.locale].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, result);
+                    }
+                });
+            }
+        });
+    }
+
+
 }
+
 
 class Question extends DAO {
     constructor(_pool) {

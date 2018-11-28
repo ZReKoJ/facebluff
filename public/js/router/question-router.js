@@ -21,7 +21,6 @@ router.use(MiddleWares.checkUserLogged);
 //route managers
 router.get("/", (request, response) => {
     response.status(200);
-    console.log(request.session.currentUser.id);
     new DAO.question(pool).selectAll( (err, result) => {
         if(err){
             throw err;

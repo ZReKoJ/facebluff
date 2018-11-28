@@ -110,7 +110,6 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                     request.session.currentUser = result;
                                     if (request.file != undefined) {
                                         dir.push("avatar");
-                                        console.log(dir)
                                         dir = path.join.apply(this, dir);
                                         fs.writeFile(dir, request.file.buffer, "binary", (err) => {
                                             if (err) {
