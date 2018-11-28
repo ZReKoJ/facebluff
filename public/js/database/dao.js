@@ -389,7 +389,7 @@ class Friend extends DAO {
                             }
                         )));
             } else {
-                let sql = "select * from " + this.tableName + " where (friendid=? or otherfriendid=?) and request=0"
+                let sql = "select * from " + this.tableName + " where (friendid=? or otherfriendid=?)"
                 connection.query(sql, [id,id], (err, result) => {
                     connection.release();
                     if (err) {

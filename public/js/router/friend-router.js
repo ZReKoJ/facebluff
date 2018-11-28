@@ -41,7 +41,7 @@ router.get("/", (request, response) => {
                 else{
                     response.render("friend", {friends: result});
                 }
-            })
+            });
         }
         
     })

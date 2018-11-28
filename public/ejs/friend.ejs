@@ -15,30 +15,30 @@
         <div class="main">
             <input type='checkbox' value="⇄" id='hide-request' class="button">
             <div class="request-panel">
-                <ul value="No hay solicitudes de amistad">
+                <ul value="No hay solicitudes de amistad"><%friends.forEach(element => {if(element.request === 0){%>
                     <li>
                         <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Bruja Piruja</h2>
+                            <img class="img-height-fill" src=<%="/img/user/" + element.id + "/avatar"%>>
+                            <h2 class="text-cut"><%=element.username%></h2>
                             <button class="button">Accept</button>
                             <button class="button">Decline</button>
                         </div>
                     </li>
-                </ul>
+                    <%}});%></ul>
             </div>
             <div class="friend-panel">
                 <form id="search-friend-form" action="friend-search.html" method="post">
                     <input type="text" name="search-friend" placeholder="friend" required>
                     <button type="submit"><img src="../resources/icon/search-icon.png" class="img-height-fill"></button>
                 </form>
-                <ul value="No tienes amigos"><%friends.forEach(element => {%>
+                <ul value="No tienes amigos"><%friends.forEach(element => {if(element.request === 0){%>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src=<%="/img/user/" + element.id + "/avatar"%>>
                             <h2 class="text-cut"><%=element.username%></h2>
                         </div>
                     </li>
-                <%});%></ul>
+                    <%}});%></ul>
             </div>
         </div>
     </div>
