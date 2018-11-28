@@ -30,14 +30,14 @@ router.get("/", (request, response) => {
             while(questions.length < 5){
                 let j = Math.floor(Math.random() * result.length);
                 let found = questions.find(function(element) {
-                    return element === result[j].question;
+                    return element === result[j];
                 });
                 if(!found){
-                    questions.push(result[j].question);
+                    questions.push(result[j]);
                 }
             }
             response.render("question", {
-                questionTexts : questions
+                questions : questions
             });
         }
     });
@@ -91,10 +91,12 @@ router.post("/create", (request, response) => {
         }
     });
 });
-router.get("/choose", (request, response) => {
+
+router.get("/choose/:id", (request, response) => {
     response.status(200);
     response.render("choose-question");
 });
+
 module.exports = {
     questionRouter: router
 };
