@@ -21,27 +21,26 @@ router.use(MiddleWares.checkUserLogged);
 //route managers
 router.get("/", (request, response) => {
     response.status(200);
-    new DAO.question(pool).selectAll( (err, result) => {
-        if(err){
+    new DAO.question(pool).selectAll((err, result) => {
+        if (err) {
             throw err;
-        }
-        else {
+        } else {
             let questions = [];
-            while(questions.length < 5){
+            while (questions.length < 5) {
                 let j = Math.floor(Math.random() * result.length);
-                let found = questions.find(function(element) {
+                let found = questions.find(function (element) {
                     return element === result[j];
                 });
-                if(!found){
+                if (!found) {
                     questions.push(result[j]);
                 }
             }
             response.render("question", {
-                questions : questions
+                questions: questions
             });
         }
     });
-    
+
 });
 
 router.get("/create", (request, response) => {
@@ -50,6 +49,7 @@ router.get("/create", (request, response) => {
 });
 
 router.post("/create", (request, response) => {
+    response.status(200);
     new DAO.question(pool).insert(new Entity.question({
         question: request.body.question,
         userid: request.session.currentUser.id
@@ -94,7 +94,15 @@ router.post("/create", (request, response) => {
 
 router.get("/choose/:id", (request, response) => {
     response.status(200);
-    response.render("choose-question");
+    new DAO.question(pool).get(request.params.id, (err, result) => {
+        if (err) {
+            throw err;
+        } else {
+            response.render("choose-question", {
+                question: result
+            });
+        }
+    });
 });
 
 module.exports = {
