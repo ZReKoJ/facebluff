@@ -28,7 +28,7 @@ router.get("/", (request, response) => {
             response.render("friend", {friends: []});
         } else{
             let user_friends = result.map(element => {
-                if (element.friendid === request.session.currentUser.userId) {
+                if (element.friendid === request.session.currentUser.id) {
                     return element.otherfriendid;
                 } else {
                     return element.friendid;
