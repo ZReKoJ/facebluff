@@ -16,6 +16,7 @@ module.exports = {
         passwordNotSame: "Las contraseñas no son iguales",
         emailExists: "El email existe ya",
         insertQuestionCorrect: "Se ha insertado correctamente la pregunta con {insertedAnswers} respuestas",
+        acceptedRequest: "Se ha aceptado la solicitud de amistad",
     },
     enUS : {
         databaseConnectionError: "Failed to connect to the database: \n{errorMessage}",

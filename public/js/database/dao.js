@@ -322,7 +322,40 @@ class DAO {
                 let sql = "select * from " + this.tableName + " where " + 
                 Object.keys(dict).map(element => element + " IN (" + 
                 dict[element].map(element => "?").join(',') + ')').join(" and ");
+                console.log(sql);
                 connection.query(sql, Object.keys(dict).map(element => dict[element]).flat(), (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.locale].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, result);
+                    }
+                });
+            }
+        });
+    }
+    findLike(dict, callback, limit = undefined) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.locale].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let sql = "select * from " + this.tableName + " where " +
+                    Object.keys(dict).map(element => element + " like ?").join(" and ") +
+                    (limit != undefined ? " limit " + limit : "");
+                connection.query(sql, Object.keys(dict).map(element => '%' + dict[element] + '%'), (err, result) => {
                     connection.release();
                     if (err) {
                         callback(

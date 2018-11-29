@@ -14,135 +14,16 @@
         <%- include("header") %>
         <div class="main">
             <div class="friend-search-panel">
-                <h2 class="text-cut">Resultados de búsqueda: 'hello world'</h2>
-                <ul value="There is no results.">
+                <h2 class="text-cut">Resultados de búsqueda:</h2>
+                <ul value="There is no results."><%friends.forEach(element => {%>
                     <li>
                         <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
+                            <img class="img-height-fill" src=<%="/img/user/" + element.id + "/avatar"%>>
+                            <h2 class="text-cut"><%=element.username%></h2>
                             <button class="button">Send request</button>
                         </div>
                     </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="other-users">
-                            <img class="img-height-fill" src="../resources/img/avatar.png">
-                            <h2 class="text-cut">Struart Minion</h2>
-                            <button class="button">Send request</button>
-                        </div>
-                    </li>
-                </ul>
+                <%});%></ul>
             </div>
         </div>
     </div>
