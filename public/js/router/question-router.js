@@ -25,16 +25,13 @@ router.get("/", (request, response) => {
         if (err) {
             throw err;
         } else {
-            let questions = result;
-            /*let maxQuestions = 5;
-            if (questions.length > maxQuestions) {
-                let initial = Math.floor(Math.random() * questions.length);
-                let width = Math.floor(Math.random() * (questions.length - maxQuestions));
-                console.log(questions.length + " " + maxQuestions);
-                console.log(initial + " " + width);
-                questions.splice(initial, width);
-            }*/
-            questions.splice(5);
+            let questions = [];
+            let maxQuestions = 5;
+            while (result.length > 0 && questions.length < maxQuestions) {
+                let number = Math.floor(Math.random() * result.length);
+                questions.push(result[number]);
+                result.splice(number, 1);
+            }
             response.render("question", {
                 questions: questions
             });
