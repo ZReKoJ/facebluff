@@ -31,9 +31,8 @@ router.get("/", (request, response) => {
         } else {
             let user_friends = result.filter(element => element.request === 0)
                 .map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
-            let request_friends = result.filter(element => element.request === 1)
-                .map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
-            console.log(request_friends);
+            let request_friends = result.filter(element => element.request > 0)
+                .map(element => element.request === request.session.currentUser.id ? null : element.request);
             if (user_friends.length > 0) {
                 new DAO.user(pool).in({
                     id: user_friends
