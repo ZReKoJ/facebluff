@@ -60,6 +60,14 @@
     top: calc(70px + 55px);
 }
 
+.create-question-panel>input#add-remove:nth-child(18):checked ~ form>div>input:nth-child(18) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(17):checked ~ form>div>input:nth-child(17) {
+    display: inline-block;
+}
+
 .create-question-panel>input#add-remove:nth-child(16):checked ~ form>div>input:nth-child(16) {
     display: inline-block;
 }
