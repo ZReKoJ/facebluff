@@ -24,6 +24,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const mysqlSession = require("express-mysql-session");
 
+const expressValidator = require("express-validator");
+
 // constants
 const app = express();
 const MySQLStore = mysqlSession(session);
@@ -49,6 +51,13 @@ app.use(session({
     resave: false,
     store: sessionStore
 }));
+// express validator
+app.use(expressValidator({
+    customValidators: {
+        
+    }
+}));
+
 // express static
 app.use(express.static(path.join.apply(this, [config.root].concat(config.files.baseFile))));
 // show messages
