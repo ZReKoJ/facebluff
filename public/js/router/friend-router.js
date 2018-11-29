@@ -33,48 +33,27 @@ router.get("/", (request, response) => {
                 .map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
             let request_friends = result.filter(element => element.request > 0)
                 .map(element => element.request === request.session.currentUser.id ? null : element.request);
-            if (user_friends.length > 0) {
-                new DAO.user(pool).in({
-                    id: user_friends
-                }, (err, friends) => {
-                    if (err) {
-                        throw err;
-                    } else {
-                        if (request_friends.length > 0) {
-                            new DAO.user(pool).in({
-                                id: request_friends
-                            }, (err, requests) => {
-                                if (err) {
-                                    throw err;
-                                } else {
-                                    response.render("friend", {
-                                        friends: friends,
-                                        requests: requests
-                                    });
-                                }
-                            });
+                console.log(user_friends);
+            new DAO.user(pool).in({
+                id: user_friends
+            }, (err, friends) => {
+                if (err) {
+                    throw err;
+                } else {
+                    new DAO.user(pool).in({
+                        id: request_friends
+                    }, (err, requests) => {
+                        if (err) {
+                            throw err;
                         } else {
                             response.render("friend", {
                                 friends: friends,
-                                requests: []
+                                requests: requests
                             });
                         }
-                    }
-                });
-            } else {
-                new DAO.user(pool).in({
-                    id: request_friends
-                }, (err, requests) => {
-                    if (err) {
-                        throw err;
-                    } else {
-                        response.render("friend", {
-                            friends: [],
-                            requests: requests
-                        });
-                    }
-                });
-            }
+                    });
+                }
+            });
         }
 
     })
@@ -103,6 +82,24 @@ router.get("/accept/:id", (request, response) => {
         otherfriendid: max
     }, {
         request: 0
+    }, (err, result) => {
+        if (err) {
+            throw err;
+        } else {
+            response.setFlash([{
+                type: Messages.types.SUCCESS,
+                text: Strings.transform(messages[config.locale].acceptedRequest)
+            }]);
+            response.redirect("/friend");
+        }
+    });
+});
+router.get("/decline/:id", (request, response) => {
+    let min = Math.min(request.params.id, request.session.currentUser.id);
+    let max = Math.max(request.params.id, request.session.currentUser.id);
+    new DAO.friend(pool).delete({
+        friendid: min,
+        otherfriendid: max
     }, (err, result) => {
         if (err) {
             throw err;

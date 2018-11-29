@@ -305,10 +305,10 @@ class DAO {
                 });
             }
         });
-    }
-    in(dict,callback){
-        this.pool.getConnection((err, connection) =>{
-            if(err){
+    } 
+    in(dict, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
                 callback(
                     new Error(
                         Strings.transform(
@@ -316,13 +316,12 @@ class DAO {
                                 "errorMessage": err.message
                             }
                         )));
-            
-            }
-            else{
-                let sql = "select * from " + this.tableName + " where " + 
-                Object.keys(dict).map(element => element + " IN (" + 
-                dict[element].map(element => "?").join(',') + ')').join(" and ");
-                console.log(sql);
+
+            } else {
+                let sql = "select * from " + this.tableName + " where " +
+                    Object.keys(dict).map(element => element + " IN (" +
+                            ((dict[element].length > 0) ? dict[element].map(elem => "?").join(',') : "null") + 
+                            ')').join(" and ");
                 connection.query(sql, Object.keys(dict).map(element => dict[element]).flat(), (err, result) => {
                     connection.release();
                     if (err) {
@@ -396,8 +395,7 @@ class User extends DAO {
         }, (err, result) => {
             if (err) {
                 callback(err, null);
-            }
-            else {
+            } else {
                 callback(err, result[0]);
             }
         }, 1);
@@ -423,7 +421,7 @@ class Friend extends DAO {
                         )));
             } else {
                 let sql = "select * from " + this.tableName + " where (friendid=? or otherfriendid=?)"
-                connection.query(sql, [id,id], (err, result) => {
+                connection.query(sql, [id, id], (err, result) => {
                     connection.release();
                     if (err) {
                         callback(
