@@ -431,9 +431,19 @@ class Answer extends DAO {
     }
 }
 
+class QuestionAnswered extends DAO {
+    constructor(_pool) {
+        super(_pool,
+            config.dbTables.questionanswered.name,
+            config.dbTables.questionanswered.primaryKey,
+            config.dbTables.questionanswered.tableColumns);
+    }
+}
+
 module.exports = {
     user: User,
     friend: Friend,
     question: Question,
-    answer: Answer
+    answer: Answer,
+    questionanswered: QuestionAnswered
 };

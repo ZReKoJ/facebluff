@@ -21,7 +21,9 @@
                 <div class="question-panel-footer">
                     <%questions.forEach(element => {%>
                     <a href=<%="/question/choose/" + element.id%> class="question button">
-                        <h2><%=element.question%></h2>
+                        <h2>
+                            <%=element.question%>
+                        </h2>
                     </a>
                     <%});%>
                     <a href="/question/create" class="new-question button">

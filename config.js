@@ -39,7 +39,12 @@ module.exports = {
             answer: {
                   name: "answer",
                   primaryKey: ["id"],
-                  tableColumns: ["id", "userid", "questionid", "answer", "correct"]
+                  tableColumns: ["id", "userid", "questionid", "answer"]
+            },
+            questionanswered: {
+                  name: "questionanswered",
+                  primaryKey: [],
+                  tableColumns: ["userid", "questionid", "answerid", "touserid", "correct"]
             }
       },
       exceptRoutes: ["/login", "/register"]

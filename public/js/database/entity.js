@@ -45,6 +45,16 @@ class Answer extends Entity {
     }
 }
 
+class QuestionAnswered extends Entity {
+    constructor(_dict) {
+        super(config.dbTables.questionanswered.tableColumns, _dict);
+    }
+}
+
 module.exports = {
-    user: User, friend: Friend, question: Question, answer: Answer
+    user: User,
+    friend: Friend,
+    question: Question,
+    answer: Answer,
+    questionanswered: QuestionAnswered
 };

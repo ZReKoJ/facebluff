@@ -1,3 +1,4 @@
+drop table if exists `questionanswered`;
 drop table if exists `answer`;
 drop table if exists `question`;
 drop table if exists `friend`;
@@ -31,7 +32,8 @@ create table `question` (
     `userid` int not null,
     `question` varchar(255) not null,
     primary key (`id`),
-    foreign key (`userid`) references user(`id`) on delete cascade on update cascade
+    foreign key (`userid`) references user(`id`) on delete cascade on update cascade,
+    unique key (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 create table `answer` (
@@ -39,8 +41,21 @@ create table `answer` (
     `userid` int not null,
     `questionid` int not null,
     `answer` varchar(255) not null,
-    `correct` tinyint(1) not null,
     primary key (`id`),
     foreign key (`userid`) references user(`id`) on delete cascade on update cascade,
-    foreign key (`questionid`) references question(`id`) on delete cascade on update cascade
+    foreign key (`questionid`) references question(`id`) on delete cascade on update cascade,
+    unique key (`questionid`, `answer`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+create table `questionanswered` (
+    `userid` int not null,
+    `questionid` int not null,
+    `answerid` int not null,
+    `touserid` int not null,
+    `correct` tinyint(1) not null,
+    foreign key (`userid`) references user(`id`) on delete cascade on update cascade,
+    foreign key (`questionid`) references question(`id`) on delete cascade on update cascade,
+    foreign key (`answerid`) references answer(`id`) on delete cascade on update cascade,
+    foreign key (`touserid`) references user(`id`) on delete cascade on update cascade,
+    unique key (`userid`, `questionid`, `answerid`, `touserid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -25,16 +25,16 @@ router.get("/", (request, response) => {
         if (err) {
             throw err;
         } else {
-            let questions = [];
-            while (questions.length < 5) {
-                let j = Math.floor(Math.random() * result.length);
-                let found = questions.find(function (element) {
-                    return element === result[j];
-                });
-                if (!found) {
-                    questions.push(result[j]);
-                }
-            }
+            let questions = result;
+            /*let maxQuestions = 5;
+            if (questions.length > maxQuestions) {
+                let initial = Math.floor(Math.random() * questions.length);
+                let width = Math.floor(Math.random() * (questions.length - maxQuestions));
+                console.log(questions.length + " " + maxQuestions);
+                console.log(initial + " " + width);
+                questions.splice(initial, width);
+            }*/
+            questions.splice(5);
             response.render("question", {
                 questions: questions
             });
@@ -53,39 +53,49 @@ router.post("/create", (request, response) => {
     new DAO.question(pool).insert(new Entity.question({
         question: request.body.question,
         userid: request.session.currentUser.id
-    }), (err, result) => {
+    }), (err, quest) => {
         if (err) {
             throw err;
         } else {
-            let daoAnswer = new DAO.answer(pool);
-            request.body['wrong-answer'] = request.body['wrong-answer'].filter(element => element != '');
-            let data = [];
-            request.body['wrong-answer'].map(element => {
-                data.push(new Entity.answer({
+            let data = request.body['wrong-answer'].filter(element => element != '')
+                .map(element => new Entity.answer({
                     userid: request.session.currentUser.id,
-                    questionid: result.id,
-                    answer: element,
-                    correct: false
+                    questionid: quest.id,
+                    answer: element
                 }));
-                return data;
-            });
-            data.push(new Entity.answer({
-                userid: request.session.currentUser.id,
-                questionid: result.id,
-                answer: request.body['correct-answer'],
-                correct: true
-            }));
-            daoAnswer.insertMany(data, (err, affectedRows) => {
+            new DAO.answer(pool).insertMany(data, (err, affectedRows) => {
                 if (err) {
                     throw err;
                 } else {
-                    response.setFlash([{
-                        type: Messages.types.SUCCESS,
-                        text: Strings.transform(messages[config.locale].insertQuestionCorrect, {
-                            insertedAnswers: affectedRows
-                        })
-                    }]);
-                    response.redirect("/question/create");
+                    new DAO.answer(pool).insert(new Entity.answer({
+                        userid: request.session.currentUser.id,
+                        questionid: quest.id,
+                        answer: request.body['correct-answer']
+                    }), (err, ans) => {
+                        if (err) {
+                            throw err;
+                        }
+                        else {
+                            new DAO.questionanswered(pool).insert(new Entity.questionanswered({
+                                userid: request.session.currentUser.id,
+                                questionid: quest.id,
+                                answerid: ans.id,
+                                touserid: request.session.currentUser.id,
+                                correct: 1
+                            }), (err, result) => {
+                                if (err) {
+                                    throw err;
+                                }
+                                else {
+                                    response.setFlash([{
+                                        type: Messages.types.SUCCESS,
+                                        text: Strings.transform(messages[config.locale].insertQuestionCorrect)
+                                    }]);
+                                    response.redirect("/question/create");
+                                }
+                            });
+                        }
+                    })
                 }
             });
         }
