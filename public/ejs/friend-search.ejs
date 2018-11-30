@@ -15,12 +15,12 @@
         <div class="main">
             <div class="friend-search-panel">
                 <h2 class="text-cut">Resultados de búsqueda:</h2>
-                <ul value="There is no results."><%friends.forEach(element => {%>
+                <ul value="No hay resultados"><%not_friends.forEach(element => {%>
                     <li>
                         <div class="other-users">
                             <img class="img-height-fill" src=<%="/img/user/" + element.id + "/avatar"%>>
                             <h2 class="text-cut"><%=element.username%></h2>
-                            <button class="button">Send request</button>
+                            <a class="button" href=<%="/friend/request/"+ element.id%>>Enviar peticion</a>
                         </div>
                     </li>
                 <%});%></ul>

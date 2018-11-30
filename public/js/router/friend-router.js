@@ -67,8 +67,14 @@ router.post("/search", (request, response) => {
         if (err) {
             throw err;
         } else {
-            response.render("friend-search", {
-                friends: result
+            let users = result.map(element=> element.id);
+            new DAO.friend(pool).findFriends(request.session.currentUser.id, (err, friends) => {
+                friends = friends.map(element => [element.friendid, element.otherfriendid]).flat();
+                users = users.filter(element => friends.indexOf(element) === -1);
+                result = result.filter(element => users.indexOf(element.id) != -1);
+                response.render("friend-search", {
+                    not_friends : result
+                });
             });
         }
     });
@@ -112,6 +118,29 @@ router.get("/decline/:id", (request, response) => {
         }
     });
 });
+
+router.get("/request/:id", (request, response) => {
+    let min = Math.min(request.params.id, request.session.currentUser.id);
+    let max = Math.max(request.params.id, request.session.currentUser.id);
+    console.log(min);
+    console.log(max);
+    console.log(request.session.currentUser.id);
+    new DAO.friend(pool).insert({
+        friendid: min,
+        otherfriendid: max,
+        request: request.session.currentUser.id
+    }, (err, result) => {
+        if(err){
+            throw err;
+        } else { 
+            response.setFlash([{
+                type: Messages.types.SUCCESS,
+                text: Strings.transform(messages[config.locale].requestSent)
+            }]);
+            response.redirect("/friend");
+        }
+    });
+})
 module.exports = {
     friendRouter: router
 };

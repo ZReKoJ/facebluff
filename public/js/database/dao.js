@@ -126,6 +126,7 @@ class DAO {
                     " (" + attr.join(", ") + ")" +
                     " values" +
                     " (" + attr.map(element => "?").join(", ") + ")";
+                    console.log(sql);
                 connection.query(sql, attr.map(element => entity[element]), (err, result) => {
                     connection.release();
                     if (err) {
@@ -318,6 +319,7 @@ class DAO {
                         )));
 
             } else {
+                /*select * from user where id in (?) */
                 let sql = "select * from " + this.tableName + " where " +
                     Object.keys(dict).map(element => element + " IN (" +
                             ((dict[element].length > 0) ? dict[element].map(elem => "?").join(',') : "null") + 
