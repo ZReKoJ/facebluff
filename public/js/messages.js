@@ -18,6 +18,7 @@ module.exports = {
         insertQuestionCorrect: "Se ha insertado correctamente la pregunta",
         acceptedRequest: "Se ha aceptado la solicitud de amistad",
         repeatCorrectAnswers: "La respuesta correcta se repite con las incorrectas",
-        repeatWrongAnswers: "Hay respuestas incorrectas repetidas"
+        repeatWrongAnswers: "Hay respuestas incorrectas repetidas",
+        requestSent: "Se envió la petición correctamente"
     }
 }
