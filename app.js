@@ -3,7 +3,8 @@
 // private libs
 const {
     Strings,
-    MiddleWares
+    MiddleWares,
+    Validators
 } = require("./public/js/utils");
 const config = require("./config");
 const messages = require("./public/js/messages");
@@ -54,7 +55,12 @@ app.use(session({
 // express validator
 app.use(expressValidator({
     customValidators: {
-        
+        notIn: function(params, array){
+            return Validators.notIn(params, array);
+        },
+        repeatItems: function(params, ignore=[]) {
+            return Validators.repeatItems(params, ignore);
+        }  
     }
 }));
 
