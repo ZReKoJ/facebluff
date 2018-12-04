@@ -19,6 +19,7 @@ module.exports = {
         acceptedRequest: "Se ha aceptado la solicitud de amistad",
         repeatCorrectAnswers: "La respuesta correcta se repite con las incorrectas",
         repeatWrongAnswers: "Hay respuestas incorrectas repetidas",
-        requestSent: "Se envió la petición correctamente"
+        requestSent: "Se envió la petición correctamente",
+        noNewAnswer: "No has escrito la respuesta nueva"
     }
 }

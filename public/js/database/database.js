@@ -11,6 +11,7 @@ let userDAO = new DAO.user(pool);
 let friendDAO = new DAO.friend(pool);
 let questionDAO = new DAO.question(pool);
 let answerDAO = new DAO.answer(pool);
+let questionansweredDAO = new DAO.questionanswered(pool);
 
 /*
 userDAO.insert(new Entity.user({
@@ -83,7 +84,7 @@ userDAO.findBy({
     }
 });
 /**/
-
+/*
 userDAO.in({id: [1,3]}, (err, result) => {
     if(err){
         console.log(err);
@@ -92,3 +93,20 @@ userDAO.in({id: [1,3]}, (err, result) => {
         console.log(result);
     }
 })
+/**/
+
+questionansweredDAO.upsert({
+    userid: 3,
+    questionid: 12,
+    answerid: 24, 
+    touserid: 3,
+    correct: 0
+}, (err, result) => {
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log(result);
+    }
+});
+/**/

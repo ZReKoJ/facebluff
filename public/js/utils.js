@@ -26,23 +26,35 @@ let Strings = {
     })
 }
 
+let Arrays = {
+    getItems(array, count) {
+        let result = [];
+        while (array.length > 0 && result.length < count) {
+            let number = Math.floor(Math.random() * array.length);
+            result.push(array[number]);
+            array.splice(number, 1);
+        }
+        return result;
+    }
+}
+
 let validators = {
-    notIn : function (entry, check) {
+    notIn: function (entry, check) {
         return (check.indexOf(entry) == -1);
     },
-    allDifferent: function(array, ignore=[]) {
+    allDifferent: function (array, ignore = []) {
         array = array.filter(element => ignore.indexOf(element) == -1);
         array.sort();
-        for (let i = 0; i < array.length - 1; i++){
-            if (array[i] == array[i + 1]){
+        for (let i = 0; i < array.length - 1; i++) {
+            if (array[i] == array[i + 1]) {
                 return false;
             }
         }
         return true;
     },
-    allSame: function(array) {
-        for (let i = 0; i < array.length - 1; i++){
-            if (array[i] != array[i + 1]){
+    allSame: function (array) {
+        for (let i = 0; i < array.length - 1; i++) {
+            if (array[i] != array[i + 1]) {
                 return false;
             }
         }
@@ -115,6 +127,7 @@ let middleWares = {
 
 module.exports = {
     Strings: Strings,
+    Arrays: Arrays,
     Messages: {
         // Enum containing message colors types
         types: Object.freeze({

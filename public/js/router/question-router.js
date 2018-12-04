@@ -6,6 +6,7 @@ const DAO = require("../database/dao");
 const Entity = require("../database/entity");
 const {
     Strings,
+    Arrays,
     Messages,
     MiddleWares
 } = require("../utils");
@@ -25,13 +26,7 @@ router.get("/", (request, response) => {
         if (err) {
             throw err;
         } else {
-            let questions = [];
-            let maxQuestions = 5;
-            while (result.length > 0 && questions.length < maxQuestions) {
-                let number = Math.floor(Math.random() * result.length);
-                questions.push(result[number]);
-                result.splice(number, 1);
-            }
+            let questions = Arrays.getItems(result, 5);
             response.render("question", {
                 questions: questions
             });
@@ -172,13 +167,7 @@ router.get("/:id/answer/:user", (request, response) => {
                 if (err) {
                     throw err;
                 } else {
-                    let answers = [];
-                    let maxAnswers = 4;
-                    while (result.length > 0 && answers.length < maxAnswers) {
-                        let number = Math.floor(Math.random() * result.length);
-                        answers.push(result[number]);
-                        result.splice(number, 1);
-                    }
+                    let answers = Arrays.getItems(result, 4);
                     if (request.session.currentUser.id == request.params.user) {
                         response.render("personal-answer-question", {
                             question: question,
@@ -201,29 +190,85 @@ router.post("/:id/answer/:user", (request, response) => {
         if (err) {
             throw err;
         } else {
-            new DAO.answer(pool).findByQuestionid(request.params.id, (err, result) => {
-                if (err) {
-                    throw err;
-                } else {
-                    let answers = [];
-                    let maxAnswers = 4;
-                    while (result.length > 0 && answers.length < maxAnswers) {
-                        let number = Math.floor(Math.random() * result.length);
-                        answers.push(result[number]);
-                        result.splice(number, 1);
-                    }
-                    if (request.session.currentUser.id == request.params.user) {
-                        response.render("personal-answer-question", {
-                            question: question,
-                            answers: answers
-                        });
+            if (request.session.currentUser.id == request.params.user) {
+                if (request.body.answer == 'new-answer') {
+                    if (request.body['new-answer'] == "") {
+                        response.setFlash([{
+                            type: Messages.types.ERROR,
+                            text: Strings.transform(messages[config.locale].noNewAnswer)
+                        }]);
+                        response.redirect("/question/" + question.id + "/answer/" + request.params.user);
                     } else {
-                        response.render("answer-question", {
-                            question: question
+                        new DAO.answer(pool).findOneBy({
+                            questionid: question.id,
+                            answer: request.body['new-answer']
+                        }, (err, answer) => {
+                            if (err) {
+                                throw err;
+                            } else {
+                                if (answer) {
+                                    new DAO.questionanswered(pool).upsert({
+                                        userid: request.session.currentUser.id,
+                                        questionid: question.id,
+                                        answerid: answer.id,
+                                        touserid: request.params.user,
+                                        correct: 1
+                                    }, (err, result) => {
+                                        if (err) {
+                                            throw err;
+                                        } else {
+                                            response.redirect("/question/" + question.id + "/choose");
+                                        }
+                                    });
+                                } else {
+                                    console.log("helo");
+                                    new DAO.answer(pool).insert(new Entity.answer({
+                                        userid: request.session.currentUser.id,
+                                        questionid: question.id,
+                                        answer: request.body['new-answer']
+                                    }), (err, answer) => {
+                                        if (err) {
+                                            throw err;
+                                        } else {
+                                            new DAO.questionanswered(pool).upsert({
+                                                userid: request.session.currentUser.id,
+                                                questionid: question.id,
+                                                answerid: answer.id,
+                                                touserid: request.params.user,
+                                                correct: 1
+                                            }, (err, result) => {
+                                                if (err) {
+                                                    throw err;
+                                                } else {
+                                                    response.redirect("/question/" + question.id + "/choose");
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            }
                         });
                     }
+                } else {
+                    new DAO.questionanswered(pool).upsert({
+                        userid: request.session.currentUser.id,
+                        questionid: question.id,
+                        answerid: request.body.answer,
+                        touserid: request.params.user,
+                        correct: 1
+                    }, (err, result) => {
+                        if (err) {
+                            throw err;
+                        } else {
+                            response.redirect("/question/" + question.id + "/choose");
+                        }
+                    });
                 }
-            });
+            } else {
+                response.render("answer-question", {
+                    question: question
+                });
+            }
         }
     });
 });

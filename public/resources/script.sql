@@ -57,5 +57,5 @@ create table `questionanswered` (
     foreign key (`questionid`) references question(`id`) on delete cascade on update cascade,
     foreign key (`answerid`) references answer(`id`) on delete cascade on update cascade,
     foreign key (`touserid`) references user(`id`) on delete cascade on update cascade,
-    unique key (`userid`, `questionid`, `answerid`, `touserid`)
+    unique key (`userid`, `questionid`, `touserid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

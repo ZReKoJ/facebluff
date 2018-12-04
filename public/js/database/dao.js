@@ -190,6 +190,45 @@ class DAO {
         });
     }
 
+    upsert(entity, callback) {
+        this.pool.getConnection((err, connection) => {
+            if (err) {
+                callback(
+                    new Error(
+                        Strings.transform(
+                            messages[config.locale].databaseConnectionError, {
+                                "errorMessage": err.message
+                            }
+                        )));
+            } else {
+                let attr = Object.keys(entity).filter(element => this.tableColumns.indexOf(element) != -1);
+                let sql = "insert into " + this.tableName +
+                    " (" + attr.join(", ") + ")" +
+                    " values" +
+                    " (" + attr.map(element => "?").join(", ") + ")" +
+                    " on duplicate key update" +
+                    " " + attr.map(element => element + "=?").join(", ");
+
+                console.log(sql);
+                connection.query(sql, attr.map(element => entity[element]).concat(attr.map(element => entity[element])), (err, result) => {
+                    connection.release();
+                    if (err) {
+                        callback(
+                            new Error(
+                                Strings.transform(
+                                    messages[config.locale].sqlQueryError, {
+                                        "sql": sql,
+                                        "errorMessage": err.message
+                                    }
+                                )));
+                    } else {
+                        callback(null, result.affectedRows > 0 ? true : false);
+                    }
+                });
+            }
+        });
+    }
+
     /**
      * update one entity
      * @param {*} check: a dictionary containing the where parameters
@@ -305,7 +344,18 @@ class DAO {
                 });
             }
         });
-    } 
+    }
+
+    findOneBy(dict, callback) {
+        this.findBy(dict, (err, result) => {
+            if (err) {
+                callback(err);
+            }
+            else {
+                callback(err, (result.length > 0) ? result[0] : undefined);
+            }
+        }, 1);
+    }
     
     in (dict, callback) {
         this.pool.getConnection((err, connection) => {
