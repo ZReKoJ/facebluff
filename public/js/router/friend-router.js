@@ -33,7 +33,6 @@ router.get("/", (request, response) => {
                 .map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
             let request_friends = result.filter(element => element.request > 0)
                 .map(element => element.request === request.session.currentUser.id ? null : element.request);
-                console.log(user_friends);
             new DAO.user(pool).in({
                 id: user_friends
             }, (err, friends) => {
@@ -122,9 +121,6 @@ router.get("/decline/:id", (request, response) => {
 router.get("/request/:id", (request, response) => {
     let min = Math.min(request.params.id, request.session.currentUser.id);
     let max = Math.max(request.params.id, request.session.currentUser.id);
-    console.log(min);
-    console.log(max);
-    console.log(request.session.currentUser.id);
     new DAO.friend(pool).insert({
         friendid: min,
         otherfriendid: max,

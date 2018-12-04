@@ -73,95 +73,103 @@ router.post("/login", multerFactory.none(), (request, response) => {
 });
 
 router.post("/register", multerFactory.single("avatar"), (request, response) => {
-    if (request.body.password[0] == request.body.password[1]) {
-        request.body.password = request.body.password[0];
-        let daoUser = new DAO.user(pool);
-        daoUser.findByEmail(request.body.email, (err, result) => {
-            if (err) {
-                throw err;
-            } else {
-                if (result != null) {
-                    response.setFlash([{
-                        type: Messages.types.ERROR,
-                        text: Strings.transform(messages[config.locale].emailExists)
-                    }]);
-                    response.render("login-register", {
-                        register: true
-                    });
+
+    request.checkBody('password',
+        Strings.transform(messages[config.locale].passwordNotSame)).allSame();
+
+    request.getValidationResult().then((errors) => {
+        if (errors.isEmpty()) {
+            request.body.password = request.body.password[0];
+            let daoUser = new DAO.user(pool);
+            daoUser.findByEmail(request.body.email, (err, result) => {
+                if (err) {
+                    throw err;
                 } else {
-                    daoUser.insert(new Entity.user({
-                        username: request.body.username,
-                        email: request.body.email,
-                        password: request.body.password,
-                        birthdate: Date.parse(request.body.birthdate),
-                        gender: request.body.gender
-                    }), (err, result) => {
-                        if (err) {
-                            throw err;
-                        } else {
-                            let dir = [config.root].concat(config.files.user);
-                            dir.push(String(result.id));
-                            fs.mkdir(path.join.apply(this, dir), {
-                                recursive: true
-                            }, (err) => {
-                                if (err) {
-                                    throw err;
-                                } else {
-                                    request.session.currentUser = result;
-                                    if (request.file != undefined) {
-                                        dir.push("avatar");
-                                        dir = path.join.apply(this, dir);
-                                        fs.writeFile(dir, request.file.buffer, "binary", (err) => {
-                                            if (err) {
-                                                throw err;
-                                            } else {
-                                                daoUser.update({
-                                                    id: result.id
-                                                }, {
-                                                    img: dir
-                                                }, (err, result) => {
-                                                    if (err) {
-                                                        throw err;
-                                                    } else {
-                                                        request.session.currentUser.set({
-                                                            img: dir
-                                                        });
-                                                        response.setFlash([{
-                                                            type: Messages.types.SUCCESS,
-                                                            text: Strings.transform(messages[config.locale].welcome, {
-                                                                name: result.username
-                                                            })
-                                                        }]);
-                                                        response.redirect("/");
-                                                    }
-                                                })
-                                            }
-                                        });
+                    if (result != null) {
+                        response.setFlash([{
+                            type: Messages.types.ERROR,
+                            text: Strings.transform(messages[config.locale].emailExists)
+                        }]);
+                        response.render("login-register", {
+                            register: true
+                        });
+                    } else {
+                        daoUser.insert(new Entity.user({
+                            username: request.body.username,
+                            email: request.body.email,
+                            password: request.body.password,
+                            birthdate: Date.parse(request.body.birthdate),
+                            gender: request.body.gender
+                        }), (err, result) => {
+                            if (err) {
+                                throw err;
+                            } else {
+                                let dir = [config.root].concat(config.files.user);
+                                dir.push(String(result.id));
+                                fs.mkdir(path.join.apply(this, dir), {
+                                    recursive: true
+                                }, (err) => {
+                                    if (err) {
+                                        throw err;
                                     } else {
-                                        response.setFlash([{
-                                            type: Messages.types.SUCCESS,
-                                            text: Strings.transform(messages[config.locale].welcome, {
-                                                name: result.username
-                                            })
-                                        }]);
-                                        response.redirect("/");
+                                        request.session.currentUser = result;
+                                        if (request.file != undefined) {
+                                            dir.push("avatar");
+                                            dir = path.join.apply(this, dir);
+                                            fs.writeFile(dir, request.file.buffer, "binary", (err) => {
+                                                if (err) {
+                                                    throw err;
+                                                } else {
+                                                    daoUser.update({
+                                                        id: result.id
+                                                    }, {
+                                                        img: dir
+                                                    }, (err, result) => {
+                                                        if (err) {
+                                                            throw err;
+                                                        } else {
+                                                            request.session.currentUser.set({
+                                                                img: dir
+                                                            });
+                                                            response.setFlash([{
+                                                                type: Messages.types.SUCCESS,
+                                                                text: Strings.transform(messages[config.locale].welcome, {
+                                                                    name: result.username
+                                                                })
+                                                            }]);
+                                                            response.redirect("/");
+                                                        }
+                                                    })
+                                                }
+                                            });
+                                        } else {
+                                            response.setFlash([{
+                                                type: Messages.types.SUCCESS,
+                                                text: Strings.transform(messages[config.locale].welcome, {
+                                                    name: result.username
+                                                })
+                                            }]);
+                                            response.redirect("/");
+                                        }
                                     }
-                                }
-                            });
-                        }
-                    });
+                                });
+                            }
+                        });
+                    }
                 }
-            }
-        });
-    } else {
-        response.setFlash([{
-            type: Messages.types.ERROR,
-            text: Strings.transform(messages[config.locale].passwordNotSame)
-        }]);
-        response.render("login-register", {
-            register: true
-        });
-    }
+            });
+        } else {
+            response.setFlash(errors.array().map(element => {
+                return {
+                    type: Messages.types.ERROR,
+                    text: element.msg
+                };
+            }));
+            response.render("login-register", {
+                register: true
+            });
+        }
+    });
 });
 
 router.get("/logout", MiddleWares.checkUserLogged, (request, response) => {

@@ -30,11 +30,19 @@ let validators = {
     notIn : function (entry, check) {
         return (check.indexOf(entry) == -1);
     },
-    repeatItems: function(array, ignore=[]) {
+    allDifferent: function(array, ignore=[]) {
         array = array.filter(element => ignore.indexOf(element) == -1);
         array.sort();
         for (let i = 0; i < array.length - 1; i++){
-            if (array[i] == array[i = 1]){
+            if (array[i] == array[i + 1]){
+                return false;
+            }
+        }
+        return true;
+    },
+    allSame: function(array) {
+        for (let i = 0; i < array.length - 1; i++){
+            if (array[i] != array[i + 1]){
                 return false;
             }
         }

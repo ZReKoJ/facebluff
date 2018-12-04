@@ -53,7 +53,7 @@ router.post("/create", (request, response) => {
     request.checkBody('correct-answer',
         Strings.transform(messages[config.locale].repeatCorrectAnswers)).notIn(wrongAnswers);
     request.checkBody('wrong-answer',
-        Strings.transform(messages[config.locale].repeatWrongAnswers)).repeatItems(['']);
+        Strings.transform(messages[config.locale].repeatWrongAnswers)).allDifferent(['']);
 
     request.getValidationResult().then((errors) => {
         if (errors.isEmpty()) {

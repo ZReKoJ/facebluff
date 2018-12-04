@@ -126,7 +126,6 @@ class DAO {
                     " (" + attr.join(", ") + ")" +
                     " values" +
                     " (" + attr.map(element => "?").join(", ") + ")";
-                    console.log(sql);
                 connection.query(sql, attr.map(element => entity[element]), (err, result) => {
                     connection.release();
                     if (err) {

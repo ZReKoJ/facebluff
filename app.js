@@ -55,12 +55,15 @@ app.use(session({
 // express validator
 app.use(expressValidator({
     customValidators: {
-        notIn: function(params, array){
+        notIn: function (params, array) {
             return Validators.notIn(params, array);
         },
-        repeatItems: function(params, ignore=[]) {
-            return Validators.repeatItems(params, ignore);
-        }  
+        allDifferent: function (params, ignore = []) {
+            return Validators.allDifferent(params, ignore);
+        },
+        allSame: function (params) {
+            return Validators.allSame(params);
+        }
     }
 }));
 
