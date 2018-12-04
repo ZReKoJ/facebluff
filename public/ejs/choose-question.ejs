@@ -14,23 +14,28 @@
         <%- include("header") %>
         <div class="main">
             <div class="friend-question-panel">
-                <h2 class="text-cut"><%= question.question %></h2>
+                <h2 class="text-cut">
+                    <%= question.question %>
+                </h2>
                 <ul value="There is no results.">
+                    <% if (myAnswer) { %>
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">Zihao Hong</h2>
-                            <a href="personal-answer-question.html" class="button">Contestar</a>
+                            <h2 class="text-cut"><%= user.username %></h2>
+                            <h3 class="respuesta text-cut"><%= myAnswer.answer %></h3>
+                            <a class="button" href=<%= "/question/" + question.id + "/answer/" + user.id %>>Editar respuesta</a>
                         </div>
                     </li>
+                    <% } else { %>
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">Diego Acuna</h2>
-                            <h3 class="respuesta text-cut">Nintendo Switch</h3>
-                            <a href="personal-answer-question.html" class="button">Editar respuesta</a>
+                            <h2 class="text-cut"><%= user.username %></h2>
+                            <a class="button" href=<%= "/question/" + question.id + "/answer/" + user.id %>>Contestar</a>
                         </div>
                     </li>
+                    <% } %>
                     <div class="separator">
                         <span>Los siguientes amigos han contestado a esta pregunta</span>
                     </div>

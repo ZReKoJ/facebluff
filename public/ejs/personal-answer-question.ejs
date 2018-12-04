@@ -14,11 +14,15 @@
         <%- include("header") %>
         <div class="main">
             <div class="answer-question-panel">
-                <form id="answer-question-form" action="choose-question.html" method="post">
-                    <h2 class="text-cut">¿Nintendo Switch, PS4, o Xbox One?</h2>
+                <form id="answer-question-form" action=<%="/question/" + question.id + "/answer/" + user.id %>
+                    method="post">
+                    <h2 class="text-cut">
+                        <%= question.question %>
+                    </h2>
                     <div>
+                        <% answers.forEach(answer => { %>
                         <label>
-                            <input type='radio' name='answer' class="button">
+                            <input type='radio' name='answer' value='<%= answer.answer %>' class="button">
                             <div class="radio-animation">
                                 <div class="dot"></div>
                                 <div class="dot"></div>
@@ -29,52 +33,13 @@
                                 <div class="dot"></div>
                                 <div class="dot"></div>
                             </div>
-                            <p>Nintendo Switch</p>
+                            <p>
+                                <%= answer.answer %>
+                            </p>
                         </label>
+                        <% }); %>
                         <label>
-                            <input type='radio' name='answer' class="button">
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>Yo soy más del ZX Spectrum</p>
-                        </label>
-                        <label>
-                            <input type='radio' name='answer' class="button">
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>No me interesan los videojuegos</p>
-                        </label>
-                        <label>
-                            <input type='radio' name='answer' class="button">
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>PS4</p>
-                        </label>
-                        <label>
-                            <input type='radio' name='answer' class="button">
+                            <input type='radio' name='answer' value="new-answer" class="button">
                             <div class="radio-animation">
                                 <div class="dot"></div>
                                 <div class="dot"></div>

@@ -306,7 +306,8 @@ class DAO {
             }
         });
     } 
-    in(dict, callback) {
+    
+    in (dict, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
                 callback(
@@ -321,8 +322,8 @@ class DAO {
                 /*select * from user where id in (?) */
                 let sql = "select * from " + this.tableName + " where " +
                     Object.keys(dict).map(element => element + " IN (" +
-                            ((dict[element].length > 0) ? dict[element].map(elem => "?").join(',') : "null") + 
-                            ')').join(" and ");
+                        ((dict[element].length > 0) ? dict[element].map(elem => "?").join(',') : "null") +
+                        ')').join(" and ");
                 connection.query(sql, Object.keys(dict).map(element => dict[element]).flat(), (err, result) => {
                     connection.release();
                     if (err) {
@@ -341,6 +342,7 @@ class DAO {
             }
         });
     }
+    
     findLike(dict, callback, limit = undefined) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -410,6 +412,7 @@ class Friend extends DAO {
             config.dbTables.friend.primaryKey,
             config.dbTables.friend.tableColumns);
     }
+    
     findFriends(id, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -440,8 +443,6 @@ class Friend extends DAO {
             }
         });
     }
-
-
 }
 
 
@@ -461,6 +462,18 @@ class Answer extends DAO {
             config.dbTables.answer.primaryKey,
             config.dbTables.answer.tableColumns);
     }
+
+    findByQuestionid(questionid, callback) {
+        this.findBy({
+            questionid: questionid
+        }, (err, result) => {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(err, result);
+            }
+        });
+    }
 }
 
 class QuestionAnswered extends DAO {
@@ -469,6 +482,18 @@ class QuestionAnswered extends DAO {
             config.dbTables.questionanswered.name,
             config.dbTables.questionanswered.primaryKey,
             config.dbTables.questionanswered.tableColumns);
+    }
+
+    findByQuestionid(questionid, callback) {
+        this.findBy({
+            questionid: questionid
+        }, (err, result) => {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(err, result);
+            }
+        });
     }
 }
 

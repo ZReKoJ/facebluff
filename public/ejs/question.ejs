@@ -20,7 +20,7 @@
                 </div>
                 <div class="question-panel-footer">
                     <%questions.forEach(element => {%>
-                    <a href=<%="/question/choose/" + element.id%> class="question button">
+                    <a href=<%="/question/" + element.id + "/choose" %> class="question button">
                         <h2>
                             <%=element.question%>
                         </h2>
