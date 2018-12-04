@@ -136,12 +136,13 @@ router.get("/:id/choose", (request, response) => {
                                 if (err) {
                                     throw err;
                                 } else {
-                                    console.log(answers);
                                     let myAnswer = undefined;
-                                    answers.forEach(element => {
-                                        if (element.userid == request.session.currentUser.id) {
-                                            myAnswer = element;
-                                        }
+                                    myAnswers.forEach(element => {
+                                        answers.forEach(answer => {
+                                            if (element.touserid == request.session.currentUser.id && answer.id == element.answerid) {
+                                                myAnswer = answer;
+                                            }
+                                        });
                                     });
                                     response.render("choose-question", {
                                         question: question,
@@ -221,7 +222,6 @@ router.post("/:id/answer/:user", (request, response) => {
                                         }
                                     });
                                 } else {
-                                    console.log("helo");
                                     new DAO.answer(pool).insert(new Entity.answer({
                                         userid: request.session.currentUser.id,
                                         questionid: question.id,
