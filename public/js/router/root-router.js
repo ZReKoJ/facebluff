@@ -16,7 +16,7 @@ const fs = require("fs");
 const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
-const multer = require("multer")
+const multer = require("multer");
 
 const router = express.Router();
 const multerFactory = multer();
@@ -98,7 +98,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                             username: request.body.username,
                             email: request.body.email,
                             password: request.body.password,
-                            birthdate: Date.parse(request.body.birthdate),
+                            birthdate: request.body.birthdate,
                             gender: request.body.gender
                         }), (err, result) => {
                             if (err) {
