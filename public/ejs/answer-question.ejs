@@ -14,12 +14,16 @@
         <%- include("header") %>
         <div class="main">
             <div class="answer-question-panel">
-                <form id="answer-question-form" action="choose-question.html" method="post">
-                    <h2 class="text-cut">¿Nintendo Switch, PS4, o Xbox One?</h2>
+                <form id="answer-question-form" action=<%="/question/" + question.id + "/answer/" + touser %>
+                    method="post">
+                    <h2 class="text-cut">
+                        <%= question.question %>
+                    </h2>
                     <p class="text-cut">¿Qué crees que opina <strong>Casper María rodríguez?</strong></p>
                     <div>
+                        <% answers.forEach(answer => { %>
                         <label>
-                            <input type='radio' name='answer' class="button" required>
+                            <input type='radio' name='answer' value='<%= answer.id %>' class="button" required>
                             <div class="radio-animation">
                                 <div class="dot"></div>
                                 <div class="dot"></div>
@@ -30,50 +34,11 @@
                                 <div class="dot"></div>
                                 <div class="dot"></div>
                             </div>
-                            <p>Nintendo Switch</p>
+                            <p>
+                                <%= answer.answer %>
+                            </p>
                         </label>
-                        <label>
-                            <input type='radio' name='answer' class="button" required>
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>Yo soy más del ZX Spectrum</p>
-                        </label>
-                        <label>
-                            <input type='radio' name='answer' class="button" required>
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>No me interesan los videojuegos</p>
-                        </label>
-                        <label>
-                            <input type='radio' name='answer' class="button" required>
-                            <div class="radio-animation">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
-                            <p>PS4</p>
-                        </label>
+                        <% }); %>
                     </div>
                     <button type="submit">Create</button>
                 </form>

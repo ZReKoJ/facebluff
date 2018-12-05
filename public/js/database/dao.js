@@ -208,8 +208,6 @@ class DAO {
                     " (" + attr.map(element => "?").join(", ") + ")" +
                     " on duplicate key update" +
                     " " + attr.map(element => element + "=?").join(", ");
-
-                console.log(sql);
                 connection.query(sql, attr.map(element => entity[element]).concat(attr.map(element => entity[element])), (err, result) => {
                     connection.release();
                     if (err) {
