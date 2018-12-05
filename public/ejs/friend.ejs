@@ -13,7 +13,10 @@
     <div class="container">
         <%- include("header") %>
         <div class="main">
-            <input type='checkbox' value="⇄" id='hide-request' class="button">
+            <input type='checkbox' value="⇄" id='hide-request' class="button" 
+            <% if (requests.length == 0) { %>
+            checked
+            <% } %>>
             <div class="request-panel">
                 <ul value="No hay solicitudes de amistad"><%requests.forEach(element => {%>
                     <li>
