@@ -67,6 +67,7 @@ router.post("/search", (request, response) => {
             throw err;
         } else {
             let users = result.map(element=> element.id);
+            users = users.filter(element=> element != request.session.currentUser.id);
             new DAO.friend(pool).findFriends(request.session.currentUser.id, (err, friends) => {
                 friends = friends.map(element => [element.friendid, element.otherfriendid]).flat();
                 users = users.filter(element => friends.indexOf(element) === -1);
