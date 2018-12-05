@@ -127,6 +127,7 @@ router.get("/:id/choose", (request, response) => {
                         if (err) {
                             throw err;
                         } else {
+                            friends = friends.filter(element => element.request == 0);
                             friends = friends.map(element => element.friendid != request.session.currentUser.id ? element.friendid : element.otherfriendid);
                             new DAO.user(pool).in({
                                 id: friends
@@ -177,7 +178,9 @@ router.get("/:id/choose", (request, response) => {
                                                     }
                                                 });
 
-                                                friendAnswers.push(friendAnswer);
+                                                if (friendAnswer.answer != '') {
+                                                    friendAnswers.push(friendAnswer);
+                                                }
                                             });
 
                                             response.render("choose-question", {
