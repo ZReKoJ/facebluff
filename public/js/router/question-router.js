@@ -210,20 +210,39 @@ router.get("/:id/answer/:user", (request, response) => {
                 if (err) {
                     throw err;
                 } else {
-                    let answers = Arrays.getItems(result, 4);
-                    if (request.session.currentUser.id == request.params.user) {
-                        response.render("personal-answer-question", {
-                            touser: request.params.user,
-                            question: question,
-                            answers: answers
-                        });
-                    } else {
-                        response.render("answer-question", {
-                            touser: request.params.user,
-                            question: question,
-                            answers: answers
-                        });
-                    }
+                    new DAO.questionanswered(pool).findOneBy({
+                        userid: request.params.user,
+                        questionid: question.id,
+                        touserid: request.params.user,
+                        correct: 1
+                    }, (err, questionanswered) => {
+                        if (err) {
+                            throw err;
+                        } else {
+                            let answers = [];
+                            result.forEach((element, index) => {
+                                if (element.id == questionanswered.answerid) {
+                                    answers.push(element);
+                                    result.splice(index, 1);
+                                }
+                            });
+                            answers = answers.concat(Arrays.getItems(result, 4 - answers.length));
+                            answers = Arrays.getItems(answers, 4);
+                            if (request.session.currentUser.id == request.params.user) {
+                                response.render("personal-answer-question", {
+                                    touser: request.params.user,
+                                    question: question,
+                                    answers: answers
+                                });
+                            } else {
+                                response.render("answer-question", {
+                                    touser: request.params.user,
+                                    question: question,
+                                    answers: answers
+                                });
+                            }
+                        }
+                    });
                 }
             });
         }
