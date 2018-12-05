@@ -15,7 +15,11 @@
         <div class="main">
             <div class="profile">
                 <div class="profile-header">
+                    <%if(user.img){%>
+                        <img src=<%="/img/user/" + user.id + "/avatar"%> class="round">
+                        <%}else{%>
                     <img src="../resources/img/avatar.png" class="round">
+                    <%}%>
                     <div class="info-user">
                         <h2><%= user.username %></h2>
                         <p><%= user.gender %></p>
@@ -30,10 +34,11 @@
                     <input type="checkbox" id="check-logout" class="button" value="logout">
                     <div class="info-panel" id="friends-panel">
                         <h1 class="text-cut">friends</h1>
+                        <h3 class="text-cut"><%=friends%></h3>
                     </div>
                     <div class="info-panel" id="questions-panel">
                         <h1 class="text-cut">questions</h1>
-                        <h3 class="text-cut">10</h3>
+                        <h3 class="text-cut"><%=questions%></h3>
                     </div>
                     <div class="info-panel" id="followers-panel">
                         <h1 class="text-cut">followers</h1>
@@ -41,6 +46,7 @@
                     </div>
                     <div class="info-panel" id="logout-panel">
                         <h1 class="text-cut">logout</h1>
+                        <a class="logout button round" href="/logout"><img class="img-width-fill" src="../resources/icon/logout-icon.png"></a>
                     </div>
                 </div>
             </div>

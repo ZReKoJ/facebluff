@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+:root {
+    --primary-color: #344955;
+    --primary-light-color: #4A6572;
+    --primary-dark-color: #232F34;
+    --secondary-color: #F9AA33;
+    --secondary-light-color: #FFDC65;
+    --secondary-dark-color: #C17B00;
+    --background-color: lightgrey;
+    --surface-color: #FFFFFF;
+
+    --on-primary-color: #FFFFFF;
+    --on-secondary-color: #000000;
+    --on-background-color: #000000;
+    --on-surface-color: #000000;
+
+    --info-color: #5BC0DE;
+    --success-color: #449D44;
+    --warning-color: #F0AD4E;
+    --error-color: #D9534F;
+
+    --on-info-color: #FFFFFF;
+    --on-success-color: #FFFFFF;
+    --on-warning-color: #FFFFFF;
+    --on-error-color: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.img-width-fill {
+    width: 100%;
+    height: auto;
+}
+
+.img-height-fill {
+    width: auto;
+    height: 100%;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.button {
+    -webkit-appearance: button;
+    display: flex;
+    padding: 6px 12px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    font-weight: bold;
+    user-select: none;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.text-cut {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.separator {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
+
+.separator>span {
+    position: relative;
+    display: inline-block;
+    font-size: small;
+    white-space: nowrap; 
+    user-select: none;
+}
+
+.separator>span:before,
+.separator>span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    height: 1px;
+}
+
+.separator>span:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.separator>span:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
+.info {
+    color: var(--on-info-color);
+    background-color: var(--info-color);
+}
+
+.success {
+    color: var(--on-success-color);
+    background-color: var(--success-color);
+}
+
+.warning {
+    color: var(--on-warning-color);
+    background-color: var(--warning-color);
+}
+
+.error {
+    color: var(--on-error-color);
+    background-color: var(--error-color);
+}

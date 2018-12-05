@@ -156,6 +156,15 @@
 	top: -566.66%;
 }
 
+.profile>.profile-footer>.info-panel#logout-panel > .logout {
+	height: 25%;
+	width: 15%;
+	position: absolute;
+	bottom: 10px;
+	background-color: var(--secondary-color);
+	-webkit-appearance: none;
+}
+
 .profile>.profile-footer>.info-panel#friends-panel {
 	right: 120%;
 	bottom: 0;

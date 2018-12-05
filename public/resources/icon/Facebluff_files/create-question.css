@@ -1,0 +1,211 @@
+.main {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.create-question-panel {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 80%;
+    background-color: var(--surface-color);
+}
+
+.create-question-panel>form {
+    width: 100%;
+    height: 100%;
+}
+
+.create-question-panel>form>input[name="question"] {
+    position: absolute;
+    top: 5px;
+    left: 5%;
+    width: 90%;
+    height: 50px;
+}
+
+.create-question-panel>form>div {
+    position: absolute;
+    top: 70px;
+    left: 10%;
+    width: 60%;
+    height: calc(100% - 140px);
+    overflow: auto;
+}
+
+.create-question-panel>input#add-remove::before {
+    content: "add";
+}
+
+.create-question-panel>input#add-remove {
+    position: absolute;
+    top: 70px;
+    left: calc(70% + 5px);
+    width: 20%;
+    height: 50px;
+    text-transform: capitalize;
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
+}
+
+.create-question-panel>input#add-remove:checked::before {
+    content: "remove";
+}
+
+.create-question-panel>input#add-remove:checked {
+    top: calc(70px + 55px);
+}
+
+.create-question-panel>input#add-remove:nth-child(18):checked ~ form>div>input:nth-child(18) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(17):checked ~ form>div>input:nth-child(17) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(16):checked ~ form>div>input:nth-child(16) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(15):checked ~ form>div>input:nth-child(15) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(14):checked ~ form>div>input:nth-child(14) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(13):checked ~ form>div>input:nth-child(13) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(12):checked ~ form>div>input:nth-child(12) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(11):checked ~ form>div>input:nth-child(11) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(10):checked ~ form>div>input:nth-child(10) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(9):checked ~ form>div>input:nth-child(9) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(8):checked ~ form>div>input:nth-child(8) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(7):checked ~ form>div>input:nth-child(7) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(6):checked ~ form>div>input:nth-child(6) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(5):checked ~ form>div>input:nth-child(5) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(4):checked ~ form>div>input:nth-child(4) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(3):checked ~ form>div>input:nth-child(3) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(2):checked ~ form>div>input:nth-child(2) {
+    display: inline-block;
+}
+
+.create-question-panel>input#add-remove:nth-child(1):checked ~ form>div>input:nth-child(1) {
+    display: inline-block;
+}
+
+.create-question-panel>input[value="remove"] {
+    position: absolute;
+    top: calc(70px + 55px);
+    left: calc(70% + 5px);
+    width: 20%;
+    height: 50px;
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
+}
+
+.create-question-panel>form input[type="text"] {
+    border: none;
+    font-weight: bold;
+    padding: 0 5px 0 5px;
+}
+
+.create-question-panel>form input[type="text"]:focus {
+    outline: none;
+}
+
+.create-question-panel>form>input[name="question"] {
+    color: var(--on-primary-color);
+    background-color: var(--primary-color);
+    border-bottom: 2px solid var(--on-primary-color);
+}
+
+.create-question-panel>form>input[name="question"]::placeholder {
+    color: var(--on-primary-color);
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.create-question-panel>form>div>input[name="correct-answer"] {
+    color: var(--on-success-color);
+    background-color: var(--success-color);
+    border-bottom: 2px solid var(--on-success-color);
+}
+
+.create-question-panel>form>div>input[name="correct-answer"]::placeholder {
+    color: var(--on-success-color);
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.create-question-panel>form>div>input[name="wrong-answer"] {
+    color: var(--on-error-color);
+    background-color: var(--error-color);
+    border-bottom: 2px solid var(--on-error-color);
+}
+
+.create-question-panel>form>div>input[name="wrong-answer"]::placeholder {
+    color: var(--on-error-color);
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.create-question-panel>form>div>input {
+    margin-top: 5px;
+    width: 90%;
+    height: 20%;
+}
+
+.create-question-panel>form>div>input:not(:required) {
+    display: none;
+}
+
+.create-question-panel>form>button {
+    position: absolute;
+    left: 35%;
+    bottom: 5px;
+    width: 30%;
+    height: 50px;
+    border: 0;
+    font-weight: bold;
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
+}
