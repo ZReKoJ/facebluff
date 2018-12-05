@@ -79,7 +79,7 @@
 	align-items: center;
 	justify-content: center;
 }
-.modify-profile>.modify-profile-body>#modify-form>.modify-profile-footer > a {
+.modify-profile>.modify-profile-body>#modify-form>.modify-profile-footer > input[type="submit"] {
 	height: 40px;
 	width: 30px;
 	position: absolute;
