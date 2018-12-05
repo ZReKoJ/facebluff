@@ -99,7 +99,8 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                             email: request.body.email,
                             password: request.body.password,
                             birthdate: request.body.birthdate,
-                            gender: request.body.gender
+                            gender: request.body.gender,
+                            description: ""
                         }), (err, result) => {
                             if (err) {
                                 throw err;

@@ -19,17 +19,18 @@
                 </div>
                 <div class="modify-profile-body">
                     <form id="modify-form" action="/profile/modify_profile" method="post">
-                        <input type="text" name="username" placeholder="Username" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="password" name="password" placeholder="Password" required>
-                        <input type="password" name="repeat-password" placeholder="Repeat your password" required>
-                        <input type="date" name="birth-date" value="2000-01-01" placeholder="Birth date" required>
+                        <input type="text" name="username" placeholder="Username" value=<%user.username%>>
+                        <input type="email" name="email" placeholder="Email" value=<%user.email%>>
+                        <input type="password" name="password" placeholder="Password" value=<%user.password%>>
+                        <input type="password" name="repeat-password" placeholder="Repeat your password" value=<%user.password%>>
+                        <input type="date" name="birthdate" value="2000-01-01" placeholder="Birth date" value=<%user.birthdate%>>
                         <div class="gender">
-                            <input type="radio" name="gender" value="male" checked> Male<br>
-                            <input type="radio" class="radio-modified" name="gender" value="female"> Female<br>
-                            <input type="radio" class="radio-modified" name="gender" value="other"> Other
+                            <input type="radio" name="gender" value="male" <%if(user.gender === "male"){%> checked <%}%> > Male<br>
+                            <input type="radio" class="radio-modified" name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Female<br>
+                            <input type="radio" class="radio-modified" name="gender" value="other"<%if(user.gender==="other"){%> checked <%}%>> Other
                         </div>
-                        <input type="file" />
+                        <input type="file" name="avatar"/>
+                        <textarea name="message" rows="10" cols="30"></textarea>
                         <div class="modify-profile-footer">
                             <input type="submit" class="modify button round"><img class="img-height-fill" src="../resources/icon/edit-icon.png">
                         </div>

@@ -14,7 +14,7 @@ module.exports = {
         welcome: "Bienvenido, {name}",
         goodBye: "Hasta la próxima, {name}",
         passwordNotSame: "Las contraseñas no son iguales",
-        emailExists: "El email existe ya",
+        emailExists: "El email ya existe",
         insertQuestionCorrect: "Se ha insertado correctamente la pregunta",
         acceptedRequest: "Se ha aceptado la solicitud de amistad",
         repeatCorrectAnswers: "La respuesta correcta se repite con las incorrectas",
