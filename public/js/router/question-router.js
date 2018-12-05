@@ -220,12 +220,14 @@ router.get("/:id/answer/:user", (request, response) => {
                             throw err;
                         } else {
                             let answers = [];
-                            result.forEach((element, index) => {
-                                if (element.id == questionanswered.answerid) {
-                                    answers.push(element);
-                                    result.splice(index, 1);
-                                }
-                            });
+                            if (questionanswered) {
+                                result.forEach((element, index) => {
+                                    if (element.id == questionanswered.answerid) {
+                                        answers.push(element);
+                                        result.splice(index, 1);
+                                    }
+                                });
+                            }
                             answers = answers.concat(Arrays.getItems(result, 4 - answers.length));
                             answers = Arrays.getItems(answers, 4);
                             if (request.session.currentUser.id == request.params.user) {

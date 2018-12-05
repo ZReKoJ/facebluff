@@ -1,3 +1,4 @@
+drop table if exists `message`;
 drop table if exists `questionanswered`;
 drop table if exists `answer`;
 drop table if exists `question`;
@@ -12,7 +13,7 @@ create table `user` (
     `birthdate` date not null,
     `gender` enum('male', 'female', 'other') not null,
     `img` varchar(255),
-    `description` text,
+    `description` text default '',
     `score` int default 0,
     primary key (`id`),
     unique key (`email`)
@@ -58,4 +59,11 @@ create table `questionanswered` (
     foreign key (`answerid`) references answer(`id`) on delete cascade on update cascade,
     foreign key (`touserid`) references user(`id`) on delete cascade on update cascade,
     unique key (`userid`, `questionid`, `touserid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+create table `message` (
+    `id` int not null auto_increment,
+    `type` enum('info', 'success', 'warning', 'error') not null,
+    `message` varchar(255) not null,
+    primary key (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
