@@ -47,11 +47,21 @@ router.get("/", (request, response) => {
                                 description: result3[0].description,
                                 score: result3[0].score
                             };
-                            response.render("profile", {
-                                friends: result.length,
-                                questions: result2.length,
-                                user: user
-                            });
+                            new DAO.questionanswered(pool).findBy({userid: request.session.currentUser.id}, (err, result4) =>{
+                                if(err){
+                                    throw err;
+                                }
+                                else{
+                                    console.log(result4.length);
+                                    response.render("profile", {
+                                        friends: result.length,
+                                        questions: result2.length,
+                                        user: user,
+                                        questionsanswered: result4.length
+                                    });
+                                }
+                            })
+                            
                         }
                     })
 

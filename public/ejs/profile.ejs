@@ -30,7 +30,7 @@
                 <div class="profile-footer">
                     <input type="checkbox" id="check-friends" class="button" value="friends">
                     <input type="checkbox" id="check-questions" class="button" value="questions">
-                    <input type="checkbox" id="check-followers" class="button" value="followers">
+                    <input type="checkbox" id="check-followers" class="button" value="questions answered">
                     <input type="checkbox" id="check-logout" class="button" value="logout">
                     <div class="info-panel" id="friends-panel">
                         <h1 class="text-cut">friends</h1>
@@ -41,8 +41,10 @@
                         <h3 class="text-cut"><%=questions%></h3>
                     </div>
                     <div class="info-panel" id="followers-panel">
-                        <h1 class="text-cut">followers</h1>
-                        <h3 class="text-cut">500</h3>
+                        <h1 class="text-cut">questions<br>
+                            answered
+                        </h1>
+                        <h3 class="text-cut"><%=questionsanswered%></h3>
                     </div>
                     <div class="info-panel" id="logout-panel">
                         <h1 class="text-cut">logout</h1>
