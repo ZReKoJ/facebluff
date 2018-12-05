@@ -30,8 +30,31 @@ router.get("/", MiddleWares.checkUserLogged, (request, response) => {
         let homeFiles = files.filter(element => /home.+\.ejs/.test(element));
         // Choose one randomly
         let random = Math.floor(Math.random() * homeFiles.length);
-        response.render("home", {
-            person: homeFiles[random]
+
+        new DAO.message(pool).findBy({
+            touserid: request.session.currentUser.id
+        }, (err, messages) => {
+            if (err) {
+                throw err;
+            } else {
+                new DAO.message(pool).delete({
+                    touserid: request.session.currentUser.id
+                }, (err, success) => {
+                    if (err) {
+                        throw err;
+                    } else {
+                        response.setFlash(messages.map(message => {
+                            return {
+                                type: message.type,
+                                text: message.message
+                            }
+                        }));
+                        response.render("home", {
+                            person: homeFiles[random]
+                        });
+                    }
+                });
+            }
         });
     });
 });

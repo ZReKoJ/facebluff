@@ -356,7 +356,19 @@ router.post("/:id/answer/:user", (request, response) => {
                                             if (err) {
                                                 throw err;
                                             } else {
-                                                response.redirect("/question/" + question.id + "/choose");
+                                                new DAO.message(pool).insert(new Entity.message({
+                                                    type: Messages.types.INFO,
+                                                    message: Strings.transform(messages[config.locale].userAnswerTo, {
+                                                        name: request.session.currentUser.username
+                                                    }),
+                                                    touserid: request.params.user
+                                                }), (err, message) => {
+                                                    if (err) {
+                                                        throw err;
+                                                    } else {
+                                                        response.redirect("/question/" + question.id + "/choose");
+                                                    }
+                                                });
                                             }
                                         });
                                     }
@@ -372,7 +384,19 @@ router.post("/:id/answer/:user", (request, response) => {
                                     if (err) {
                                         throw err;
                                     } else {
-                                        response.redirect("/question/" + question.id + "/choose");
+                                        new DAO.message(pool).insert(new Entity.message({
+                                            type: Messages.types.INFO,
+                                            message: Strings.transform(messages[config.locale].userAnswerTo, {
+                                                name: request.session.currentUser.username
+                                            }),
+                                            touserid: request.params.user
+                                        }), (err, message) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                response.redirect("/question/" + question.id + "/choose");
+                                            }
+                                        });
                                     }
                                 });
                             }

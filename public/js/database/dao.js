@@ -544,10 +544,20 @@ class QuestionAnswered extends DAO {
     }
 }
 
+class Message extends DAO {
+    constructor(_pool) {
+        super(_pool,
+            config.dbTables.message.name,
+            config.dbTables.message.primaryKey,
+            config.dbTables.message.tableColumns);
+    }
+}
+
 module.exports = {
     user: User,
     friend: Friend,
     question: Question,
     answer: Answer,
-    questionanswered: QuestionAnswered
+    questionanswered: QuestionAnswered,
+    message: Message
 };

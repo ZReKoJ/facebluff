@@ -51,10 +51,17 @@ class QuestionAnswered extends Entity {
     }
 }
 
+class Message extends Entity {
+    constructor(_dict) {
+        super(config.dbTables.message.tableColumns, _dict);
+    }
+}
+
 module.exports = {
     user: User,
     friend: Friend,
     question: Question,
     answer: Answer,
-    questionanswered: QuestionAnswered
+    questionanswered: QuestionAnswered,
+    message: Message
 };

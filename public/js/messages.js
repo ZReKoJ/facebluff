@@ -20,6 +20,7 @@ module.exports = {
         repeatCorrectAnswers: "La respuesta correcta se repite con las incorrectas",
         repeatWrongAnswers: "Hay respuestas incorrectas repetidas",
         requestSent: "Se envió la petición correctamente",
-        noNewAnswer: "No has escrito la respuesta nueva"
+        noNewAnswer: "No has escrito la respuesta nueva",
+        userAnswerTo: "{name} ha respondido una pregunta sobre ti"
     }
 }

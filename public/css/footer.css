@@ -87,6 +87,10 @@ ul.messages>li>div {
     margin-bottom: 5px;
 }
 
+ul.messages>li>div>p {
+    text-align: center;
+}
+
 ul.messages>li>input[type="checkbox"]:checked + div {
     animation-name: close-message;
     animation-duration: 1s;

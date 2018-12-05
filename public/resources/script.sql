@@ -65,5 +65,7 @@ create table `message` (
     `id` int not null auto_increment,
     `type` enum('info', 'success', 'warning', 'error') not null,
     `message` varchar(255) not null,
-    primary key (`id`)
+    `touserid` int not null,
+    primary key (`id`),
+    foreign key (`touserid`) references user(`id`) on delete cascade on update cascade
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -114,7 +114,10 @@ let middleWares = {
     },
     flash: function (request, response, next) {
         response.setFlash = function (msg) {
-            request.session.flashMsg = msg;
+            if (!request.session.flashMsg) {
+                request.session.flashMsg = [];
+            }
+            request.session.flashMsg = request.session.flashMsg.concat(msg);
         };
         response.locals.getAndClearFlash = function () {
             let msg = request.session.flashMsg;
