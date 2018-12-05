@@ -315,19 +315,43 @@ router.post("/:id/answer/:user", (request, response) => {
                         if (err) {
                             throw err;
                         } else {
-                            new DAO.questionanswered(pool).upsert({
-                                userid: request.session.currentUser.id,
-                                questionid: question.id,
-                                answerid: request.body.answer,
-                                touserid: request.params.user,
-                                correct: (questionanswered.answerid == request.body.answer ? 1 : 0)
-                            }, (err, result) => {
-                                if (err) {
-                                    throw err;
-                                } else {
-                                    response.redirect("/question/" + question.id + "/choose");
-                                }
-                            });
+                            let correct = (questionanswered.answerid == request.body.answer ? 1 : 0);
+                            if (correct) {
+                                request.session.currentUser.score += 50;
+                                new DAO.user(pool).upsert(request.session.currentUser, (err, success) => {
+                                    if (err) {
+                                        throw err;
+                                    } else {
+                                        new DAO.questionanswered(pool).upsert({
+                                            userid: request.session.currentUser.id,
+                                            questionid: question.id,
+                                            answerid: request.body.answer,
+                                            touserid: request.params.user,
+                                            correct: correct
+                                        }, (err, result) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                response.redirect("/question/" + question.id + "/choose");
+                                            }
+                                        });
+                                    }
+                                });
+                            } else {
+                                new DAO.questionanswered(pool).upsert({
+                                    userid: request.session.currentUser.id,
+                                    questionid: question.id,
+                                    answerid: request.body.answer,
+                                    touserid: request.params.user,
+                                    correct: correct
+                                }, (err, result) => {
+                                    if (err) {
+                                        throw err;
+                                    } else {
+                                        response.redirect("/question/" + question.id + "/choose");
+                                    }
+                                });
+                            }
                         }
                     });
                 }
