@@ -176,6 +176,7 @@
     grid-column-gap: 5px;
     height: 50px;
     margin: 5px 20px 5px 10px;
+    text-decoration: none;
 }
 
 .other-users>img {
@@ -183,12 +184,14 @@
     user-select: none;
 }
 
-.other-users>h2 {
+.other-users>a.text-cut {
     width: calc(60% - 50px);
     flex-grow: 100;
     margin-left: 10px;
     user-select: none;
     color: var(--on-primary-color);
+    font-size: 1.5em; 
+    text-decoration:none;
 }
 
 .request-panel>ul .other-users>button {
@@ -277,10 +280,6 @@
     background-color: var(--primary-light-color);
 }
 
-a {
-    text-decoration: none;
-}
-
-a:visited>h2 {
+.other-users>a.text-cut:visited {
     color: var(--secondary-color);
 }

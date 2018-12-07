@@ -103,44 +103,57 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                             birthdate: request.body.birthdate ? request.body.birthdate : request.session.currentUser.birthdate,
                             gender: request.body.gender ? request.body.gender : request.session.currentUser.gender,
                             description: request.body.description ? request.body.description : request.session.currentUser.description,
-                            score: request.session.currentUser.descripton
+                            score: request.session.currentUser.score
                         };
-                        console.log(new_user);
                         let id = request.session.currentUser.id;
                         request.session.currentUser = new_user;
                         request.session.currentUser.id = id;
-                        console.log(request.file);
                         if (request.file != undefined) {
-                            let dir = [config.root].concat(config.files.user);
-                            dir.push(String(request.session.currentUser.id));
-                            dir.push("avatar");
-                            dir = path.join.apply(this, dir);
-                            fs.writeFile(dir, request.file.buffer, "binary", (err) => {
-                                if (err) {
-                                    throw err;
-                                } else {
-                                    new_user.img = dir;
-                                    request.session.currentUser.img = dir;
-                                    if(new_user)
-                                    new_user.score = new_user.score - 100;
-                                    daoUser.update({
-                                        id: request.session.currentUser.id
-                                    }, new_user, (err, result) => {
-                                        if (err) {
-                                            throw err;
-                                        } else {
-
-                                            response.setFlash([{
-                                                type: Messages.types.SUCCESS,
-                                                text: Strings.transform(messages[config.locale].welcome, {
-                                                    name: result.username
-                                                })
-                                            }]);
-                                            response.redirect("/profile");
-                                        }
-                                    });
-                                }
-                            });
+                            if (new_user.score < 100) {
+                                daoUser.update({
+                                    id: request.session.currentUser.id
+                                }, new_user, (err, result) => {
+                                    if (err) {
+                                        throw err;
+                                    } else {
+                                        response.setFlash([{
+                                            type: Messages.types.ERROR,
+                                            text: Strings.transform(messages[config.locale].notEnoughPoints)
+                                        }]);
+                                        response.redirect("/profile");
+                                    }
+                                });
+                            } else {
+                                let dir = [config.root].concat(config.files.user);
+                                dir.push(String(request.session.currentUser.id));
+                                dir.push("avatar");
+                                dir = path.join.apply(this, dir);
+                                fs.writeFile(dir, request.file.buffer, "binary", (err) => {
+                                    if (err) {
+                                        throw err;
+                                    } else {
+                                        new_user.img = dir;
+                                        request.session.currentUser.img = dir;
+                                        new_user.score = new_user.score - 100;
+                                        request.session.currentUser.score = new_user.score;
+                                        daoUser.update({
+                                            id: request.session.currentUser.id
+                                        }, new_user, (err, result) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                response.setFlash([{
+                                                    type: Messages.types.SUCCESS,
+                                                    text: Strings.transform(messages[config.locale]. modifiedCorrect, {
+                                                        name: result.username
+                                                    })
+                                                }]);
+                                                response.redirect("/profile");
+                                            }
+                                        });
+                                    }
+                                });
+                            }
                         } else {
                             daoUser.update({
                                 id: request.session.currentUser.id
@@ -150,7 +163,7 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                                 } else {
                                     response.setFlash([{
                                         type: Messages.types.SUCCESS,
-                                        text: Strings.transform(messages[config.locale].welcome, {
+                                        text: Strings.transform(messages[config.locale]. modifiedCorrect, {
                                             name: result.username
                                         })
                                     }]);

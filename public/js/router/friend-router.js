@@ -145,9 +145,8 @@ router.get("/request/:id", (request, response) => {
     });
 });
 
-router.get("/profile/:id", (request, response) => {
+router.get("/:id", (request, response) => {
     response.status(200);
-    console.log(request.params.id);
     new DAO.friend(pool).findFriends(request.params.id, (err, friends) => {
         if (err) {
             throw err;
@@ -171,6 +170,7 @@ router.get("/profile/:id", (request, response) => {
                                     throw err;
                                 } else {
                                     currentuser[0].birthdate = calculateAge(currentuser[0].birthdate);
+                                    console.log(currentuser[0]);
                                     response.render("profile", {
                                         friends: friends.length,
                                         questions: questions.length,
