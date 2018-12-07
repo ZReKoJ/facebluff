@@ -18,7 +18,7 @@
                     <h1>modify profile</h1>
                 </div>
                 <div class="modify-profile-body">
-                    <form id="modify-form" action="/profile/modify_profile" method="post">
+                    <form id="modify-form" action="/profile/modify_profile" method="post" enctype="multipart/form-data">
                         <input type="text" name="username" placeholder="Username" value=<%user.username%>>
                         <input type="email" name="email" placeholder="Email" value=<%user.email%>>
                         <input type="password" name="password" placeholder="Password" value=<%user.password%>>
