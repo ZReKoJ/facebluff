@@ -104,6 +104,7 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                             gender: request.body.gender ? request.body.gender : request.session.currentUser.gender,
                             description: request.body.description ? request.body.description : request.session.currentUser.description
                         };
+                        console.log(new_user);
                         let id = request.session.currentUser.id;
                         request.session.currentUser = new_user;
                         request.session.currentUser.id = id;

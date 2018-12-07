@@ -151,12 +151,12 @@
 	top: -566.66%;
 }
 
-.profile>.profile-footer>.info-panel#logout-panel {
+.profile>.profile-footer>.info-panel#description-panel {
 	left: 120%;
 	top: -566.66%;
 }
 
-.profile>.profile-footer>.info-panel#logout-panel > .logout {
+.profile>.profile-footer>.info-panel#description-panel > .description {
 	height: 25%;
 	width: 15%;
 	position: absolute;
@@ -218,7 +218,7 @@ input#check-questions[type="checkbox"]:checked~.info-panel#questions-panel {
     animation-iteration-count: 1;
 }
 
-input#check-logout[type="checkbox"]:checked~.info-panel#logout-panel {
+input#check-description[type="checkbox"]:checked~.info-panel#description-panel {
 	display: flex;
 	animation-name: fade-in;
     animation-delay: 0s;
