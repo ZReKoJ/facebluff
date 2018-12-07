@@ -21,9 +21,9 @@
                     <img src="../resources/img/avatar.png" class="round">
                     <%}%>
                     <div class="info-user">
-                        <h2><%= user.username %></h2>
-                        <p><%= user.gender %></p>
-                        <p><%= user.score %> points</p>
+                        <h2><%= currentUser.username %></h2>
+                        <p><%= currentUser.birthdate %> years</p>
+                        <p><%= currentUser.score %> points</p>
                     </div>
                     <a class="modify button round" href="/profile/modify"> <img class="img-height-fill" src="../resources/icon/edit-icon.png"></a>
                 </div>
@@ -53,6 +53,7 @@
                 </div>
             </div>
         </div>
+        <%- include("footer") %>
 </body>
 
 </html>

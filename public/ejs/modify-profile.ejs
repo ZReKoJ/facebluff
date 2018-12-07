@@ -22,18 +22,17 @@
                         <input type="text" name="username" placeholder="Username" value=<%user.username%>>
                         <input type="email" name="email" placeholder="Email" value=<%user.email%>>
                         <input type="password" name="password" placeholder="Password" value=<%user.password%>>
-                        <input type="password" name="repeat-password" placeholder="Repeat your password" value=<%user.password%>>
+                        <input type="password" name="password" placeholder="Repeat your password" value=<%user.password%>>
                         <input type="date" name="birthdate" value="2000-01-01" placeholder="Birth date" value=<%user.birthdate%>>
                         <div class="gender">
                             <input type="radio" name="gender" value="male" <%if(user.gender === "male"){%> checked <%}%> > Male<br>
-                            <input type="radio" class="radio-modified" name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Female<br>
-                            <input type="radio" class="radio-modified" name="gender" value="other"<%if(user.gender==="other"){%> checked <%}%>> Other
+                            <input type="radio"  name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Female<br>
+                            <input type="radio"  name="gender" value="other"<%if(user.gender==="other"){%> checked <%}%>> Other
                         </div>
                         <input type="file" name="avatar"/>
-                        <textarea name="message" rows="10" cols="30"></textarea>
-                        <div class="modify-profile-footer">
-                            <input type="submit" class="modify button round"><img class="img-height-fill" src="../resources/icon/edit-icon.png">
-                        </div>
+                        <textarea name="message" placeholder="Description" rows="10" cols="30"></textarea>
+                        <input type="submit" value="" class="modify button round">
+                        <!--<img class="img-height-fill" src="../resources/icon/edit-icon.png">-->
                     </form>
 
                 </div>
@@ -42,6 +41,7 @@
             </div>
         </div>
     </div>
+    <%- include("footer") %>
 </body>
 
 </html>

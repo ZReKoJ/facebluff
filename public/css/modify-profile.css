@@ -60,11 +60,25 @@
 .modify-profile>.modify-profile-body>#modify-form > input:not([type="radio"])::placeholder{
 	color: var(--on-surface-color);
 }
+.modify-profile>.modify-profile-body>#modify-form > input[type="file"] {
+	border-bottom: none;
+}
 .modify-profile>.modify-profile-body>#modify-form > .gender{
 	position: relative;
 	display: flex;
 	height: 20%;
 	margin-top: 10px;
+}
+.modify-profile>.modify-profile-body>#modify-form > textarea{
+	resize:none;
+	width: 100%;
+	height: 20%;
+	position: relative;
+	margin-top: 1%;
+	border-bottom: solid 1px var(--primary-dark-color);
+}
+.modify-profile>.modify-profile-body>#modify-form > textarea::placeholder{
+	color: var(--on-surface-color);
 }
 
 .modify-profile>.modify-profile-body>#modify-form > .gender > input[type="radio"]{
@@ -72,18 +86,15 @@
 	margin-left: 10px;
 	margin-top: 5px;
 }
-.modify-profile>.modify-profile-body>#modify-form>.modify-profile-footer {
-	height: 10%;
-	width: 80%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.modify-profile>.modify-profile-body>#modify-form>.modify-profile-footer > input[type="submit"] {
-	height: 40px;
-	width: 30px;
+
+.modify-profile>.modify-profile-body>#modify-form> input[type="submit"]{
 	position: absolute;
-	right: 10%;
-	background-color: var(--secondary-color);
-	-webkit-appearance: none;
+	right: 0;
+	bottom:-25%;
+	width:7%;
+	border: black solid 1px;
+	background-image: url("../resources/icon/edit-icon.png");
+	background-repeat:no-repeat;
+	background-size:60% 60%;
+	background-position: 50%;
 }
