@@ -16,6 +16,12 @@ const router = express.Router();
 const mysql = require("mysql");
 const pool = mysql.createPool(config.mysqlConfig);
 
+function calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
 router.use(MiddleWares.checkUserLogged);
 //route managers
 router.get("/", (request, response) => {
@@ -66,14 +72,14 @@ router.post("/search", (request, response) => {
         if (err) {
             throw err;
         } else {
-            let users = result.map(element=> element.id);
-            users = users.filter(element=> element != request.session.currentUser.id);
+            let users = result.map(element => element.id);
+            users = users.filter(element => element != request.session.currentUser.id);
             new DAO.friend(pool).findFriends(request.session.currentUser.id, (err, friends) => {
                 friends = friends.map(element => element.friendid === request.session.currentUser.id ? element.otherfriendid : element.friendid);
                 users = users.filter(element => friends.indexOf(element) === -1);
                 result = result.filter(element => users.indexOf(element.id) != -1);
                 response.render("friend-search", {
-                    not_friends : result
+                    not_friends: result
                 });
             });
         }
@@ -127,9 +133,9 @@ router.get("/request/:id", (request, response) => {
         otherfriendid: max,
         request: request.session.currentUser.id
     }, (err, result) => {
-        if(err){
+        if (err) {
             throw err;
-        } else { 
+        } else {
             response.setFlash([{
                 type: Messages.types.SUCCESS,
                 text: Strings.transform(messages[config.locale].requestSent)
@@ -137,7 +143,49 @@ router.get("/request/:id", (request, response) => {
             response.redirect("/friend");
         }
     });
-})
+});
+
+router.get("/profile/:id", (request, response) => {
+    response.status(200);
+    console.log(request.params.id);
+    new DAO.friend(pool).findFriends(request.params.id, (err, friends) => {
+        if (err) {
+            throw err;
+        } else {
+            new DAO.question(pool).findBy({
+                userid: request.params.id
+            }, (err, questions) => {
+                if (err) {
+                    throw err;
+                } else {
+                    new DAO.questionanswered(pool).findBy({
+                        userid: request.params.id
+                    }, (err, questionsanswered) => {
+                        if (err) {
+                            throw err;
+                        } else {
+                            new DAO.user(pool).findBy({
+                                id: request.params.id
+                            }, (err, currentuser) => {
+                                if (err) {
+                                    throw err;
+                                } else {
+                                    currentuser[0].birthdate = calculateAge(currentuser[0].birthdate);
+                                    response.render("profile", {
+                                        friends: friends.length,
+                                        questions: questions.length,
+                                        questionsanswered: questionsanswered.length,
+                                        currentUser: currentuser[0]
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+});
 module.exports = {
     friendRouter: router
 };

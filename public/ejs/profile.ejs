@@ -15,8 +15,8 @@
         <div class="main">
             <div class="profile">
                 <div class="profile-header">
-                    <%if(user.img){%>
-                        <img src=<%="/img/user/" + user.id + "/avatar"%> class="round">
+                    <%if(currentUser.img){%>
+                        <img src=<%="/img/user/" + currentUser.id + "/avatar"%> class="round">
                         <%}else{%>
                     <img src="../resources/img/avatar.png" class="round">
                     <%}%>
@@ -25,7 +25,9 @@
                         <p><%= currentUser.birthdate %> years</p>
                         <p><%= currentUser.score %> points</p>
                     </div>
+                    <%if(currentUser.id === user.id){%>
                     <a class="modify button round" href="/profile/modify"> <img class="img-height-fill" src="../resources/icon/edit-icon.png"></a>
+                    <%}%>
                 </div>
                 <div class="profile-footer">
                     <input type="checkbox" id="check-friends" class="button" value="friends">

@@ -102,7 +102,8 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                             password: request.body.password[0] ? request.body.password[0] : request.session.currentUser.password,
                             birthdate: request.body.birthdate ? request.body.birthdate : request.session.currentUser.birthdate,
                             gender: request.body.gender ? request.body.gender : request.session.currentUser.gender,
-                            description: request.body.description ? request.body.description : request.session.currentUser.description
+                            description: request.body.description ? request.body.description : request.session.currentUser.description,
+                            score: request.session.currentUser.descripton
                         };
                         console.log(new_user);
                         let id = request.session.currentUser.id;
@@ -119,14 +120,16 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                                     throw err;
                                 } else {
                                     new_user.img = dir;
-                                    console.log(new_user);
                                     request.session.currentUser.img = dir;
+                                    if(new_user)
+                                    new_user.score = new_user.score - 100;
                                     daoUser.update({
                                         id: request.session.currentUser.id
                                     }, new_user, (err, result) => {
                                         if (err) {
                                             throw err;
                                         } else {
+
                                             response.setFlash([{
                                                 type: Messages.types.SUCCESS,
                                                 text: Strings.transform(messages[config.locale].welcome, {

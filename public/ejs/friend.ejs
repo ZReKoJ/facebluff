@@ -20,12 +20,12 @@
             <div class="request-panel">
                 <ul value="No hay solicitudes de amistad"><%requests.forEach(element => {%>
                     <li>
-                        <div class="other-users">
+                        <a class="other-users" href=<%="/friend/profile/" + element.id%>>
                             <img class="img-height-fill" src=<%="/img/user/" + element.id + "/avatar"%>>
                             <h2 class="text-cut"><%=element.username%></h2>
                             <a class="button" href=<%="/friend/accept/" + element.id%>>Accept</a>
                             <a class="button" href=<%="/friend/decline/" + element.id%>>Decline</a>
-                        </div>
+                        </a>
                     </li>
                     <%});%></ul>
             </div>
@@ -36,10 +36,10 @@
                 </form>
                 <ul value="No tienes amigos"><%friends.forEach(element =>{%>
                     <li>
-                        <div class="other-users">
+                        <a class="other-users" href=<%="/friend/profile/" + element.id%>>
                             <img class="img-height-fill" src=<%="/img/user/" + element.id + "/avatar"%>>
                             <h2 class="text-cut"><%=element.username%></h2>
-                        </div>
+                        </a>
                     </li>
                     <%});%></ul>
             </div>

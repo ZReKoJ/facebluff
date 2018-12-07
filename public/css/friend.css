@@ -276,3 +276,11 @@
 .friend-panel>ul>li:hover {
     background-color: var(--primary-light-color);
 }
+
+a {
+    text-decoration: none;
+}
+
+a:visited>h2 {
+    color: var(--secondary-color);
+}
