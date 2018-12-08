@@ -22,35 +22,39 @@
                     <%}%>
                     <div class="info-user">
                         <h2><%= currentUser.username %></h2>
-                        <p><%= currentUser.birthdate %> years</p>
-                        <p><%= currentUser.score %> points</p>
+                        <p><%= currentUser.birthdate %> años</p>
+                        <p><%= currentUser.score %> puntos</p>
                     </div>
                     <%if(currentUser.id === user.id){%>
-                    <a class="modify button round" href="/profile/modify"> <img class="img-height-fill" src="../resources/icon/edit-icon.png"></a>
+                    <a class="modify button" href="/profile/modify"> <img class="img-height-fill" src="../resources/icon/edit-icon2.png"></a>
                     <%}%>
                 </div>
                 <div class="profile-footer">
-                    <input type="checkbox" id="check-friends" class="button" value="friends">
-                    <input type="checkbox" id="check-questions" class="button" value="questions">
-                    <input type="checkbox" id="check-followers" class="button" value="questions answered">
-                    <input type="checkbox" id="check-description" class="button" value="description">
+                    <input type="checkbox" id="check-friends" class="button" value="amigos">
+                    <input type="checkbox" id="check-questions" class="button" value="preguntas">
+                    <input type="checkbox" id="check-followers" class="button" value="preguntas respondidas">
+                    <input type="checkbox" id="check-description" class="button" value="descripción">
                     <div class="info-panel" id="friends-panel">
-                        <h1 class="text-cut">friends</h1>
-                        <h3 class="text-cut"><%=friends%></h3>
+                        <div class="info-panel-header">
+                            <h1>amigos</h1>
+                        </div>
+                        <div class="info-panel-footer">
+                            <h3><%=friends%></h3>
+                        </div>
                     </div>
                     <div class="info-panel" id="questions-panel">
-                        <h1 class="text-cut">questions</h1>
-                        <h3 class="text-cut"><%=questions%></h3>
+                        <h1>preguntas</h1>
+                        <h3><%=questions%></h3>
                     </div>
                     <div class="info-panel" id="followers-panel">
-                        <h1 class="text-cut">questions<br>
-                            answered
+                        <h1>preguntas<br>
+                            respondidas
                         </h1>
-                        <h3 class="text-cut"><%=questionsanswered%></h3>
+                        <h3><%=questionsanswered%></h3>
                     </div>
                     <div class="info-panel" id="description-panel">
-                        <h1 class="text-cut">description</h1>
-                        <h3 class="text-cut"><%=currentUser.description%></h3>
+                        <h1>descripción</h1>
+                        <h3><%=currentUser.description%></h3>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@
                         <input type="email" name="email" placeholder="Email" value=<%user.email%>>
                         <input type="password" name="password" placeholder="Password" value=<%user.password%>>
                         <input type="password" name="password" placeholder="Repeat your password" value=<%user.password%>>
-                        <input type="date" name="birthdate" value="2000-01-01" placeholder="Birth date" value=<%user.birthdate%>>
+                        <input type="date" name="birthdate" value=<%=user.birthdate%> placeholder="Birth date" value=<%user.birthdate%>>
                         <div class="gender">
                             <input type="radio" name="gender" value="male" <%if(user.gender === "male"){%> checked <%}%> > Male<br>
                             <input type="radio"  name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Female<br>

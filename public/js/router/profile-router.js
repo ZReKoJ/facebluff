@@ -103,7 +103,8 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                             birthdate: request.body.birthdate ? request.body.birthdate : request.session.currentUser.birthdate,
                             gender: request.body.gender ? request.body.gender : request.session.currentUser.gender,
                             description: request.body.description ? request.body.description : request.session.currentUser.description,
-                            score: request.session.currentUser.score
+                            score: request.session.currentUser.score,
+                            img: request.session.currentUser.img
                         };
                         let id = request.session.currentUser.id;
                         request.session.currentUser = new_user;
