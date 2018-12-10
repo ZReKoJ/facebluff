@@ -15,24 +15,26 @@
         <div class="main">
             <div class="modify-profile">
                 <div class="modify-profile-header">
-                    <h1>modify profile</h1>
+                    <h1>modificar perfil</h1>
                 </div>
                 <div class="modify-profile-body">
                     <form id="modify-form" action="/profile/modify_profile" method="post" enctype="multipart/form-data">
-                        <input type="text" name="username" placeholder="Username" value=<%user.username%>>
+                        <input type="text" name="username" placeholder="Nombre de usuario" value=<%user.username%>>
                         <input type="email" name="email" placeholder="Email" value=<%user.email%>>
-                        <input type="password" name="password" placeholder="Password" value=<%user.password%>>
-                        <input type="password" name="password" placeholder="Repeat your password" value=<%user.password%>>
-                        <input type="date" name="birthdate" value=<%=user.birthdate%> placeholder="Birth date" value=<%user.birthdate%>>
+                        <input type="password" name="password" placeholder="Contraseña" value=<%user.password%>>
+                        <input type="password" name="password" placeholder="Repite tu contraseña" value=<%user.password%>>
+                        <input type="date" name="birthdate" value=<%=user.birthdate%> placeholder="Fecha de nacimiento" value=<%user.birthdate%>>
                         <div class="gender">
-                            <input type="radio" name="gender" value="male" <%if(user.gender === "male"){%> checked <%}%> > Male<br>
-                            <input type="radio"  name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Female<br>
-                            <input type="radio"  name="gender" value="other"<%if(user.gender==="other"){%> checked <%}%>> Other
+                            <input type="radio" name="gender" value="male" <%if(user.gender === "male"){%> checked <%}%> > Masculino<br>
+                            <input type="radio"  name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Femenino<br>
+                            <input type="radio"  name="gender" value="other"<%if(user.gender==="other"){%> checked <%}%>> Otro
                         </div>
-                        <input type="file" name="avatar"/>
-                        <textarea name="description" placeholder="Description" rows="10" cols="30"></textarea>
+                        <label for=inputfile>
+                                <u>Selecciona un archivo</u>
+                                <input type="file" name="avatar" id="inputfile"/>
+                        </label>
+                        <textarea name="description" placeholder="Descripción" rows="10" cols="30"></textarea>
                         <input type="submit" value="" class="modify button round">
-                        <!--<img class="img-height-fill" src="../resources/icon/edit-icon.png">-->
                     </form>
 
                 </div>
