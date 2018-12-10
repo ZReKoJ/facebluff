@@ -34,7 +34,9 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-image: url(../resources/img/background.jpg);
+
+	background-size: cover;
 }
 
 .img-width-fill {

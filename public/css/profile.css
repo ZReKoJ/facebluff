@@ -46,9 +46,6 @@
 	width: 100%;
 	height: calc(100% - 50px);
 	overflow: scroll;
-	background-image: url("../resources/img/background.jpg");
-	background-position: center;
-	background-size: cover;
 }
 
 .profile {
