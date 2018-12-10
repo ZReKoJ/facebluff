@@ -155,6 +155,7 @@
 	height: 80%;
 	bottom: 0;
 	position: absolute;
+	overflow: hidden;
 }
 .profile>.profile-footer>.info-panel>.info-panel-footer>h3 {
 	width: 80%;
@@ -190,11 +191,11 @@
 	bottom: 0;
 }
 
-input[type="checkbox"]::before {
+.profile>.profile-footer>input[type="checkbox"]::before {
 	content: attr(value);
 }
 
-input[type="checkbox"] {
+.profile>.profile-footer>input[type="checkbox"] {
 	display: flex;
 	width: 25%;
 	height: 105%;
@@ -208,13 +209,13 @@ input[type="checkbox"] {
 	align-items: center;
 }
 
-input[type="checkbox"]:checked {
+.profile>.profile-footer>input[type="checkbox"]:checked {
 	background-color: var(--primary-dark-color);
 	color: white;
 	
 }
 
-input#check-friends[type="checkbox"]:checked~.info-panel#friends-panel {
+.profile>.profile-footer>input#check-friends[type="checkbox"]:checked~.info-panel#friends-panel {
 	display: flex;
 	animation-name: fade-in;
     animation-delay: 0s;
@@ -222,7 +223,7 @@ input#check-friends[type="checkbox"]:checked~.info-panel#friends-panel {
     animation-iteration-count: 1;
 }
 
-input#check-answers[type="checkbox"]:checked~.info-panel#answers-panel {
+.profile>.profile-footer>input#check-answers[type="checkbox"]:checked~.info-panel#answers-panel {
 	display: flex;
 	animation-name: fade-in;
     animation-delay: 0s;
@@ -230,7 +231,7 @@ input#check-answers[type="checkbox"]:checked~.info-panel#answers-panel {
     animation-iteration-count: 1;
 }
 
-input#check-questions[type="checkbox"]:checked~.info-panel#questions-panel {
+.profile>.profile-footer>input#check-questions[type="checkbox"]:checked~.info-panel#questions-panel {
 	display: flex;
 	animation-name: fade-in;
     animation-delay: 0s;
@@ -238,7 +239,7 @@ input#check-questions[type="checkbox"]:checked~.info-panel#questions-panel {
     animation-iteration-count: 1;
 }
 
-input#check-description[type="checkbox"]:checked~.info-panel#description-panel {
+.profile>.profile-footer>input#check-description[type="checkbox"]:checked~.info-panel#description-panel {
 	display: flex;
 	animation-name: fade-in;
     animation-delay: 0s;

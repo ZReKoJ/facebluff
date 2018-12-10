@@ -88,6 +88,7 @@ body {
     font-size: small;
     white-space: nowrap; 
     user-select: none;
+    color: var(--on-primary-color);
 }
 
 .separator>span:before,
@@ -96,7 +97,7 @@ body {
     position: absolute;
     top: 50%;
     width: 100%;
-    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    background: linear-gradient(to right, transparent, var(--on-primary-color), transparent);
     height: 1px;
 }
 
