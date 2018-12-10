@@ -184,6 +184,9 @@
 }
 
 .answer-question-panel>form>h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 0;
     width: 100%;

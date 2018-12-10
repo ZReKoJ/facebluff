@@ -17,6 +17,7 @@
 .question-panel-header {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     height: 10%;
     background-color: var(--secondary-color);
 }

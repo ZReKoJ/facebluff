@@ -211,6 +211,7 @@
 .friend-panel>form {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     position: absolute;
     width: 100%;
     height: 50px;
