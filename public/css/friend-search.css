@@ -72,7 +72,7 @@
     overflow: auto;
 }
 
-.friend-search-panel>ul:empty:before{
+.friend-search-panel>ul:empty:before {
     content: attr(value);
 }
 

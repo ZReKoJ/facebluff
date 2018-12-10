@@ -23,7 +23,7 @@
     user-select: none;
 }
 
-.question-panel-header>h2{
+.question-panel-header>h2 {
     width: calc(90% - 50px);
 }
 

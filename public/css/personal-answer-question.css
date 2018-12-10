@@ -397,11 +397,11 @@
     animation-fill-mode: forwards;
 }
 
-.answer-question-panel>form>div>label:last-child>input[type="radio"]:checked ~ p {
+.answer-question-panel>form>div>label:last-child>input[type="radio"]:checked~p {
     display: none;
 }
 
-.answer-question-panel>form>div>label:last-child>input[type="radio"]:checked ~ input[type="text"] {
+.answer-question-panel>form>div>label:last-child>input[type="radio"]:checked~input[type="text"] {
     display: block;
 }
 

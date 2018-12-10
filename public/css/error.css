@@ -58,8 +58,8 @@
     bottom: 5%;
     right: 0;
     width: 100px;
-	color: var(--on-secondary-color);
-	background-color: var(--secondary-color);
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
 }
 
 .game {

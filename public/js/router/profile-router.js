@@ -145,7 +145,7 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                                             } else {
                                                 response.setFlash([{
                                                     type: Messages.types.SUCCESS,
-                                                    text: Strings.transform(messages[config.locale]. modifiedCorrect, {
+                                                    text: Strings.transform(messages[config.locale].modifiedCorrect, {
                                                         name: result.username
                                                     })
                                                 }]);
@@ -164,7 +164,7 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                                 } else {
                                     response.setFlash([{
                                         type: Messages.types.SUCCESS,
-                                        text: Strings.transform(messages[config.locale]. modifiedCorrect, {
+                                        text: Strings.transform(messages[config.locale].modifiedCorrect, {
                                             name: result.username
                                         })
                                     }]);

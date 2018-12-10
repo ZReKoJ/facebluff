@@ -890,7 +890,7 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
     .music-note {
         display: none;
     }
-    
+
     .eye {
         position: absolute;
         top: calc(121px * var(--wrapper-height) / var(--img-height));
@@ -941,14 +941,14 @@ neck: -3px 35px 105px 35px--- 24px * 10px --- z 20
         border-bottom-left-radius: 50% 5%;
         border-bottom-right-radius: 50% 20%;
     }
-    
+
     .eyebrow#right {
         right: calc(28px * var(--wrapper-width) / var(--img-width));
         left: calc(124px * var(--wrapper-width) / var(--img-width));
         border-bottom-left-radius: 50% 20%;
         border-bottom-right-radius: 50% 5%;
     }
-    
+
     .cheek {
         display: none;
     }

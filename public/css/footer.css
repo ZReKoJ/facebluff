@@ -38,7 +38,7 @@ ul.messages {
     list-style-type: none;
     animation-name: fade-in;
     animation-duration: 1s;
-    animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
     overflow: hidden;
 }
 
@@ -91,12 +91,12 @@ ul.messages>li>div>p {
     text-align: center;
 }
 
-ul.messages>li>input[type="checkbox"]:checked + div {
+ul.messages>li>input[type="checkbox"]:checked+div {
     animation-name: close-message;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
-ul.messages>li>input[type="checkbox"]:checked + div>p {
+ul.messages>li>input[type="checkbox"]:checked+div>p {
     display: none;
 }

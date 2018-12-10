@@ -17,13 +17,18 @@
         <div class="user">
             <label>
                 <img class="round" src="/img/avatar"></img>
-                <span><%= user.score ? user.score : 0 %></span>
+                <span>
+                    <%= user.score ? user.score : 0 %></span>
             </label>
             <div class="mini-profile">
                 <div class="profile-header">
                     <img class="round" src="/img/avatar"></img>
-                    <h2><%= user.username %></h2>
-                    <p><%= user.description %></p>
+                    <h2>
+                        <%= user.username %>
+                    </h2>
+                    <p>
+                        <%= user.description %>
+                    </p>
                 </div>
                 <div class="profile-footer">
                     <a href="/profile" class="button">Perfil</a>

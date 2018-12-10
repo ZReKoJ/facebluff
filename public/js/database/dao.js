@@ -345,51 +345,50 @@ class DAO {
     }
 
     findOneBy(dict, callback) {
-        this.findBy(dict, (err, result) => {
-            if (err) {
-                callback(err);
-            }
-            else {
-                callback(err, (result.length > 0) ? result[0] : undefined);
-            }
-        }, 1);
-    }
-    
-    in (dict, callback) {
-        this.pool.getConnection((err, connection) => {
-            if (err) {
-                callback(
-                    new Error(
-                        Strings.transform(
-                            messages[config.locale].databaseConnectionError, {
-                                "errorMessage": err.message
-                            }
-                        )));
+            this.findBy(dict, (err, result) => {
+                if (err) {
+                    callback(err);
+                } else {
+                    callback(err, (result.length > 0) ? result[0] : undefined);
+                }
+            }, 1);
+        }
 
-            } else {
-                let sql = "select * from " + this.tableName + " where " +
-                    Object.keys(dict).map(element => element + " IN (" +
-                        ((dict[element].length > 0) ? dict[element].map(elem => "?").join(',') : "null") +
-                        ')').join(" and ");
-                connection.query(sql, Object.keys(dict).map(element => dict[element]).flat(), (err, result) => {
-                    connection.release();
-                    if (err) {
-                        callback(
-                            new Error(
-                                Strings.transform(
-                                    messages[config.locale].sqlQueryError, {
-                                        "sql": sql,
-                                        "errorMessage": err.message
-                                    }
-                                )));
-                    } else {
-                        callback(null, result);
-                    }
-                });
-            }
-        });
-    }
-    
+        in (dict, callback) {
+            this.pool.getConnection((err, connection) => {
+                if (err) {
+                    callback(
+                        new Error(
+                            Strings.transform(
+                                messages[config.locale].databaseConnectionError, {
+                                    "errorMessage": err.message
+                                }
+                            )));
+
+                } else {
+                    let sql = "select * from " + this.tableName + " where " +
+                        Object.keys(dict).map(element => element + " IN (" +
+                            ((dict[element].length > 0) ? dict[element].map(elem => "?").join(',') : "null") +
+                            ')').join(" and ");
+                    connection.query(sql, Object.keys(dict).map(element => dict[element]).flat(), (err, result) => {
+                        connection.release();
+                        if (err) {
+                            callback(
+                                new Error(
+                                    Strings.transform(
+                                        messages[config.locale].sqlQueryError, {
+                                            "sql": sql,
+                                            "errorMessage": err.message
+                                        }
+                                    )));
+                        } else {
+                            callback(null, result);
+                        }
+                    });
+                }
+            });
+        }
+
     findLike(dict, callback, limit = undefined) {
         this.pool.getConnection((err, connection) => {
             if (err) {
@@ -459,7 +458,7 @@ class Friend extends DAO {
             config.dbTables.friend.primaryKey,
             config.dbTables.friend.tableColumns);
     }
-    
+
     findFriends(id, callback) {
         this.pool.getConnection((err, connection) => {
             if (err) {

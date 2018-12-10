@@ -1,9 +1,10 @@
 @keyframes fade-in {
 	0% {
-		opacity:0;
+		opacity: 0;
 	}
+
 	15% {
-		opacity:0.5;
+		opacity: 0.5;
 	}
 
 	30% {
@@ -35,9 +36,6 @@
 	}
 
 }
-
-
-
 
 .main {
 	position: fixed;
@@ -128,28 +126,31 @@
 	align-items: center;
 	justify-content: center;
 	animation-name: fade-out;
-    animation-delay: 0s;
-    animation-duration: 1s;
+	animation-delay: 0s;
+	animation-duration: 1s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
 	user-select: none;
 }
-.profile>.profile-footer>.info-panel>.info-panel-header{
+
+.profile>.profile-footer>.info-panel>.info-panel-header {
 	width: 100%;
-	border-top-left-radius:30px;
-	border-top-right-radius:30px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 	height: 20%;
 	position: absolute;
-	top:0;
+	top: 0;
 	background-color: var(--primary-dark-color);
 	text-align: center;
 }
+
 .profile>.profile-footer>.info-panel>.info-panel-header>h1 {
 	text-transform: uppercase;
 	width: 100%;
 	color: var(--on-primary-color);
 }
-.profile>.profile-footer>.info-panel>.info-panel-footer{
+
+.profile>.profile-footer>.info-panel>.info-panel-footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -159,6 +160,7 @@
 	position: absolute;
 	overflow: hidden;
 }
+
 .profile>.profile-footer>.info-panel>.info-panel-footer>h3 {
 	width: 80%;
 	text-align: center;
@@ -179,7 +181,7 @@
 	top: -566.66%;
 }
 
-.profile>.profile-footer>.info-panel#description-panel > .description {
+.profile>.profile-footer>.info-panel#description-panel>.description {
 	height: 25%;
 	width: 15%;
 	position: absolute;
@@ -214,37 +216,37 @@
 .profile>.profile-footer>input[type="checkbox"]:checked {
 	background-color: var(--primary-dark-color);
 	color: white;
-	
+
 }
 
 .profile>.profile-footer>input#check-friends[type="checkbox"]:checked~.info-panel#friends-panel {
 	display: flex;
 	animation-name: fade-in;
-    animation-delay: 0s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
 }
 
 .profile>.profile-footer>input#check-answers[type="checkbox"]:checked~.info-panel#answers-panel {
 	display: flex;
 	animation-name: fade-in;
-    animation-delay: 0s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
 }
 
 .profile>.profile-footer>input#check-questions[type="checkbox"]:checked~.info-panel#questions-panel {
 	display: flex;
 	animation-name: fade-in;
-    animation-delay: 0s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
 }
 
 .profile>.profile-footer>input#check-description[type="checkbox"]:checked~.info-panel#description-panel {
 	display: flex;
 	animation-name: fade-in;
-    animation-delay: 0s;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
+	animation-delay: 0s;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
 }

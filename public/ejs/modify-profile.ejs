@@ -23,15 +23,20 @@
                         <input type="email" name="email" placeholder="Email" value=<%user.email%>>
                         <input type="password" name="password" placeholder="Contraseña" value=<%user.password%>>
                         <input type="password" name="password" placeholder="Repite tu contraseña" value=<%user.password%>>
-                        <input type="date" name="birthdate" value=<%=user.birthdate%> placeholder="Fecha de nacimiento" value=<%user.birthdate%>>
+                        <input type="date" name="birthdate" value=<%=user.birthdate%> placeholder="Fecha de nacimiento"
+                        value=
+                        <%user.birthdate%>>
                         <div class="gender">
-                            <input type="radio" name="gender" value="male" <%if(user.gender === "male"){%> checked <%}%> > Masculino<br>
-                            <input type="radio"  name="gender" value="female" <%if(user.gender ==="female"){%> checked <%}%>> Femenino<br>
-                            <input type="radio"  name="gender" value="other"<%if(user.gender==="other"){%> checked <%}%>> Otro
+                            <input type="radio" name="gender" value="male" <%if(user.gender==="male" ){%> checked
+                            <%}%> > Masculino<br>
+                            <input type="radio" name="gender" value="female" <%if(user.gender==="female" ){%> checked
+                            <%}%>> Femenino<br>
+                            <input type="radio" name="gender" value="other" <%if(user.gender==="other" ){%> checked
+                            <%}%>> Otro
                         </div>
                         <label for=inputfile>
-                                <u>Selecciona un archivo</u>
-                                <input type="file" name="avatar" id="inputfile"/>
+                            <u>Selecciona un archivo</u>
+                            <input type="file" name="avatar" id="inputfile" />
                         </label>
                         <textarea name="description" placeholder="Descripción" rows="10" cols="30"></textarea>
                         <input type="submit" value="" class="modify button round">

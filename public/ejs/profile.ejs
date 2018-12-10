@@ -21,9 +21,13 @@
                     <img src="../resources/img/avatar.png" class="round">
                     <%}%>
                     <div class="info-user">
-                        <h2><%= currentUser.username %></h2>
-                        <p><%= currentUser.birthdate %> años</p>
-                        <p><%= currentUser.score %> puntos</p>
+                        <h2>
+                            <%= currentUser.username %>
+                        </h2>
+                        <p>
+                            <%= currentUser.birthdate %> años</p>
+                        <p>
+                            <%= currentUser.score %> puntos</p>
                     </div>
                     <%if(currentUser.id === user.id){%>
                     <a class="modify button" href="/profile/modify"> <img class="img-height-fill" src="../resources/icon/edit-icon-white.png"></a>

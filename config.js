@@ -14,7 +14,7 @@ module.exports = {
             music: ["public", "resources", "music"],
             user: ["public", "resources", "user"]
       },
-      mysqlConfig : {
+      mysqlConfig: {
             host: "localhost",
             user: "root",
             password: "",

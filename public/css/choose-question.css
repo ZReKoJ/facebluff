@@ -59,7 +59,7 @@
     width: 20%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }

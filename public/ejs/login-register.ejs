@@ -11,13 +11,13 @@
 
 <body>
     <div class="container">
-        <input type='radio' value="login" name="login-register" id='login-button' class="button" 
-        <% if (typeof login != 'undefined' && login) { %>
-            checked
+        <input type='radio' value="login" name="login-register" id='login-button' class="button" <% if (typeof login !='undefined'
+            && login) { %>
+        checked
         <% } %>>
-        <input type='radio' value="register" name="login-register" id='register-button' class="button" 
-        <% if (typeof register != 'undefined' && register) { %>
-            checked
+        <input type='radio' value="register" name="login-register" id='register-button' class="button" <% if (typeof
+            register !='undefined' && register) { %>
+        checked
         <% } %>>
         <div id="register-zone">
             <h2 class="have-account">Don´t have an account?</h2>

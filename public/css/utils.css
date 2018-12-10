@@ -35,7 +35,7 @@
 
 body {
     background-image: url(../resources/img/background.jpg);
-	background-size: cover;
+    background-size: cover;
 }
 
 .img-width-fill {
@@ -71,7 +71,7 @@ body {
 }
 
 .text-cut {
-    white-space: nowrap; 
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -86,7 +86,7 @@ body {
     position: relative;
     display: inline-block;
     font-size: small;
-    white-space: nowrap; 
+    white-space: nowrap;
     user-select: none;
     color: var(--on-primary-color);
 }

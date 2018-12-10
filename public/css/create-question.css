@@ -59,75 +59,75 @@
     top: calc(70px + 55px);
 }
 
-.create-question-panel>input#add-remove:nth-child(18):checked ~ form>div>input:nth-child(18) {
+.create-question-panel>input#add-remove:nth-child(18):checked~form>div>input:nth-child(18) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(17):checked ~ form>div>input:nth-child(17) {
+.create-question-panel>input#add-remove:nth-child(17):checked~form>div>input:nth-child(17) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(16):checked ~ form>div>input:nth-child(16) {
+.create-question-panel>input#add-remove:nth-child(16):checked~form>div>input:nth-child(16) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(15):checked ~ form>div>input:nth-child(15) {
+.create-question-panel>input#add-remove:nth-child(15):checked~form>div>input:nth-child(15) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(14):checked ~ form>div>input:nth-child(14) {
+.create-question-panel>input#add-remove:nth-child(14):checked~form>div>input:nth-child(14) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(13):checked ~ form>div>input:nth-child(13) {
+.create-question-panel>input#add-remove:nth-child(13):checked~form>div>input:nth-child(13) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(12):checked ~ form>div>input:nth-child(12) {
+.create-question-panel>input#add-remove:nth-child(12):checked~form>div>input:nth-child(12) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(11):checked ~ form>div>input:nth-child(11) {
+.create-question-panel>input#add-remove:nth-child(11):checked~form>div>input:nth-child(11) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(10):checked ~ form>div>input:nth-child(10) {
+.create-question-panel>input#add-remove:nth-child(10):checked~form>div>input:nth-child(10) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(9):checked ~ form>div>input:nth-child(9) {
+.create-question-panel>input#add-remove:nth-child(9):checked~form>div>input:nth-child(9) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(8):checked ~ form>div>input:nth-child(8) {
+.create-question-panel>input#add-remove:nth-child(8):checked~form>div>input:nth-child(8) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(7):checked ~ form>div>input:nth-child(7) {
+.create-question-panel>input#add-remove:nth-child(7):checked~form>div>input:nth-child(7) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(6):checked ~ form>div>input:nth-child(6) {
+.create-question-panel>input#add-remove:nth-child(6):checked~form>div>input:nth-child(6) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(5):checked ~ form>div>input:nth-child(5) {
+.create-question-panel>input#add-remove:nth-child(5):checked~form>div>input:nth-child(5) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(4):checked ~ form>div>input:nth-child(4) {
+.create-question-panel>input#add-remove:nth-child(4):checked~form>div>input:nth-child(4) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(3):checked ~ form>div>input:nth-child(3) {
+.create-question-panel>input#add-remove:nth-child(3):checked~form>div>input:nth-child(3) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(2):checked ~ form>div>input:nth-child(2) {
+.create-question-panel>input#add-remove:nth-child(2):checked~form>div>input:nth-child(2) {
     display: inline-block;
 }
 
-.create-question-panel>input#add-remove:nth-child(1):checked ~ form>div>input:nth-child(1) {
+.create-question-panel>input#add-remove:nth-child(1):checked~form>div>input:nth-child(1) {
     display: inline-block;
 }
 
