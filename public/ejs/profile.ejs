@@ -16,14 +16,18 @@
             <div class="profile">
                 <div class="profile-header">
                     <%if(currentUser.img){%>
-                        <img src=<%="/img/user/" + currentUser.id + "/avatar"%> class="round">
+                    <img src=<%="/img/user/" + currentUser.id + "/avatar" %> class="round">
                     <%}else{%>
                     <img src="../resources/img/avatar.png" class="round">
                     <%}%>
                     <div class="info-user">
-                        <h2><%= currentUser.username %></h2>
-                        <p><%= currentUser.birthdate %> años</p>
-                        <p><%= currentUser.score %> puntos</p>
+                        <h2>
+                            <%= currentUser.username %>
+                        </h2>
+                        <p>
+                            <%= currentUser.birthdate %> años</p>
+                        <p>
+                            <%= currentUser.score %> puntos</p>
                     </div>
                     <%if(currentUser.id === user.id){%>
                     <a class="modify button" href="/profile/modify"> <img class="img-height-fill" src="../resources/icon/edit-icon2.png"></a>
@@ -32,29 +36,47 @@
                 <div class="profile-footer">
                     <input type="checkbox" id="check-friends" class="button" value="amigos">
                     <input type="checkbox" id="check-questions" class="button" value="preguntas">
-                    <input type="checkbox" id="check-followers" class="button" value="preguntas respondidas">
+                    <input type="checkbox" id="check-answers" class="button" value="respuestas">
                     <input type="checkbox" id="check-description" class="button" value="descripción">
                     <div class="info-panel" id="friends-panel">
                         <div class="info-panel-header">
                             <h1>amigos</h1>
                         </div>
                         <div class="info-panel-footer">
-                            <h3><%=friends%></h3>
+                            <h1>
+                                <%=friends%>
+                            </h1>
                         </div>
                     </div>
                     <div class="info-panel" id="questions-panel">
-                        <h1>preguntas</h1>
-                        <h3><%=questions%></h3>
+                        <div class="info-panel-header">
+                            <h1>preguntas</h1>
+                        </div>
+                        <div class="info-panel-footer">
+                            <h1>
+                                <%=questions%>
+                            </h1>
+                        </div>
                     </div>
-                    <div class="info-panel" id="followers-panel">
-                        <h1>preguntas<br>
-                            respondidas
-                        </h1>
-                        <h3><%=questionsanswered%></h3>
+                    <div class="info-panel" id="answers-panel">
+                        <div class="info-panel-header">
+                            <h1>respuestas</h1>
+                        </div>
+                        <div class="info-panel-footer">
+                            <h1>
+                                <%=questionsanswered%>
+                            </h1>
+                        </div>
                     </div>
                     <div class="info-panel" id="description-panel">
-                        <h1>descripción</h1>
-                        <h3><%=currentUser.description%></h3>
+                        <div class="info-panel-header">
+                            <h1>descripción</h1>
+                        </div>
+                        <div class="info-panel-footer">
+                            <h3>
+                                <%=currentUser.description%>
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>

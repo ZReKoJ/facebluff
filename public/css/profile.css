@@ -126,9 +126,9 @@
 	background-color: var(--primary-dark-color);
 	color: var(--on-primary-color);
 	height: 300%;
+	border-radius: 30px;
 	align-items: center;
 	justify-content: center;
-	border-radius: 5px;
 	animation-name: fade-out;
     animation-delay: 0s;
     animation-duration: 1s;
@@ -137,6 +137,8 @@
 }
 .profile>.profile-footer>.info-panel>.info-panel-header{
 	width: 100%;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
 	height: 20%;
 	position: absolute;
 	top:0;
@@ -162,7 +164,7 @@
 	text-align: center;
 }
 
-.profile>.profile-footer>.info-panel#followers-panel {
+.profile>.profile-footer>.info-panel#answers-panel {
 	left: 120%;
 	bottom: 0;
 }
@@ -223,7 +225,7 @@ input#check-friends[type="checkbox"]:checked~.info-panel#friends-panel {
     animation-iteration-count: 1;
 }
 
-input#check-followers[type="checkbox"]:checked~.info-panel#followers-panel {
+input#check-answers[type="checkbox"]:checked~.info-panel#answers-panel {
 	display: flex;
 	animation-name: fade-in;
     animation-delay: 0s;
