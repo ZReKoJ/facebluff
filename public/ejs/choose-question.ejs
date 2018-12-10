@@ -21,7 +21,7 @@
                     <% if (selfAnswer) { %>
                     <li>
                         <div class="friend-question">
-                            <img class="img-height-fill" src="/img/avatar">
+                            <img class="img-height-fill" src=<%="/img/user/" + user.id + "/avatar"%>>
                             <a class="text-cut" href=<%="/friend/" + user.id%>><%= user.username %></a>
                             <h3 class="respuesta text-cut">
                                 <%= selfAnswer.answer %>
@@ -33,7 +33,7 @@
                     <% } else { %>
                     <li>
                         <div class="friend-question">
-                            <img class="img-height-fill" src="/img/avatar">
+                            <img class="img-height-fill" src=<%="/img/user/" + user.id + "/avatar"%>>
                             <a class="text-cut" href=<%="/friend/" + user.id%>><%= user.username %></a>
                             <a class="button" href=<%="/question/" + question.id + "/answer/" + user.id %>>Contestar</a>
                         </div>
@@ -46,7 +46,7 @@
                     <% if (friendAnswer.state == "guess") { %>
                     <li>
                         <div class="friend-question">
-                            <img class="img-height-fill" src="/img/avatar">
+                            <img class="img-height-fill" src=<%="/img/user/" + friendAnswer.userid + "/avatar"%>>
                             <a class="text-cut" href=<%="/friend/" + friendAnswer.userid%>><%= friendAnswer.username %></a>
                             <a class="button" href=<%="/question/" + question.id + "/answer/" + friendAnswer.userid %>>Adivinar</a>
                         </div>
@@ -55,7 +55,7 @@
                     <% if (friendAnswer.state == "correct") { %>
                     <li>
                         <div class="friend-question">
-                            <img class="img-height-fill" src="/img/avatar">
+                            <img class="img-height-fill" src=<%="/img/user/" + friendAnswer.userid + "/avatar"%>>
                             <a class="text-cut" href=<%="/friend/" + friendAnswer.userid%>><%= friendAnswer.username %></a>
                             <h3 class="respuesta text-cut">
                                 <%= friendAnswer.answer %>
@@ -67,7 +67,7 @@
                     <% if (friendAnswer.state == "wrong") { %>
                     <li>
                         <div class="friend-question">
-                            <img class="img-height-fill" src="/img/avatar">
+                            <img class="img-height-fill" src=<%="/img/user/" + friendAnswer.userid + "/avatar"%>>
                             <a class="text-cut" href=<%="/friend/" + friendAnswer.userid%>><%= friendAnswer.username %></a>
                             <h3 class="respuesta text-cut">
                                 <%= friendAnswer.answer %>

@@ -28,7 +28,9 @@
 }
 
 .friend-question>img {
-    width: 50px;
+    width: 5vmin;
+    height: 5vmin;
+    border-radius: 50%;
     user-select: none;
 }
 

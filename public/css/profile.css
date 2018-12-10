@@ -73,8 +73,8 @@
 }
 
 .profile>.profile-header>img {
-	height: 25%;
-	width: auto;
+	height: 20vmin;
+	width: 20vmin;
 	position: absolute;
 	bottom: 30%;
 }
