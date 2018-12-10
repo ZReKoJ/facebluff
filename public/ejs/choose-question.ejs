@@ -22,9 +22,7 @@
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">
-                                <%= user.username %>
-                            </h2>
+                            <a class="text-cut" href=<%="/friend/" + user.id%>><%= user.username %></a>
                             <h3 class="respuesta text-cut">
                                 <%= selfAnswer.answer %>
                             </h3>
@@ -36,9 +34,7 @@
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">
-                                <%= user.username %>
-                            </h2>
+                            <a class="text-cut" href=<%="/friend/" + user.id%>><%= user.username %></a>
                             <a class="button" href=<%="/question/" + question.id + "/answer/" + user.id %>>Contestar</a>
                         </div>
                     </li>
@@ -51,9 +47,7 @@
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">
-                                <%= friendAnswer.username %>
-                            </h2>
+                            <a class="text-cut" href=<%="/friend/" + friendAnswer.userid%>><%= friendAnswer.username %></a>
                             <a class="button" href=<%="/question/" + question.id + "/answer/" + friendAnswer.userid %>>Adivinar</a>
                         </div>
                     </li>
@@ -62,9 +56,7 @@
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">
-                                <%= friendAnswer.username %>
-                            </h2>
+                            <a class="text-cut" href=<%="/friend/" + friendAnswer.userid%>><%= friendAnswer.username %></a>
                             <h3 class="respuesta text-cut">
                                 <%= friendAnswer.answer %>
                             </h3>
@@ -76,9 +68,7 @@
                     <li>
                         <div class="friend-question">
                             <img class="img-height-fill" src="/img/avatar">
-                            <h2 class="text-cut">
-                                <%= friendAnswer.username %>
-                            </h2>
+                            <a class="text-cut" href=<%="/friend/" + friendAnswer.userid%>><%= friendAnswer.username %></a>
                             <h3 class="respuesta text-cut">
                                 <%= friendAnswer.answer %>
                             </h3>

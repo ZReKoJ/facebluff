@@ -32,23 +32,34 @@
     user-select: none;
 }
 
-.friend-question>h2 {
-    width: calc(40% - 50px);
+.friend-question>a.text-cut {
+    width: calc(40% - 50px - 10px);
     flex-grow: 100;
     margin-left: 10px;
     user-select: none;
+    color: var(--on-primary-color);
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.friend-question>a.text-cut:visited {
+    color: var(--secondary-color);
 }
 
 .friend-question>h3 {
-    width: 30%;
+    width: calc(40% - 10px);
     margin-left: 10px;
     user-select: none;
 }
 
-.friend-question>a {
+.friend-question>a.button {
     width: 20%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .friend-question>.state-success {

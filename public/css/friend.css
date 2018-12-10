@@ -195,6 +195,11 @@
     color: var(--on-primary-color);
     font-size: 1.5em;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.other-users>a.text-cut:visited {
+    color: var(--secondary-color);
 }
 
 .other-users>a.button {
@@ -299,8 +304,4 @@
 
 .friend-panel>ul>li:hover {
     background-color: var(--primary-light-color);
-}
-
-.other-users>a.text-cut:visited {
-    color: var(--secondary-color);
 }

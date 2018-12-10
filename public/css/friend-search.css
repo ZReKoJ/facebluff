@@ -30,12 +30,19 @@
     user-select: none;
 }
 
-.other-users>h2 {
+.other-users>a.text-cut {
     width: calc(60% - 50px);
     flex-grow: 100;
     margin-left: 10px;
     user-select: none;
     color: var(--on-primary-color);
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.other-users>a.text-cut:visited {
+    color: var(--secondary-color);
 }
 
 .other-users>.button {
