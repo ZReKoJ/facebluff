@@ -38,7 +38,7 @@
     color: var(--on-primary-color);
 }
 
-.other-users>button {
+.other-users>.button {
     width: 20%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
@@ -53,6 +53,7 @@
     height: 50px;
     text-align: center;
     background-color: var(--secondary-color);
+    user-select: none;
 }
 
 .friend-search-panel>ul {

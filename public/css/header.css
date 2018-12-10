@@ -29,6 +29,7 @@
 	color: var(--on-primary-color);
 	justify-content: space-around;
 	align-items: center;
+	user-select: none;
 }
 
 .user>label>img {
@@ -52,6 +53,7 @@
 	width: 250px;
 	height: 300px;
 	z-index: 100;
+	user-select: none;
 }
 
 .mini-profile:hover {

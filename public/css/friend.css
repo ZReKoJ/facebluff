@@ -163,6 +163,9 @@
     height: 20%;
     color: var(--on-error-color);
     background-color: var(--error-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .request-panel>ul>li:hover {
@@ -190,8 +193,13 @@
     margin-left: 10px;
     user-select: none;
     color: var(--on-primary-color);
-    font-size: 1.5em; 
-    text-decoration:none;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.other-users>a.button {
+    color: var(--on-secondary-color);
+    background-color: var(--secondary-color);
 }
 
 .request-panel>ul .other-users>button {
@@ -246,7 +254,16 @@
     height: 80%;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
+    cursor: pointer;
     border: 0
+}
+
+.friend-panel>form>button[type="submit"]:hover {
+    transform: scale(1.2);
+}
+
+.friend-panel>form>button[type="submit"]:focus {
+    outline: none;
 }
 
 .friend-panel>ul {
@@ -271,6 +288,9 @@
     height: 20%;
     color: var(--on-error-color);
     background-color: var(--error-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .friend-panel>ul>li {
