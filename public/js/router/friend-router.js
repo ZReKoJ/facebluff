@@ -170,7 +170,6 @@ router.get("/:id", (request, response) => {
                                     throw err;
                                 } else {
                                     currentuser[0].birthdate = calculateAge(currentuser[0].birthdate);
-                                    console.log(currentuser[0]);
                                     response.render("profile", {
                                         friends: friends.length,
                                         questions: questions.length,
