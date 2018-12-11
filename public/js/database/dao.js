@@ -552,11 +552,21 @@ class Message extends DAO {
     }
 }
 
+class Story extends DAO {
+    constructor(_pool) {
+        super(_pool,
+            config.dbTables.story.name,
+            config.dbTables.story.primaryKey,
+            config.dbTables.story.tableColumns);
+    }
+}
+
 module.exports = {
     user: User,
     friend: Friend,
     question: Question,
     answer: Answer,
     questionanswered: QuestionAnswered,
-    message: Message
+    message: Message,
+    story: Story
 };

@@ -13,6 +13,7 @@
     <div class="container">
         <%- include("header") %>
         <div class="main">
+            <input class="button" type="checkbox">
             <div class="profile">
                 <div class="profile-header">
                     <%if(currentUser.img){%>
@@ -79,6 +80,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="slide">
+                <div class="row">
+                    <% story.forEach(element => {%>
+                        <div class="story">
+                            <img class="img-height-fill" src=<%= "/img/user/" + currentUser.id + "/story/" + element.id %>/>
+                            <p><%= element.description %></p>
+                        </div>
+                    <% }); %>
+                </div>
+                <form action="/img/story" method="post" enctype="multipart/form-data">
+                    <input type="file" name="story" id="inputfile" multiple required/>
+                    <input type="text" placeholder="Descripción" name="description">
+                    <input type="submit" value="Subir" class="button">
+                </form>
             </div>
         </div>
         <%- include("footer") %>

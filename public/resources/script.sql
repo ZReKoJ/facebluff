@@ -1,4 +1,5 @@
 drop table if exists `message`;
+drop table if exists `story`;
 drop table if exists `questionanswered`;
 drop table if exists `answer`;
 drop table if exists `question`;
@@ -68,4 +69,13 @@ create table `message` (
     `touserid` int not null,
     primary key (`id`),
     foreign key (`touserid`) references user(`id`) on delete cascade on update cascade
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+create table `story` (
+    `id` int not null auto_increment,
+    `userid` int not null,
+    `image` varchar(255) not null,
+    `description` varchar(255) default "",
+    primary key(`id`),
+    foreign key (`userid`) references user(`id`) on delete cascade on update cascade
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

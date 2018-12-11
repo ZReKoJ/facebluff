@@ -50,6 +50,11 @@ module.exports = {
                   name: "message",
                   primaryKey: ["id"],
                   tableColumns: ["id", "type", "message", "touserid"]
+            },
+            story: {
+                  name: "story",
+                  primaryKey: ["id"],
+                  tableColumns: ["id", "userid", "image", "description"]
             }
       },
       exceptRoutes: ["/login", "/register"]

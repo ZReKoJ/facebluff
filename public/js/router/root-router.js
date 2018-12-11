@@ -138,6 +138,15 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                         throw err;
                                     } else {
                                         request.session.currentUser = result;
+                                        let storyDir = dir;
+                                        storyDir.push("story");
+                                        fs.mkdir(path.join.apply(this, storyDir), {
+                                            recursive: true
+                                        }, (err) => {
+                                            if (err) {
+                                                throw err;
+                                            }
+                                        });
                                         if (request.file != undefined) {
                                             dir.push("avatar");
                                             dir = path.join.apply(this, dir);
