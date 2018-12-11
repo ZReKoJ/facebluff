@@ -75,12 +75,12 @@ router.get("/", (request, response) => {
         }
     });
 });
+
 router.get("/modify", (request, response) => {
     response.status(200);
-
-
     response.render("modify-profile");
 });
+
 router.post("/modify_profile", multerFactory.single("avatar"), (request, response) => {;
     request.checkBody('password',
         Strings.transform(messages[config.locale].passwordNotSame)).allSame();

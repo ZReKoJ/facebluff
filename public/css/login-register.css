@@ -284,6 +284,7 @@ form>button[type="submit"] {
     padding-top: 10px;
     height: 6%;
     font-size: 12px;
+    cursor: pointer;
 }
 
 #register-button:checked {

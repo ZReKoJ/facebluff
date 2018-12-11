@@ -14,32 +14,26 @@
         <%- include("header") %>
         <div class="main">
             <div class="modify-profile">
-                <div class="modify-profile-header">
-                    <h1>modificar perfil</h1>
-                </div>
-                <div class="modify-profile-body">
-                    <form id="modify-form" action="/profile/modify_profile" method="post" enctype="multipart/form-data">
-                        <input type="text" name="username" placeholder=<%=user.username%> value=<%user.username%>>
-                        <input type="email" name="email" placeholder=<%=user.email%> value=<%user.email%>>
-                        <input type="password" name="password" placeholder=<%=user.password%> value=<%user.password%>>
-                        <input type="password" name="password" placeholder=<%=user.password%> value=<%user.password%>>
-                        <input type="date" name="birthdate" value=<%=user.birthdate%>>
-                        <div class="gender">
-                            <input type="radio" name="gender" value="male" <%if(user.gender==="male" ){%> checked
-                            <%}%> > Masculino<br>
-                            <input type="radio" name="gender" value="female" <%if(user.gender==="female" ){%> checked
-                            <%}%>> Femenino<br>
-                            <input type="radio" name="gender" value="other" <%if(user.gender==="other" ){%> checked
-                            <%}%>> Otro
-                        </div>
-                        <input type="file" name="avatar" id="inputfile" />
-                        <textarea name="description" placeholder=<%=user.description%> value=<%=user.description%> rows="10" cols="30"></textarea>
-                        <input type="submit" value="" class="modify button">
-                    </form>
-
-                </div>
-
-
+                <h2>Modificar perfil</h2>
+                <form action="/profile/modify_profile" method="post" enctype="multipart/form-data">
+                    <input type="text" name="username" placeholder="Nombre de usuario" value=<%=user.username%>>
+                    <input type="email" name="email" placeholder="Email" value=<%=user.email%>>
+                    <input type="password" name="password" placeholder="Contraseña" value=<%=user.password%>>
+                    <input type="password" name="password" placeholder="Repita tu contraseña" value=<%=user.password%>>
+                    <input type="date" name="birthdate" placeholder="Fecha de naciemiento" value=<%=new
+                        Date(user.birthdate).toLocaleDateString()%>>
+                    <div class="gender">
+                        <input type="radio" name="gender" value="male" <%if(user.gender==="male" ){%> checked
+                        <%}%> > Masculino<br>
+                        <input type="radio" name="gender" value="female" <%if(user.gender==="female" ){%> checked
+                        <%}%>> Femenino<br>
+                        <input type="radio" name="gender" value="other" <%if(user.gender==="other" ){%> checked
+                        <%}%>> Otro
+                    </div>
+                    <input type="file" name="avatar" id="inputfile" />
+                    <textarea name="description" placeholder="Descripción" rows="10" cols="30"><%=user.description%></textarea>
+                    <input type="submit" value="Modificar" class="modify button">
+                </form>
             </div>
         </div>
     </div>
