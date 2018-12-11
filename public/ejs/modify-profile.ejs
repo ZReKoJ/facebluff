@@ -19,13 +19,11 @@
                 </div>
                 <div class="modify-profile-body">
                     <form id="modify-form" action="/profile/modify_profile" method="post" enctype="multipart/form-data">
-                        <input type="text" name="username" placeholder="Nombre de usuario" value=<%user.username%>>
-                        <input type="email" name="email" placeholder="Email" value=<%user.email%>>
-                        <input type="password" name="password" placeholder="Contraseña" value=<%user.password%>>
-                        <input type="password" name="password" placeholder="Repite tu contraseña" value=<%user.password%>>
-                        <input type="date" name="birthdate" value=<%=user.birthdate%> placeholder="Fecha de nacimiento"
-                        value=
-                        <%user.birthdate%>>
+                        <input type="text" name="username" placeholder=<%=user.username%> value=<%user.username%>>
+                        <input type="email" name="email" placeholder=<%=user.email%> value=<%user.email%>>
+                        <input type="password" name="password" placeholder=<%=user.password%> value=<%user.password%>>
+                        <input type="password" name="password" placeholder=<%=user.password%> value=<%user.password%>>
+                        <input type="date" name="birthdate" value=<%=user.birthdate%>>
                         <div class="gender">
                             <input type="radio" name="gender" value="male" <%if(user.gender==="male" ){%> checked
                             <%}%> > Masculino<br>
@@ -34,12 +32,9 @@
                             <input type="radio" name="gender" value="other" <%if(user.gender==="other" ){%> checked
                             <%}%>> Otro
                         </div>
-                        <label for=inputfile>
-                            <u>Selecciona un archivo</u>
-                            <input type="file" name="avatar" id="inputfile" />
-                        </label>
-                        <textarea name="description" placeholder="Descripción" rows="10" cols="30"></textarea>
-                        <input type="submit" value="" class="modify button round">
+                        <input type="file" name="avatar" id="inputfile" />
+                        <textarea name="description" placeholder=<%=user.description%> value=<%=user.description%> rows="10" cols="30"></textarea>
+                        <input type="submit" value="" class="modify button">
                     </form>
 
                 </div>

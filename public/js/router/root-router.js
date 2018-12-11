@@ -74,6 +74,7 @@ router.post("/login", multerFactory.none(), (request, response) => {
         } else {
             // if it does exits and the password is correct
             if (result != null && request.body.password == result.password) {
+                console.log(result);
                 request.session.currentUser = result;
                 response.setFlash([{
                     type: Messages.types.SUCCESS,

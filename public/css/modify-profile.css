@@ -63,8 +63,7 @@
 	color: var(--on-surface-color);
 }
 
-.modify-profile>.modify-profile-body>#modify-form>label>input[type="file"] {
-	display: none;
+.modify-profile>.modify-profile-body>#modify-form>input[type="file"] {
 	border-bottom: none;
 }
 
@@ -99,24 +98,9 @@
 	right: 0;
 	bottom: -25%;
 	width: 7%;
-	border: black solid 1px;
 	background-image: url("../resources/icon/edit-icon-black.png");
 	background-repeat: no-repeat;
 	background-size: 60% 60%;
 	background-position: 50%;
-}
-
-.modify-profile>.modify-profile-body>#modify-form>label {
-	position: relative;
-}
-
-.modify-profile>.modify-profile-body>#modify-form>label>u {
-	-webkit-appearance: button;
-	-moz-appearance: button;
-	appearance: button;
-
-	text-decoration: none;
-	color: initial;
-	padding: 5px;
-
+	border-bottom: none;
 }
