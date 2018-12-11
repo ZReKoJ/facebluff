@@ -23,6 +23,7 @@ module.exports = {
         noNewAnswer: "No has escrito la respuesta nueva",
         userAnswerTo: "{name} ha respondido una pregunta sobre ti",
         notEnoughPoints: "No tienes los puntos suficientes para cambiar la imagen",
-        modifiedCorrect: "Se han actualizado correctamente tus datos"
+        modifiedCorrect: "Se han actualizado correctamente tus datos",
+        descriptionLength: "La longitud de la descripción es muy larga"
     }
 }

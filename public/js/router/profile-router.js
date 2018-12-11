@@ -84,6 +84,10 @@ router.get("/modify", (request, response) => {
 router.post("/modify_profile", multerFactory.single("avatar"), (request, response) => {;
     request.checkBody('password',
         Strings.transform(messages[config.locale].passwordNotSame)).allSame();
+    request.checkBody('description', Strings.transform(messages[config.locale].descriptionLength)).isLength({
+        min: 0,
+        max: 20
+    });
     request.getValidationResult().then((errors) => {
         if (errors.isEmpty()) {
             let daoUser = new DAO.user(pool);
