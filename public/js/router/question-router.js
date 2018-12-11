@@ -339,67 +339,94 @@ router.post("/:id/answer/:user", (request, response) => {
                         if (err) {
                             throw err;
                         } else {
-                            let correct = (questionanswered.answerid == request.body.answer ? 1 : 0);
-                            if (correct) {
-                                request.session.currentUser.score += 50;
-                                new DAO.user(pool).upsert(request.session.currentUser, (err, success) => {
-                                    if (err) {
-                                        throw err;
-                                    } else {
-                                        new DAO.questionanswered(pool).upsert({
-                                            userid: request.session.currentUser.id,
-                                            questionid: question.id,
-                                            answerid: request.body.answer,
-                                            touserid: request.params.user,
-                                            correct: correct
-                                        }, (err, result) => {
+                            new DAO.answer(pool).get(questionanswered.answerid, (err, correctAnswer) => {
+                                if (err) {
+                                    throw err;
+                                } else {
+                                    let correct = (questionanswered.answerid == request.body.answer ? 1 : 0);
+                                    if (correct) {
+                                        request.session.currentUser.score += 50;
+                                        new DAO.user(pool).upsert(request.session.currentUser, (err, success) => {
                                             if (err) {
                                                 throw err;
                                             } else {
-                                                new DAO.message(pool).insert(new Entity.message({
-                                                    type: Messages.types.INFO,
-                                                    message: Strings.transform(messages[config.locale].userAnswerTo, {
-                                                        name: request.session.currentUser.username
-                                                    }),
-                                                    touserid: request.params.user
-                                                }), (err, message) => {
+                                                new DAO.questionanswered(pool).upsert({
+                                                    userid: request.session.currentUser.id,
+                                                    questionid: question.id,
+                                                    answerid: request.body.answer,
+                                                    touserid: request.params.user,
+                                                    correct: correct
+                                                }, (err, result) => {
                                                     if (err) {
                                                         throw err;
                                                     } else {
-                                                        response.redirect("/question/" + question.id + "/choose");
+                                                        new DAO.message(pool).insert(new Entity.message({
+                                                            type: Messages.types.INFO,
+                                                            message: Strings.transform(messages[config.locale].userAnswerTo, {
+                                                                name: request.session.currentUser.username,
+                                                                question: "'" + question.question + "'",
+                                                                state: "correcta",
+                                                                "correct-answer": "'" + correctAnswer.answer + "'"
+                                                            }),
+                                                            touserid: request.params.user
+                                                        }), (err, message) => {
+                                                            if (err) {
+                                                                throw err;
+                                                            } else {
+                                                                response.setFlash([{
+                                                                    type: Messages.types.SUCCESS,
+                                                                    text: Strings.transform(messages[config.locale].correctAnswer)
+                                                                }]);
+                                                                response.redirect("/question/" + question.id + "/choose");
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    } else {
+                                        new DAO.answer(pool).get(request.body.answer, (err, wrongAnswer) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                new DAO.questionanswered(pool).upsert({
+                                                    userid: request.session.currentUser.id,
+                                                    questionid: question.id,
+                                                    answerid: request.body.answer,
+                                                    touserid: request.params.user,
+                                                    correct: correct
+                                                }, (err, result) => {
+                                                    if (err) {
+                                                        throw err;
+                                                    } else {
+                                                        new DAO.message(pool).insert(new Entity.message({
+                                                            type: Messages.types.INFO,
+                                                            message: Strings.transform(messages[config.locale].userAnswerTo, {
+                                                                name: request.session.currentUser.username,
+                                                                question: "'" + question.question + "'",
+                                                                state: "incorrecta",
+                                                                "wrong-answer": "'" + wrongAnswer.answer + "'",
+                                                                "correct-answer": "'" + correctAnswer.answer + "'"
+                                                            }),
+                                                            touserid: request.params.user
+                                                        }), (err, message) => {
+                                                            if (err) {
+                                                                throw err;
+                                                            } else {
+                                                                response.setFlash([{
+                                                                    type: Messages.types.ERROR,
+                                                                    text: Strings.transform(messages[config.locale].wrongAnswer)
+                                                                }]);
+                                                                response.redirect("/question/" + question.id + "/choose");
+                                                            }
+                                                        });
                                                     }
                                                 });
                                             }
                                         });
                                     }
-                                });
-                            } else {
-                                new DAO.questionanswered(pool).upsert({
-                                    userid: request.session.currentUser.id,
-                                    questionid: question.id,
-                                    answerid: request.body.answer,
-                                    touserid: request.params.user,
-                                    correct: correct
-                                }, (err, result) => {
-                                    if (err) {
-                                        throw err;
-                                    } else {
-                                        new DAO.message(pool).insert(new Entity.message({
-                                            type: Messages.types.INFO,
-                                            message: Strings.transform(messages[config.locale].userAnswerTo, {
-                                                name: request.session.currentUser.username
-                                            }),
-                                            touserid: request.params.user
-                                        }), (err, message) => {
-                                            if (err) {
-                                                throw err;
-                                            } else {
-                                                response.redirect("/question/" + question.id + "/choose");
-                                            }
-                                        });
-                                    }
-                                });
-                            }
+                                }
+                            });
                         }
                     });
                 }
