@@ -314,8 +314,8 @@
 .slide>.row>.story:hover {
 	position: fixed;
 	top: 80px;
-	left: 5%;
-	width: 90%;
+	left: 10%;
+	width: 80%;
 	height: calc(90% - 50px);
 	z-index: 100;
 }
