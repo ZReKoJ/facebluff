@@ -11,11 +11,11 @@
 
 <body>
     <div class="container">
-        <input type='radio' value="login" name="login-register" id='login-button' class="button" <% if (typeof login !='undefined'
+        <input type='radio' value="Entrar" name="login-register" id='login-button' class="button" <% if (typeof login !='undefined'
             && login) { %>
         checked
         <% } %>>
-        <input type='radio' value="register" name="login-register" id='register-button' class="button" <% if (typeof
+        <input type='radio' value="Registro" name="login-register" id='register-button' class="button" <% if (typeof
             register !='undefined' && register) { %>
         checked
         <% } %>>
@@ -41,8 +41,8 @@
             </div>
             <form id="login-form" action="/login" method="post" enctype="multipart/form-data">
                 <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Login</button>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Entrar</button>
             </form>
         </div>
         <div id="register-panel" class="panel">
@@ -61,15 +61,15 @@
                 <input type="text" name="username" placeholder="Nombre de usuario" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Contraseña" required>
-                <input type="password" name="password" placeholder="Repita tu contraseña" required>
+                <input type="password" name="password" placeholder="Repite tu contraseña" required>
                 <input type="date" name="birthdate" value="2000-01-01" placeholder="Fecha de nacimiento" required>
                 <div class="gender">
-                    <input type="radio" name="gender" value="male"> Male<br>
-                    <input type="radio" name="gender" value="female"> Female<br>
-                    <input type="radio" name="gender" value="other" checked> Other
+                    <input type="radio" name="gender" value="male"> Hombre<br>
+                    <input type="radio" name="gender" value="female"> Mujer<br>
+                    <input type="radio" name="gender" value="other" checked> Otro
                 </div>
                 <input type="file" name="avatar" />
-                <button type="submit">Register</button>
+                <button type="submit">Registro</button>
             </form>
         </div>
         <%- include("footer") %>

@@ -20,7 +20,7 @@
                     <input type="email" name="email" placeholder="Email" value=<%=user.email%>>
                     <input type="password" name="password" placeholder="Contraseña" value=<%=user.password%>>
                     <input type="password" name="password" placeholder="Repita tu contraseña" value=<%=user.password%>>
-                    <input type="date" name="birthdate" placeholder="Fecha de naciemiento" 
+                    <input type="date" name="birthdate" placeholder="Fecha de nacimiento" 
                     value=<%=new Date(user.birthdate).toLocaleDateString(undefined, {year:"numeric",month:"2-digit", day:"2-digit"})%>>
                     <div class="gender">
                         <input type="radio" name="gender" value="male" <%if(user.gender==="male" ){%> checked
