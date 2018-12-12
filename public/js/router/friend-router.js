@@ -175,6 +175,7 @@ router.get("/:id", (request, response) => {
                                         if (err) {
                                             throw err;
                                         } else {
+                                            friends = friends.filter(element => element.request === 0);
                                             currentuser[0].birthdate = calculateAge(currentuser[0].birthdate);
                                             response.render("profile", {
                                                 friends: friends.length,
