@@ -33,7 +33,7 @@ router.get("/", MiddleWares.checkUserLogged, (request, response) => {
 
         new DAO.message(pool).findBy({
             touserid: request.session.currentUser.id
-        }, (err, messages) => {
+        }, (err, _messages) => {
             if (err) {
                 throw err;
             } else {
@@ -43,15 +43,34 @@ router.get("/", MiddleWares.checkUserLogged, (request, response) => {
                     if (err) {
                         throw err;
                     } else {
-                        response.setFlash(messages.map(message => {
+                        response.setFlash(_messages.map(message => {
                             return {
                                 type: message.type,
                                 text: message.message
                             }
                         }));
-                        response.render("home", {
-                            person: homeFiles[random]
+                        new DAO.friend(pool).findFriends(request.session.currentUser.id, (err, result) => {
+                            if (err) {
+                                throw err;
+                            } else {
+                                console.log(result);
+                                result = result.filter(element => element.request != 0 && element.request != request.session.currentUser.id);
+                                console.log(result);
+                                if (result.length > 0) {
+                                    response.setFlash([{
+                                        type: Messages.types.INFO,
+                                        text: Strings.transform(messages[config.locale].requestsReceived, {
+                                            requests: result.length
+                                        })
+                                    }]);
+                                }
+                                response.render("home", {
+                                    person: homeFiles[random]
+                                });
+                            }
+
                         });
+
                     }
                 });
             }

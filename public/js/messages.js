@@ -28,5 +28,6 @@ module.exports = {
         correctAnswer: "Respuesta correcta",
         wrongAnswer: "Respuesta incorrecta",
         imageUpload: "Se ha subido la imagen correctamente",
+        requestsReceived: "Has recibido {requests} peticiones de amistad",
     }
 }
