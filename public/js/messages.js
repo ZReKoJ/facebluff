@@ -22,10 +22,11 @@ module.exports = {
         requestSent: "Se envió la petición correctamente",
         noNewAnswer: "No has escrito la respuesta nueva",
         userAnswerTo: "{name} ha respondido la pregunta: {question} sobre ti y la respuesta ha sido {state} {wrong-answer} con la respuesta correcta: {correct-answer} ",
-        notEnoughPoints: "No tienes los puntos suficientes para cambiar la imagen",
+        notEnoughPoints: "No tienes los puntos suficientes para subir la imagen",
         modifiedCorrect: "Se han actualizado correctamente tus datos",
         descriptionLength: "La longitud de la descripción es muy larga",
         correctAnswer: "Respuesta correcta",
         wrongAnswer: "Respuesta incorrecta",
+        imageUpload: "Se ha subido la imagen correctamente",
     }
 }

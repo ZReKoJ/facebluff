@@ -123,21 +123,6 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                         request.session.currentUser = new_user;
                         request.session.currentUser.id = id;
                         if (request.file != undefined) {
-                            if (new_user.score < 100) {
-                                daoUser.update({
-                                    id: request.session.currentUser.id
-                                }, new_user, (err, result) => {
-                                    if (err) {
-                                        throw err;
-                                    } else {
-                                        response.setFlash([{
-                                            type: Messages.types.ERROR,
-                                            text: Strings.transform(messages[config.locale].notEnoughPoints)
-                                        }]);
-                                        response.redirect("/profile");
-                                    }
-                                });
-                            } else {
                                 let dir = [config.root].concat(config.files.user);
                                 dir.push(String(request.session.currentUser.id));
                                 dir.push("avatar");
@@ -148,8 +133,6 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                                     } else {
                                         new_user.img = dir;
                                         request.session.currentUser.img = dir;
-                                        new_user.score = new_user.score - 100;
-                                        request.session.currentUser.score = new_user.score;
                                         daoUser.update({
                                             id: request.session.currentUser.id
                                         }, new_user, (err, result) => {
@@ -167,7 +150,6 @@ router.post("/modify_profile", multerFactory.single("avatar"), (request, respons
                                         });
                                     }
                                 });
-                            }
                         } else {
                             daoUser.update({
                                 id: request.session.currentUser.id
