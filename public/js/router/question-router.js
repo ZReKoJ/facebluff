@@ -54,7 +54,8 @@ router.post("/create", (request, response) => {
         if (errors.isEmpty()) {
             new DAO.question(pool).insert(new Entity.question({
                 question: request.body.question,
-                userid: request.session.currentUser.id
+                userid: request.session.currentUser.id,
+                numberanswer: wrongAnswers.length + 1
             }), (err, quest) => {
                 if (err) {
                     throw err;
@@ -228,8 +229,8 @@ router.get("/:id/answer/:user", (request, response) => {
                                     }
                                 });
                             }
-                            answers = answers.concat(Arrays.getItems(result, 4 - answers.length));
-                            answers = Arrays.getItems(answers, 4);
+                            answers = answers.concat(Arrays.getItems(result, question.numberanswer - answers.length));
+                            answers = Arrays.getItems(answers, question.numberanswer);
                             if (request.session.currentUser.id == request.params.user) {
                                 response.render("personal-answer-question", {
                                     touser: request.params.user,

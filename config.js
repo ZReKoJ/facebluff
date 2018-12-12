@@ -34,7 +34,7 @@ module.exports = {
             question: {
                   name: "question",
                   primaryKey: ["id"],
-                  tableColumns: ["id", "userid", "question"]
+                  tableColumns: ["id", "userid", "question", "numberanswer"]
             },
             answer: {
                   name: "answer",

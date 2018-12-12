@@ -33,6 +33,7 @@ create table `question` (
     `id` int not null auto_increment,
     `userid` int not null,
     `question` varchar(255) not null,
+    `numberanswer` int default 4,
     primary key (`id`),
     foreign key (`userid`) references user(`id`) on delete cascade on update cascade,
     unique key (`question`)

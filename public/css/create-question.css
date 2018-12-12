@@ -59,54 +59,6 @@
     top: calc(70px + 55px);
 }
 
-.create-question-panel>input#add-remove:nth-child(18):checked~form>div>input:nth-child(18) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(17):checked~form>div>input:nth-child(17) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(16):checked~form>div>input:nth-child(16) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(15):checked~form>div>input:nth-child(15) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(14):checked~form>div>input:nth-child(14) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(13):checked~form>div>input:nth-child(13) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(12):checked~form>div>input:nth-child(12) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(11):checked~form>div>input:nth-child(11) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(10):checked~form>div>input:nth-child(10) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(9):checked~form>div>input:nth-child(9) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(8):checked~form>div>input:nth-child(8) {
-    display: inline-block;
-}
-
-.create-question-panel>input#add-remove:nth-child(7):checked~form>div>input:nth-child(7) {
-    display: inline-block;
-}
-
 .create-question-panel>input#add-remove:nth-child(6):checked~form>div>input:nth-child(6) {
     display: inline-block;
 }
