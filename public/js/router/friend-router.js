@@ -169,12 +169,21 @@ router.get("/:id", (request, response) => {
                                 if (err) {
                                     throw err;
                                 } else {
-                                    currentuser[0].birthdate = calculateAge(currentuser[0].birthdate);
-                                    response.render("profile", {
-                                        friends: friends.length,
-                                        questions: questions.length,
-                                        questionsanswered: questionsanswered.length,
-                                        currentUser: currentuser[0]
+                                    new DAO.story(pool).findBy({
+                                        userid: request.params.id
+                                    }, (err, stories) => {
+                                        if (err) {
+                                            throw err;
+                                        } else {
+                                            currentuser[0].birthdate = calculateAge(currentuser[0].birthdate);
+                                            response.render("profile", {
+                                                friends: friends.length,
+                                                questions: questions.length,
+                                                questionsanswered: questionsanswered.length,
+                                                currentUser: currentuser[0],
+                                                story: stories
+                                            });
+                                        }
                                     });
                                 }
                             });

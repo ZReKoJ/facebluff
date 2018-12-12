@@ -284,7 +284,6 @@
 	left: 15%;
 	height: 80%;
 	width: 70%;
-	overflow-x: scroll;
 }
 
 .main>input[type="checkbox"]:checked~.slide {
@@ -298,6 +297,8 @@
 	height: 50%;
 	white-space: nowrap;
 	user-select: none;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .slide>.row>.story {
