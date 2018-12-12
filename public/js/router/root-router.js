@@ -140,9 +140,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                                 throw err;
                                             } else {
                                                 request.session.currentUser = result;
-                                                let storyDir = dir;
-                                                storyDir.push("story");
-                                                fs.mkdir(path.join.apply(this, storyDir), {
+                                                fs.mkdir(path.join.apply(this, dir.concat(["story"])), {
                                                     recursive: true
                                                 }, (err) => {
                                                     if (err) {
@@ -204,9 +202,7 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                                         throw err;
                                                     } else {
                                                         request.session.currentUser = result;
-                                                        let storyDir = dir;
-                                                        storyDir.push("story");
-                                                        fs.mkdir(path.join.apply(this, storyDir), {
+                                                        fs.mkdir(path.join.apply(this, dir.concat(["story"])), {
                                                             recursive: true
                                                         }, (err) => {
                                                             if (err) {
