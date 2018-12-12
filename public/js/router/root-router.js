@@ -130,41 +130,119 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                 throw err;
                             } else {
                                 let dir = [config.root].concat(config.files.user);
-                                dir.push(String(result.id));
-                                fs.mkdir(path.join.apply(this, dir), {
-                                    recursive: true
-                                }, (err) => {
-                                    if (err) {
-                                        throw err;
-                                    } else {
-                                        request.session.currentUser = result;
-                                        let storyDir = dir;
-                                        storyDir.push("story");
-                                        fs.mkdir(path.join.apply(this, storyDir), {
+                                fs.exists(path.join.apply(this, dir), (exists) => {
+                                    if (exists) {
+                                        dir.push(String(result.id));
+                                        fs.mkdir(path.join.apply(this, dir), {
                                             recursive: true
                                         }, (err) => {
                                             if (err) {
                                                 throw err;
-                                            }
-                                        });
-                                        if (request.file != undefined) {
-                                            dir.push("avatar");
-                                            dir = path.join.apply(this, dir);
-                                            fs.writeFile(dir, request.file.buffer, "binary", (err) => {
-                                                if (err) {
-                                                    throw err;
-                                                } else {
-                                                    daoUser.update({
-                                                        id: result.id
-                                                    }, {
-                                                        img: dir
-                                                    }, (err, result) => {
+                                            } else {
+                                                request.session.currentUser = result;
+                                                let storyDir = dir;
+                                                storyDir.push("story");
+                                                fs.mkdir(path.join.apply(this, storyDir), {
+                                                    recursive: true
+                                                }, (err) => {
+                                                    if (err) {
+                                                        throw err;
+                                                    }
+                                                });
+                                                if (request.file != undefined) {
+                                                    dir.push("avatar");
+                                                    dir = path.join.apply(this, dir);
+                                                    fs.writeFile(dir, request.file.buffer, "binary", (err) => {
                                                         if (err) {
                                                             throw err;
                                                         } else {
-                                                            request.session.currentUser.set({
+                                                            daoUser.update({
+                                                                id: result.id
+                                                            }, {
                                                                 img: dir
+                                                            }, (err, result) => {
+                                                                if (err) {
+                                                                    throw err;
+                                                                } else {
+                                                                    request.session.currentUser.set({
+                                                                        img: dir
+                                                                    });
+                                                                    response.setFlash([{
+                                                                        type: Messages.types.SUCCESS,
+                                                                        text: Strings.transform(messages[config.locale].welcome, {
+                                                                            name: result.username
+                                                                        })
+                                                                    }]);
+                                                                    response.redirect("/");
+                                                                }
+                                                            })
+                                                        }
+                                                    });
+                                                } else {
+                                                    response.setFlash([{
+                                                        type: Messages.types.SUCCESS,
+                                                        text: Strings.transform(messages[config.locale].welcome, {
+                                                            name: result.username
+                                                        })
+                                                    }]);
+                                                    response.redirect("/");
+                                                }
+                                            }
+                                        });
+                                    } else {
+                                        fs.mkdir(path.join.apply(this, dir), {
+                                            recursive: true
+                                        }, (err) => {
+                                            if (err) {
+                                                throw err;
+                                            } else {
+                                                dir.push(String(result.id));
+                                                fs.mkdir(path.join.apply(this, dir), {
+                                                    recursive: true
+                                                }, (err) => {
+                                                    if (err) {
+                                                        throw err;
+                                                    } else {
+                                                        request.session.currentUser = result;
+                                                        let storyDir = dir;
+                                                        storyDir.push("story");
+                                                        fs.mkdir(path.join.apply(this, storyDir), {
+                                                            recursive: true
+                                                        }, (err) => {
+                                                            if (err) {
+                                                                throw err;
+                                                            }
+                                                        });
+                                                        if (request.file != undefined) {
+                                                            dir.push("avatar");
+                                                            dir = path.join.apply(this, dir);
+                                                            fs.writeFile(dir, request.file.buffer, "binary", (err) => {
+                                                                if (err) {
+                                                                    throw err;
+                                                                } else {
+                                                                    daoUser.update({
+                                                                        id: result.id
+                                                                    }, {
+                                                                        img: dir
+                                                                    }, (err, result) => {
+                                                                        if (err) {
+                                                                            throw err;
+                                                                        } else {
+                                                                            request.session.currentUser.set({
+                                                                                img: dir
+                                                                            });
+                                                                            response.setFlash([{
+                                                                                type: Messages.types.SUCCESS,
+                                                                                text: Strings.transform(messages[config.locale].welcome, {
+                                                                                    name: result.username
+                                                                                })
+                                                                            }]);
+                                                                            response.redirect("/");
+                                                                        }
+                                                                    })
+                                                                }
                                                             });
+                                                        } else {
                                                             response.setFlash([{
                                                                 type: Messages.types.SUCCESS,
                                                                 text: Strings.transform(messages[config.locale].welcome, {
@@ -173,18 +251,10 @@ router.post("/register", multerFactory.single("avatar"), (request, response) => 
                                                             }]);
                                                             response.redirect("/");
                                                         }
-                                                    })
-                                                }
-                                            });
-                                        } else {
-                                            response.setFlash([{
-                                                type: Messages.types.SUCCESS,
-                                                text: Strings.transform(messages[config.locale].welcome, {
-                                                    name: result.username
-                                                })
-                                            }]);
-                                            response.redirect("/");
-                                        }
+                                                    }
+                                                });
+                                            }
+                                        });
                                     }
                                 });
                             }
